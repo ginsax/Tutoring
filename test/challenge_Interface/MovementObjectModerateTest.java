@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import challenge_Interface.Coordinates;
 import challenge_Interface.Movement;
-import challenge_Interface.MovementObjectModerateSolution;
+import challenge_Interface.MovementObjectModerate;
 
 /**
  * Run this class as a 'JUnit Test Case'.
@@ -23,7 +23,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_NotNull() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		
 		assertNotNull("Tests for a MovementObject_Moderate being non-null.", movement);
 	}
@@ -33,7 +33,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_CoordinatesAreNotNull() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		
 		assertNotNull("Tests for the coordinates of a MovementObject_Moderate being non-null.", movement.getCoordinates());
 	}
@@ -43,7 +43,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultXCoordinateIsNotZero() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -55,7 +55,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultYCoordinateIsNotZero() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -67,7 +67,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultZCoordinateIsNotZero() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -80,7 +80,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultXCoordinateCanBeSet() {
-		final Movement 		movement 	= new MovementObjectModerateSolution(5, 7, 10);
+		final Movement 		movement 	= new MovementObjectModerate(5, 7, 10);
 		final Coordinates 	coordinates = movement.getCoordinates();
 		
 		final int expected = 5;
@@ -93,7 +93,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultYCoordinateCanBeSet() {
-		final Movement 		movement 	= new MovementObjectModerateSolution(1, 2, 3);
+		final Movement 		movement 	= new MovementObjectModerate(1, 2, 3);
 		final Coordinates 	coordinates = movement.getCoordinates();
 		
 		final int expected 	= 2;
@@ -106,7 +106,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultZCoordinateCanBeSet() {
-		final Movement 		movement 	= new MovementObjectModerateSolution(10, 12, 13);
+		final Movement 		movement 	= new MovementObjectModerate(10, 12, 13);
 		final Coordinates 	coordinates = movement.getCoordinates();
 		
 		final int expected 	= 13;
@@ -120,7 +120,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObjectModerate_DisplayStringIsNotNull() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		
 		assertNotNull("Tests that the display string is not null.", movement.createDisplayString());
 	}
@@ -129,7 +129,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObjectModerate_DisplayStringIncludesCoordinates() {
-		final Movement 	movement 	= new MovementObjectModerateSolution();
+		final Movement 	movement 	= new MovementObjectModerate();
 		final String 	actual 		= movement.createDisplayString();
 		
 		final String expected = "A moderately complex object to demonstrate movement [3, 4, 5][12, 20, 15]";
@@ -141,7 +141,7 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObjectModerate_CanMove() {
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		final Coordinates movementCoordinates = movement.getCoordinates();
 		
 		final int x = movementCoordinates.getPositionX();
@@ -161,7 +161,7 @@ public class MovementObjectModerateTest {
 	@Test
 	public void test_MovementObjectModerate_MovesExactly() {
 		final int multiplier = 5;
-		final Movement movement = new MovementObjectModerateSolution();
+		final Movement movement = new MovementObjectModerate();
 		final Coordinates movementCoordinates = movement.getCoordinates();
 		
 		final int expectedX = (int) Math.pow(movementCoordinates.getPositionX(), multiplier + 1);

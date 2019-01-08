@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import challenge_Interface.Coordinates;
 import challenge_Interface.Movement;
-import challenge_Interface.MovementObjectSimpleSolution;
+import challenge_Interface.MovementObjectSimple;
 
 public class MovementObjectSimpleTest {
 	private final int defaultZeroValue = 0;
@@ -18,7 +18,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_NotNull() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		
 		assertNotNull("Tests for a MovementObjectSimple being non-null.", movement);
 	}
@@ -28,7 +28,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_CoordinatesAreNotNull() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		
 		assertNotNull("Tests for the coordinates of a MovementObjectSimple being non-null.", movement.getCoordinates());
 	}
@@ -38,7 +38,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_XCoordinateIsNonZero() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -50,7 +50,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_YCoordinateIsNonZero() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -62,7 +62,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_ZCoordinateIsZero() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = defaultZeroValue;
@@ -75,7 +75,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_DefaultXCoordinateIsEqual() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = 2;
@@ -87,7 +87,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_DefaultYCoordinateIsEqual() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = 4;
@@ -100,7 +100,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_DisplayStringIsNotNull() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		
 		assertNotNull("Tests that the display string is not null.", movement.createDisplayString());
 	}
@@ -109,7 +109,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_DisplayStringIncludesCoordinates() {
-		final Movement 	movement 	= new MovementObjectSimpleSolution();
+		final Movement 	movement 	= new MovementObjectSimple();
 		final String 	actual 		= movement.createDisplayString();
 		
 		final String expected = "A simple object to demonstrate movement [2, 4]";
@@ -121,7 +121,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_CanMove() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates movementCoordinates = movement.getCoordinates();
 		
 		final int x = movementCoordinates.getPositionX();
@@ -140,7 +140,7 @@ public class MovementObjectSimpleTest {
 	 */
 	@Test
 	public void test_MovementObjectSimple_MovesExactly() {
-		final Movement movement = new MovementObjectSimpleSolution();
+		final Movement movement = new MovementObjectSimple();
 		final Coordinates movementCoordinates = movement.getCoordinates();
 		
 		final int x = movementCoordinates.getPositionX();
