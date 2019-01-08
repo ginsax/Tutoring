@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
+<!-- <?import challenge_Library.Audience ?> -->
+<!-- <?import challenge_Library.Genre ?> -->
+<!-- <?import javafx.collections.FXCollections ?> -->
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
 
    <right>
       <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
@@ -43,6 +54,35 @@
             </BorderPane>
             <BorderPane>
                <left>
+                  <Label text="ISBN-13:" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+               </left>
+               <right>
+                  <TextField fx:id="filterText_Year" promptText="Filter by 'ISBN-13'" BorderPane.alignment="CENTER" />
+               </right>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <top>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <left>
+                        <Label text="Year Published:" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                     </left>
+                     <right>
+                        <TextField fx:id="filterText_Year1" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+               </top>
+            </BorderPane>
+            <BorderPane>
+               <left>
                   <Label text="Genre:" BorderPane.alignment="CENTER">
                      <padding>
                         <Insets right="5.0" />
@@ -50,52 +90,22 @@
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Genre" promptText="Filter by 'Genre'" BorderPane.alignment="CENTER" />
-               </right>
-               <VBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </VBox.margin>
-            </BorderPane>
-            <BorderPane>
-               <left>
-                  <Label text="Year Published:" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-               </left>
-               <right>
-                  <TextField fx:id="filterText_Year" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" />
-               </right>
-               <VBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </VBox.margin>
-            </BorderPane>
-            <BorderPane>
-               <left>
-                  <Label text="Subject:" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-               </left>
-               <right>
-                  <TextField fx:id="filterText_Subject" promptText="Filter by 'Subject'" BorderPane.alignment="CENTER" />
-               </right>
-               <VBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </VBox.margin>
-            </BorderPane>
-            <BorderPane>
-               <left>
-                  <Label text="Edition:" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-               </left>
-               <right>
-                  <TextField fx:id="filterText_Edition" promptText="Filter by 'Edition'" BorderPane.alignment="CENTER" />
+                  <ComboBox fx:id="filter_Genre" prefWidth="150.0" BorderPane.alignment="CENTER">
+<!--                   	<items> -->
+<!--                   		<FXCollections fx:factory="observableArrayList"> -->
+<!--                   			<Genre fx:constant="Drama" /> -->
+<!--                   			<Genre fx:constant="Encyclopedia" /> -->
+<!--                   			<Genre fx:constant="Fantasy" /> -->
+<!--                   			<Genre fx:constant="History" /> -->
+<!--                   			<Genre fx:constant="Mystery" /> -->
+<!--                   			<Genre fx:constant="Romance" /> -->
+<!--                   			<Genre fx:constant="Science" /> -->
+<!--                   			<Genre fx:constant="ScienceFiction" /> -->
+<!--                   			<Genre fx:constant="TextBook" /> -->
+<!--                   			<Genre fx:constant="Thriller" /> -->
+<!--                   		</FXCollections> -->
+<!--                   	</items> -->
+                  </ComboBox>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -110,41 +120,51 @@
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Audience" promptText="Filter by 'Audience'" BorderPane.alignment="CENTER" />
+                  <ComboBox fx:id="filter_Audience" prefWidth="150.0" BorderPane.alignment="CENTER">
+<!--                   	<items> -->
+<!--                   		<FXCollections fx:factory="observableArrayList"> -->
+<!--                   			<Audience fx:constant="Children" /> -->
+<!--                   			<Audience fx:constant="YoungAdult" /> -->
+<!--                   			<Audience fx:constant="Adult" /> -->
+<!--                   		</FXCollections> -->
+<!--                   	</items> -->
+                  </ComboBox>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
             </BorderPane>
+            <Separator prefWidth="200.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </padding>
+            </Separator>
             <BorderPane>
                <left>
-                  <Label text="In Stock:" BorderPane.alignment="CENTER">
+                  <Label text="Must be in stock:" BorderPane.alignment="CENTER">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
+                     <BorderPane.margin>
+                        <Insets top="5.0" />
+                     </BorderPane.margin>
                   </Label>
                </left>
-               <right>
-                  <TextField fx:id="filterText_InStock" promptText="Filter by 'In Stock'" BorderPane.alignment="CENTER" />
-               </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
-            </BorderPane>
-            <BorderPane>
-               <left>
-                  <Label text="Total Copies:" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-               </left>
-               <right>
-                  <TextField fx:id="filterText_TotalCopies" promptText="Filter by 'Total Copies'" BorderPane.alignment="CENTER" />
-               </right>
-               <VBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </VBox.margin>
+               <center>
+                  <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <RadioButton mnemonicParsing="false" selected="true" text="Yes">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="mInStockToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton accessibleRole="IMAGE_VIEW" mnemonicParsing="false" text="No" toggleGroup="$mInStockToggleGroup" />
+                     </children>
+                  </HBox>
+               </center>
             </BorderPane>
          </children>
          <BorderPane.margin>
@@ -155,16 +175,15 @@
    <center>
       <TableView fx:id="mTableView" BorderPane.alignment="CENTER">
         <columns>
-        	<TableColumn editable="false" minWidth="75.0" text="Title" />
-          	<TableColumn editable="false" minWidth="75.0" text="Author" />
-            <TableColumn editable="false" minWidth="75.0" text="Genre" />
-            <TableColumn editable="false" minWidth="125.0" text="Year Published" />
-            <TableColumn editable="false" minWidth="75.0" text="Subject" />
-            <TableColumn editable="false" minWidth="75.0" text="Edition" />
-            <TableColumn editable="false" minWidth="75.0" text="Audience" />
-            <TableColumn editable="false" minWidth="75.0" text="In Stock" />
-            <TableColumn editable="false" minWidth="100.0" text="Total Copies" />
+        	<TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Title" />
+          	<TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Author" />
+            <TableColumn editable="false" minWidth="100.0" prefWidth="110.0" text="Year Published" />
+            <TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="ISBN-13" />
+            <TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Genre" />
+            <TableColumn editable="false" minWidth="60.0" prefWidth="70.0" text="Audience" />
+            <TableColumn editable="false" minWidth="60.0" prefWidth="70.0" text="In Stock" />
+            <TableColumn editable="false" minWidth="70.0" text="Fictionality" />
         </columns>
       </TableView>
    </center>
-</fx:root >
+</fx:root>

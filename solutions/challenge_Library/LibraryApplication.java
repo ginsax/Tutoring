@@ -10,13 +10,10 @@ public class LibraryApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		final double MIN_WIDTH 	= Screen.getPrimary().getVisualBounds().getWidth() 	/ 2;
-		final double MIN_HEIGHT	= Screen.getPrimary().getVisualBounds().getHeight() / 2;
+		final double MIN_HEIGHT= Screen.getPrimary().getVisualBounds().getHeight() / 2;
 		
 		stage.setMinWidth	(MIN_WIDTH);
 		stage.setMinHeight	(MIN_HEIGHT);
-		
-		stage.setWidth		(MIN_WIDTH);
-		stage.setHeight		(MIN_HEIGHT);
 		
 		stage.centerOnScreen();
 		stage.setTitle("Library Challenge");
