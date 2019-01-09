@@ -1,4 +1,4 @@
-package inheritance;
+package challenge_Inheritance;
 
 /**
  * This is the base class that all fish will be extending.

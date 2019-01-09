@@ -1,4 +1,4 @@
-package inheritance;
+package challenge_Inheritance;
 
 /**
  * This is a class that represents a surgeonfish.

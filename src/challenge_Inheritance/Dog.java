@@ -1,4 +1,4 @@
-package inheritance;
+package challenge_Inheritance;
 
 /**
  * This is the a class that represents a dog.
