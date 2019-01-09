@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <?import challenge_Library.Audience ?>
-<?import challenge_Library.Genre ?>
-<?import javafx.collections.FXCollections ?> -->
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -13,12 +9,49 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
 
+   <center>
+      <TableView fx:id="mTableView" BorderPane.alignment="CENTER">
+        <columns>
+        	<TableColumn text="Title" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="title" />
+        		</cellValueFactory>
+        	</TableColumn>
+          	<TableColumn text="Author" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="author" />
+        		</cellValueFactory>
+        	</TableColumn>
+            <TableColumn text="Genre" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="genre" />
+        		</cellValueFactory>
+        	</TableColumn>
+            <TableColumn text="Year" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="publishingYear" />
+        		</cellValueFactory>
+        	</TableColumn>
+            <TableColumn text="Fictionality" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="fictionality" />
+        		</cellValueFactory>
+        	</TableColumn>
+            <TableColumn text="Audience" >
+        		<cellValueFactory>
+        			<PropertyValueFactory property="audience" />
+        		</cellValueFactory>
+        	</TableColumn>
+        </columns>
+      </TableView>
+   </center>
    <right>
       <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -172,19 +205,5 @@
          </BorderPane.margin>
       </VBox>
    </right>
-   <center>
-      <TableView fx:id="mTableView" BorderPane.alignment="CENTER">
-        <columns>
-        	<TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Title" />
-          	<TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Author" />
-            <TableColumn editable="false" minWidth="100.0" prefWidth="110.0" text="Year Published" />
-            <TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="ISBN-13" />
-            <TableColumn editable="false" minWidth="50.0" prefWidth="60.0" text="Genre" />
-            <TableColumn editable="false" minWidth="60.0" prefWidth="70.0" text="Audience" />
-            <TableColumn editable="false" minWidth="60.0" prefWidth="70.0" text="In Stock" />
-            <TableColumn editable="false" minWidth="70.0" text="Fictionality" />
-        </columns>
-      </TableView>
-   </center>
    
 </fx:root>

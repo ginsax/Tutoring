@@ -15,14 +15,14 @@ enum Genre {
 	Fantasy, 
 	/** An genre for historical books. */
 	History, 
+	/** An genre for mystery books. */
+	Mystery, 
+	/** An genre for romantic books. */
+	Romance, 
 	/** An genre for scientific books. */
 	Science, 
 	/** An genre for science fiction, or sci-fi books. */
 	ScienceFiction, 
-	/** An genre for romantic books. */
-	Romance, 
-	/** An genre for mystery books. */
-	Mystery, 
 	/** An genre for school textbooks books. */
 	TextBook, 
 	/** An genre for thrilling books. */
@@ -33,11 +33,20 @@ enum Genre {
 	 * insert spacing between types with multiple words in the name.
 	 * @return Returns a user-friendly string.
 	 */
-	String toUserFriendlyString() {
+	@Override
+	public String toString() {
 		switch(this) {
+			case Drama: 				return "Drama";
+			case Encyclopedia: 	return "Encyclopedia";
+			case Fantasy: 				return "Fantasy";
+			case History: 				return "History";
+			case Mystery: 				return "Mystery";
+			case Romance: 			return "Romance";
+			case Science: 				return "Science";
 			case ScienceFiction: 	return "Science Fiction";
 			case TextBook: 			return "Text Book";
-			default: 				return toString();
+			case Thriller: 				return "Thriller";
+			default: 						return "Unknown Genre";
 		}
 	}
 	

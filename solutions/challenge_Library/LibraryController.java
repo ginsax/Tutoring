@@ -31,7 +31,7 @@ public class LibraryController extends BorderPane {
   /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_Year;
   
-  /** The toggle buttpn filter that allows the user to filter by availability. */
+  /** The toggle button filter that allows the user to filter by availability. */
   @FXML private ToggleGroup mInStockToggleGroup;
   
   /**
@@ -45,6 +45,11 @@ public class LibraryController extends BorderPane {
     
     populateGenreComboBox();
     populateAudienceComboBox();
+    
+    final BookIO bookIO = new BookIO();
+    final LibraryObject[] importedBooks = bookIO.retrieveBooksFromFile("Test.csv");
+    
+    mTableView.getItems().addAll(importedBooks);
   }
   
   /**

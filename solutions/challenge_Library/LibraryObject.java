@@ -3,10 +3,10 @@ package challenge_Library;
 import java.util.Random;
 import java.util.UUID;
 
-import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,20 +21,17 @@ import javafx.beans.property.StringProperty;
  */
 public class LibraryObject {
   
-  /** 
-   * The fictionality of this book. 'True' values indicate the book is 
-   * fiction, while 'False' values indicate it is nonfiction.
-   */
-  private final BooleanProperty mFictionality = new SimpleBooleanProperty();
+  /** The fictionality of this book. */
+  private final StringProperty mFictionality = new SimpleStringProperty();
 	
 	/** The number of in stock copies of this book. */
-	private final IntegerProperty mNumberOfCopies_InStock = new SimpleIntegerProperty();
+	private final IntegerProperty mNumberOfCopiesInStock = new SimpleIntegerProperty();
 	/** The total number of copies of this book. */
-	private final IntegerProperty mNumberOfCopies_Total = new SimpleIntegerProperty();
-	/** The position this book holds in its series - if any. */
-	private final IntegerProperty mPositionInSeries = new SimpleIntegerProperty();
+	private final IntegerProperty mNumberOfCopiesTotal = new SimpleIntegerProperty();
 	/** The year this book was published. */
 	private final IntegerProperty mPublishingYear = new SimpleIntegerProperty();
+	/** The position this book holds in its series - if any. */
+	private final DoubleProperty mPositionInSeries = new SimpleDoubleProperty();
 	
 	/** The author of this book. */
 	private final StringProperty mAuthor 	= new SimpleStringProperty();
@@ -69,14 +66,14 @@ public class LibraryObject {
 		mTitle  .set(parsedResults[index++]);
 		mAuthor .set(parsedResults[index++]);
 		
-		parseSeriesFrom               (parsedResults[index]);
-		parsePositionInSeriesFrom     (parsedResults[index++]);
-		parsePublishingYearFrom       (parsedResults[index++]);
-		parseGenreFrom                (parsedResults[index++]);
-		parseAudienceFrom             (parsedResults[index++]);
-		parseFictionalityFrom         (parsedResults[index++]);
-		parseNumberOfInStockCopiesFrom(parsedResults, index++);
-		parseTotalNumberOfCopiesFrom  (parsedResults, index++);
+		parseSeriesFrom									(parsedResults[index]);
+		parsePositionInSeriesFrom					(parsedResults[index++]);
+		parseGenreFrom									(parsedResults[index++]);
+		parseAudienceFrom								(parsedResults[index++]);
+		parsePublishingYearFrom					(parsedResults[index++]);
+		parseFictionalityFrom							(parsedResults[index++]);
+		parseNumberOfInStockCopiesFrom	(parsedResults, index++);
+		parseTotalNumberOfCopiesFrom 		(parsedResults, index++);
 	}
 	
 	
@@ -108,7 +105,7 @@ public class LibraryObject {
 		if(!mSeries.get().isEmpty()) {
 			try {
 				final String order = parsedResult.substring(parsedResult.indexOf("|") +1);
-				mPositionInSeries.set(Integer.parseInt((order)));
+				mPositionInSeries.set(Double.parseDouble((order)));
 			}
 			catch (Exception e) { 
 				e.printStackTrace();
@@ -177,7 +174,9 @@ public class LibraryObject {
    * fictionality of this book.
    */
 	private void parseFictionalityFrom         (final String parsedResult) {
-		mFictionality.set(Boolean.parseBoolean(parsedResult));
+		if(parsedResult.equalsIgnoreCase("fiction")) mFictionality.set("Fiction");
+		else if(parsedResult.equalsIgnoreCase("nonfiction")) mFictionality.set("Nonfiction");
+		else mFictionality.set("Error parsing file.");
 	}
   /**
    * Parses the given {@code parsedResults} to determine the number of copies 
@@ -199,7 +198,7 @@ public class LibraryObject {
 			stock = new Random().nextInt(10);
 		}
 		
-		mNumberOfCopies_InStock.set(stock);
+		mNumberOfCopiesInStock.set(stock);
 	}
 	/**
 	 * Parses the given {@code parsedResults} to determine the total number of 
@@ -218,19 +217,19 @@ public class LibraryObject {
 			totalNumberOfCopies = Integer.parseInt(parsedResults[index]);
 		} 
 		catch(Exception e) {
-			totalNumberOfCopies = mNumberOfCopies_InStock.get() + new Random().nextInt(5);
+			totalNumberOfCopies = mNumberOfCopiesInStock.get() + new Random().nextInt(5);
 		}
 		
-		mNumberOfCopies_Total.set(totalNumberOfCopies);
+		mNumberOfCopiesTotal.set(totalNumberOfCopies);
 	}
-
 	
+
 	/**
 	 * Gets the fictionality of this book. 'True' values indicate the book is 
 	 * fictional, while 'False' values indicate it is nonfiction.
 	 * @return Returns the fictionality of this book.
 	 */
-	public BooleanProperty getFictionality() {
+	public StringProperty fictionalityProperty() {
 	  return mFictionality;
 	}
 	
@@ -238,28 +237,28 @@ public class LibraryObject {
 	 * Gets the number of in stock copies of this book.
 	 * @return Returns the number of in stock copies of this book.
 	 */
-	public IntegerProperty getNumberOfCopies_InStock() {
-	  return mNumberOfCopies_InStock;
+	public IntegerProperty numberOfCopiesInStockProperty() {
+	  return mNumberOfCopiesInStock;
 	}
 	/**
 	 * Gets the total number of copies of this book.
 	 * @return Returns the total number of copies of this book.
 	 */
-	public IntegerProperty getNumberOfCopies_Total() {
-	  return mNumberOfCopies_Total;
+	public IntegerProperty numberOfCopiesTotalProperty() {
+	  return mNumberOfCopiesTotal;
 	}
 	/**
 	 * Gets the year this book was published - as an integer.
 	 * @return Returns the year this book was published - as an integer.
 	 */
-	public IntegerProperty getPublishingYear() {
+	public IntegerProperty publishingYearProperty() {
 	  return mPublishingYear;
 	}
 	/**
    * Gets the position this book holds in its series - if any.
    * @return Returns the position this book holds in its series - if any.
    */
-	public IntegerProperty getPositionInSeries() {
+	public DoubleProperty positionInSeriesProperty() {
 	  return mPositionInSeries;
 	}
 	
@@ -267,28 +266,28 @@ public class LibraryObject {
 	 * Gets the author of this book.
 	 * @return Returns the author of this book.
 	 */
-	public StringProperty getAuthor() {
+	public StringProperty authorProperty() {
 	  return mAuthor;
 	}
 	/**
 	 * Gets the ISBN identifier of this book.
 	 * @return Returns the ISBN identifier of this book.
 	 */
-	public StringProperty getISBN() {
+	public StringProperty isbnProperty() {
 		return mISBN;
 	}
-  /**
-   * Gets the name of this book's series - if any.
-   * @return Returns the name of this book's series - if any.
-   */
-  public StringProperty getSeries() {
-    return mSeries;
-  }
+	/**
+	 * Gets the name of this book's series - if any.
+	 * @return Returns the name of this book's series - if any.
+	 */
+	public StringProperty seriesProperty() {
+		return mSeries;
+	}
 	/**
 	 * Gets the title of this book.
 	 * @return Returns the title of this book.
 	 */
-	public StringProperty getTitle() {
+	public StringProperty titleProperty() {
 		return mTitle;
 	}
 	
@@ -296,22 +295,110 @@ public class LibraryObject {
 	 * Gets the intended audience of this book.
 	 * @return Returns the intended audience of this book.
 	 */
-	public ObjectProperty<Audience> getAudience() {
+	public ObjectProperty<Audience> audienceProperty() {
 	  return mAudience;
 	}
 	/**
 	 * Gets the genre of this book.
 	 * @return Returns the genre of this book.
 	 */
-	public ObjectProperty<Genre> getGenre() {
+	public ObjectProperty<Genre> genreProperty() {
 	  return mGenre;
 	}
 	/**
 	 * Gets the unique identifier assigned to this book. 
 	 * @return Returns the unique identifier assigned to this book. 
 	 */
-	public ObjectProperty<UUID> getID() {
-	  return mID;
+	public ObjectProperty<UUID> idProperty() {
+		return mID;
+	}
+	
+	/**
+	 * Gets the fictionality of this book.
+	 * @return Returns the fictionality of this book.
+	 */
+	public String getFictionality() {
+	  return mFictionality.get();
+	}
+	
+	/**
+	 * Gets the number of in stock copies of this book.
+	 * @return Returns the number of in stock copies of this book.
+	 */
+	public int getNumberOfCopiesInStock() {
+	  return mNumberOfCopiesInStock.get();
+	}
+	/**
+	 * Gets the total number of copies of this book.
+	 * @return Returns the total number of copies of this book.
+	 */
+	public int getNumberOfCopiesTotal() {
+	  return mNumberOfCopiesTotal.get();
+	}
+	/**
+	 * Gets the year this book was published - as an integer.
+	 * @return Returns the year this book was published - as an integer.
+	 */
+	public int getPublishingYear() {
+	  return mPublishingYear.get();
+	}
+	/**
+   * Gets the position this book holds in its series - if any.
+   * @return Returns the position this book holds in its series - if any.
+   */
+	public double getPositionInSeries() {
+	  return mPositionInSeries.get();
+	}
+	
+	/**
+	 * Gets the author of this book.
+	 * @return Returns the author of this book.
+	 */
+	public String getAuthor() {
+	  return mAuthor.get();
+	}
+	/**
+	 * Gets the ISBN identifier of this book.
+	 * @return Returns the ISBN identifier of this book.
+	 */
+	public String getISBN() {
+		return mISBN.get();
+	}
+  /**
+   * Gets the name of this book's series - if any.
+   * @return Returns the name of this book's series - if any.
+   */
+  public String getSeries() {
+    return mSeries.get();
+  }
+	/**
+	 * Gets the title of this book.
+	 * @return Returns the title of this book.
+	 */
+	public String getTitle() {
+		return mTitle.get();
+	}
+	
+	/**
+	 * Gets the intended audience of this book.
+	 * @return Returns the intended audience of this book.
+	 */
+	public Audience getAudience() {
+	  return mAudience.get();
+	}
+	/**
+	 * Gets the genre of this book.
+	 * @return Returns the genre of this book.
+	 */
+	public Genre getGenre() {
+	  return mGenre.get();
+	}
+	/**
+	 * Gets the unique identifier assigned to this book. 
+	 * @return Returns the unique identifier assigned to this book. 
+	 */
+	public UUID getID() {
+	  return mID.get();
 	}
 	
 	
@@ -330,20 +417,12 @@ public class LibraryObject {
 												mPublishingYear.get(), 
 												seriesInformation, 
 												mAuthor.get(), 
-												mAudience.get().toUserFriendlyString(), 
-												mGenre.get().toUserFriendlyString(), 
-												createUserFriendlyFictionalityString(), 
-												mNumberOfCopies_InStock.get(), 
-												mNumberOfCopies_Total.get());
+												mAudience.get().toString(), 
+												mGenre.get().toString(), 
+												mFictionality.get(), 
+												mNumberOfCopiesInStock.get(), 
+												mNumberOfCopiesTotal.get());
 	}
 
 	
-	/**
-	 * Creates a user friendly string to represent the fictionality of the book.
-	 * @return Returns a user-friendly string that is used to display the 
-	 * fictionality of a book.
-	 */
-	private String createUserFriendlyFictionalityString() {
-		return mFictionality.get() ? "Fiction" : "Nonfiction";
-	}
 }

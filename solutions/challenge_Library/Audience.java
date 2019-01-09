@@ -19,10 +19,13 @@ enum Audience {
 	 * insert spacing between types with multiple words in the name.
 	 * @return Returns a user-friendly string.
 	 */
-	String toUserFriendlyString() {
+	@Override
+	public String toString() {
 		switch(this) {
-			case YoungAdult: return "Young Adult"; 
-			default: return toString();
+			case Adult: 				return "Adult"; 
+			case Children: 		return "Children"; 
+			case YoungAdult: 	return "Young Adult"; 
+			default: 					return "Unknown Audience";
 		}
 	}
 }
