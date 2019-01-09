@@ -5,7 +5,7 @@ package challenge_Palindrome;
  * @author jacob.watson
  * @since 12/18/2018
  */
-public class PalindromeChecker {
+public class SolutionPalindromeChecker {
 	
 	/**
 	 * Analyzes the given {@code potentialPalindrome} String and returns whether it is a palindrome or not. 

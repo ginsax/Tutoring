@@ -1,4 +1,4 @@
-package challenge_Inheritance;
+package inheritance;
 
 /**
  * This is the base class that all birds will be extending.

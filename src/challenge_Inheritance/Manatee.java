@@ -1,4 +1,4 @@
-package challenge_Inheritance;
+package inheritance;
 
 /**
  * This is the a class that represents a manatee.

@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import challenge_Inheritance.Animal;
-import challenge_Inheritance.DietType;
-import challenge_Inheritance.SkinType;
 
 public class AnimalTest {
 

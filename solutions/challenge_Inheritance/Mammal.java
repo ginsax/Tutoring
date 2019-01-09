@@ -28,7 +28,6 @@ public class Mammal extends Animal {
 		mNumberOfLegs = mDefaultNumberOfLegs;
 		ValidateSkinType();
 	}
-	
 	/**
 	 * This is the constructor that will be used if the number of legs & skin 
 	 * and diet types are known.

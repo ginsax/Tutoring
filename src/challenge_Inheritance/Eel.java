@@ -1,4 +1,4 @@
-package challenge_Inheritance;
+package inheritance;
 
 /**
  * This is a class that represents a eel.
