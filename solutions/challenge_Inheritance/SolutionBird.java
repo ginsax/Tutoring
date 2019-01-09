@@ -5,14 +5,14 @@ package challenge_Inheritance;
  * @author jacobwatson
  * @since 12/28/2018
  */
-public class Bird extends Animal {
+public class SolutionBird extends Animal {
 	
 
 	/**
 	 * This is the default constructor. Since there are no parameters passed in, 
 	 * the fields will be set to default values.
 	 */
-	public Bird() {
+	public SolutionBird() {
 		super(DietType.Other, SkinType.Feather);
 	}
 	/**
@@ -20,7 +20,7 @@ public class Bird extends Animal {
 	 * @param dietType The type of diet this bird has.
 	 * @param skinType The type of skin this bird has.
 	 */
-	public Bird(final DietType dietType, final SkinType skinType) {
+	public SolutionBird(final DietType dietType, final SkinType skinType) {
 		super(dietType, skinType);
 		ValidateSkinType();
 	}

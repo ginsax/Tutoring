@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @version 1.0
  * @since 01/04/2019
  */
-public class FizzBuzzAnalyzer_Difficult {
+public class SolutionFizzBuzzAnalyzer_Difficult {
 	private int mBoundsLower;
 	private int mBoundsUpper;
 	
@@ -20,7 +20,7 @@ public class FizzBuzzAnalyzer_Difficult {
 	 * @param boundsUpper Upper bounds of this analysis. If the given value is 
 	 * greater than 1000, then it is set to 1000.
 	 */
-	public FizzBuzzAnalyzer_Difficult(final int boundsLower, 
+	public SolutionFizzBuzzAnalyzer_Difficult(final int boundsLower, 
 									  final int boundsUpper) {
 		mBoundsLower = boundsLower < 1 		? 1 		: boundsLower;
 		mBoundsLower = boundsLower > 1000 	? 1000 	: mBoundsLower;
@@ -37,14 +37,14 @@ public class FizzBuzzAnalyzer_Difficult {
 	 * @return Return a string message containing the values returned by the 
 	 * given {@code fizzBuzzObjects}.
 	 */
-	public String analyze(final FizzBuzzObject... fizzBuzzObjects) {
+	public String analyze(final SolutionFizzBuzzObject... fizzBuzzObjects) {
 		final String messageDefault = "No Response";
 		Arrays.sort(fizzBuzzObjects);
 		
 		String message = messageDefault;
 		
 		for(int i = mBoundsLower; i <= mBoundsUpper; i++) {
-			for(FizzBuzzObject fizzBuzzObject : fizzBuzzObjects) {
+			for(SolutionFizzBuzzObject fizzBuzzObject : fizzBuzzObjects) {
 				if(i % fizzBuzzObject.getValue() == 0) {
 					if(message == messageDefault) message = "";
 					message += fizzBuzzObject.getMessage();

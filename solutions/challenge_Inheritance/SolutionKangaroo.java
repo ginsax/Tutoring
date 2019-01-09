@@ -5,13 +5,13 @@ package challenge_Inheritance;
  * @author jacobwatson
  * @since 12/28/2018
  */
-public class Kangaroo extends Mammal {
+public class SolutionKangaroo extends Mammal {
 
 	/**
 	 * This is the default constructor. Since there are no parameters passed in, 
 	 * the fields will be set to default values.
 	 */
-	public Kangaroo() {
+	public SolutionKangaroo() {
 		super(2, DietType.Herbivore, SkinType.Fur);
 	}
 	

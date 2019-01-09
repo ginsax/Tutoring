@@ -6,7 +6,7 @@ package challenge_FizzBuzz;
  * @version 1.0
  * @since 01/04/2019
  */
-public class FizzBuzzAnalyzer_Simple {
+public class SolutionFizzBuzzAnalyzer_Simple {
 	final int mBoundsLower = 1;
 	final int mBoundsUpper = 100;
 	final int mFizz = 3;

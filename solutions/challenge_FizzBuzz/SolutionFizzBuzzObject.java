@@ -1,6 +1,6 @@
 package challenge_FizzBuzz;
 
-public class FizzBuzzObject implements Comparable<FizzBuzzObject>{
+public class SolutionFizzBuzzObject implements Comparable<SolutionFizzBuzzObject>{
 	private int mValue;
 	private String mMessage;
 	
@@ -10,7 +10,7 @@ public class FizzBuzzObject implements Comparable<FizzBuzzObject>{
 	 * @param value Integer value that represents the value of this FizzBuzzObject.
 	 * @param message String message that will be returned for this object. 
 	 */
-	public FizzBuzzObject(final int value, 
+	public SolutionFizzBuzzObject(final int value, 
 						  final String message) {
 		mValue = value;
 		mMessage = message;
@@ -33,7 +33,7 @@ public class FizzBuzzObject implements Comparable<FizzBuzzObject>{
 
 	
 	@Override
-	public int compareTo(FizzBuzzObject otherFizzBuzzObject) {
+	public int compareTo(SolutionFizzBuzzObject otherFizzBuzzObject) {
 		final int valueThis = mValue;
 		final int valueOther = otherFizzBuzzObject.getValue();
 		final String messageThis = mMessage;

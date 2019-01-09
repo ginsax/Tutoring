@@ -5,7 +5,7 @@ package challenge_Inheritance;
  * @author jacobwatson
  * @since 12/28/2018
  */
-public class Fish extends Animal {
+public class SolutionFish extends Animal {
 	private final int mDefaultNumberOfFins = Integer.MIN_VALUE;
 	private int mNumberOfFins;
 
@@ -13,7 +13,7 @@ public class Fish extends Animal {
 	 * This is the default constructor. Since there are no parameters passed in, 
 	 * the fields will be set to default values.
 	 */
-	public Fish() {
+	public SolutionFish() {
 		super();
 		mNumberOfFins = mDefaultNumberOfFins;
 	}
@@ -23,7 +23,7 @@ public class Fish extends Animal {
 	 * @param dietType The type of diet this fish has.
 	 * @param skinType The type of skin this fish has.
 	 */
-	public Fish(final DietType dietType, final SkinType skinType) {
+	public SolutionFish(final DietType dietType, final SkinType skinType) {
 		super(dietType, skinType);
 		mNumberOfFins = mDefaultNumberOfFins;
 		ValidateSkinType();
@@ -35,7 +35,7 @@ public class Fish extends Animal {
 	 * @param dietType The type of diet this fish has.
 	 * @param skinType The type of skin this fish has.
 	 */
-	public Fish(final int numberOfFins, final DietType dietType, final SkinType skinType) {
+	public SolutionFish(final int numberOfFins, final DietType dietType, final SkinType skinType) {
 		super(dietType, skinType);
 		mNumberOfFins = numberOfFins;
 		ValidateNumberOfFins();

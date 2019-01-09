@@ -6,7 +6,7 @@ package challenge_FizzBuzz;
  * @version 1.0
  * @since 01/04/2019
  */
-public class FizzBuzzAnalyzer_Moderate {
+public class SolutionFizzBuzzAnalyzer_Moderate {
 	private final int mBoundsLower = 1; 
 	private final int mBoundsUpper = 100;
 	private final int mDefaultFizz = 3; 
@@ -20,7 +20,7 @@ public class FizzBuzzAnalyzer_Moderate {
 	 * Constructor of the moderate Fizz Buzz Analyzer. Sets the value of 'Fizz' 
 	 * and 'Buzz' to their default values.
 	 */
-	public FizzBuzzAnalyzer_Moderate() {
+	public SolutionFizzBuzzAnalyzer_Moderate() {
 		mFizz = mDefaultFizz;
 		mBuzz = mDefaultBuzz;
 	}
@@ -31,7 +31,7 @@ public class FizzBuzzAnalyzer_Moderate {
 	 * @param fizz First of two variables, is generally the smaller value.
 	 * @param buzz Second of two variables, is usually the larger value.
 	 */
-	public FizzBuzzAnalyzer_Moderate(final int fizz, 
+	public SolutionFizzBuzzAnalyzer_Moderate(final int fizz, 
 									 final int buzz) {
 		mFizz = fizz;
 		mBuzz = buzz;

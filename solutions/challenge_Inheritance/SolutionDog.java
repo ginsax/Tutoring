@@ -1,26 +1,26 @@
 package challenge_Inheritance;
 
 /**
- * This is a class that represents a eel.
+ * This is the a class that represents a dog.
  * @author jacobwatson
  * @since 12/28/2018
  */
-public class Eel extends Fish {
+public class SolutionDog extends Mammal {
 
 	/**
 	 * This is the default constructor. Since there are no parameters passed in, 
 	 * the fields will be set to default values.
 	 */
-	public Eel() {
-		super(0, DietType.Carnivore, SkinType.Scale);
+	public SolutionDog() {
+		super(4, DietType.Omnivore, SkinType.Fur);
 	}
 	
 	/**
-	 * The eel makes a noise unique to being a eel.
-	 * @return Returns a noise similar to 'Zap!'.
+	 * The dog makes a noise unique to being a dog.
+	 * @return Returns a noise similar to 'Woof!'.
 	 */
 	@Override
 	public String makeNoise() {
-		return "Zap!";
+		return "Woof!";
 	}
 }
