@@ -1,11 +1,14 @@
 package challenge_Interface;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this class to implement the Interface challenge.
  * @author jacobwatson
  * @since 12/26/2018
  */
 public class MovementObjectSimple implements Movement {
+
+/** The coordinates. */
 // Initialize Coordinates sub-object to operate in conjunction with Movement object.
 	Coordinates coordinates;
 	
@@ -24,8 +27,10 @@ public class MovementObjectSimple implements Movement {
 	}
 	
 	/**
-	 * Returns internal Coordinates object related to MovementObjectSimple object.
-	 **/
+   * Returns internal Coordinates object related to MovementObjectSimple object.
+   *
+   * @return the coordinates
+   */
 	@Override
 	public Coordinates getCoordinates() {
 		return coordinates;

@@ -7,45 +7,25 @@ package challenge_Library;
  * @since 01/08/2019
  */
 enum Genre {
-	/**
-	 * An genre for dramatic books.
-	 */
+	/** An genre for dramatic books. */
 	Drama, 
-	/**
-	 * An genre for reference books.
-	 */
+	/** An genre for reference books. */
 	Encyclopedia, 
-	/**
-	 * An genre for fantasy books.
-	 */
+	/** An genre for fantasy books. */
 	Fantasy, 
-	/**
-	 * An genre for historical books.
-	 */
+	/** An genre for historical books. */
 	History, 
-	/**
-	 * An genre for scientific books.
-	 */
+	/** An genre for scientific books. */
 	Science, 
-	/**
-	 * An genre for science fiction, or sci-fi books.
-	 */
+	/** An genre for science fiction, or sci-fi books. */
 	ScienceFiction, 
-	/**
-	 * An genre for romantic books.
-	 */
+	/** An genre for romantic books. */
 	Romance, 
-	/**
-	 * An genre for mystery books.
-	 */
+	/** An genre for mystery books. */
 	Mystery, 
-	/**
-	 * An genre for school textbooks books.
-	 */
+	/** An genre for school textbooks books. */
 	TextBook, 
-	/**
-	 * An genre for thrilling books.
-	 */
+	/** An genre for thrilling books. */
 	Thriller;
 	
 	/**

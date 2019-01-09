@@ -8,12 +8,15 @@ import org.junit.Test;
 
 import challenge_Palindrome.PalindromeChecker;
 
+// TODO: Auto-generated Javadoc
 /**
  * Run this class as a 'JUnit Test Case'.
  * @author jacob.watson
  * @since 12/18/2018
  */
 public class PalindromeTest {
+	
+	/** The palindrome checker. */
 	private PalindromeChecker palindromeChecker;
 	
 	@Before

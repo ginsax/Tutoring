@@ -7,8 +7,16 @@ import org.junit.Test;
 import challenge_FizzBuzz.FizzBuzzAnalyzer_Difficult;
 import challenge_FizzBuzz.FizzBuzzObject;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FizzBuzzTest_Difficult.
+ */
 public class FizzBuzzTest_Difficult {
+	
+	/** The message default. */
 	final String messageDefault = "No Response";
+	
+	/** The m fizz buzz analyzer. */
 	private FizzBuzzAnalyzer_Difficult mFizzBuzzAnalyzer;
 	
 	

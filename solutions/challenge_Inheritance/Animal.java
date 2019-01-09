@@ -6,7 +6,10 @@ package challenge_Inheritance;
  * @since 12/28/2018
  */
 public class Animal {
+	
+	/** The diet type. */
 	protected DietType mDietType;
+	/** The skin type. */
 	protected SkinType mSkinType;
 	
 	
@@ -30,20 +33,20 @@ public class Animal {
 	}
 	
 	/**
-	 * Accessor of the diet type of this animal.
-	 * @return Returns the type of diet this animal has.
+	 * Gets the diet type of this animal.
+	 * @return Returns the diet type of this animal.
 	 */
 	public DietType getDietType() {
 		return mDietType;
 	}
-	
 	/**
-	 * Accessor of the skin type of this animal.
-	 * @return Returns the type of skin this animal has.
+	 * Gets the skin type of this animal.
+	 * @return Returns the skin type of this animal.
 	 */
 	public SkinType getSkinType() {
 		return mSkinType;
 	}
+	
 	
 	/**
 	 * The animal makes a noise unique to its species.

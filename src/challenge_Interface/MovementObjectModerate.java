@@ -1,5 +1,6 @@
 package challenge_Interface;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this class to implement the Interface challenge.
  * @author jacobwatson
@@ -7,10 +8,12 @@ package challenge_Interface;
  */
 public class MovementObjectModerate implements Movement {
 	
+	/** The m mod coordinates. */
 	Coordinates mModCoordinates;
 	
 	// In the test document, the last test says that the intention of the program is to move in each direction as such y=(x/y/zMove)^(iteration)
 	// this set of default values represents the base of the power function. Each will need to be created depending on how the movement object
+	/** The z move. */
 	// is initialized (default coordinates or not).
 	int xMove, yMove, zMove;
 	
@@ -41,8 +44,10 @@ public class MovementObjectModerate implements Movement {
 	}
 	
 	/**
-	 * Returns Coordinates object, per test case.
-	 */
+   * Returns Coordinates object, per test case.
+   *
+   * @return the coordinates
+   */
 	@Override
 	public Coordinates getCoordinates() {
 		return mModCoordinates;

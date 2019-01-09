@@ -1,7 +1,12 @@
 package challenge_FizzBuzz;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FizzBuzzAnalyzer_Moderate.
+ */
 public class FizzBuzzAnalyzer_Moderate {
 
+	/** The buzz multiple. */
 	private int fizzMultiple, buzzMultiple;
 	
 	/**

@@ -6,7 +6,10 @@ package challenge_Inheritance;
  * @since 12/28/2018
  */
 public class SolutionFish extends Animal {
+	/** The default number of fins. */
 	private final int mDefaultNumberOfFins = Integer.MIN_VALUE;
+	
+	/** The number of fins. */
 	private int mNumberOfFins;
 
 	/**

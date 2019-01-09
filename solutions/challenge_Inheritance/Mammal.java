@@ -1,12 +1,17 @@
 package challenge_Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the base class that all mammals will be extending.
  * @author jacobwatson
  * @since 12/28/2018
  */
 public class Mammal extends Animal {
+	
+	/** The m default number of legs. */
 	private final int mDefaultNumberOfLegs = Integer.MIN_VALUE;
+	
+	/** The m number of legs. */
 	private int mNumberOfLegs;
 
 	/**

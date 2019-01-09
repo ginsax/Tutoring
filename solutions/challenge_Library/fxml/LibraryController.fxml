@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <?import challenge_Library.Audience ?> -->
-<!-- <?import challenge_Library.Genre ?> -->
-<!-- <?import javafx.collections.FXCollections ?> -->
+<!-- <?import challenge_Library.Audience ?>
+<?import challenge_Library.Genre ?>
+<?import javafx.collections.FXCollections ?> -->
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
@@ -91,20 +91,20 @@
                </left>
                <right>
                   <ComboBox fx:id="filter_Genre" prefWidth="150.0" BorderPane.alignment="CENTER">
-<!--                   	<items> -->
-<!--                   		<FXCollections fx:factory="observableArrayList"> -->
-<!--                   			<Genre fx:constant="Drama" /> -->
-<!--                   			<Genre fx:constant="Encyclopedia" /> -->
-<!--                   			<Genre fx:constant="Fantasy" /> -->
-<!--                   			<Genre fx:constant="History" /> -->
-<!--                   			<Genre fx:constant="Mystery" /> -->
-<!--                   			<Genre fx:constant="Romance" /> -->
-<!--                   			<Genre fx:constant="Science" /> -->
-<!--                   			<Genre fx:constant="ScienceFiction" /> -->
-<!--                   			<Genre fx:constant="TextBook" /> -->
-<!--                   			<Genre fx:constant="Thriller" /> -->
-<!--                   		</FXCollections> -->
-<!--                   	</items> -->
+                  	<!-- <items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<Genre fx:constant="Drama" />
+                  			<Genre fx:constant="Encyclopedia" />
+                  			<Genre fx:constant="Fantasy" />
+                  			<Genre fx:constant="History" />
+                  			<Genre fx:constant="Mystery" />
+                  			<Genre fx:constant="Romance" />
+                  			<Genre fx:constant="Science" />
+                  			<Genre fx:constant="ScienceFiction" />
+                  			<Genre fx:constant="TextBook" />
+                  			<Genre fx:constant="Thriller" />
+                  		</FXCollections>
+                  	</items> -->
                   </ComboBox>
                </right>
                <VBox.margin>
@@ -121,13 +121,13 @@
                </left>
                <right>
                   <ComboBox fx:id="filter_Audience" prefWidth="150.0" BorderPane.alignment="CENTER">
-<!--                   	<items> -->
-<!--                   		<FXCollections fx:factory="observableArrayList"> -->
-<!--                   			<Audience fx:constant="Children" /> -->
-<!--                   			<Audience fx:constant="YoungAdult" /> -->
-<!--                   			<Audience fx:constant="Adult" /> -->
-<!--                   		</FXCollections> -->
-<!--                   	</items> -->
+                  	<!-- <items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<Audience fx:constant="Children" />
+                  			<Audience fx:constant="YoungAdult" />
+                  			<Audience fx:constant="Adult" />
+                  		</FXCollections>
+                  	</items> -->
                   </ComboBox>
                </right>
                <VBox.margin>
@@ -186,4 +186,5 @@
         </columns>
       </TableView>
    </center>
+   
 </fx:root>

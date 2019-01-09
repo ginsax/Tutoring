@@ -7,7 +7,13 @@ import org.junit.Test;
 import challenge_FizzBuzz.FizzBuzzAnalysisResult;
 import challenge_FizzBuzz.FizzBuzzAnalyzer_Simple;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FizzBuzzTest_Simple.
+ */
 public class FizzBuzzTest_Simple {
+	
+	/** The m fizz buzz analyzer. */
 	private final FizzBuzzAnalyzer_Simple mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Simple(); 
 	
 	/**

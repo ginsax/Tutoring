@@ -13,6 +13,9 @@ import challenge_Inheritance.Kangaroo;
 import challenge_Inheritance.Manatee;
 import challenge_Inheritance.SurgeonFish;
 
+/**
+ * The Class InheritanceTest.
+ */
 public class InheritanceTest {
 	
 	

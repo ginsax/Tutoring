@@ -1,15 +1,20 @@
 package challenge_FizzBuzz;
 
 /**
- * 
+ * The solution for a FizzBuzzObject_Simple.
  * @author jacobwatson
  * @version 1.0
- * @since 01/04/2019
+ * @since 01/06/2019
  */
 public class SolutionFizzBuzzAnalyzer_Simple {
+	/** The lower bounds of this analysis. */
 	final int mBoundsLower = 1;
+  /** The upper bounds of this analysis. */
 	final int mBoundsUpper = 100;
+	
+	/** The fizz value. */
 	final int mFizz = 3;
+	/** The buzz value. */
 	final int mBuzz = 5;
 	
 	/**

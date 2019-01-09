@@ -1,7 +1,15 @@
 package challenge_FizzBuzz;
 
+/**
+ * The solution for a FizzBuzzObject.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/06/2019
+ */
 public class SolutionFizzBuzzObject implements Comparable<SolutionFizzBuzzObject>{
+	/** The value of this FizzBuzzObject. */
 	private int mValue;
+	/** The message this FizzBuzzObject displays. */
 	private String mMessage;
 	
 	/**

@@ -9,6 +9,9 @@ import challenge_Inheritance.Bird;
 import challenge_Inheritance.DietType;
 import challenge_Inheritance.SkinType;
 
+/**
+ * The Class BirdTest.
+ */
 public class BirdTest {
 	
 	/**

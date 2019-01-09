@@ -1,5 +1,8 @@
 package challenge_FizzBuzz;
 
+/**
+ * The Class FizzBuzzAnalyzer_Simple.
+ */
 public class FizzBuzzAnalyzer_Simple {
 // This class take in a number (assume integer input only), and outputs an enumerated type "FizzBuzzAnalysisResult" depending on the number inputed.
 // The analyze method will explain outputs.

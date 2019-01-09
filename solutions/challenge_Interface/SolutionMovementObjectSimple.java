@@ -5,11 +5,19 @@ package challenge_Interface;
  * @author jacobwatson
  * @since 12/26/2018
  */
-public class MovementObjectSimpleSolution implements Movement {
+public class SolutionMovementObjectSimple implements Movement {
+
+  /** The display string header. */
 	private final String mDisplayStringHeader = "A simple object to demonstrate movement";
+
+  /** The coordinates object. */
 	private Coordinates mCoordinates;
-	
-	public MovementObjectSimpleSolution() {
+
+  /**
+   * Default constructor of a new SolutionMovementObjectSimple. Instantiates 
+   * the coordinates object with the default values of [x = 2] & [y = 4].
+   */
+	public SolutionMovementObjectSimple() {
 		mCoordinates = new Coordinates(2, 4);
 	}
 	

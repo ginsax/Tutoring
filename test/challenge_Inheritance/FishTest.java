@@ -10,6 +10,9 @@ import challenge_Inheritance.DietType;
 import challenge_Inheritance.Fish;
 import challenge_Inheritance.SkinType;
 
+/**
+ * The Class FishTest.
+ */
 public class FishTest {
 
 	/**

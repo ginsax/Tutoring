@@ -10,12 +10,15 @@ import challenge_Interface.Coordinates;
 import challenge_Interface.Movement;
 import challenge_Interface.MovementObjectModerate;
 
+// TODO: Auto-generated Javadoc
 /**
  * Run this class as a 'JUnit Test Case'.
  * @author jacob.watson
  * @since 12/26/2018
  */
 public class MovementObjectModerateTest {
+	
+	/** The default zero value. */
 	private final int defaultZeroValue = 0;
 
 	/**

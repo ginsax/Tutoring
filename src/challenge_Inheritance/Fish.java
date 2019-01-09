@@ -1,12 +1,17 @@
 package challenge_Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the base class that all fish will be extending.
  * @author jacobwatson
  * @since 12/28/2018
  */
 public class Fish extends Animal {
+	
+	/** The m default number of fins. */
 	private final int mDefaultNumberOfFins = Integer.MIN_VALUE;
+	
+	/** The m number of fins. */
 	private int mNumberOfFins;
 
 	/**

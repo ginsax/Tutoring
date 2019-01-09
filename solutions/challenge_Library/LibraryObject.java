@@ -12,63 +12,81 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * The object that represents a book. This class will be used to display a book 
+ * and its various properties in a table.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/08/2019
+ */
 public class LibraryObject {
-	private ObjectProperty<UUID> mID = new SimpleObjectProperty<UUID>();
+  
+  /** 
+   * The fictionality of this book. 'True' values indicate the book is 
+   * fiction, while 'False' values indicate it is nonfiction.
+   */
+  private final BooleanProperty mFictionality = new SimpleBooleanProperty();
 	
-	private StringProperty mTitle 		= new SimpleStringProperty();
-	private StringProperty mISBN 		= new SimpleStringProperty();
-	private StringProperty mAuthor 	= new SimpleStringProperty();
-	private StringProperty mSeries 	= new SimpleStringProperty();
-	private BooleanProperty mFictionality = new SimpleBooleanProperty();
+	/** The number of in stock copies of this book. */
+	private final IntegerProperty mNumberOfCopies_InStock = new SimpleIntegerProperty();
+	/** The total number of copies of this book. */
+	private final IntegerProperty mNumberOfCopies_Total = new SimpleIntegerProperty();
+	/** The position this book holds in its series - if any. */
+	private final IntegerProperty mPositionInSeries = new SimpleIntegerProperty();
+	/** The year this book was published. */
+	private final IntegerProperty mPublishingYear = new SimpleIntegerProperty();
 	
-	private IntegerProperty mPublishingYear = new SimpleIntegerProperty();
-	private IntegerProperty mOrderInSeries = new SimpleIntegerProperty();
+	/** The author of this book. */
+	private final StringProperty mAuthor 	= new SimpleStringProperty();
+	/** The ISBN identifier of this book. */
+	private final StringProperty mISBN 	= new SimpleStringProperty();
+	/** The name of this book's series - if any. */
+	private final StringProperty mSeries 	= new SimpleStringProperty();
+	/** The title of this book. */
+	private final StringProperty mTitle 	= new SimpleStringProperty();
 
-	private ObjectProperty<Genre> mGenre = new SimpleObjectProperty<Genre>();
-	private ObjectProperty<Audience> mAudience = new SimpleObjectProperty<Audience>();
+	/** The intended audience of this book. */
+	private final ObjectProperty<Audience> mAudience = new SimpleObjectProperty<Audience>();
+	/** The genre of this book. */
+	private final ObjectProperty<Genre> mGenre = new SimpleObjectProperty<Genre>();
+	/** The unique identifier assigned to this book. */
+	private final ObjectProperty<UUID> mID = new SimpleObjectProperty<UUID>();
 	
-	private IntegerProperty mInStock = new SimpleIntegerProperty();
-	private IntegerProperty mTotalCopies = new SimpleIntegerProperty();
-
-	public LibraryObject(final String bookID, 
-										  final String title, 
-										  final String author, 
-										  final Genre genre, 
-										  final Audience audience, 
-										  final int year, 
-										  final boolean fictionality, 
-										  final int inStock, 
-										  final int totalCopies) {
-		mID.set(UUID.randomUUID());
-		
-		mISBN						.set(bookID);
-		mTitle						.set(title);
-		mAuthor				.set(author);
-		mGenre					.set(genre);
-		mAudience			.set(audience);
-		mPublishingYear	.set(year);
-		mFictionality			.set(fictionality);
-		mInStock				.set(inStock);
-		mTotalCopies		.set(totalCopies);
-	}
-
+	
+  /**
+   * Creates a new LibraryObject, instantiating it with the various fields 
+   * within the {@code parsedResults}. The unique identifier is randomised at 
+   * this point.
+   * @param parsedResults The parsed results that will be used to instantiate 
+   * the new LibraryObject.
+   */
 	public LibraryObject(final String[] parsedResults) {
 		int index = 0;
 		
-		mISBN.set(parsedResults[index++].toUpperCase());
-		mTitle.set(parsedResults[index++]);
-		mAuthor.set(parsedResults[index++]);
-		parseSeriesFrom(parsedResults[index]);
-		parseOrderInSeriesFrom(parsedResults[index++]);
-		parsePublishingYearFrom(parsedResults[index++]);
-		parseGenreFrom(parsedResults[index++]);
-		parseAudienceFrom(parsedResults[index++]);
-		parseFictionalityFrom(parsedResults[index++]);
-		parseStock(parsedResults, index++);
-		parseTotalCopies(parsedResults, index++);
+		mID.set(UUID.randomUUID());
+		
+		mISBN   .set(parsedResults[index++].toUpperCase());
+		mTitle  .set(parsedResults[index++]);
+		mAuthor .set(parsedResults[index++]);
+		
+		parseSeriesFrom               (parsedResults[index]);
+		parsePositionInSeriesFrom     (parsedResults[index++]);
+		parsePublishingYearFrom       (parsedResults[index++]);
+		parseGenreFrom                (parsedResults[index++]);
+		parseAudienceFrom             (parsedResults[index++]);
+		parseFictionalityFrom         (parsedResults[index++]);
+		parseNumberOfInStockCopiesFrom(parsedResults, index++);
+		parseTotalNumberOfCopiesFrom  (parsedResults, index++);
 	}
 	
-	private void parseSeriesFrom(final String parsedResult) {
+	
+  /**
+   * Parses the given {@code parsedResult} to determine the series - if any - 
+   * this book has a position in.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * series - if any - this book has a position in.
+   */
+	private void parseSeriesFrom               (final String parsedResult) {
 		String series;
 		
 		try {
@@ -80,18 +98,29 @@ public class LibraryObject {
 		
 		mSeries.set(series);
 	}
-	private void parseOrderInSeriesFrom(final String parsedResult) {
+  /**
+   * Parses the given {@code parsedResult} to determine the position this book 
+   * takes in its series - if it is a part of one.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * position this book takes in its series - if it is a part of one.
+   */
+	private void parsePositionInSeriesFrom	   (final String parsedResult) {
 		if(!mSeries.get().isEmpty()) {
 			try {
 				final String order = parsedResult.substring(parsedResult.indexOf("|") +1);
-				mOrderInSeries.set(Integer.parseInt((order)));
+				mPositionInSeries.set(Integer.parseInt((order)));
 			}
 			catch (Exception e) { 
 				e.printStackTrace();
 			}
 		}
 	}
-	private void parseGenreFrom(final String parsedResult) {
+  /**
+   * Parses the given {@code parsedResult} to determine the genre of this book.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * genre of this book.
+   */
+	private void parseGenreFrom	               (final String parsedResult) {
 		Genre genre;
 		
 		try {
@@ -104,7 +133,13 @@ public class LibraryObject {
 		
 		mGenre.set(genre);
 	}
-	private void parseAudienceFrom(final String parsedResult) {
+  /**
+   * Parses the given {@code parsedResult} to determine the intended audience 
+   * of this book.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * intended audience of this book.
+   */
+	private void parseAudienceFrom	           (final String parsedResult) {
 		Audience audience;
 		
 		try {
@@ -117,7 +152,13 @@ public class LibraryObject {
 		
 		mAudience.set(audience);
 	}
-	private void parsePublishingYearFrom(final String parsedResult) {
+  /**
+   * Parses the given {@code parsedResult} to determine the year this book was 
+   * published.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * year this book was published.
+   */
+	private void parsePublishingYearFrom       (final String parsedResult) {
 		int publishingYear;
 		
 		try {
@@ -129,10 +170,26 @@ public class LibraryObject {
 		
 		mPublishingYear.set(publishingYear);
 	}
-	private void parseFictionalityFrom(final String parsedResult) {
+  /**
+   * Parses the given {@code parsedResult} to determine the fictionality of 
+   * copies of this book.
+   * @param parsedResult The parsed results that will be used to determine the  
+   * fictionality of this book.
+   */
+	private void parseFictionalityFrom         (final String parsedResult) {
 		mFictionality.set(Boolean.parseBoolean(parsedResult));
 	}
-	private void parseStock(final String[] parsedResults, final int index) {
+  /**
+   * Parses the given {@code parsedResults} to determine the number of copies 
+   * of this book that are in stock.
+   * @param parsedResults The parsed results that will be used to determine the 
+   * number of copies of this book that are in stock.
+   * @param index The index to use with the parsed results. Needs to be passed 
+   * in to avoid handling {@link IndexOutOfBoundsException 
+   * IndexOutOfBoundsExceptions}.
+   */
+	private void parseNumberOfInStockCopiesFrom(final String[] parsedResults, 
+	                                            final int index) {
 		int stock;
 		
 		try {
@@ -142,69 +199,131 @@ public class LibraryObject {
 			stock = new Random().nextInt(10);
 		}
 		
-		mInStock.set(stock);
+		mNumberOfCopies_InStock.set(stock);
 	}
-	private void parseTotalCopies(final String[] parsedResults, 
-														 	final int index) {
-		int totalCopies;
+	/**
+	 * Parses the given {@code parsedResults} to determine the total number of 
+	 * copies of this book.
+	 * @param parsedResults The parsed results that will be used to determine the 
+	 * total number of copies of this book.
+	 * @param index The index to use with the parsed results. Needs to be passed 
+	 * in to avoid handling {@link IndexOutOfBoundsException 
+	 * IndexOutOfBoundsExceptions}.
+	 */
+	private void parseTotalNumberOfCopiesFrom  (final String[] parsedResults, 
+														 	                final int index) {
+		int totalNumberOfCopies;
 		
 		try {
-			totalCopies = Integer.parseInt(parsedResults[index]);
+			totalNumberOfCopies = Integer.parseInt(parsedResults[index]);
 		} 
 		catch(Exception e) {
-			totalCopies = mInStock.get() + new Random().nextInt(5);
+			totalNumberOfCopies = mNumberOfCopies_InStock.get() + new Random().nextInt(5);
 		}
 		
-		mTotalCopies.set(totalCopies);
+		mNumberOfCopies_Total.set(totalNumberOfCopies);
 	}
-	
 
-	public ObjectProperty<UUID> getID() {
-		return mID;
+	
+	/**
+	 * Gets the fictionality of this book. 'True' values indicate the book is 
+	 * fictional, while 'False' values indicate it is nonfiction.
+	 * @return Returns the fictionality of this book.
+	 */
+	public BooleanProperty getFictionality() {
+	  return mFictionality;
 	}
 	
+	/**
+	 * Gets the number of in stock copies of this book.
+	 * @return Returns the number of in stock copies of this book.
+	 */
+	public IntegerProperty getNumberOfCopies_InStock() {
+	  return mNumberOfCopies_InStock;
+	}
+	/**
+	 * Gets the total number of copies of this book.
+	 * @return Returns the total number of copies of this book.
+	 */
+	public IntegerProperty getNumberOfCopies_Total() {
+	  return mNumberOfCopies_Total;
+	}
+	/**
+	 * Gets the year this book was published - as an integer.
+	 * @return Returns the year this book was published - as an integer.
+	 */
+	public IntegerProperty getPublishingYear() {
+	  return mPublishingYear;
+	}
+	/**
+   * Gets the position this book holds in its series - if any.
+   * @return Returns the position this book holds in its series - if any.
+   */
+	public IntegerProperty getPositionInSeries() {
+	  return mPositionInSeries;
+	}
+	
+	/**
+	 * Gets the author of this book.
+	 * @return Returns the author of this book.
+	 */
+	public StringProperty getAuthor() {
+	  return mAuthor;
+	}
+	/**
+	 * Gets the ISBN identifier of this book.
+	 * @return Returns the ISBN identifier of this book.
+	 */
 	public StringProperty getISBN() {
 		return mISBN;
 	}
-
+  /**
+   * Gets the name of this book's series - if any.
+   * @return Returns the name of this book's series - if any.
+   */
+  public StringProperty getSeries() {
+    return mSeries;
+  }
+	/**
+	 * Gets the title of this book.
+	 * @return Returns the title of this book.
+	 */
 	public StringProperty getTitle() {
 		return mTitle;
 	}
-
-	public StringProperty getAuthor() {
-		return mAuthor;
-	}
-
-	public BooleanProperty getFictionality() {
-		return mFictionality;
-	}
-
-	public IntegerProperty getPublishingYear() {
-		return mPublishingYear;
-	}
-
-	public ObjectProperty<Genre> getGenre() {
-		return mGenre;
-	}
-
+	
+	/**
+	 * Gets the intended audience of this book.
+	 * @return Returns the intended audience of this book.
+	 */
 	public ObjectProperty<Audience> getAudience() {
-		return mAudience;
+	  return mAudience;
 	}
-
-	public IntegerProperty getInStock() {
-		return mInStock;
+	/**
+	 * Gets the genre of this book.
+	 * @return Returns the genre of this book.
+	 */
+	public ObjectProperty<Genre> getGenre() {
+	  return mGenre;
 	}
-
-	public IntegerProperty getTotalCopies() {
-		return mTotalCopies;
+	/**
+	 * Gets the unique identifier assigned to this book. 
+	 * @return Returns the unique identifier assigned to this book. 
+	 */
+	public ObjectProperty<UUID> getID() {
+	  return mID;
 	}
+	
 	
 	@Override
 	public String toString() {
 		String seriesInformation = String.format(", book %d of %s", 
-																				 mOrderInSeries.get(), 
-																				 mSeries.get());
+				mPositionInSeries.get(), 
+				mSeries.get());
+		
+		// check if the series information is going to be used.
 		seriesInformation = mSeries.get().isEmpty() ? "" : seriesInformation;
+		
 		return String.format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.", 
 												mTitle.get(), 
 												mISBN.get(), 
@@ -214,10 +333,16 @@ public class LibraryObject {
 												mAudience.get().toUserFriendlyString(), 
 												mGenre.get().toUserFriendlyString(), 
 												createUserFriendlyFictionalityString(), 
-												mInStock.get(), 
-												mTotalCopies.get());
+												mNumberOfCopies_InStock.get(), 
+												mNumberOfCopies_Total.get());
 	}
 
+	
+	/**
+	 * Creates a user friendly string to represent the fictionality of the book.
+	 * @return Returns a user-friendly string that is used to display the 
+	 * fictionality of a book.
+	 */
 	private String createUserFriendlyFictionalityString() {
 		return mFictionality.get() ? "Fiction" : "Nonfiction";
 	}

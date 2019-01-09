@@ -5,15 +5,21 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * Main entry level of the Library Application.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/07/2019
+ */
 public class LibraryApplication extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		final double MIN_WIDTH 	= Screen.getPrimary().getVisualBounds().getWidth() 	/ 2;
+		final double MIN_WIDTH = Screen.getPrimary().getVisualBounds().getWidth()  / 2;
 		final double MIN_HEIGHT= Screen.getPrimary().getVisualBounds().getHeight() / 2;
 		
 		stage.setMinWidth	(MIN_WIDTH);
-		stage.setMinHeight	(MIN_HEIGHT);
+		stage.setMinHeight(MIN_HEIGHT);
 		
 		stage.centerOnScreen();
 		stage.setTitle("Library Challenge");
@@ -23,7 +29,11 @@ public class LibraryApplication extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+	
+	/**
+	 * Main method, this is called to start the application.
+	 * @param args String arguments passed on to application.
+	 */
 	public static void main(String[] args) {
 		Application.launch(args);
 	}

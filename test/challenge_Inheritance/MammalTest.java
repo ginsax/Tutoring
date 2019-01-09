@@ -10,6 +10,9 @@ import challenge_Inheritance.DietType;
 import challenge_Inheritance.Mammal;
 import challenge_Inheritance.SkinType;
 
+/**
+ * The Class MammalTest.
+ */
 public class MammalTest {
 
 	/**

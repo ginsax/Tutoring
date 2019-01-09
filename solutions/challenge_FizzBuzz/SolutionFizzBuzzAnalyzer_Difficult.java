@@ -3,13 +3,15 @@ package challenge_FizzBuzz;
 import java.util.Arrays;
 
 /**
- * 
+ * The solution for a FizzBuzzObject_Difficult.
  * @author jacobwatson
  * @version 1.0
- * @since 01/04/2019
+ * @since 01/06/2019
  */
 public class SolutionFizzBuzzAnalyzer_Difficult {
+  /** The lower bounds of this analysis. */
 	private int mBoundsLower;
+  /** The upper bounds of this analysis. */
 	private int mBoundsUpper;
 	
 	/**

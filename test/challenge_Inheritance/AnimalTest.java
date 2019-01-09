@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import challenge_Inheritance.Animal;
 
+/**
+ * The Class AnimalTest.
+ */
 public class AnimalTest {
 
 	/**

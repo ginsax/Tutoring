@@ -1,18 +1,25 @@
 package challenge_FizzBuzz;
 
 /**
- * 
+ * The solution for a FizzBuzzObject_Moderate.
  * @author jacobwatson
  * @version 1.0
- * @since 01/04/2019
+ * @since 01/06/2019
  */
 public class SolutionFizzBuzzAnalyzer_Moderate {
+  /** The lower bounds of this analysis. */
 	private final int mBoundsLower = 1; 
+  /** The upper bounds of this analysis. */
 	private final int mBoundsUpper = 100;
+	
+	/** The default fizz value. */
 	private final int mDefaultFizz = 3; 
+	/** The default buzz value. */
 	private final int mDefaultBuzz = 5;
 	
+	/** The fizz value. */
 	private int mFizz;
+	/** The buzz value. */
 	private int mBuzz;
 	
 	
@@ -24,7 +31,6 @@ public class SolutionFizzBuzzAnalyzer_Moderate {
 		mFizz = mDefaultFizz;
 		mBuzz = mDefaultBuzz;
 	}
-	
 	/**
 	 * Constructor of the moderate Fizz Buzz Analyzer. Allows for variable 
 	 * values for both the 'Fizz' and 'Buzz' fields.

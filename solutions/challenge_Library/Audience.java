@@ -7,17 +7,11 @@ package challenge_Library;
  * @since 01/08/2019
  */
 enum Audience {
-	/**
-	 * An intended audience of Adult.
-	 */
+	/** An intended audience of Adult. */
 	Adult, 
-	/**
-	 * An intended audience of children.
-	 */
+	/** An intended audience of children. */
 	Children, 
-	/**
-	 * An intended audience of young adults.
-	 */
+	/** An intended audience of young adults. */
 	YoungAdult;
 	
 	/**
