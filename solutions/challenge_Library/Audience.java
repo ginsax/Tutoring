@@ -6,7 +6,7 @@ package challenge_Library;
  * @version 1.0
  * @since 01/08/2019
  */
-enum Audience {
+public enum Audience {
 	/** An intended audience of Adult. */
 	Adult, 
 	/** An intended audience of children. */

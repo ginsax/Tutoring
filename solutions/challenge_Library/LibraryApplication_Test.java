@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * @version 1.0
  * @since 01/07/2019
  */
-public class LibraryApplication extends Application {
+public class LibraryApplication_Test extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -24,7 +24,7 @@ public class LibraryApplication extends Application {
 		stage.centerOnScreen();
 		stage.setTitle("Library Challenge");
 		
-		final LibraryController root = new LibraryController();
+		final LibraryController root = new LibraryController("Test.csv");
 		final Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -34,7 +34,7 @@ public class LibraryApplication extends Application {
 	 * Main method, this is called to start the application.
 	 * @param args String arguments passed on to application.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String... args) {
 		Application.launch(args);
 	}
 }

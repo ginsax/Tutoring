@@ -3,14 +3,13 @@ package challenge_Library;
 import java.util.Random;
 import java.util.UUID;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 
 /**
  * The object that represents a book. This class will be used to display a book 
@@ -19,7 +18,7 @@ import javafx.beans.property.StringProperty;
  * @version 1.0
  * @since 01/08/2019
  */
-public class LibraryObject {
+public class LibraryBook implements Comparable<LibraryBook> {
   
   /** The fictionality of this book. */
   private final StringProperty mFictionality = new SimpleStringProperty();
@@ -30,15 +29,13 @@ public class LibraryObject {
 	private final IntegerProperty mNumberOfCopiesTotal = new SimpleIntegerProperty();
 	/** The year this book was published. */
 	private final IntegerProperty mPublishingYear = new SimpleIntegerProperty();
-	/** The position this book holds in its series - if any. */
-	private final DoubleProperty mPositionInSeries = new SimpleDoubleProperty();
 	
 	/** The author of this book. */
 	private final StringProperty mAuthor 	= new SimpleStringProperty();
 	/** The ISBN identifier of this book. */
 	private final StringProperty mISBN 	= new SimpleStringProperty();
 	/** The name of this book's series - if any. */
-	private final StringProperty mSeries 	= new SimpleStringProperty();
+	private final ObjectProperty<BookSeriesInformation> mSeries 	= new SimpleObjectProperty<BookSeriesInformation>();
 	/** The title of this book. */
 	private final StringProperty mTitle 	= new SimpleStringProperty();
 
@@ -57,17 +54,17 @@ public class LibraryObject {
    * @param parsedResults The parsed results that will be used to instantiate 
    * the new LibraryObject.
    */
-	public LibraryObject(final String[] parsedResults) {
+	public LibraryBook(final String[] parsedResults) {
 		int index = 0;
 		
 		mID.set(UUID.randomUUID());
 		
-		mISBN   .set(parsedResults[index++].toUpperCase());
-		mTitle  .set(parsedResults[index++]);
-		mAuthor .set(parsedResults[index++]);
+		mISBN		.set(parsedResults[index++].toUpperCase());
+		mTitle		.set(parsedResults[index++]);
+		mAuthor.set(parsedResults[index++]);
 		
 		parseSeriesFrom									(parsedResults[index]);
-		parsePositionInSeriesFrom					(parsedResults[index++]);
+//		parsePositionInSeriesFrom					(parsedResults[index++]);
 		parseGenreFrom									(parsedResults[index++]);
 		parseAudienceFrom								(parsedResults[index++]);
 		parsePublishingYearFrom					(parsedResults[index++]);
@@ -87,30 +84,13 @@ public class LibraryObject {
 		String series;
 		
 		try {
-			series = parsedResult.substring(0, parsedResult.indexOf("|"));
+			series = parsedResult;
 		}
 		catch (IndexOutOfBoundsException e) {
 			series = "";
 		}
 		
-		mSeries.set(series);
-	}
-  /**
-   * Parses the given {@code parsedResult} to determine the position this book 
-   * takes in its series - if it is a part of one.
-   * @param parsedResult The parsed results that will be used to determine the  
-   * position this book takes in its series - if it is a part of one.
-   */
-	private void parsePositionInSeriesFrom	   (final String parsedResult) {
-		if(!mSeries.get().isEmpty()) {
-			try {
-				final String order = parsedResult.substring(parsedResult.indexOf("|") +1);
-				mPositionInSeries.set(Double.parseDouble((order)));
-			}
-			catch (Exception e) { 
-				e.printStackTrace();
-			}
-		}
+		mSeries.set(new BookSeriesInformation(series));
 	}
   /**
    * Parses the given {@code parsedResult} to determine the genre of this book.
@@ -254,13 +234,6 @@ public class LibraryObject {
 	public IntegerProperty publishingYearProperty() {
 	  return mPublishingYear;
 	}
-	/**
-   * Gets the position this book holds in its series - if any.
-   * @return Returns the position this book holds in its series - if any.
-   */
-	public DoubleProperty positionInSeriesProperty() {
-	  return mPositionInSeries;
-	}
 	
 	/**
 	 * Gets the author of this book.
@@ -280,7 +253,7 @@ public class LibraryObject {
 	 * Gets the name of this book's series - if any.
 	 * @return Returns the name of this book's series - if any.
 	 */
-	public StringProperty seriesProperty() {
+	public ObservableValue<BookSeriesInformation> seriesProperty() {
 		return mSeries;
 	}
 	/**
@@ -342,13 +315,6 @@ public class LibraryObject {
 	public int getPublishingYear() {
 	  return mPublishingYear.get();
 	}
-	/**
-   * Gets the position this book holds in its series - if any.
-   * @return Returns the position this book holds in its series - if any.
-   */
-	public double getPositionInSeries() {
-	  return mPositionInSeries.get();
-	}
 	
 	/**
 	 * Gets the author of this book.
@@ -364,13 +330,13 @@ public class LibraryObject {
 	public String getISBN() {
 		return mISBN.get();
 	}
-  /**
-   * Gets the name of this book's series - if any.
-   * @return Returns the name of this book's series - if any.
-   */
-  public String getSeries() {
-    return mSeries.get();
-  }
+	/**
+	 * Gets the name of this book's series - if any.
+	 * @return Returns the name of this book's series - if any.
+	 */
+	public String getSeries() {
+		return mSeries.get().seriesProperty().get();
+	}
 	/**
 	 * Gets the title of this book.
 	 * @return Returns the title of this book.
@@ -400,16 +366,14 @@ public class LibraryObject {
 	public UUID getID() {
 	  return mID.get();
 	}
-	
+
 	
 	@Override
 	public String toString() {
-		String seriesInformation = String.format(", book %d of %s", 
-				mPositionInSeries.get(), 
-				mSeries.get());
+		String seriesInformation = mSeries.get().getSeriesInformationString();
 		
 		// check if the series information is going to be used.
-		seriesInformation = mSeries.get().isEmpty() ? "" : seriesInformation;
+		seriesInformation = mSeries.get().isPartOfASeries() ? "" : seriesInformation;
 		
 		return String.format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.", 
 												mTitle.get(), 
@@ -423,6 +387,39 @@ public class LibraryObject {
 												mNumberOfCopiesInStock.get(), 
 												mNumberOfCopiesTotal.get());
 	}
-
 	
+	private String sortingTitle() {
+		String sortingTitle = mTitle.get();
+		
+		final int indexFirstSpace = sortingTitle.indexOf(" ");
+		
+		if (indexFirstSpace > 0) {
+			final String firstWord = sortingTitle.substring(0, indexFirstSpace);
+			if (firstWord.equalsIgnoreCase("a") || 
+					firstWord.equalsIgnoreCase("an") || 
+					firstWord.equalsIgnoreCase("the")) { 
+				sortingTitle = sortingTitle.substring(indexFirstSpace);
+			}
+		}
+		return sortingTitle;
+	}
+	
+	@Override
+	public int compareTo(final LibraryBook otherBook) {
+		final int comparisonTitle 		= sortingTitle().compareTo(otherBook.sortingTitle());
+		final int comparisonAuthor 	= getAuthor().compareTo(otherBook.getAuthor());
+		final int comparisonSeries 	= mSeries.get().seriesProperty().get().compareTo(otherBook.mSeries.get().seriesProperty().get());
+		
+		
+		final int[] comparators = new int[] { 
+				comparisonSeries, 
+				comparisonAuthor, 
+				comparisonTitle, };
+		
+		for(int comparator : comparators) {
+			if (comparator != 0) return comparator;
+		}
+		
+		return 0;
+	}
 }

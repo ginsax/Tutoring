@@ -6,7 +6,7 @@ package challenge_Library;
  * @version 1.0
  * @since 01/08/2019
  */
-enum Genre {
+public enum Genre {
 	/** An genre for dramatic books. */
 	Drama, 
 	/** An genre for reference books. */

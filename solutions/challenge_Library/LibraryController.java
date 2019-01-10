@@ -1,8 +1,15 @@
 package challenge_Library;
 
+import java.util.Comparator;
+
 import challenge_Library.fxml.FXMLFileLoader;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -17,7 +24,9 @@ import javafx.scene.layout.BorderPane;
 public class LibraryController extends BorderPane {
   
   /** The table view containing all the books on display. */
-  @FXML private TableView<LibraryObject> mTableView;
+  @FXML private TableView<LibraryBook> mTableView;
+  /** The table view containing all the books on display. */
+  @FXML private TableColumn<LibraryBook, BookSeriesInformation> mColumnSeries;
   
   /** The combo box that allows the user to filter by audience. */
   @FXML private ComboBox<Audience> filter_Audience;
@@ -35,46 +44,44 @@ public class LibraryController extends BorderPane {
   @FXML private ToggleGroup mInStockToggleGroup;
   
   /**
-   * Constructs a LibraryController. Defaults the Genre and Audience combo 
-   * boxes.
+   * Constructs a LibraryController, loading books from the default file.
+ * @throws EmptyFileNameException 
    */
-  public LibraryController() {
+  public LibraryController(final String fileName) throws EmptyFileNameException {
     super();
-    
     FXMLFileLoader.initFXMLfor(this);
     
-    populateGenreComboBox();
-    populateAudienceComboBox();
+    if(fileName.isEmpty()) throw new EmptyFileNameException();
     
-    final BookIO bookIO = new BookIO();
-    final LibraryObject[] importedBooks = bookIO.retrieveBooksFromFile("Test.csv");
-    
-    mTableView.getItems().addAll(importedBooks);
+    loadBooksFromFile(fileName);
   }
   
   /**
-   * Populates the 'Genre' combo box.
+   * Loads all the books located within the given file. 
+ * @throws EmptyFileNameException 
    */
-  private void populateGenreComboBox() {
-    filter_Genre.getItems().addAll(
-        Genre.Drama, 
-        Genre.Encyclopedia, 
-        Genre.Fantasy, 
-        Genre.History, 
-        Genre.Mystery, 
-        Genre.Romance, 
-        Genre.Science, 
-        Genre.ScienceFiction, 
-        Genre.TextBook, 
-        Genre.Thriller);
-  }
-  /**
-   * Populates the 'Audience' combo box.
-   */
-  private void populateAudienceComboBox() {
-    filter_Audience.getItems().addAll(
-        Audience.Adult, 
-        Audience.Children, 
-        Audience.YoungAdult);
+  private void loadBooksFromFile(final String fileName) {
+	  
+	  final IOModule bookIO = new IOModule();
+	  final ObservableList<LibraryBook> bookList = bookIO.retrieveBooksFromFile(fileName);
+	  
+	  ObjectProperty<Comparator<LibraryBook>> comparator = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
+	  
+	  final SortedList<LibraryBook> sortedBookList = new SortedList<LibraryBook>(bookList, comparator.get());
+	  
+	  mTableView.setItems(sortedBookList);
+	  sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
+	  
+	  mTableView.setOnSort(e -> {
+		  sortedBookList.comparatorProperty().unbind();
+		  
+		  if (mTableView.getSortOrder().size() == 0) {
+			  sortedBookList.comparatorProperty().bind(comparator);
+			  
+			  mTableView.setSortPolicy(param -> true);
+		  } else {
+			  sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
+		  }
+	  });
   }
 }
