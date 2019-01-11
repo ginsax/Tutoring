@@ -1,17 +1,28 @@
 package challenge_Library;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import javafx.collections.ObservableList;
 
+
+/**
+ * Test class that is intended to test an {@link IOModule}.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/10/2019
+ */
 public class IOModuleTest { 
+  /** The IOModule that is to be tested. */
 	private IOModule mIOModule;
 	
+	/**
+	 * Initializes the IOModule. Required to wipe all old information.
+	 */
 	@Before
 	public void setupIOModule() {
 		mIOModule = new IOModule();

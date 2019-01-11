@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 
+// TODO: Auto-generated Javadoc
 /**
  * The controller of the main class.
  * @author jacobwatson
@@ -22,6 +23,9 @@ import javafx.scene.layout.BorderPane;
  * @since 01/08/2019
  */
 public class LibraryController extends BorderPane {
+  
+  /** The sorted book comparator. */
+  private ObjectProperty<Comparator<LibraryBook>> sortedBookComparator;
   
   /** The table view containing all the books on display. */
   @FXML private TableView<LibraryBook> mTableView;
@@ -44,8 +48,9 @@ public class LibraryController extends BorderPane {
   @FXML private ToggleGroup mInStockToggleGroup;
   
   /**
-   * Constructs a LibraryController, loading books from the default file.
- * @throws EmptyFileNameException 
+   * Constructs a LibraryController, loading books from the given file.
+   * @param fileName String file name that holds the book information.
+   * @throws EmptyFileNameException The given {@code fileName} is empty.
    */
   public LibraryController(final String fileName) throws EmptyFileNameException {
     super();
@@ -53,35 +58,44 @@ public class LibraryController extends BorderPane {
     
     if(fileName.isEmpty()) throw new EmptyFileNameException();
     
-    loadBooksFromFile(fileName);
+    final SortedList<LibraryBook> sortedBookList = loadBooksFromFile(fileName);
+    setSortPrioritiesFor(sortedBookList);
+  }
+
+  /**
+   * Sets the sort priorities for the table when it is otherwise unsorted.
+   * @param sortedBookList A sorted list of LibraryBooks to add to the table.
+   */
+  private void setSortPrioritiesFor(final SortedList<LibraryBook> sortedBookList) {
+    mTableView.setItems(sortedBookList);
+    sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
+    
+    mTableView.setOnSort(e -> {
+      sortedBookList.comparatorProperty().unbind();
+      
+      if (mTableView.getSortOrder().size() == 0) {
+        sortedBookList.comparatorProperty().bind(sortedBookComparator);
+        
+        mTableView.setSortPolicy(param -> true);
+      } else {
+        sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
+      }
+    });
   }
   
   /**
-   * Loads all the books located within the given file. 
- * @throws EmptyFileNameException 
+   * Loads all the books located within the given file.
+   * @param fileName String file name that holds the book information.
+   * @return Returns a sorted list of LibraryBooks that have been retrieved from a file. 
    */
-  private void loadBooksFromFile(final String fileName) {
-	  
+  private SortedList<LibraryBook> loadBooksFromFile(final String fileName) {
 	  final IOModule bookIO = new IOModule();
 	  final ObservableList<LibraryBook> bookList = bookIO.retrieveBooksFromFile(fileName);
 	  
-	  ObjectProperty<Comparator<LibraryBook>> comparator = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
+	  sortedBookComparator = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
 	  
-	  final SortedList<LibraryBook> sortedBookList = new SortedList<LibraryBook>(bookList, comparator.get());
+	  final SortedList<LibraryBook> sortedBookList = new SortedList<LibraryBook>(bookList, sortedBookComparator.get());
 	  
-	  mTableView.setItems(sortedBookList);
-	  sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
-	  
-	  mTableView.setOnSort(e -> {
-		  sortedBookList.comparatorProperty().unbind();
-		  
-		  if (mTableView.getSortOrder().size() == 0) {
-			  sortedBookList.comparatorProperty().bind(comparator);
-			  
-			  mTableView.setSortPolicy(param -> true);
-		  } else {
-			  sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
-		  }
-	  });
+	  return sortedBookList;
   }
 }

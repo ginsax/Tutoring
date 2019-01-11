@@ -388,6 +388,11 @@ public class LibraryBook implements Comparable<LibraryBook> {
 												mNumberOfCopiesTotal.get());
 	}
 	
+	/**
+	 * Creates a title for this book that has been stripped of leading articles.
+	 * @return Returns a title for this book that has been stripped of leading 
+	 * articles.
+	 */
 	private String sortingTitle() {
 		String sortingTitle = mTitle.get();
 		
@@ -412,9 +417,10 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		
 		
 		final int[] comparators = new int[] { 
+		    comparisonAuthor, 
+				comparisonTitle, 
 				comparisonSeries, 
-				comparisonAuthor, 
-				comparisonTitle, };
+				};
 		
 		for(int comparator : comparators) {
 			if (comparator != 0) return comparator;

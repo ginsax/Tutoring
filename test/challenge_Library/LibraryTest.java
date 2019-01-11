@@ -1,36 +1,36 @@
 package challenge_Library;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.nio.channels.FileLockInterruptionException;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 
+/**
+ * Test class that is intended to test the {@link LibraryApplication} class}.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/10/2019
+ */
 public class LibraryTest {
-
+  
+  /**
+   * Tests that the library application is not null.
+   */
 	@Test
 	public void test_Application_CanBeCreated() {
-		final LibraryApplication_Test app = new LibraryApplication_Test();
+		final LibraryApplication app = new LibraryApplication();
 		
 		Application.launch(app.getClass());
 		
-		assertNotNull(app);
+		assertNotNull("Tests that the library application is not null.", app);
 	}
 	
-	@Test
-	public void test_Controller_CanBeCreated() {
-		LibraryController controller = null;
-		try {
-			controller = new LibraryController("Test.csv");
-		} catch (EmptyFileNameException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		assertNotNull(controller);
-	}
+  /**
+   * Tests that the library application can be launched statically.
+   */
+  @Test
+  public void test_Application_CanBeLaunchedStatically() {
+    LibraryApplication.main("");
+  }
 }

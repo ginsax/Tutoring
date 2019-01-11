@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * @version 1.0
  * @since 01/07/2019
  */
-public class LibraryApplication_Test extends Application {
+public class LibraryApplication extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {

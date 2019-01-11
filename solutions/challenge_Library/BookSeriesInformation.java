@@ -3,26 +3,43 @@ package challenge_Library;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Custom class that holds the information related to a book series. Required 
+ * to have an accurate sorting for book series.
+ * @author jacobwatson
+ * @version 1.0
+ * @since 01/10/2019
+ */
 public class BookSeriesInformation implements Comparable<BookSeriesInformation> {
+	
+	/** The name of this series. */
 	private final StringProperty mSeriesName = new SimpleStringProperty();
+	
+	/** The total number of books in this series. */
 	private int mTotalNumberOfBooksInSeries;
+	
+	/** The position this book takes within the series. */
 	private double mPositionInSeries;
 	
-	
-	public BookSeriesInformation(final String parsedResult) {
+	/**
+	 * Constructor that receives a string containing book information to parse.
+	 * @param seriesInformationToParse String containing information about the 
+	 * series that needs to be parsed.
+	 */
+	public BookSeriesInformation(final String seriesInformationToParse) {
 		try {
-			mSeriesName.set(parsedResult.substring(0, parsedResult.lastIndexOf(" ")));
+			mSeriesName.set(seriesInformationToParse.substring(0, seriesInformationToParse.lastIndexOf(" ")));
 		}
 		catch (IndexOutOfBoundsException e) {
 			mSeriesName.set("");
 		}
 		
-		if(parsedResult.contains("|")) {
+		if(seriesInformationToParse.contains("|")) {
 			try {
-				final int indexDelimiter 	= parsedResult.indexOf("|");
-				final int indexSpace 		= parsedResult.lastIndexOf(" ");
-				final String order = parsedResult.substring(indexSpace + 1, indexDelimiter);
-				mTotalNumberOfBooksInSeries = Integer.parseInt(parsedResult.substring(indexDelimiter + 1));
+				final int indexDelimiter 	= seriesInformationToParse.indexOf("|");
+				final int indexSpace 		= seriesInformationToParse.lastIndexOf(" ");
+				final String order = seriesInformationToParse.substring(indexSpace + 1, indexDelimiter);
+				mTotalNumberOfBooksInSeries = Integer.parseInt(seriesInformationToParse.substring(indexDelimiter + 1));
 				mPositionInSeries  = Double.parseDouble(order);
 			}
 			catch (Exception e) { 
@@ -31,10 +48,21 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 		}
 	}
 	
+	/**
+   * Checks if this book is part of a series.
+   * @return Returns true if the series name is not empty, otherwise false is 
+   * returned.
+   */
 	public boolean isPartOfASeries() {
 		return !mSeriesName.get().isEmpty();
 	}
 	
+	/**
+   * Creates a string containing user-friendly information about this book 
+   * and its position with its series.
+   * @return Returns a user-friendly string about this book and its position 
+   * within its series.
+   */
 	public String getSeriesInformationString() {
 		String seriesInformation = String.format(", book %d/%d of %s", 
 				mPositionInSeries, 
@@ -43,14 +71,18 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 		return seriesInformation;
 	}
 	
-	@Override
-	public String toString() {
-		return mSeriesName.get();
-	}
+	/**
+	 * Gets the name of this series.
+	 * @return Returns the name of this series.
+	 */
 	public StringProperty seriesProperty() {
 		return mSeriesName;
 	}
 
+	@Override
+	public String toString() {
+	  return mSeriesName.get();
+	}
 	@Override
 	public int compareTo(final BookSeriesInformation otherBookSeriesInformation) {
 		int comparisonSeriesName 	= mSeriesName.get().compareTo(otherBookSeriesInformation.seriesProperty().get());
