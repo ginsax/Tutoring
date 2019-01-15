@@ -97,6 +97,21 @@
             </BorderPane>
             <BorderPane>
                <left>
+                  <Label text="Year Published:" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+               </left>
+               <right>
+                  <TextField fx:id="filterText_Year" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" />
+               </right>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </BorderPane>
+            <BorderPane>
+               <left>
                   <Label text="ISBN-13:" BorderPane.alignment="CENTER">
                      <padding>
                         <Insets right="5.0" />
@@ -104,25 +119,11 @@
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Year" promptText="Filter by 'ISBN-13'" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="filterText_ISBN" promptText="Filter by 'ISBN-13'" BorderPane.alignment="CENTER" />
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
-               <top>
-                  <BorderPane BorderPane.alignment="CENTER">
-                     <left>
-                        <Label text="Year Published:" BorderPane.alignment="CENTER">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                     </left>
-                     <right>
-                        <TextField fx:id="filterText_Year1" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" />
-                     </right>
-                  </BorderPane>
-               </top>
             </BorderPane>
             <BorderPane>
                <left>

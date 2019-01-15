@@ -63,8 +63,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		mTitle		.set(parsedResults[index++]);
 		mAuthor.set(parsedResults[index++]);
 		
-		parseSeriesFrom									(parsedResults[index]);
-//		parsePositionInSeriesFrom					(parsedResults[index++]);
+		parseSeriesFrom									(parsedResults[index++]);
 		parseGenreFrom									(parsedResults[index++]);
 		parseAudienceFrom								(parsedResults[index++]);
 		parsePublishingYearFrom					(parsedResults[index++]);
