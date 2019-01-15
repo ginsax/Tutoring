@@ -6,5 +6,11 @@ TODO List:
  - Add a unique exception and user-friendly message for the parsing of each field.
  
  - Finish the predicate for 'in stock' books.
+ 
+ - Add a 'Clear Filters' button.
+ 
+ - Add a dialog / detail window for selected books.
+ 
+ - Add tooltips.
 
- - Move on with life.  
+ - Move on with life.
