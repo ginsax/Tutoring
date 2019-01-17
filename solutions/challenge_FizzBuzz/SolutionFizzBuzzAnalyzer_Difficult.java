@@ -24,9 +24,9 @@ public class SolutionFizzBuzzAnalyzer_Difficult {
 	 */
 	public SolutionFizzBuzzAnalyzer_Difficult(final int boundsLower, 
 									  final int boundsUpper) {
-		mBoundsLower = boundsLower < 1 		? 1 		: boundsLower;
+		mBoundsLower = boundsLower < 1 			? 1 			: boundsLower;
 		mBoundsLower = boundsLower > 1000 	? 1000 	: mBoundsLower;
-		mBoundsUpper = boundsUpper < 1 		? 1 		: boundsUpper;
+		mBoundsUpper = boundsUpper < 1 		? 1 			: boundsUpper;
 		mBoundsUpper = boundsUpper > 1000 	? 1000 	: mBoundsUpper;
 	}
 	

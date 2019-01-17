@@ -7,6 +7,8 @@ package challenge_Library;
  * @since 01/08/2019
  */
 public enum Genre {
+	/** The default genre. Used when there is a parsing error. */
+	DefaultGenre, 
 	/** An genre for dramatic books. */
 	Drama, 
 	/** An genre for reference books. */

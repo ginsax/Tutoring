@@ -11,6 +11,7 @@ import javafx.beans.property.StringProperty;
  * @since 01/10/2019
  */
 public class BookSeriesInformation implements Comparable<BookSeriesInformation> {
+	final String mDefaultSeries = "No Series";
 	
 	/** The name of this series. */
 	private final StringProperty mSeriesName = new SimpleStringProperty();
@@ -30,11 +31,12 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 		try {
 			mSeriesName.set(seriesInformationToParse.substring(0, seriesInformationToParse.lastIndexOf(" ")));
 		}
-		catch (IndexOutOfBoundsException e) {
-			mSeriesName.set("");
+		catch (NullPointerException | IndexOutOfBoundsException e) {
+			mSeriesName.set(mDefaultSeries);
 		}
 		
-		if(seriesInformationToParse.contains("|")) {
+		if(seriesInformationToParse != null && 
+			seriesInformationToParse.contains("|")) {
 			try {
 				final int indexDelimiter 	= seriesInformationToParse.indexOf("|");
 				final int indexSpace 		= seriesInformationToParse.lastIndexOf(" ");
@@ -54,7 +56,7 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
    * returned.
    */
 	public boolean isPartOfASeries() {
-		return !mSeriesName.get().isEmpty();
+		return toString() != mDefaultSeries;
 	}
 	
 	/**
@@ -64,10 +66,13 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
    * within its series.
    */
 	public String getSeriesInformationString() {
-		String seriesInformation = String.format(", book %d/%d of %s", 
+		String position;
+		if(mPositionInSeries % 1 == 0) 	position = "%.0f";
+		else 												position = "%.1f"; 
+		String seriesInformation = String.format(", book " + position + "/%d of %s", 
 				mPositionInSeries, 
 				mTotalNumberOfBooksInSeries, 
-				mSeriesName);
+				toString());
 		return seriesInformation;
 	}
 	

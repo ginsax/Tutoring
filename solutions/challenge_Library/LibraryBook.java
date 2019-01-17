@@ -1,6 +1,5 @@
 package challenge_Library;
 
-import java.util.Random;
 import java.util.UUID;
 
 import javafx.beans.property.IntegerProperty;
@@ -19,9 +18,14 @@ import javafx.beans.value.ObservableValue;
  * @since 01/08/2019
  */
 public class LibraryBook implements Comparable<LibraryBook> {
-  
-  /** The fictionality of this book. */
-  private final StringProperty mFictionality = new SimpleStringProperty();
+	final String DEFAULT_ISBN = "000-0000000000";
+	final String DEFAULT_TITLE = "No Book Title";
+	final String DEFAULT_AUTHOR = "No Author";
+	final String DEFAULT_SERIES = "No Series";
+	final int DEFAULT_PUBLISHING_YEAR = 0000;
+	final int DEFAULT_STOCK =  -1;
+	
+	private String mSortingTitle;
 	
 	/** The number of in stock copies of this book. */
 	private final IntegerProperty mNumberOfCopiesInStock = new SimpleIntegerProperty();
@@ -43,10 +47,30 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	private final ObjectProperty<Audience> mAudience = new SimpleObjectProperty<Audience>();
 	/** The genre of this book. */
 	private final ObjectProperty<Genre> mGenre = new SimpleObjectProperty<Genre>();
+	/** The fictionality of this book. */
+	private final ObjectProperty<Fictionality> mFictionality = new SimpleObjectProperty<Fictionality>();
 	/** The unique identifier assigned to this book. */
 	private final ObjectProperty<UUID> mID = new SimpleObjectProperty<UUID>();
 	
-	
+
+	/** Creates a new LibraryObject, instantiating the fields with default values. */
+	public LibraryBook() {
+		mID.set(UUID.randomUUID());
+		
+		mISBN		.set(DEFAULT_ISBN);
+		mTitle		.set(DEFAULT_TITLE);
+		mAuthor.set(DEFAULT_AUTHOR);
+		
+		parseSeriesFrom									(null);
+		parseGenreFrom									(null);
+		parseAudienceFrom								(null);
+		parsePublishingYearFrom					(null);
+		parseFictionalityFrom							(null);
+		parseNumberOfInStockCopiesFrom	(null, -1);
+		parseTotalNumberOfCopiesFrom 		(null, -1);
+		
+		mSortingTitle = sortingTitle();
+	}
   /**
    * Creates a new LibraryObject, instantiating it with the various fields 
    * within the {@code parsedResults}. The unique identifier is randomised at 
@@ -70,41 +94,33 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		parseFictionalityFrom							(parsedResults[index++]);
 		parseNumberOfInStockCopiesFrom	(parsedResults, index++);
 		parseTotalNumberOfCopiesFrom 		(parsedResults, index++);
+		
+		mSortingTitle = sortingTitle();
 	}
 	
-	
-  /**
+
+/**
    * Parses the given {@code parsedResult} to determine the series - if any - 
    * this book has a position in.
    * @param parsedResult The parsed results that will be used to determine the  
    * series - if any - this book has a position in.
    */
-	private void parseSeriesFrom               (final String parsedResult) {
-		String series;
-		
-		try {
-			series = parsedResult;
-		}
-		catch (IndexOutOfBoundsException e) {
-			series = "";
-		}
-		
-		mSeries.set(new BookSeriesInformation(series));
+	private void parseSeriesFrom(final String parsedResult) {
+		mSeries.set(new BookSeriesInformation(parsedResult));
 	}
   /**
    * Parses the given {@code parsedResult} to determine the genre of this book.
    * @param parsedResult The parsed results that will be used to determine the  
    * genre of this book.
    */
-	private void parseGenreFrom	               (final String parsedResult) {
+	private void parseGenreFrom(final String parsedResult) {
 		Genre genre;
 		
 		try {
 			genre = Genre.valueOf(parsedResult) ;
 		}
-		catch(IllegalArgumentException e) {
-			final int i = new Random().nextInt(Genre.values().length);
-			genre = Genre.values()[i];
+		catch(NullPointerException | IllegalArgumentException e) {
+			genre = Genre.DefaultGenre;
 		}
 		
 		mGenre.set(genre);
@@ -115,15 +131,14 @@ public class LibraryBook implements Comparable<LibraryBook> {
    * @param parsedResult The parsed results that will be used to determine the  
    * intended audience of this book.
    */
-	private void parseAudienceFrom	           (final String parsedResult) {
+	private void parseAudienceFrom(final String parsedResult) {
 		Audience audience;
 		
 		try {
 			audience = Audience.valueOf(parsedResult) ;
 		}
-		catch(IllegalArgumentException e) {
-			final int i = new Random().nextInt(Audience.values().length);
-			audience = Audience.values()[i];
+		catch(NullPointerException | IllegalArgumentException e) {
+			audience = Audience.DefaultAudience;
 		}
 		
 		mAudience.set(audience);
@@ -134,14 +149,14 @@ public class LibraryBook implements Comparable<LibraryBook> {
    * @param parsedResult The parsed results that will be used to determine the  
    * year this book was published.
    */
-	private void parsePublishingYearFrom       (final String parsedResult) {
+	private void parsePublishingYearFrom(final String parsedResult) {
 		int publishingYear;
 		
 		try {
 			publishingYear = Integer.parseInt(parsedResult);			
 		} 
 		catch(NumberFormatException e) {
-			publishingYear = new Random().nextInt(119) + 1900;			
+			publishingYear = DEFAULT_PUBLISHING_YEAR;		
 		}
 		
 		mPublishingYear.set(publishingYear);
@@ -152,10 +167,17 @@ public class LibraryBook implements Comparable<LibraryBook> {
    * @param parsedResult The parsed results that will be used to determine the  
    * fictionality of this book.
    */
-	private void parseFictionalityFrom         (final String parsedResult) {
-		if(parsedResult.equalsIgnoreCase("fiction")) mFictionality.set("Fiction");
-		else if(parsedResult.equalsIgnoreCase("nonfiction")) mFictionality.set("Nonfiction");
-		else mFictionality.set("Error parsing file.");
+	private void parseFictionalityFrom(final String parsedResult) {
+		Fictionality fictionality;
+		
+		try {
+			fictionality = Fictionality.valueOf(parsedResult) ;
+		}
+		catch(NullPointerException | IllegalArgumentException e) {
+			fictionality = Fictionality.DefaultFictionality;
+		}
+		
+		mFictionality.set(fictionality);
 	}
   /**
    * Parses the given {@code parsedResults} to determine the number of copies 
@@ -166,15 +188,14 @@ public class LibraryBook implements Comparable<LibraryBook> {
    * in to avoid handling {@link IndexOutOfBoundsException 
    * IndexOutOfBoundsExceptions}.
    */
-	private void parseNumberOfInStockCopiesFrom(final String[] parsedResults, 
-	                                            final int index) {
+	private void parseNumberOfInStockCopiesFrom(final String[] parsedResults, final int index) {
 		int stock;
 		
 		try {
 			stock = Integer.parseInt(parsedResults[index]);
 		} 
 		catch(Exception e) {
-			stock = new Random().nextInt(10);
+			stock = DEFAULT_STOCK;
 		}
 		
 		mNumberOfCopiesInStock.set(stock);
@@ -188,15 +209,14 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	 * in to avoid handling {@link IndexOutOfBoundsException 
 	 * IndexOutOfBoundsExceptions}.
 	 */
-	private void parseTotalNumberOfCopiesFrom  (final String[] parsedResults, 
-														 	                final int index) {
+	private void parseTotalNumberOfCopiesFrom(final String[] parsedResults, final int index) {
 		int totalNumberOfCopies;
 		
 		try {
 			totalNumberOfCopies = Integer.parseInt(parsedResults[index]);
 		} 
 		catch(Exception e) {
-			totalNumberOfCopies = mNumberOfCopiesInStock.get() + new Random().nextInt(5);
+			totalNumberOfCopies = DEFAULT_STOCK;
 		}
 		
 		mNumberOfCopiesTotal.set(totalNumberOfCopies);
@@ -208,7 +228,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	 * fictional, while 'False' values indicate it is nonfiction.
 	 * @return Returns the fictionality of this book.
 	 */
-	public StringProperty fictionalityProperty() {
+	public ObjectProperty<Fictionality> fictionalityProperty() {
 	  return mFictionality;
 	}
 	
@@ -286,14 +306,6 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	}
 	
 	/**
-	 * Gets the fictionality of this book.
-	 * @return Returns the fictionality of this book.
-	 */
-	public String getFictionality() {
-	  return mFictionality.get();
-	}
-	
-	/**
 	 * Gets the number of in stock copies of this book.
 	 * @return Returns the number of in stock copies of this book.
 	 */
@@ -352,6 +364,13 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	  return mAudience.get();
 	}
 	/**
+	 * Gets the fictionality of this book.
+	 * @return Returns the fictionality of this book.
+	 */
+	public Fictionality getFictionality() {
+	  return mFictionality.get();
+	}
+	/**
 	 * Gets the genre of this book.
 	 * @return Returns the genre of this book.
 	 */
@@ -372,7 +391,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		String seriesInformation = mSeries.get().getSeriesInformationString();
 		
 		// check if the series information is going to be used.
-		seriesInformation = mSeries.get().isPartOfASeries() ? "" : seriesInformation;
+		seriesInformation = mSeries.get().isPartOfASeries() ? seriesInformation : "";
 		
 		return String.format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.", 
 												mTitle.get(), 
@@ -414,9 +433,8 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		final int comparisonAuthor 	= getAuthor().compareTo(otherBook.getAuthor());
 		final int comparisonSeries 	= mSeries.get().seriesProperty().get().compareTo(otherBook.mSeries.get().seriesProperty().get());
 		
-		
 		final int[] comparators = new int[] { 
-		    comparisonAuthor, 
+				comparisonAuthor, 
 				comparisonTitle, 
 				comparisonSeries, 
 				};

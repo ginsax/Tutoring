@@ -7,6 +7,8 @@ package challenge_Library;
  * @since 01/08/2019
  */
 public enum Audience {
+	/** The default audience. Used when there is a parsing error. */
+	DefaultAudience, 
 	/** An intended audience of Adult. */
 	Adult, 
 	/** An intended audience of children. */
