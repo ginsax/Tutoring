@@ -1,8 +1,5 @@
 TODO List:
 
- - Move parsing and initialization of library book back to IOModule. 
- 	The book should just be a container for parsed fields, not another parser.
- 
  - Add JUnit tests.
 
  - Add a unique exception and user-friendly message for the parsing of each field.
