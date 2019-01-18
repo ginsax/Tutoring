@@ -2,10 +2,17 @@ package challenge_FizzBuzz;
 
 import java.util.Arrays;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FizzBuzzObject.
+ */
 public class FizzBuzzObject implements Comparable<FizzBuzzObject>{
 
+	/** The multiple. */
 	// Initialize primary values
 	int multiple;
+	
+	/** The call sign. */
 	String callSign;
 
 	//Dictates how the FizzBuzzObjects should compare against each other. Objects shall be sorted by multiple.

@@ -1,5 +1,6 @@
 package challenge_Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
  * The type of diet an animal may have.
  * @author jacobwatson

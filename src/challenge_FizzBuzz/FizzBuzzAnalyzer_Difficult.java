@@ -1,7 +1,12 @@
 package challenge_FizzBuzz;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FizzBuzzAnalyzer_Difficult.
+ */
 public class FizzBuzzAnalyzer_Difficult {
 
+	/** The lower bounds. */
 	private int upperBounds, lowerBounds;
 	
 	/**

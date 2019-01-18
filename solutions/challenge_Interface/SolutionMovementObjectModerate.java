@@ -1,5 +1,6 @@
 package challenge_Interface;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this class to implement the Interface challenge.
  * @author jacobwatson
@@ -53,6 +54,9 @@ public class SolutionMovementObjectModerate implements Movement {
 		mCoordinates.setPositionZ(z * defaultZ);
 	}
 	
+	/* (non-Javadoc)
+	 * @see challenge_Interface.Movement#getCoordinates()
+	 */
 	@Override
 	public Coordinates getCoordinates() {
 		return mCoordinates;

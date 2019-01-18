@@ -3,6 +3,7 @@ package challenge_Library;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+// TODO: Auto-generated Javadoc
 /**
  * Custom class that holds the information related to a book series. Required 
  * to have an accurate sorting for book series.
@@ -11,7 +12,6 @@ import javafx.beans.property.StringProperty;
  * @since 01/10/2019
  */
 public class BookSeriesInformation implements Comparable<BookSeriesInformation> {
-	final String mDefaultSeries = "No Series";
 	
 	/** The name of this series. */
 	private final StringProperty mSeriesName = new SimpleStringProperty();
@@ -22,6 +22,13 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 	/** The position this book takes within the series. */
 	private double mPositionInSeries;
 	
+	
+	/**
+	 * Creates a new BookSeriesInformation object, with the default series name.
+	 */
+	public BookSeriesInformation() {
+	  mSeriesName.set(CommonConstants.DEFAULT_SERIES);
+	}
 	/**
 	 * Constructor that receives a string containing book information to parse.
 	 * @param seriesInformationToParse String containing information about the 
@@ -32,7 +39,7 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 			mSeriesName.set(seriesInformationToParse.substring(0, seriesInformationToParse.lastIndexOf(" ")));
 		}
 		catch (NullPointerException | IndexOutOfBoundsException e) {
-			mSeriesName.set(mDefaultSeries);
+			mSeriesName.set(CommonConstants.DEFAULT_SERIES);
 		}
 		
 		if(seriesInformationToParse != null && 
@@ -50,13 +57,15 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 		}
 	}
 	
-	/**
+	
+
+  /**
    * Checks if this book is part of a series.
    * @return Returns true if the series name is not empty, otherwise false is 
    * returned.
    */
 	public boolean isPartOfASeries() {
-		return toString() != mDefaultSeries;
+		return toString() != CommonConstants.DEFAULT_SERIES;
 	}
 	
 	/**

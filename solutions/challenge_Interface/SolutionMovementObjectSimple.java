@@ -1,5 +1,6 @@
 package challenge_Interface;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this class to implement the Interface challenge.
  * @author jacobwatson
@@ -30,6 +31,9 @@ public class SolutionMovementObjectSimple implements Movement {
 		mCoordinates.setPositionY(y + 1);
 	}
 	
+	/* (non-Javadoc)
+	 * @see challenge_Interface.Movement#getCoordinates()
+	 */
 	@Override
 	public Coordinates getCoordinates() {
 		return mCoordinates;

@@ -18,12 +18,14 @@ public class PalindromeTest {
 	
 	/** The palindrome checker. */
 	private PalindromeChecker palindromeChecker;
-	
+
+  /** Resets the palindrome checker. */
 	@Before
 	public void initialize() {
 		palindromeChecker = new PalindromeChecker();
 	}
 	
+  /** Tests that 'aaa' is a palindrome. */
 	@Test
 	public void test_IsPalindrome_aaa() { 
 		final String potentialPalindrome = "aaa";
@@ -34,6 +36,7 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+  /** Tests that 'aba' is a palindrome. */
 	@Test 
 	public void test_IsPalindrome_aba() {
 		final String potentialPalindrome = "aba";
@@ -44,6 +47,7 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+  /** Tests that 'abc' is not a palindrome. */
 	@Test
 	public void test_IsPalindrome_abc() {
 		final String potentialPalindrome = "abc";
@@ -55,6 +59,7 @@ public class PalindromeTest {
 		assertFalse(errorMessage, actual);
 	}
 	
+  /** Tests that 'Anna' is a palindrome. */
 	@Test
 	public void test_IsPalindrome_Anna() {
 		final String potentialPalindrome = "Anna";
@@ -65,6 +70,7 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+  /** Tests that 'CivIlly' is not a palindrome. */
 	@Test
 	public void test_IsPalindrome_Civilly() {
 		final String potentialPalindrome = "CivIlly";
@@ -75,6 +81,7 @@ public class PalindromeTest {
 		
 		assertFalse(errorMessage, actual);
 	}
+  /** Tests that 'MadamImAdam' is a palindrome. */
 	@Test
 	public void test_IsPalindrome_MadamImAdam() {
 		final String potentialPalindrome = "MadamImAdam";
@@ -85,6 +92,7 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+  /** Tests that 'RePaPeRrOtAtOrRePaPER' is a palindrome. */
 	@Test
 	public void test_IsPalindrome_RepaperRotatorRepaper() {
 		final String potentialPalindrome = "RePaPeRrOtAtOrRePaPER";
@@ -96,6 +104,10 @@ public class PalindromeTest {
 		assertTrue(errorMessage, actual);
 	}
 	
+	/**
+   * Tests that 'abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba' is a 
+   * palindrome.
+   */
 	@Test
 	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
 		final String potentialPalindrome = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba";
@@ -106,6 +118,11 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+	/**
+   * Tests that 
+   * 'abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba' 
+   * is a palindrome.
+   */
 	@Test
 	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
 		final String potentialPalindrome = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba";
@@ -116,6 +133,11 @@ public class PalindromeTest {
 		
 		assertTrue(errorMessage, actual);
 	}
+	/**
+	 * Tests that 
+	 * 'abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz' 
+	 * is a palindrome.
+	 */
 	@Test
 	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz() {
 		final String potentialPalindrome = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz";

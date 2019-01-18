@@ -1,5 +1,6 @@
 package challenge_Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
  * The type of skin an animal may have.
  * @author jacobwatson
