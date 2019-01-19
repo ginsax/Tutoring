@@ -7,7 +7,6 @@ import org.junit.Test;
 import challenge_FizzBuzz.FizzBuzzAnalyzer_Difficult;
 import challenge_FizzBuzz.FizzBuzzObject;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FizzBuzzTest_Difficult.
  */

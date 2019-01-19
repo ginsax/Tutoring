@@ -3,7 +3,6 @@ package challenge_Library;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-// TODO: Auto-generated Javadoc
 /**
  * Custom class that holds the information related to a book series. Required 
  * to have an accurate sorting for book series.
@@ -11,7 +10,7 @@ import javafx.beans.property.StringProperty;
  * @version 1.0
  * @since 01/10/2019
  */
-public class BookSeriesInformation implements Comparable<BookSeriesInformation> {
+public class BookSeries implements Comparable<BookSeries> {
 	
 	/** The name of this series. */
 	private final StringProperty mSeriesName = new SimpleStringProperty();
@@ -26,15 +25,16 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 	/**
 	 * Creates a new BookSeriesInformation object, with the default series name.
 	 */
-	public BookSeriesInformation() {
+	public BookSeries() {
 	  mSeriesName.set(CommonConstants.DEFAULT_SERIES);
 	}
 	/**
 	 * Constructor that receives a string containing book information to parse.
 	 * @param seriesInformationToParse String containing information about the 
 	 * series that needs to be parsed.
+	 * @throws InvalidBookSeriesNameException 
 	 */
-	public BookSeriesInformation(final String seriesInformationToParse) {
+	public BookSeries(final String seriesInformationToParse) throws InvalidBookSeriesNameException {
 		try {
 			mSeriesName.set(seriesInformationToParse.substring(0, seriesInformationToParse.lastIndexOf(" ")));
 		}
@@ -52,11 +52,11 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 				mPositionInSeries  = Double.parseDouble(order);
 			}
 			catch (Exception e) { 
-				e.printStackTrace();
+			  throw new InvalidBookSeriesNameException();
 			}
 		}
 	}
-	
+
 	
 
   /**
@@ -75,6 +75,10 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
    * within its series.
    */
 	public String getSeriesInformationString() {
+	  if(!isPartOfASeries()) {
+	    return "";
+	  }
+	  
 		String position;
 		if(mPositionInSeries % 1 == 0) 	position = "%.0f";
 		else 												position = "%.1f"; 
@@ -98,17 +102,17 @@ public class BookSeriesInformation implements Comparable<BookSeriesInformation> 
 	  return mSeriesName.get();
 	}
 	@Override
-	public int compareTo(final BookSeriesInformation otherBookSeriesInformation) {
-		int comparisonSeriesName 	= mSeriesName.get().compareTo(otherBookSeriesInformation.seriesProperty().get());
-		double comparisonPosition 	= mPositionInSeries - otherBookSeriesInformation.mPositionInSeries;
-		int comparisonTotal 				= mTotalNumberOfBooksInSeries - otherBookSeriesInformation.mTotalNumberOfBooksInSeries;
+	public int compareTo(final BookSeries otherBookSeries) {
+		int comparisonSeriesName 	= mSeriesName.get().compareTo(otherBookSeries.seriesProperty().get());
+		double comparisonPosition = mPositionInSeries           - otherBookSeries.mPositionInSeries;
+		int comparisonTotal 			= mTotalNumberOfBooksInSeries - otherBookSeries.mTotalNumberOfBooksInSeries;
 		
-		comparisonSeriesName 	= comparisonSeriesName 	< 0 ? -1 : comparisonSeriesName > 0 ? 1 : 0;
-		comparisonPosition 		= comparisonPosition 			< 0 ? -1 : comparisonPosition 		> 0 ? 1 : 0;
-		comparisonTotal 				= comparisonTotal 				< 0 ? -1 : comparisonTotal 				> 0 ? 1 : 0;
+		comparisonSeriesName 	= comparisonSeriesName  < 0 ? -1 : comparisonSeriesName > 0 ? 1 : 0;
+		comparisonPosition 		= comparisonPosition 		< 0 ? -1 : comparisonPosition 	> 0 ? 1 : 0;
+		comparisonTotal       = comparisonTotal       < 0 ? -1 : comparisonTotal 			> 0 ? 1 : 0;
 		
 		if(comparisonSeriesName 		!= 0) return comparisonSeriesName;
-		else if (comparisonPosition 	!= 0) return (int) comparisonPosition;
+		else if (comparisonPosition != 0) return (int) comparisonPosition;
 		else if (comparisonTotal 		!= 0) return comparisonTotal;
 		else return 0;
 	}

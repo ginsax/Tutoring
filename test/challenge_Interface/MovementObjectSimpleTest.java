@@ -10,7 +10,6 @@ import challenge_Interface.Coordinates;
 import challenge_Interface.Movement;
 import challenge_Interface.MovementObjectSimple;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MovementObjectSimpleTest.
  */

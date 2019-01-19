@@ -1,6 +1,5 @@
 package challenge_Inheritance;
 
-// TODO: Auto-generated Javadoc
 /**
  * This is the base class that all mammals will be extending.
  * @author jacobwatson

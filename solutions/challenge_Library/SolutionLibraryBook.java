@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 
-// TODO: Auto-generated Javadoc
 /**
  * The object that represents a book. This class will be used to display a book 
  * and its various properties in a table.
@@ -18,7 +17,7 @@ import javafx.beans.value.ObservableValue;
  * @version 1.0
  * @since 01/08/2019
  */
-public class LibraryBook implements Comparable<LibraryBook> {
+public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	
 	/**
 	 * A title that can be used to sort books while ignoring leading words such 
@@ -38,7 +37,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	/** The ISBN identifier of this book. */
 	private final StringProperty mISBN 	= new SimpleStringProperty();
 	/** The name of this book's series - if any. */
-	private final ObjectProperty<BookSeriesInformation> mSeries 	= new SimpleObjectProperty<BookSeriesInformation>();
+	private final ObjectProperty<BookSeries> mSeries 	= new SimpleObjectProperty<BookSeries>();
 	/** The title of this book. */
 	private final StringProperty mTitle 	= new SimpleStringProperty();
 
@@ -53,13 +52,13 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	
 
 	/** Creates a new LibraryObject, instantiating the fields with default values. */
-	public LibraryBook() {
+	public SolutionLibraryBook() {
 	  mID.set(UUID.randomUUID());
 	  
 	  mISBN                  .set(CommonConstants.DEFAULT_ISBN);
 	  mTitle                 .set(CommonConstants.DEFAULT_TITLE);
 	  mAuthor                .set(CommonConstants.DEFAULT_AUTHOR);
-	  mSeries                .set(new BookSeriesInformation());
+	  mSeries                .set(new BookSeries());
 	  mGenre                 .set(CommonConstants.DEFAULT_GENRE);
 	  mAudience              .set(CommonConstants.DEFAULT_AUDIENCE);
 	  mPublishingYear        .set(CommonConstants.DEFAULT_PUBLISHING_YEAR);
@@ -84,10 +83,10 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	 * currently in stock.
 	 * @param numberOfCopiesTotal The total number of copies of this book.
 	 */
-	public LibraryBook(final String isbn, 
+	public SolutionLibraryBook(final String isbn, 
 	                   final String title, 
 	                   final String author, 
-	                   final BookSeriesInformation series, 
+	                   final BookSeries series, 
 	                   final Genre genre, 
 	                   final Audience audience, 
 	                   final int publishingYear, 
@@ -161,7 +160,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	 * Gets the name of this book's series - if any.
 	 * @return Returns the name of this book's series - if any.
 	 */
-	public ObservableValue<BookSeriesInformation> seriesProperty() {
+	public ObservableValue<BookSeries> seriesProperty() {
 		return mSeries;
 	}
 	/**
@@ -317,7 +316,7 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	}
 	
 	@Override
-	public int compareTo(final LibraryBook otherBook) {
+	public int compareTo(final SolutionLibraryBook otherBook) {
 		final int comparisonTitle 	= mSortingTitle.compareTo(otherBook.sortingTitle());
 		final int comparisonAuthor 	= getAuthor().compareTo(otherBook.getAuthor());
 		final int comparisonSeries 	= mSeries.get().seriesProperty().get().compareTo(otherBook.mSeries.get().seriesProperty().get());

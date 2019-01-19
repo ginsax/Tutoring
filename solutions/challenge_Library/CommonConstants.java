@@ -1,7 +1,6 @@
 package challenge_Library;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Constants commonly used through out the library challenge.
  * @author jacobwatson

@@ -13,7 +13,6 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
-// TODO: Auto-generated Javadoc
 /**
  * Test class that is intended to test the {@link LibraryBook} class}.
  * @author jacobwatson
@@ -21,12 +20,10 @@ import org.junit.Test;
  * @since 01/17/2019
  */
 public class LibraryBookTest {
-	/** The IOModule that is to be tested. */
+	/** The library book that is to be tested. */
 	private LibraryBook mLibraryBook;
 	
-	/**
-	 * Initializes the LibraryBook. Required to wipe all old information.
-	 */
+	/** Initializes the LibraryBook. Required to wipe all old information. */
 	@Before
 	public void setupLibraryBook() {
 		mLibraryBook = new LibraryBook();
@@ -89,7 +86,7 @@ public class LibraryBookTest {
 		mLibraryBook = new LibraryBook("978-1616960926", 
 		                               "The Emperor's Soul", 
 		                               "Brandon Sanderson",
-		                               new BookSeriesInformation(), 
+		                               new BookSeries(), 
 		                               Genre.Fantasy,
 		                               Audience.Adult,
 		                               2012,
@@ -109,19 +106,21 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_ToString_Matches_WithSeries() {
-    mLibraryBook = new LibraryBook("978-0812511819", 
-        "The Eye of the World", 
-        "Robert Jordan",
-        new BookSeriesInformation("The Wheel of Time 1|14"), 
-        Genre.Fantasy,
-        Audience.Adult,
-        1990,
-        Fictionality.Fiction,
-        1,
-        2);
+    try {
+      mLibraryBook = new LibraryBook("978-0812511819", 
+                                     "The Eye of the World", 
+                                     "Robert Jordan", 
+                                     new BookSeries("The Wheel of Time 1|14"), 
+                                     Genre.Fantasy, 
+                                     Audience.Adult, 
+                                     1990, 
+                                     Fictionality.Fiction, 
+                                     1, 
+                                     2);
+    } catch (InvalidBookSeriesNameException e) { }
 		
-		final String expected 	= "The Eye of the World [978-0812511819] (1990), book 1/14 of The Wheel of Time by Robert Jordan. Adult Fantasy - Fiction. [1/2] copies in stock.";
-		final String actual 		= mLibraryBook.toString();
+		final String expected = "The Eye of the World [978-0812511819] (1990), book 1/14 of The Wheel of Time by Robert Jordan. Adult Fantasy - Fiction. [1/2] copies in stock.";
+		final String actual 	= mLibraryBook.toString();
 		
 		assertEquals("Tests that the toString() method of a library book works as expected.", 
 									expected, 
@@ -133,26 +132,31 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Compares_Correctly_With_SameBook() {
+	  LibraryBook otherBook = null;
+	  
+	  try {
+	    
     mLibraryBook = new LibraryBook("978-0812511819", 
                                    "The Eye of the World", 
                                    "Robert Jordan",  
-                                   new BookSeriesInformation("The Wheel of Time 1|14"), 
+                                   new BookSeries("The Wheel of Time 1|14"), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
                                    1990, 
                                    Fictionality.Fiction, 
                                    1, 
                                    2);
-    final LibraryBook otherBook = new LibraryBook("978-0812511819", 
-                                                  "The Eye of the World", 
-                                                  "Robert Jordan", 
-                                                  new BookSeriesInformation("The Wheel of Time 1|14"), 
-                                                  Genre.Fantasy, 
-                                                  Audience.Adult, 
-                                                  1990, 
-                                                  Fictionality.Fiction, 
-                                                  1, 
-                                                  2);
+    otherBook = new LibraryBook("978-0812511819", 
+                                "The Eye of the World", 
+                                "Robert Jordan", 
+                                new BookSeries("The Wheel of Time 1|14"), 
+                                Genre.Fantasy, 
+                                Audience.Adult, 
+                                1990, 
+                                Fictionality.Fiction, 
+                                1, 
+                                              2);
+	  } catch(InvalidBookSeriesNameException e) { }
 		
 		final int expected = 0;
 		final int actual = mLibraryBook.compareTo(otherBook);
@@ -167,26 +171,31 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Compares_Correctly_With_Sequel() {
-    mLibraryBook = new LibraryBook("978-0812511819", 
-                                   "The Eye of the World", 
-                                   "Robert Jordan", 
-                                   new BookSeriesInformation("The Wheel of Time 1|14"), 
+	  LibraryBook otherBook = null;
+	  
+    try {
+      mLibraryBook = new LibraryBook("978-0812511819", 
+                                     "The Eye of the World", 
+                                     "Robert Jordan", 
+                                     new BookSeries("The Wheel of Time 1|14"), 
+                                     Genre.Fantasy, 
+                                     Audience.Adult, 
+                                     1990, 
+                                     Fictionality.Fiction, 
+                                     1, 
+                                     2);
+      otherBook = new LibraryBook("978-0812517729", 
+                                  "The Great Hunt", 
+                                  "Robert Jordan", 
+                                   new BookSeries("The Wheel of Time 2|14"), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
-                                   1990, 
+                                   1991, 
                                    Fictionality.Fiction, 
-                                   1, 
+                                   2, 
                                    2);
-    final LibraryBook otherBook = new LibraryBook("978-0812517729", 
-                                                  "The Great Hunt", 
-                                                  "Robert Jordan", 
-                                                  new BookSeriesInformation("The Wheel of Time 2|14"), 
-                                                  Genre.Fantasy, 
-                                                  Audience.Adult, 
-                                                  1991, 
-                                                  Fictionality.Fiction, 
-                                                  2, 
-                                                  2);
+    }
+    catch (InvalidBookSeriesNameException e) { }
 		
 		final int actual = mLibraryBook.compareTo(otherBook);
 		final int expected = -2;
@@ -452,7 +461,7 @@ public class LibraryBookTest {
     mLibraryBook = new LibraryBook("978-0399555770", 
                                    "Skyward", 
                                    "Brandon Sanderson", 
-                                   new BookSeriesInformation(), 
+                                   new BookSeries(), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
                                    2018, 
@@ -472,16 +481,18 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Title_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0765326355", 
-                                   "The Way of Kings", 
-                                   "Brandon Sanderson", 
-                                   new BookSeriesInformation("The Stormlight Archive 1|10"), 
-                                   Genre.Fantasy, 
-                                   Audience.Adult, 
-                                   2010, 
-                                   Fictionality.Fiction, 
-                                   7, 
-                                   11);
+    try {
+      mLibraryBook = new LibraryBook("978-0765326355", 
+                                     "The Way of Kings", 
+                                     "Brandon Sanderson", 
+                                     new BookSeries("The Stormlight Archive 1|10"), 
+                                     Genre.Fantasy, 
+                                     Audience.Adult, 
+                                     2010, 
+                                     Fictionality.Fiction, 
+                                     7, 
+                                     11);
+    } catch (InvalidBookSeriesNameException e) { }
 		
 		final String expected 	= "The Way of Kings";
 		final String actual 		= mLibraryBook.getTitle();
@@ -498,7 +509,7 @@ public class LibraryBookTest {
     mLibraryBook = new LibraryBook("978-0765383105", 
                                    "Elantris", 
                                    "Brandon Sanderson", 
-                                   new BookSeriesInformation(), 
+                                   new BookSeries(), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
                                    2005, 
@@ -518,16 +529,18 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Series_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0765311788", 
-                                   "Mistborn: The Final Empire", 
-                                   "Brandon Sanderson", 
-                                   new BookSeriesInformation("Mistborn: Era 1 1|3"), 
-                                   Genre.Fantasy, 
-                                   Audience.Adult, 
-                                   2006, 
-                                   Fictionality.Fiction, 
-                                   4, 
-                                   6);
+    try {
+      mLibraryBook = new LibraryBook("978-0765311788", 
+                                     "Mistborn: The Final Empire", 
+                                     "Brandon Sanderson", 
+                                     new BookSeries("Mistborn: Era 1 1|3"), 
+                                     Genre.Fantasy, 
+                                     Audience.Adult, 
+                                     2006, 
+                                     Fictionality.Fiction, 
+                                     4, 
+                                     6);
+    } catch (InvalidBookSeriesNameException e) { }
 		
 		final String expected 	= "Mistborn: Era 1";
 		final String actual 		= mLibraryBook.getSeries();
@@ -541,16 +554,18 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Genre_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0385743570", 
-                                   "Steelheart", 
-                                   "Brandon Sanderson", 
-                                   new BookSeriesInformation("The Reckoners 1|4"), 
-                                   Genre.Fantasy, 
-                                   Audience.Adult, 
-                                   2014, 
-                                   Fictionality.Fiction, 
-                                   2, 
-                                   5);
+	  try {
+	    mLibraryBook = new LibraryBook("978-0385743570", 
+	                                   "Steelheart", 
+	                                   "Brandon Sanderson", 
+	                                   new BookSeries("The Reckoners 1|4"), 
+	                                   Genre.Fantasy, 
+	                                   Audience.Adult, 
+	                                   2014, 
+	                                   Fictionality.Fiction, 
+	                                   2, 
+	                                   5);
+	  } catch(InvalidBookSeriesNameException e) { }
 		
 		final Genre expected 	= Genre.Fantasy;
 		final Genre actual 		= mLibraryBook.getGenre();
@@ -568,7 +583,7 @@ public class LibraryBookTest {
     mLibraryBook = new LibraryBook("978-0575097469", 
                                    "Warbreaker", 
                                    "Brandon Sanderson", 
-                                   new BookSeriesInformation(), 
+                                   new BookSeries(), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
                                    2011, 
@@ -592,7 +607,7 @@ public class LibraryBookTest {
     mLibraryBook = new LibraryBook("978-1473218055", 
                                    "Arcanum Unbounded: The Cosmere Collection", 
                                    "Brandon Sanderson", 
-                                   new BookSeriesInformation(), 
+                                   new BookSeries(), 
                                    Genre.Fantasy, 
                                    Audience.Adult, 
                                    2017, 
@@ -613,16 +628,18 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Fictionality_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-1524104863", 
-                                   "White Sand: Volume 1", 
-                                   "Brandon Sanderson", 
-                                   new BookSeriesInformation("White Sand 1|2"), 
-                                   Genre.Fantasy, 
-                                   Audience.YoungAdult, 
-                                   2017, 
-                                   Fictionality.Fiction, 
-                                   3, 
-                                   3);
+    try {
+      mLibraryBook = new LibraryBook("978-1524104863", 
+                                     "White Sand: Volume 1", 
+                                     "Brandon Sanderson", 
+                                     new BookSeries("White Sand 1|2"), 
+                                     Genre.Fantasy, 
+                                     Audience.YoungAdult, 
+                                     2017, 
+                                     Fictionality.Fiction, 
+                                     3, 
+                                     3);
+    } catch (InvalidBookSeriesNameException e) { }
 		
 		final Fictionality expected 	= Fictionality.Fiction;
 		final Fictionality actual 		= mLibraryBook.getFictionality();
@@ -637,16 +654,18 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_NumberOfCopiesInStock_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0439925509", 
-                                   "Alcatraz versus the Evil Librarians", 
-                                   "Brandon Sanderson", 
-                                   new BookSeriesInformation("WAlcatraz versus the Evil Librarians 1|6"), 
-                                   Genre.Fantasy, 
-                                   Audience.YoungAdult, 
-                                   2007, 
-                                   Fictionality.Fiction, 
-                                   2, 
-                                   5);
+    try {
+      mLibraryBook = new LibraryBook("978-0439925509", 
+                                     "Alcatraz versus the Evil Librarians", 
+                                     "Brandon Sanderson", 
+                                     new BookSeries("WAlcatraz versus the Evil Librarians 1|6"), 
+                                     Genre.Fantasy, 
+                                     Audience.YoungAdult, 
+                                     2007, 
+                                     Fictionality.Fiction, 
+                                     2, 
+                                     5);
+    } catch (InvalidBookSeriesNameException e) { }
 		
 		final int expected 	= 2;
 		final int actual 			= mLibraryBook.getNumberOfCopiesInStock();
@@ -664,7 +683,7 @@ public class LibraryBookTest {
     mLibraryBook = new LibraryBook("978-0765338440", 
                                    "The Rithmatist", 
                                    "Brandon Sanderson", 
-                                   new BookSeriesInformation(), 
+                                   new BookSeries(), 
                                    Genre.Drama, 
                                    Audience.YoungAdult, 
                                    2012, 
