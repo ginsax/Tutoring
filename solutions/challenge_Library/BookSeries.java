@@ -38,7 +38,7 @@ public class BookSeries implements Comparable<BookSeries> {
 		try {
 			mSeriesName.set(seriesInformationToParse.substring(0, seriesInformationToParse.lastIndexOf(" ")));
 		}
-		catch (NullPointerException | IndexOutOfBoundsException e) {
+		catch (Exception e) {
 			mSeriesName.set(CommonConstants.DEFAULT_SERIES);
 		}
 		

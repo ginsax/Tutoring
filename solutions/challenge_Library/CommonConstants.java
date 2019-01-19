@@ -6,7 +6,7 @@ package challenge_Library;
  * @author jacobwatson
  * @since 01/18/2019
  */
-public class CommonConstants {
+public abstract class CommonConstants {
   
   /** 
    * The default value used for the publishing year of a book. 

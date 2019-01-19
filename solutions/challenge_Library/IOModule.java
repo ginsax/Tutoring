@@ -1,7 +1,6 @@
 package challenge_Library;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
@@ -29,26 +28,25 @@ public class IOModule {
 	    
 		try (BufferedReader reader = new BufferedReader(
 				new InputStreamReader(getClass().getResourceAsStream(filePath)))) {
-		  if	(filePath.isEmpty()) return retrievedBooks;
+		  if	(filePath.isEmpty()) throw new Exception();
 			
 			final String delimiter = ",";
 			String line;
-			int index;
 			
 			while((line = reader.readLine()) != null) {
 				final String[] parsedResults = line.split(delimiter);
-				index = 0;
+				int index = 0;
 				
-		    final String isbn                   = parseISBNFrom(parsedResults[index++]);
-		    final String title                  = parseTitleFrom(parsedResults[index++]);
-		    final String author                 = parseAuthorFrom(parsedResults[index++]);
-		    final BookSeries series  = parseSeriesFrom(parsedResults[index++]);
-		    final Genre genre                   = parseGenreFrom(parsedResults[index++]);
-		    final Audience audience             = parseAudienceFrom(parsedResults[index++]);
-		    final int publishingYear            = parsePublishingYearFrom(parsedResults[index++]);
-		    final Fictionality fictionality     = parseFictionalityFrom(parsedResults[index++]);
+		    final String isbn                   = parseISBNFrom                 (parsedResults[index++]);
+		    final String title                  = parseTitleFrom                (parsedResults[index++]);
+		    final String author                 = parseAuthorFrom               (parsedResults[index++]);
+		    final BookSeries series             = parseSeriesFrom               (parsedResults[index++]);
+		    final Genre genre                   = parseGenreFrom                (parsedResults[index++]);
+		    final Audience audience             = parseAudienceFrom             (parsedResults[index++]);
+		    final int publishingYear            = parsePublishingYearFrom       (parsedResults[index++]);
+		    final Fictionality fictionality     = parseFictionalityFrom         (parsedResults[index++]);
 		    final int numberOfCopiesInStock     = parseNumberOfCopiesInStockFrom(parsedResults, index++);
-		    final int numberOfCopiesTotal       = parseNumberOfCopiesTotalFrom(parsedResults, index++);
+		    final int numberOfCopiesTotal       = parseNumberOfCopiesTotalFrom  (parsedResults, index++);
 		    
 		    final LibraryBook libraryBook = new LibraryBook(isbn, 
 		                                                    title, 
@@ -64,7 +62,7 @@ public class IOModule {
 				retrievedBooks.add(libraryBook);
 			}
 			
-		} catch (IOException | NullPointerException e) {
+		} catch (Exception e) {
 			String errorMessage = e.getLocalizedMessage();
 			
 			throw new EmptyFileNameException(errorMessage);
@@ -81,7 +79,7 @@ public class IOModule {
    * @return Returns the ISBN of a book.
    */
   private String parseISBNFrom(final String parsedResult) {
-    final String regex = "?(?=[0-9]{13}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)97[89][- ]?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9]$";
+    final String regex = "[0-9]{3}[-| ][0-9]{10}";
     String isbn;
     
     try {
@@ -107,7 +105,11 @@ public class IOModule {
     String title;
     
     try {
-      title = parsedResult;
+      if(!parsedResult.isEmpty()) {
+        title = parsedResult;
+      } else {
+        throw new IllegalArgumentException();
+      }
     }
     catch(NullPointerException | IllegalArgumentException e) {
       title = CommonConstants.DEFAULT_TITLE;
@@ -125,7 +127,11 @@ public class IOModule {
     String author;
     
     try {
-      author = parsedResult;
+      if(!parsedResult.isEmpty()) {
+        author = parsedResult;
+      } else {
+        throw new IllegalArgumentException();
+      }
     }
     catch(NullPointerException | IllegalArgumentException e) {
       author = CommonConstants.DEFAULT_AUTHOR;
@@ -146,7 +152,9 @@ public class IOModule {
 	  try {
 	    bookSeries = new BookSeries(parsedResult);
     }
-    catch (InvalidBookSeriesNameException e) {}
+    catch (InvalidBookSeriesNameException e) {
+      bookSeries = new BookSeries();
+    }
 	  
 	  return bookSeries;
 	}
@@ -162,7 +170,7 @@ public class IOModule {
 	  try {
 	    genre = Genre.valueOf(parsedResult) ;
 	  }
-	  catch(NullPointerException | IllegalArgumentException e) {
+	  catch(IllegalArgumentException e) {
 	    genre = CommonConstants.DEFAULT_GENRE;
 	  }
 	  
@@ -181,7 +189,7 @@ public class IOModule {
 	  try {
 	    audience = Audience.valueOf(parsedResult) ;
 	  }
-	  catch(NullPointerException | IllegalArgumentException e) {
+	  catch(IllegalArgumentException e) {
 	    audience = CommonConstants.DEFAULT_AUDIENCE;
 	  }
 	  
@@ -219,7 +227,7 @@ public class IOModule {
 	  try {
 	    fictionality = Fictionality.valueOf(parsedResult) ;
 	  }
-	  catch(NullPointerException | IllegalArgumentException e) {
+	  catch(IllegalArgumentException e) {
 	    fictionality = CommonConstants.DEFAULT_FICTIONALITY;
 	  }
 	  

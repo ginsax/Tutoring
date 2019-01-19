@@ -69,7 +69,7 @@ public class LibraryController extends BorderPane {
     super();
     FXMLFileLoader.initFXMLfor(this);
     
-    if(fileName.isEmpty()) throw new EmptyFileNameException();
+    if(fileName == null || fileName.isEmpty()) throw new EmptyFileNameException();
     
     final ObservableList<LibraryBook> bookList        = loadBooksFromFile(fileName);
     final FilteredList<LibraryBook> filteredBookList  = createFilteredListFrom(bookList);
