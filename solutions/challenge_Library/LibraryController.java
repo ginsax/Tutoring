@@ -46,7 +46,7 @@ public class LibraryController extends BorderPane {
   @FXML private TextField filterText_Author;
   /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_Year;
-  /** The filter text that allows the user to filter by year. */
+  /** The filter text that allows the user to filter by ISBN. */
   @FXML private TextField filterText_ISBN;
   
   /** The toggle button filter that allows the user to filter by availability. */
@@ -65,8 +65,7 @@ public class LibraryController extends BorderPane {
     
     final ObservableList<LibraryBook> bookList 			= loadBooksFromFile(fileName);
     final FilteredList<LibraryBook> filteredBookList 	= createFilteredListFrom(bookList);
-    final SortedList<LibraryBook> sortedBookList 		= new SortedList<LibraryBook>(filteredBookList, 
-    																																				 sortedBookComparator.get());
+    final SortedList<LibraryBook> sortedBookList 		= new SortedList<LibraryBook>(filteredBookList, sortedBookComparator.get());
     setSortPrioritiesFor(sortedBookList);
   }
   
