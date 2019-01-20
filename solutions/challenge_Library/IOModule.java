@@ -1,6 +1,7 @@
 package challenge_Library;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
@@ -22,13 +23,13 @@ public class IOModule {
 	 * @return Returns an observable list of LibraryBooks.
 	 * @throws EmptyFileNameException 
 	 */
-	public ObservableList<LibraryBook> retrieveBooksFromFile(final String filePath) throws EmptyFileNameException {
-		final ObservableList<LibraryBook> retrievedBooks = FXCollections.observableArrayList();
+	public ObservableList<SolutionLibraryBook> retrieveBooksFromFile(final String filePath) throws EmptyFileNameException {
+		final ObservableList<SolutionLibraryBook> retrievedBooks = FXCollections.observableArrayList();
 		
 	    
 		try (BufferedReader reader = new BufferedReader(
 				new InputStreamReader(getClass().getResourceAsStream(filePath)))) {
-		  if	(filePath.isEmpty()) throw new Exception();
+		  if	(filePath.isEmpty()) throw new IOException();
 			
 			final String delimiter = ",";
 			String line;
@@ -48,7 +49,7 @@ public class IOModule {
 		    final int numberOfCopiesInStock     = parseNumberOfCopiesInStockFrom(parsedResults, index++);
 		    final int numberOfCopiesTotal       = parseNumberOfCopiesTotalFrom  (parsedResults, index++);
 		    
-		    final LibraryBook libraryBook = new LibraryBook(isbn, 
+		    final SolutionLibraryBook libraryBook = new SolutionLibraryBook(isbn, 
 		                                                    title, 
 		                                                    author, 
 		                                                    series, 
@@ -62,7 +63,7 @@ public class IOModule {
 				retrievedBooks.add(libraryBook);
 			}
 			
-		} catch (Exception e) {
+		} catch (NullPointerException | IOException e) {
 			String errorMessage = e.getLocalizedMessage();
 			
 			throw new EmptyFileNameException(errorMessage);

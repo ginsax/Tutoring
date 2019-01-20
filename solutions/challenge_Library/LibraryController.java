@@ -37,12 +37,12 @@ public class LibraryController extends BorderPane {
   private Alert mErrorAlert;
   
   /** The sorted book comparator. */
-  private ObjectProperty<Comparator<LibraryBook>> sortedBookComparator;
+  private ObjectProperty<Comparator<SolutionLibraryBook>> sortedBookComparator;
   
   /** The table view containing all the books on display. */
-  @FXML private TableView<LibraryBook> mTableView;
+  @FXML private TableView<SolutionLibraryBook> mTableView;
   /** The table view containing all the books on display. */
-  @FXML private TableColumn<LibraryBook, BookSeries> mColumnSeries;
+  @FXML private TableColumn<SolutionLibraryBook, BookSeries> mColumnSeries;
   
   /** The combo box that allows the user to filter by genre. */
   @FXML private ComboBox<Genre> filter_Genre;
@@ -66,15 +66,15 @@ public class LibraryController extends BorderPane {
    * @param fileName String file name that holds the book information.
    * @throws EmptyFileNameException The given {@code fileName} is empty.
    */
-  public LibraryController(final String fileName) throws EmptyFileNameException {
+   public LibraryController(final String fileName) throws EmptyFileNameException {
     super();
     FXMLFileLoader.initFXMLfor(this);
     
     if(fileName == null || fileName.isEmpty()) throw new EmptyFileNameException();
     
-    final ObservableList<LibraryBook> bookList        = loadBooksFromFile(fileName);
-    final FilteredList<LibraryBook> filteredBookList  = createFilteredListFrom(bookList);
-    final SortedList<LibraryBook> sortedBookList      = new SortedList<LibraryBook>(filteredBookList, 
+    final ObservableList<SolutionLibraryBook> bookList        = loadBooksFromFile(fileName);
+    final FilteredList<SolutionLibraryBook> filteredBookList  = createFilteredListFrom(bookList);
+    final SortedList<SolutionLibraryBook> sortedBookList      = new SortedList<SolutionLibraryBook>(filteredBookList, 
     																																				        sortedBookComparator.get());
     setSortPrioritiesFor(sortedBookList);
   }
@@ -84,35 +84,35 @@ public class LibraryController extends BorderPane {
    * @param bookList A collection of LibraryBooks that are to be filtered.
    * @return Returns a filtered list of library books.
    */
-  private FilteredList<LibraryBook> createFilteredListFrom(final ObservableList<LibraryBook> bookList) {
-	  final FilteredList<LibraryBook> filteredBookList = new FilteredList<LibraryBook>(bookList, p -> true);
+  private FilteredList<SolutionLibraryBook> createFilteredListFrom(final ObservableList<SolutionLibraryBook> bookList) {
+	  final FilteredList<SolutionLibraryBook> filteredBookList = new FilteredList<SolutionLibraryBook>(bookList, p -> true);
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateTitle 			= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateTitle 			= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateTitle.bind(Bindings.createObjectBinding(() -> 
 						  book -> book.getTitle().toLowerCase().contains(filterText_Title.getText().toLowerCase()), 
 						  filterText_Title.textProperty()));
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateAuthor 		= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAuthor 		= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateAuthor.bind(Bindings.createObjectBinding(() -> 
 						  book -> book.getAuthor().toLowerCase().contains(filterText_Author.getText().toLowerCase()), 
 						  filterText_Author.textProperty()));
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateYear 			= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateYear 			= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateYear.bind(Bindings.createObjectBinding(() -> 
 						  book -> ("" + book.getPublishingYear()).contains(filterText_Year.getText()), 
 						  filterText_Year.textProperty()));
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateISBN 			= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateISBN 			= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateISBN.bind(Bindings.createObjectBinding(() -> 
 						  book -> book.getISBN().toLowerCase().contains(filterText_ISBN.getText().toLowerCase()), 
 						  filterText_ISBN.textProperty()));
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateGenre 		= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateGenre 		= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateGenre.bind(Bindings.createObjectBinding(() -> 
 						  book -> book.getGenre().equals(filter_Genre.getSelectionModel().getSelectedItem()) || filter_Genre.getSelectionModel().getSelectedItem() == null, 
 						  filter_Genre.getSelectionModel().selectedItemProperty()));
 	  
-	  final ObjectProperty<Predicate<LibraryBook>> predicateAudience 	= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAudience 	= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  predicateAudience.bind(Bindings.createObjectBinding(() -> 
 						  book -> book.getAudience().equals(filter_Audience.getSelectionModel().getSelectedItem()) || filter_Audience.getSelectionModel().getSelectedItem() == null, 
 						  filter_Audience.getSelectionModel().selectedItemProperty()));
@@ -154,7 +154,7 @@ public class LibraryController extends BorderPane {
 	  
 	  mCheckBoxInStock.selectedProperty().addListener((obs, ov, nv) -> {
 	    if(nv) {
-//	    Bind the above predicates to filter the list. 
+//	      Bind the above predicates to filter the list by books that are in stock. 
 	      filteredBookList.predicateProperty().bind(inStockBinding);
 	    } else {
 	      filteredBookList.predicateProperty().bind(defaultBinding);
@@ -171,7 +171,7 @@ public class LibraryController extends BorderPane {
    * Sets the sort priorities for the table when it is otherwise unsorted.
    * @param sortedBookList A sorted list of LibraryBooks to add to the table.
    */
-  private void setSortPrioritiesFor(final SortedList<LibraryBook> sortedBookList) {
+  private void setSortPrioritiesFor(final SortedList<SolutionLibraryBook> sortedBookList) {
     mTableView.setItems(sortedBookList);
     sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
     
@@ -188,15 +188,14 @@ public class LibraryController extends BorderPane {
     });
   }
   
-  
   /**
    * Loads all the books located within the given file.
    * @param fileName String file name that holds the book information.
    * @return Returns a sorted list of LibraryBooks that have been retrieved from a file.
    */
-  private ObservableList<LibraryBook> loadBooksFromFile(final String fileName) {
+  private ObservableList<SolutionLibraryBook> loadBooksFromFile(final String fileName) {
 	  final IOModule bookIO = new IOModule();
-	  ObservableList<LibraryBook> bookList = FXCollections.observableArrayList();
+	  ObservableList<SolutionLibraryBook> bookList = FXCollections.observableArrayList();
 	  
     try {
       bookList = bookIO.retrieveBooksFromFile(fileName);
