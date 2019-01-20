@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 import challenge_Library.fxml.FXMLFileLoader;
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -16,11 +15,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -58,19 +57,19 @@ public class LibraryController extends BorderPane {
   /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_ISBN;
   
-  /** Toggle button that specifies that user is not filtering availability. */
-  @FXML private CheckBox mCheckBoxInStock;
+  /** The toggle button filter that allows the user to filter by availability. */
+  @FXML private ToggleGroup mInStockToggleGroup;
   
   /**
    * Constructs a LibraryController, loading books from the given file.
    * @param fileName String file name that holds the book information.
    * @throws EmptyFileNameException The given {@code fileName} is empty.
    */
-   public LibraryController(final String fileName) throws EmptyFileNameException {
+  public LibraryController(final String fileName) throws EmptyFileNameException {
     super();
     FXMLFileLoader.initFXMLfor(this);
     
-    if(fileName == null || fileName.isEmpty()) throw new EmptyFileNameException();
+    if(fileName.isEmpty()) throw new EmptyFileNameException();
     
     final ObservableList<SolutionLibraryBook> bookList        = loadBooksFromFile(fileName);
     final FilteredList<SolutionLibraryBook> filteredBookList  = createFilteredListFrom(bookList);
@@ -117,52 +116,22 @@ public class LibraryController extends BorderPane {
 						  book -> book.getAudience().equals(filter_Audience.getSelectionModel().getSelectedItem()) || filter_Audience.getSelectionModel().getSelectedItem() == null, 
 						  filter_Audience.getSelectionModel().selectedItemProperty()));
 	  
-	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateInStock 		= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
-	  predicateInStock.bind(Bindings.createObjectBinding(() -> 
-              book -> book.getNumberOfCopiesInStock() > 0, 
-              mCheckBoxInStock.selectedProperty()));
-	  
-	  final ObjectBinding<Predicate<SolutionLibraryBook>> inStockBinding = Bindings.createObjectBinding(() -> 
-          	  predicateTitle    .get() .and(
-              predicateAuthor   .get()).and(
-              predicateYear     .get()).and(
-              predicateISBN     .get()).and(
-              predicateGenre    .get()).and(
-              predicateAudience .get()).and(
-              predicateInStock  .get()), 
-          predicateTitle, 
-          predicateAuthor, 
-          predicateYear, 
-          predicateISBN, 
-          predicateGenre, 
-          predicateAudience, 
-          predicateInStock);
-
-    final ObjectBinding<Predicate<SolutionLibraryBook>> defaultBinding = Bindings.createObjectBinding(() -> 
-              predicateTitle    .get() .and(
-              predicateAuthor   .get()).and(
-              predicateYear     .get()).and(
-              predicateISBN     .get()).and(
-              predicateGenre    .get()).and(
-              predicateAudience .get()), 
-          predicateTitle, 
-          predicateAuthor, 
-          predicateYear, 
-          predicateISBN, 
-          predicateGenre, 
-          predicateAudience);
-	  
-	  mCheckBoxInStock.selectedProperty().addListener((obs, ov, nv) -> {
-	    if(nv) {
-//	      Bind the above predicates to filter the list by books that are in stock. 
-	      filteredBookList.predicateProperty().bind(inStockBinding);
-	    } else {
-	      filteredBookList.predicateProperty().bind(defaultBinding);
-	    }
-	  });
+//	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateInStock 		= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
 	  
 //	  Bind the above predicates to filter the list. 
-	  filteredBookList.predicateProperty().bind(defaultBinding);
+	  filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
+	  					predicateTitle			.get() .and(
+	  					predicateAuthor		.get()).and(
+	  					predicateYear			.get()).and(
+	  					predicateISBN			.get()).and(
+	  					predicateGenre		.get()).and(
+	  					predicateAudience	.get()), 
+			  predicateTitle, 
+			  predicateAuthor, 
+			  predicateYear, 
+			  predicateISBN, 
+			  predicateGenre, 
+			  predicateAudience));
 	  
 	  return filteredBookList;
   }
@@ -188,6 +157,7 @@ public class LibraryController extends BorderPane {
     });
   }
   
+  
   /**
    * Loads all the books located within the given file.
    * @param fileName String file name that holds the book information.
@@ -211,20 +181,6 @@ public class LibraryController extends BorderPane {
 	  
 	  
 	  return bookList;
-  }
-  
-  /** Clears all filters. */
-  @FXML
-  private void clearFilters() {
-    filterText_Title  .clear();
-    filterText_Author .clear();
-    filterText_Year   .clear();
-    filterText_ISBN   .clear();
-    
-    filter_Audience .getSelectionModel().clearSelection();
-    filter_Genre    .getSelectionModel().clearSelection();
-    
-    mCheckBoxInStock.setSelected(false);
   }
   
   /**

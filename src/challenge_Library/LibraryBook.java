@@ -66,7 +66,167 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	  mNumberOfCopiesInStock .set(CommonConstants.DEFAULT_STOCK);
 	  mNumberOfCopiesTotal   .set(CommonConstants.DEFAULT_STOCK);
 	  
-	  mSortingTitle = sortingTitle();
+	  mSortingTitle = sortingTitle(mTitle);
+	}
+
+	public LibraryBook(String IBNS, String tittle, String auThor, BookSeries Siries, Genre genre,
+			Audience populationTarget, int publishingYear, Fictionality fictionality, int stock, int totalStock) {
+		mID.set(UUID.randomUUID());
+		
+		  mISBN                  .set(IBNS);
+		  mTitle                 .set(tittle);
+		  mAuthor                .set(auThor);
+		  mSeries                .set(Siries);
+		  mGenre                 .set(genre);
+		  mAudience              .set(populationTarget);
+		  mPublishingYear        .set(publishingYear);
+		  mFictionality          .set(fictionality);
+		  mNumberOfCopiesInStock .set(stock);
+		  mNumberOfCopiesTotal   .set(totalStock);
+		  
+		  mSortingTitle = sortingTitle(mTitle);
+	}
+
+	private String sortingTitle(StringProperty actualTitle) {
+		String sortTitle=actualTitle.get().trim();
+		/*if (sortTitle.length()>3) {
+			if (sortTitle.substring(0, 2).toLowerCase()=="the") {
+				sortTitle=sortTitle.trim().substring(3).trim();
+			} else if (sortTitle.substring(0,1).toLowerCase() == "an") {
+				sortTitle = sortTitle.trim().substring(2).trim();
+			} else if (sortTitle.substring(0,0).toLowerCase() == "a") {
+				sortTitle = sortTitle.trim().substring(1).trim();
+			}
+		} */
+		return sortTitle;
+	}
+
+	public ObjectProperty<UUID> idProperty() {
+		return this.mID;
+	}
+
+
+	public StringProperty isbnProperty() {
+		return this.mISBN;
+	}
+
+
+	public StringProperty titleProperty() {
+		return this.mTitle;
+	}
+
+
+	public StringProperty authorProperty() {
+		return this.mAuthor;
+	}
+
+
+	public ObjectProperty<BookSeries> seriesProperty() {
+		return this.mSeries;
+	}
+
+
+	public ObjectProperty<Genre> genreProperty() {
+		return this.mGenre;
+	}
+
+
+	public ObjectProperty<Audience> audienceProperty() {
+		return this.mAudience;
+	}
+
+
+	public IntegerProperty publishingYearProperty() {
+		return this.mPublishingYear;
+	}
+
+
+	public ObjectProperty<Fictionality> fictionalityProperty() {
+		return this.mFictionality;
+	}
+
+
+	public IntegerProperty numberOfCopiesInStockProperty() {
+		return this.mNumberOfCopiesInStock;
+	}
+
+
+	public IntegerProperty numberOfCopiesTotalProperty() {
+		return this.mNumberOfCopiesTotal;
+	}
+
+
+	public UUID getID() {
+		return this.mID.getValue();
+	}
+
+
+	public String getISBN() {
+		return this.mISBN.get();
+	}
+
+
+	public String getTitle() {
+		return this.mTitle.get().toString();
+	}
+
+
+	public String getAuthor() {
+		return this.mAuthor.get();
+	}
+
+
+	public String getSeries() {
+		return this.mSeries.get().toString();
+	}
+
+
+	public Genre getGenre() {
+		return this.mGenre.getValue();
+	}
+
+
+	public Audience getAudience() {
+		return this.mAudience.get();
+	}
+
+
+	public int getPublishingYear() {
+		return this.mPublishingYear.get();
+	}
+
+
+	public Fictionality getFictionality() {
+		return this.mFictionality.get();
+	}
+
+
+	public int getNumberOfCopiesInStock() {
+		return this.mNumberOfCopiesInStock.get();
+	}
+
+
+	public int getNumberOfCopiesTotal() {
+		return this.mNumberOfCopiesTotal.get();
 	}
 		
-}
+	@Override
+	public int compareTo(LibraryBook dummyBook) {
+		System.out.println(this.mSortingTitle);
+		int testah = this.mSortingTitle.compareTo(dummyBook.mSortingTitle);
+		if (testah == 0) {
+		return 0;
+		}
+		int actualTestah = testah/Math.abs(testah);
+		return actualTestah;
+	}
+	
+	public String toString() {
+	//The Emperor's Soul [978-1616960926] (2012) by Brandon Sanderson. Adult Fantasy - Fiction. [2/3] copies in stock.
+	String returnString = this.getTitle()+" ["+this.getISBN()+"] ("+this.getPublishingYear()+")" + this.seriesProperty().get().getSeriesInformationString() +" by "
+	+this.getAuthor()+". "+this.getAudience()+" "+this.getGenre()+" - "+this.getFictionality()+". ["+this.getNumberOfCopiesInStock()
+	+"/"+this.getNumberOfCopiesTotal()+"] copies in stock.";
+	return returnString;
+	}	
+	
+	}

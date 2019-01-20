@@ -5,7 +5,7 @@ package challenge_Inheritance;
  * @author jacobwatson
  * @since 12/28/2018
  */
-public class SurgeonFish extends Fish {
+public class SurgeonFish extends SolutionFish {
 
 	/**
 	 * This is the default constructor. Since there are no parameters passed in, 
