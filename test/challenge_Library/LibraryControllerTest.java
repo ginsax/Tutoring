@@ -93,13 +93,13 @@ public class LibraryControllerTest {
   public void test_LibraryController_CanSort() throws EmptyFileNameException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
     mLibraryController = new LibraryController("SimpleTest.csv");
     
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : LibraryController.class.getDeclaredFields()) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
         
         tableView.sort();
       }
@@ -117,13 +117,13 @@ public class LibraryControllerTest {
   public void test_LibraryController_CanRemoveSortOrder() throws EmptyFileNameException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
     mLibraryController = new LibraryController("SimpleTest.csv");
     
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : LibraryController.class.getDeclaredFields()) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
         
         tableView.getSortOrder().add(tableView.getColumns().get(0));
         tableView.getSortOrder().add(tableView.getColumns().get(1));
@@ -149,7 +149,7 @@ public class LibraryControllerTest {
     final String nameOfField  = "title";
     final String nameOfMethod = "clear";
     
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     Method clearFiltersMethod = null;
     
     for (Method method : LibraryController.class.getDeclaredMethods()) {
@@ -164,7 +164,7 @@ public class LibraryControllerTest {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(TextField.class) && 
@@ -397,13 +397,13 @@ public class LibraryControllerTest {
     
     final String nameOfField = "title";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(TextField.class) && 
@@ -449,13 +449,13 @@ public class LibraryControllerTest {
 
     final String nameOfField = "author";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
 
       
@@ -502,13 +502,13 @@ public class LibraryControllerTest {
 
     final String nameOfField = "year";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(TextField.class) && 
@@ -554,13 +554,13 @@ public class LibraryControllerTest {
 
     final String nameOfField = "isbn";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(TextField.class) && 
@@ -605,13 +605,13 @@ public class LibraryControllerTest {
 
     final String nameOfField = "genre";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(ComboBox.class) && 
@@ -657,13 +657,13 @@ public class LibraryControllerTest {
 
     final String nameOfField = "audience";
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(ComboBox.class) && 
@@ -707,13 +707,13 @@ public class LibraryControllerTest {
     mLibraryController = new LibraryController("SimpleTest.csv");
     
     final Field[] fields = LibraryController.class.getDeclaredFields();
-    TableView<LibraryBook> tableView = null;
+    TableView<SolutionLibraryBook> tableView = null;
     
     for (Field field : fields) {
       field.setAccessible(true);
       
       if (field.getType().equals(TableView.class)) {
-        tableView = (TableView<LibraryBook>) field.get(mLibraryController);
+        tableView = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
       }
       
       if (field.getType().equals(CheckBox.class)) {

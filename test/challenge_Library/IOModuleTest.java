@@ -42,7 +42,7 @@ public class IOModuleTest {
 	 */
 	@Test (expected = EmptyFileNameException.class)
 	public void test_IOModule_ReturnedListIsNull_WhenEmptyFileNameIsGiven() throws EmptyFileNameException {
-		final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("");
+		final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("");
 		
 		assertNull(retrievedBooks);
 	}
@@ -91,7 +91,7 @@ public class IOModuleTest {
 	 */
 	@Test 
 	public void test_IOModule_RetrievedListIsNotNullWhenFileNameIsCorrect() throws EmptyFileNameException {
-		ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
+		ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
 		
 		assertNotNull("Tests that IOModule will retrieve books from a file as expected when a correct file name is given.", retrievedBooks);
 	}
@@ -102,7 +102,7 @@ public class IOModuleTest {
 	 */
 	@Test 
 	public void test_IOModule_RetrievesListAsExpectedWhenFileNameIsCorrect() throws EmptyFileNameException {
-		ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
+		ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
 		
 		assertFalse("Tests that IOModule will retrieve books from a file as expected when a correct file name is given.", 
 		             retrievedBooks.isEmpty());
@@ -115,7 +115,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_ISBN() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final String expected = CommonConstants.DEFAULT_ISBN;
     final String actual = retrievedBooks.get(0).getISBN();
@@ -131,7 +131,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Title() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final String expected = CommonConstants.DEFAULT_TITLE;
     final String actual = retrievedBooks.get(1).getTitle();
@@ -147,7 +147,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Author() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final String expected = CommonConstants.DEFAULT_AUTHOR;
     final String actual   = retrievedBooks.get(2).getAuthor();
@@ -163,7 +163,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Series() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final String expected = CommonConstants.DEFAULT_SERIES;
     final String actual   = retrievedBooks.get(3).getSeries();
@@ -179,7 +179,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Genre() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final Genre expected = CommonConstants.DEFAULT_GENRE;
     final Genre actual = retrievedBooks.get(4).getGenre();
@@ -195,7 +195,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Audience() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final Audience expected = CommonConstants.DEFAULT_AUDIENCE;
     final Audience actual = retrievedBooks.get(5).getAudience();
@@ -211,7 +211,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_PublishingYear() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final int expected = CommonConstants.DEFAULT_PUBLISHING_YEAR;
     final int actual = retrievedBooks.get(6).getPublishingYear();
@@ -227,7 +227,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_Fictionality() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final Fictionality expected = CommonConstants.DEFAULT_FICTIONALITY;
     final Fictionality actual   = retrievedBooks.get(7).getFictionality();
@@ -243,7 +243,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_NumberOfCopiesInStock() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final int expected = CommonConstants.DEFAULT_STOCK;
     final int actual = retrievedBooks.get(8).getNumberOfCopiesInStock();
@@ -259,7 +259,7 @@ public class IOModuleTest {
    */
   @Test 
   public void test_IOModule_HandlesInvalid_NumberOfCopiesTotal() throws EmptyFileNameException {
-    final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
+    final ObservableList<SolutionLibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("InvalidTest.csv");
     
     final int expected = CommonConstants.DEFAULT_STOCK;
     final int actual = retrievedBooks.get(9).getNumberOfCopiesTotal();

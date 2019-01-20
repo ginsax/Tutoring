@@ -14,19 +14,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class that is intended to test the {@link LibraryBook} class}.
+ * Test class that is intended to test the {@link SolutionLibraryBook} class}.
  * @author jacobwatson
  * @version 1.0
  * @since 01/17/2019
  */
 public class LibraryBookTest {
 	/** The library book that is to be tested. */
-	private LibraryBook mLibraryBook;
+	private SolutionLibraryBook mLibraryBook;
 	
-	/** Initializes the LibraryBook. Required to wipe all old information. */
+	/** Initializes the SolutionLibraryBook. Required to wipe all old information. */
 	@Before
 	public void setupLibraryBook() {
-		mLibraryBook = new LibraryBook();
+		mLibraryBook = new SolutionLibraryBook();
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBookReflection_NoStaticMethods() {
-		final Method[] declaredMethods = LibraryBook.class.getDeclaredMethods();
+		final Method[] declaredMethods = SolutionLibraryBook.class.getDeclaredMethods();
 		
 		for (Method method : declaredMethods) {
 			if (!method.isSynthetic()) {
@@ -50,7 +50,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBookReflection_NoPublicNonFinalFields() {
-		final Field[] declaredFields = LibraryBook.class.getDeclaredFields();
+		final Field[] declaredFields = SolutionLibraryBook.class.getDeclaredFields();
 		
 		for (Field field : declaredFields) {
 			if (  !field.isSynthetic() && 
@@ -67,7 +67,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBookReflection_NoStaticFields() {
-		final Field[] declaredFields = LibraryBook.class.getDeclaredFields();
+		final Field[] declaredFields = SolutionLibraryBook.class.getDeclaredFields();
 		
 		for (Field field : declaredFields) {
 			if (!field.isSynthetic()) {
@@ -83,7 +83,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_ToString_Matches() {
-		mLibraryBook = new LibraryBook("978-1616960926", 
+		mLibraryBook = new SolutionLibraryBook("978-1616960926", 
 		                               "The Emperor's Soul", 
 		                               "Brandon Sanderson",
 		                               new BookSeries(), 
@@ -107,7 +107,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_ToString_Matches_WithSeries() {
     try {
-      mLibraryBook = new LibraryBook("978-0812511819", 
+      mLibraryBook = new SolutionLibraryBook("978-0812511819", 
                                      "The Eye of the World", 
                                      "Robert Jordan", 
                                      new BookSeries("The Wheel of Time 1|14"), 
@@ -132,11 +132,11 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Compares_Correctly_With_SameBook() {
-	  LibraryBook otherBook = null;
+	  SolutionLibraryBook otherBook = null;
 	  
 	  try {
 	    
-    mLibraryBook = new LibraryBook("978-0812511819", 
+    mLibraryBook = new SolutionLibraryBook("978-0812511819", 
                                    "The Eye of the World", 
                                    "Robert Jordan",  
                                    new BookSeries("The Wheel of Time 1|14"), 
@@ -146,7 +146,7 @@ public class LibraryBookTest {
                                    Fictionality.Fiction, 
                                    1, 
                                    2);
-    otherBook = new LibraryBook("978-0812511819", 
+    otherBook = new SolutionLibraryBook("978-0812511819", 
                                 "The Eye of the World", 
                                 "Robert Jordan", 
                                 new BookSeries("The Wheel of Time 1|14"), 
@@ -171,10 +171,10 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Compares_Correctly_With_Sequel() {
-	  LibraryBook otherBook = null;
+	  SolutionLibraryBook otherBook = null;
 	  
     try {
-      mLibraryBook = new LibraryBook("978-0812511819", 
+      mLibraryBook = new SolutionLibraryBook("978-0812511819", 
                                      "The Eye of the World", 
                                      "Robert Jordan", 
                                      new BookSeries("The Wheel of Time 1|14"), 
@@ -184,7 +184,7 @@ public class LibraryBookTest {
                                      Fictionality.Fiction, 
                                      1, 
                                      2);
-      otherBook = new LibraryBook("978-0812517729", 
+      otherBook = new SolutionLibraryBook("978-0812517729", 
                                   "The Great Hunt", 
                                   "Robert Jordan", 
                                    new BookSeries("The Wheel of Time 2|14"), 
@@ -458,7 +458,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_ISBN_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0399555770", 
+    mLibraryBook = new SolutionLibraryBook("978-0399555770", 
                                    "Skyward", 
                                    "Brandon Sanderson", 
                                    new BookSeries(), 
@@ -482,7 +482,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_Title_HasCorrectAssignedValue() {
     try {
-      mLibraryBook = new LibraryBook("978-0765326355", 
+      mLibraryBook = new SolutionLibraryBook("978-0765326355", 
                                      "The Way of Kings", 
                                      "Brandon Sanderson", 
                                      new BookSeries("The Stormlight Archive 1|10"), 
@@ -506,7 +506,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Author_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0765383105", 
+    mLibraryBook = new SolutionLibraryBook("978-0765383105", 
                                    "Elantris", 
                                    "Brandon Sanderson", 
                                    new BookSeries(), 
@@ -530,7 +530,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_Series_HasCorrectAssignedValue() {
     try {
-      mLibraryBook = new LibraryBook("978-0765311788", 
+      mLibraryBook = new SolutionLibraryBook("978-0765311788", 
                                      "Mistborn: The Final Empire", 
                                      "Brandon Sanderson", 
                                      new BookSeries("Mistborn: Era 1 1|3"), 
@@ -555,7 +555,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_Genre_HasCorrectAssignedValue() {
 	  try {
-	    mLibraryBook = new LibraryBook("978-0385743570", 
+	    mLibraryBook = new SolutionLibraryBook("978-0385743570", 
 	                                   "Steelheart", 
 	                                   "Brandon Sanderson", 
 	                                   new BookSeries("The Reckoners 1|4"), 
@@ -580,7 +580,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_Audience_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0575097469", 
+    mLibraryBook = new SolutionLibraryBook("978-0575097469", 
                                    "Warbreaker", 
                                    "Brandon Sanderson", 
                                    new BookSeries(), 
@@ -604,7 +604,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_PublishingYear_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-1473218055", 
+    mLibraryBook = new SolutionLibraryBook("978-1473218055", 
                                    "Arcanum Unbounded: The Cosmere Collection", 
                                    "Brandon Sanderson", 
                                    new BookSeries(), 
@@ -629,7 +629,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_Fictionality_HasCorrectAssignedValue() {
     try {
-      mLibraryBook = new LibraryBook("978-1524104863", 
+      mLibraryBook = new SolutionLibraryBook("978-1524104863", 
                                      "White Sand: Volume 1", 
                                      "Brandon Sanderson", 
                                      new BookSeries("White Sand 1|2"), 
@@ -655,7 +655,7 @@ public class LibraryBookTest {
 	@Test
 	public void test_LibraryBook_NumberOfCopiesInStock_HasCorrectAssignedValue() {
     try {
-      mLibraryBook = new LibraryBook("978-0439925509", 
+      mLibraryBook = new SolutionLibraryBook("978-0439925509", 
                                      "Alcatraz versus the Evil Librarians", 
                                      "Brandon Sanderson", 
                                      new BookSeries("WAlcatraz versus the Evil Librarians 1|6"), 
@@ -680,7 +680,7 @@ public class LibraryBookTest {
 	 */
 	@Test
 	public void test_LibraryBook_NumberOfCopiesTotal_HasCorrectAssignedValue() {
-    mLibraryBook = new LibraryBook("978-0765338440", 
+    mLibraryBook = new SolutionLibraryBook("978-0765338440", 
                                    "The Rithmatist", 
                                    "Brandon Sanderson", 
                                    new BookSeries(), 
