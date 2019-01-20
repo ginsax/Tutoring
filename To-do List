@@ -1,10 +1,6 @@
 TODO List:
-
- - Add JUnit tests.
-
- - Add a unique exception and user-friendly message for the parsing of each field.
  
- - Add a 'Clear Filters' button.
+ - Update unit tests for clear filters button.
  
  - Add a dialog / detail window for selected books.
 
@@ -13,7 +9,5 @@ TODO List:
  JOHN: 
  
  - Finish the predicate for 'in stock' books.
- 
- - Add tooltips.
  
  - Add an option to clear combo box.
