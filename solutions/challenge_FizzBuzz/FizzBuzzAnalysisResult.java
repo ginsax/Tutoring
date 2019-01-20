@@ -1,6 +1,5 @@
 package challenge_FizzBuzz;
 
-// TODO: Auto-generated Javadoc
 /**
  * The type of result from a fizz buzz analysis.
  * @author jacobwatson

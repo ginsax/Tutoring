@@ -10,7 +10,6 @@ import org.junit.Test;
 import javafx.collections.ObservableList;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Test class that is intended to test an {@link IOModule}.
  * @author jacobwatson
@@ -35,46 +34,81 @@ public class IOModuleTest {
 		assertNotNull(mIOModule);
 	}
 	
-	/** Tests that IOModule will return a list that is not null when an empty file name is given. */
+	/** 
+	 * Tests that IOModule will return a list that is not null when an empty 
+	 * file name is given.
+	 * @throws EmptyFileNameException 
+	 */
 	@Test 
-	public void test_IOModule_ReturnedListIsNotNullWhenEmptyFileNameIsGiven() {
+	public void test_IOModule_ReturnedListIsNotNullWhenEmptyFileNameIsGiven() throws EmptyFileNameException {
 		final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("");
 		
 		assertNotNull(retrievedBooks);
 	}
-	/** Tests that IOModule will return an empty list when an empty file name is given. */
+	/** 
+	 * Tests that IOModule will return an empty list when an empty file name is 
+	 * given.
+	 * @throws EmptyFileNameException 
+	 */
 	@Test 
-	public void test_IOModule_ReturnedListIsNotEmptyWhenEmptyFileNameIsGiven() {
+	public void test_IOModule_ReturnedListIsNotEmptyWhenEmptyFileNameIsGiven() throws EmptyFileNameException {
 		final ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("");
 		
 		assertTrue("Tests that IOModule will return an empty list when an empty file name is given.", retrievedBooks.isEmpty());
 	}
 	
-	/** Tests that IOModule will throw a NullPointerException if an invalid file name is given. */
-	@Test 
-	public void test_IOModule_ThrowsNullPointerExceptionWhenFileNameIsInvalid() {
+	/** 
+	 * Tests that IOModule will throw an EmptyFileNameException if an invalid 
+	 * file name is given. 
+	 * @throws EmptyFileNameException 
+	 */
+	@Test (expected = EmptyFileNameException.class)
+	public void test_IOModule_ThrowsNullPointerExceptionWhenFileNameIsInvalid() throws EmptyFileNameException {
 		mIOModule.retrieveBooksFromFile("Test.cs v");
-		mIOModule.getErrorAlert().close();
+//		mIOModule.getErrorAlert().close();
 	}
-	/** Tests that IOModule will throw a IOException if an incorrect file name is given. */
-	@Test 
-	public void test_IOModule_ThrowsIOExceptionWhenFileNameIsIncorrect() {
+	/** 
+	 * Tests that IOModule will throw a EmptyFileNameException if an incorrect 
+	 * file name is given. 
+	 * @throws EmptyFileNameException 
+	 */
+	@Test (expected = EmptyFileNameException.class)
+	public void test_IOModule_ThrowsIOExceptionWhenFileNameIsIncorrect() throws EmptyFileNameException {
 		mIOModule.retrieveBooksFromFile("Incorrect file name");
-		mIOModule.getErrorAlert().close();
-	}	
+//		mIOModule.getErrorAlert().close();
+	}
+	/** 
+   * Tests that IOModule will throw a EmptyFileNameException if a null file 
+   * name is given. 
+   * @throws EmptyFileNameException 
+   */
+  @Test (expected = EmptyFileNameException.class)
+  public void test_IOModule_ThrowsIOExceptionWhenFileNameIsNull() throws EmptyFileNameException {
+    mIOModule.retrieveBooksFromFile(null);
+//    mIOModule.getErrorAlert().close();
+  } 
 	
-	/** Tests that IOModule will retrieve books from a file as expected when a correct file name is given. */
+	/** 
+	 * Tests that IOModule will retrieve books from a file as expected when a 
+	 * correct file name is given. 
+	 * @throws EmptyFileNameException 
+	 */
 	@Test 
-	public void test_IOModule_RetrievedListIsNotNullWhenFileNameIsCorrect() {
+	public void test_IOModule_RetrievedListIsNotNullWhenFileNameIsCorrect() throws EmptyFileNameException {
 		ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
 		
 		assertNotNull("Tests that IOModule will retrieve books from a file as expected when a correct file name is given.", retrievedBooks);
 	}
-	/** Tests that IOModule will retrieve books from a file as expected when a correct file name is given. */
+	/** 
+	 * Tests that IOModule will retrieve books from a file as expected when a 
+	 * correct file name is given. 
+	 * @throws EmptyFileNameException
+	 */
 	@Test 
-	public void test_IOModule_RetrievesListAsExpectedWhenFileNameIsCorrect() {
+	public void test_IOModule_RetrievesListAsExpectedWhenFileNameIsCorrect() throws EmptyFileNameException {
 		ObservableList<LibraryBook> retrievedBooks = mIOModule.retrieveBooksFromFile("Test.csv");
 		
-		assertFalse("Tests that IOModule will retrieve books from a file as expected when a correct file name is given.", retrievedBooks.isEmpty());
+		assertFalse("Tests that IOModule will retrieve books from a file as expected when a correct file name is given.", 
+		             retrievedBooks.isEmpty());
 	}
 }

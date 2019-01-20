@@ -11,6 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,7 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 
-// TODO: Auto-generated Javadoc
 /**
  * The controller of the main class.
  * @author jacobwatson
@@ -26,6 +28,11 @@ import javafx.scene.layout.BorderPane;
  * @since 01/08/2019
  */
 public class LibraryController extends BorderPane {
+  /** 
+   * Alert that will be displayed if there is an issue with retrieving books 
+   * from a file.
+   */
+  private Alert mErrorAlert;
   
   /** The sorted book comparator. */
   private ObjectProperty<Comparator<LibraryBook>> sortedBookComparator;
@@ -33,7 +40,7 @@ public class LibraryController extends BorderPane {
   /** The table view containing all the books on display. */
   @FXML private TableView<LibraryBook> mTableView;
   /** The table view containing all the books on display. */
-  @FXML private TableColumn<LibraryBook, BookSeriesInformation> mColumnSeries;
+  @FXML private TableColumn<LibraryBook, BookSeries> mColumnSeries;
   
   /** The combo box that allows the user to filter by genre. */
   @FXML private ComboBox<Genre> filter_Genre;
@@ -46,7 +53,7 @@ public class LibraryController extends BorderPane {
   @FXML private TextField filterText_Author;
   /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_Year;
-  /** The filter text that allows the user to filter by ISBN. */
+  /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_ISBN;
   
   /** The toggle button filter that allows the user to filter by availability. */
@@ -63,9 +70,10 @@ public class LibraryController extends BorderPane {
     
     if(fileName.isEmpty()) throw new EmptyFileNameException();
     
-    final ObservableList<LibraryBook> bookList 			= loadBooksFromFile(fileName);
-    final FilteredList<LibraryBook> filteredBookList 	= createFilteredListFrom(bookList);
-    final SortedList<LibraryBook> sortedBookList 		= new SortedList<LibraryBook>(filteredBookList, sortedBookComparator.get());
+    final ObservableList<LibraryBook> bookList        = loadBooksFromFile(fileName);
+    final FilteredList<LibraryBook> filteredBookList  = createFilteredListFrom(bookList);
+    final SortedList<LibraryBook> sortedBookList      = new SortedList<LibraryBook>(filteredBookList, 
+    																																				        sortedBookComparator.get());
     setSortPrioritiesFor(sortedBookList);
   }
   
@@ -152,15 +160,34 @@ public class LibraryController extends BorderPane {
   /**
    * Loads all the books located within the given file.
    * @param fileName String file name that holds the book information.
-   * @return Returns a sorted list of LibraryBooks that have been retrieved from a file. 
+   * @return Returns a sorted list of LibraryBooks that have been retrieved from a file.
    */
   private ObservableList<LibraryBook> loadBooksFromFile(final String fileName) {
 	  final IOModule bookIO = new IOModule();
-	  final ObservableList<LibraryBook> bookList = bookIO.retrieveBooksFromFile(fileName);
+	  ObservableList<LibraryBook> bookList = FXCollections.observableArrayList();
+	  
+    try {
+      bookList = bookIO.retrieveBooksFromFile(fileName);
+    }
+    catch (EmptyFileNameException e) {
+      mErrorAlert = new Alert(AlertType.ERROR, 
+                              e.getMessage(), 
+                              ButtonType.OK);
+      mErrorAlert.show();
+    }
 	  
 	  sortedBookComparator = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
 	  
 	  
 	  return bookList;
+  }
+  
+  /**
+   * Returns the alert dialog that is designed to be displayed in the event of 
+   * any IOExceptions thrown.
+   * @return Returns the error alert dialog.
+   */
+  public Alert getErrorAlert() {
+    return mErrorAlert;
   }
 }

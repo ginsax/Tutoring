@@ -1,6 +1,5 @@
 package challenge_Library;
 
-// TODO: Auto-generated Javadoc
 /**
  * The fictionality of a book.
  * @author jacobwatson

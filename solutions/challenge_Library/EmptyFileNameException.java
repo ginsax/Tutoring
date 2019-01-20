@@ -8,6 +8,23 @@ package challenge_Library;
  * @since 01/10/2019
  */
 @SuppressWarnings("serial")
-public class EmptyFileNameException extends Exception {
-	
+public class EmptyFileNameException extends LibraryException {
+  
+  
+  /**
+   * Initializes a Library exception.
+   */
+  public EmptyFileNameException() {
+    super();
+  }
+  /**
+   * Initializes an empty file name exception with the given 
+   * {@code errorMessage}.
+   * @param errorMessage The reason for the error message.
+   */
+  public EmptyFileNameException(String errorMessage) {
+    super(errorMessage);
+  }
+  
+  
 }

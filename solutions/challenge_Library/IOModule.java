@@ -3,14 +3,11 @@ package challenge_Library;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 
-// TODO: Auto-generated Javadoc
 /**
  * Module that is designed to parse a text file for information relevant to 
  * {@link LibraryBook LibraryBooks}. The intended delimiter is a comma (',').
@@ -19,25 +16,20 @@ import javafx.scene.control.ButtonType;
  * @since 01/10/2019
  */
 public class IOModule {
-  /** 
-   * Alert that will be displayed if there is an issue with retrieving books 
-   * from a file.
-   * */
-	private Alert mErrorAlert;
-	
 	
 	/**
 	 * Retrieves all LibraryBooks from a file using the given {@code filePath}.
 	 * @param filePath String name of the file to be parsed.
 	 * @return Returns an observable list of LibraryBooks.
+	 * @throws EmptyFileNameException 
 	 */
-	public ObservableList<LibraryBook> retrieveBooksFromFile(final String filePath) {
+	public ObservableList<LibraryBook> retrieveBooksFromFile(final String filePath) throws EmptyFileNameException {
 		final ObservableList<LibraryBook> retrievedBooks = FXCollections.observableArrayList();
 		
-		if	(filePath.isEmpty()) return retrievedBooks;
 	    
 		try (BufferedReader reader = new BufferedReader(
 				new InputStreamReader(getClass().getResourceAsStream(filePath)))) {
+		  if	(filePath.isEmpty()) return retrievedBooks;
 			
 			final String delimiter = ",";
 			String line;
@@ -50,7 +42,7 @@ public class IOModule {
 		    final String isbn                   = parseISBNFrom(parsedResults[index++]);
 		    final String title                  = parseTitleFrom(parsedResults[index++]);
 		    final String author                 = parseAuthorFrom(parsedResults[index++]);
-		    final BookSeriesInformation series  = parseSeriesFrom(parsedResults[index++]);
+		    final BookSeries series  = parseSeriesFrom(parsedResults[index++]);
 		    final Genre genre                   = parseGenreFrom(parsedResults[index++]);
 		    final Audience audience             = parseAudienceFrom(parsedResults[index++]);
 		    final int publishingYear            = parsePublishingYearFrom(parsedResults[index++]);
@@ -75,13 +67,7 @@ public class IOModule {
 		} catch (IOException | NullPointerException e) {
 			String errorMessage = e.getLocalizedMessage();
 			
-			if (errorMessage == null || errorMessage.isEmpty()) {
-				errorMessage = "An unexpected error occured during file IO.";
-			}
-			mErrorAlert = new Alert(AlertType.ERROR, 
-					errorMessage, 
-					ButtonType.OK);
-			mErrorAlert.show();
+			throw new EmptyFileNameException(errorMessage);
 		}
 		
 		return retrievedBooks;
@@ -95,12 +81,17 @@ public class IOModule {
    * @return Returns the ISBN of a book.
    */
   private String parseISBNFrom(final String parsedResult) {
+    final String regex = "?(?=[0-9]{13}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)97[89][- ]?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9]$";
     String isbn;
     
     try {
-      isbn = parsedResult;
+      if(Pattern.matches(regex, parsedResult)) {
+        isbn = parsedResult;
+      } else {
+        throw new IllegalArgumentException();
+      }
     }
-    catch(NullPointerException | IllegalArgumentException e) {
+    catch(IllegalArgumentException e) {
       isbn = CommonConstants.DEFAULT_ISBN;
     }
     
@@ -149,8 +140,15 @@ public class IOModule {
 	 * series - if any - a book has a position in.
 	 * @return Returns the book series information of this book.
 	 */
-	private BookSeriesInformation parseSeriesFrom(final String parsedResult) {
-	  return new BookSeriesInformation(parsedResult);
+	private BookSeries parseSeriesFrom(final String parsedResult) {
+	  BookSeries bookSeries = null;
+	  
+	  try {
+	    bookSeries = new BookSeries(parsedResult);
+    }
+    catch (InvalidBookSeriesNameException e) {}
+	  
+	  return bookSeries;
 	}
 	/**
 	 * Parses the given {@code parsedResult} to determine the genre of a book.
@@ -273,12 +271,4 @@ public class IOModule {
 	}
 	
 	
-	/**
-	 * Returns the alert dialog that is designed to be displayed in the event of 
-	 * any IOExceptions thrown.
-	 * @return Returns the error alert dialog.
-	 */
-	public Alert getErrorAlert() {
-		return mErrorAlert;
-	}
 }

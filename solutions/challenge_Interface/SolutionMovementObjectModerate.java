@@ -1,6 +1,5 @@
 package challenge_Interface;
 
-// TODO: Auto-generated Javadoc
 /**
  * Use this class to implement the Interface challenge.
  * @author jacobwatson
