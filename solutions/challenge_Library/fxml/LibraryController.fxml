@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Tooltip?>
 
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
 
@@ -63,18 +64,22 @@
       </TableView>
    </center>
    <right>
-      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER" >
          <children>
             <BorderPane>
                <left>
-                  <Label text="Title:" BorderPane.alignment="CENTER">
+                  <Label text="Title:" BorderPane.alignment="CENTER" >
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Title" promptText="Filter by 'Title'" BorderPane.alignment="CENTER_RIGHT" />
+                  <TextField fx:id="filterText_Title" promptText="Filter by 'Title'" BorderPane.alignment="CENTER_RIGHT" >
+                  	<tooltip>
+                  		<Tooltip text="Filter by book title" wrapText="true" />
+                  	</tooltip>
+                  </TextField>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -82,14 +87,18 @@
             </BorderPane>
             <BorderPane>
                <left>
-                  <Label text="Author:" BorderPane.alignment="CENTER">
+                  <Label text="Author:" BorderPane.alignment="CENTER" >
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Author" promptText="Filter by 'Author'" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="filterText_Author" promptText="Filter by 'Author'" BorderPane.alignment="CENTER" >
+                  	<tooltip>
+                  		<Tooltip text="Filter by book author" wrapText="true" />
+                  	</tooltip>
+                  </TextField>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -104,7 +113,11 @@
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_Year" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="filterText_Year" promptText="Filter by 'Year'" BorderPane.alignment="CENTER" >
+                  	<tooltip>
+                  		<Tooltip text="Filter by book publication year" wrapText="true" />
+                  	</tooltip>
+                  </TextField>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -119,7 +132,11 @@
                   </Label>
                </left>
                <right>
-                  <TextField fx:id="filterText_ISBN" promptText="Filter by 'ISBN-13'" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="filterText_ISBN" promptText="Filter by 'ISBN-13'" BorderPane.alignment="CENTER" >
+                  	<tooltip>
+                  		<Tooltip text="Filter by the International Standard Book Number (ISBN)" wrapText="true" />
+                  	</tooltip>
+                  </TextField>
                </right>
                <VBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -127,14 +144,17 @@
             </BorderPane>
             <BorderPane>
                <left>
-                  <Label text="Genre:" BorderPane.alignment="CENTER">
+                  <Label text="Genre:" BorderPane.alignment="CENTER" >
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
                </left>
                <right>
-                  <ComboBox fx:id="filter_Genre" prefWidth="150.0" BorderPane.alignment="CENTER">
+                  <ComboBox fx:id="filter_Genre" prefWidth="150.0" BorderPane.alignment="CENTER" >
+                  	<tooltip>
+                  		<Tooltip text="Filter by book genre" wrapText="true" />
+                  	</tooltip>
                   	<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<Genre fx:constant="Drama" />
@@ -165,6 +185,9 @@
                </left>
                <right>
                   <ComboBox fx:id="filter_Audience" prefWidth="150.0" BorderPane.alignment="CENTER">
+                  	<tooltip>
+                  		<Tooltip text="Filter by intended book audience" wrapText="true" />
+                  	</tooltip>
                   	<items>
                   	  <FXCollections fx:factory="observableArrayList">
                   		<Audience fx:constant="Children" />
@@ -178,14 +201,14 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </VBox.margin>
             </BorderPane>
-            <Separator prefWidth="200.0">
+            <Separator prefWidth="200.0" >
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                </padding>
             </Separator>
             <BorderPane>
                <left>
-                  <Label text="Must be in stock:" BorderPane.alignment="CENTER">
+                  <Label text="Must be in stock:" BorderPane.alignment="CENTER" >
                      <padding>
                         <Insets right="5.0" />
                      </padding>
@@ -194,21 +217,28 @@
                      </BorderPane.margin>
                   </Label>
                </left>
-               <VBox.margin>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </VBox.margin>
                <center>
-                  <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER" >
                      <children>
-                        <RadioButton mnemonicParsing="false" selected="true" text="Yes">
+                        <RadioButton selected="true" text="Yes" >
+                        	<tooltip>
+                        		<Tooltip text="Filter by books that are in stock" wrapText="true" />
+                        	</tooltip>
                            <toggleGroup>
                               <ToggleGroup fx:id="mInStockToggleGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton accessibleRole="IMAGE_VIEW" mnemonicParsing="false" text="No" toggleGroup="$mInStockToggleGroup" />
+                        <RadioButton text="No" toggleGroup="$mInStockToggleGroup" >
+                        	<tooltip>
+                        		<Tooltip text="Filter by all books, ignoring if they are in stock" wrapText="true" />
+                        	</tooltip>
+                        </RadioButton>
                      </children>
                   </HBox>
                </center>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
             </BorderPane>
          </children>
          <BorderPane.margin>

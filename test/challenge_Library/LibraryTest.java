@@ -1,6 +1,7 @@
 package challenge_Library;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -92,6 +93,9 @@ public class LibraryTest {
     assertEquals("Tests that the default genre is a constant.", 
                   CommonConstants.DEFAULT_GENRE, 
                   genre);
+
+    assertNotNull("Tests that the default genre is a constant.", 
+                  new CommonConstants());
   }
 	
   /** Superficial test used only to get code coverage. */
