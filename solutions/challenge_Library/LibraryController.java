@@ -15,11 +15,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -57,8 +57,8 @@ public class LibraryController extends BorderPane {
   /** The filter text that allows the user to filter by year. */
   @FXML private TextField filterText_ISBN;
   
-  /** The toggle button filter that allows the user to filter by availability. */
-  @FXML private ToggleGroup mInStockToggleGroup;
+  /** Toggle button that specifies that user is not filtering availability. */
+  @FXML private CheckBox mCheckBoxInStock;
   
   /**
    * Constructs a LibraryController, loading books from the given file.
@@ -116,16 +116,54 @@ public class LibraryController extends BorderPane {
 						  book -> book.getAudience().equals(filter_Audience.getSelectionModel().getSelectedItem()) || filter_Audience.getSelectionModel().getSelectedItem() == null, 
 						  filter_Audience.getSelectionModel().selectedItemProperty()));
 	  
-//	  final ObjectProperty<Predicate<LibraryBook>> predicateInStock 		= new SimpleObjectProperty<Predicate<LibraryBook>>();
+	  final ObjectProperty<Predicate<SolutionLibraryBook>> predicateInStock 		= new SimpleObjectProperty<Predicate<SolutionLibraryBook>>();
+	  predicateInStock.bind(Bindings.createObjectBinding(() -> 
+              book -> book.getNumberOfCopiesInStock() > 0, 
+              mCheckBoxInStock.selectedProperty()));
+	  
+	  mCheckBoxInStock.selectedProperty().addListener((obs, ov, nv) -> {
+	    if(nv) {
+//	    Bind the above predicates to filter the list. 
+	      filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
+	                predicateTitle    .get() .and(
+	                predicateAuthor   .get()).and(
+	                predicateYear     .get()).and(
+	                predicateISBN     .get()).and(
+	                predicateGenre    .get()).and(
+	                predicateAudience .get()).and(
+	                predicateInStock  .get()), 
+	          predicateTitle, 
+	          predicateAuthor, 
+	          predicateYear, 
+	          predicateISBN, 
+	          predicateGenre, 
+	          predicateAudience, 
+	          predicateInStock));
+	    } else {
+	    filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
+	              predicateTitle    .get() .and(
+	              predicateAuthor   .get()).and(
+	              predicateYear     .get()).and(
+	              predicateISBN     .get()).and(
+	              predicateGenre    .get()).and(
+	              predicateAudience .get()), 
+	        predicateTitle, 
+	        predicateAuthor, 
+	        predicateYear, 
+	        predicateISBN, 
+	        predicateGenre, 
+	        predicateAudience));
+	    }
+	  });
 	  
 //	  Bind the above predicates to filter the list. 
 	  filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
-	  					predicateTitle			.get() .and(
+	  					predicateTitle		.get() .and(
 	  					predicateAuthor		.get()).and(
 	  					predicateYear			.get()).and(
 	  					predicateISBN			.get()).and(
 	  					predicateGenre		.get()).and(
-	  					predicateAudience	.get()), 
+	  					predicateAudience .get()), 
 			  predicateTitle, 
 			  predicateAuthor, 
 			  predicateYear, 
@@ -181,6 +219,20 @@ public class LibraryController extends BorderPane {
 	  
 	  
 	  return bookList;
+  }
+  
+  /** Clears all filters. */
+  @FXML
+  private void clearFilters() {
+    filterText_Title  .clear();
+    filterText_Author .clear();
+    filterText_Year   .clear();
+    filterText_ISBN   .clear();
+    
+    filter_Audience .getSelectionModel().clearSelection();
+    filter_Genre    .getSelectionModel().clearSelection();
+    
+    mCheckBoxInStock.setSelected(false);
   }
   
   /**

@@ -66,7 +66,7 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	  mNumberOfCopiesInStock .set(CommonConstants.DEFAULT_STOCK);
 	  mNumberOfCopiesTotal   .set(CommonConstants.DEFAULT_STOCK);
 	  
-	  mSortingTitle = sortingTitle();
+	  postSetupInitialization();
 	}
 	/**
 	 * Creates a new LibraryObject, instantiating the fields with the given 
@@ -106,11 +106,15 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		mNumberOfCopiesInStock.set(numberOfCopiesInStock);
 		mNumberOfCopiesTotal  .set(numberOfCopiesTotal);
 		
-		mSortingTitle = sortingTitle();
+		postSetupInitialization();
 	}
 	
-
-
+	/** Creates the sorting string as well as determine if it is in stock. */
+  private void postSetupInitialization() {
+    mSortingTitle = sortingTitle();
+  }
+	
+	
 	/**
 	 * Gets the fictionality of this book. 'True' values indicate the book is 
 	 * fictional, while 'False' values indicate it is nonfiction.
@@ -193,6 +197,7 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		return mID;
 	}
 	
+	
 	/**
 	 * Gets the number of in stock copies of this book.
 	 * @return Returns the number of in stock copies of this book.
@@ -274,26 +279,6 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	}
 
 	
-	@Override
-	public String toString() {
-		String seriesInformation = mSeries.get().getSeriesInformationString();
-		
-		// check if the series information is going to be used.
-		seriesInformation = mSeries.get().isPartOfASeries() ? seriesInformation : "";
-		
-		return String.format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.", 
-												mTitle.get(), 
-												mISBN.get(), 
-												mPublishingYear.get(), 
-												seriesInformation, 
-												mAuthor.get(), 
-												mAudience.get().toString(), 
-												mGenre.get().toString(), 
-												mFictionality.get(), 
-												mNumberOfCopiesInStock.get(), 
-												mNumberOfCopiesTotal.get());
-	}
-	
 	/**
 	 * Creates a title for this book that has been stripped of leading articles.
 	 * @return Returns a title for this book that has been stripped of leading 
@@ -332,5 +317,24 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		}
 		
 		return 0;
+	}
+	@Override
+	public String toString() {
+	  String seriesInformation = mSeries.get().getSeriesInformationString();
+	  
+	  // check if the series information is going to be used.
+	  seriesInformation = mSeries.get().isPartOfASeries() ? seriesInformation : "";
+	  
+	  return String.format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.", 
+	      mTitle.get(), 
+	      mISBN.get(), 
+	      mPublishingYear.get(), 
+	      seriesInformation, 
+	      mAuthor.get(), 
+	      mAudience.get().toString(), 
+	      mGenre.get().toString(), 
+	      mFictionality.get(), 
+	      mNumberOfCopiesInStock.get(), 
+	      mNumberOfCopiesTotal.get());
 	}
 }
