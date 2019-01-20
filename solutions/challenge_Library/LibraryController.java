@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import challenge_Library.fxml.FXMLFileLoader;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -121,55 +122,47 @@ public class LibraryController extends BorderPane {
               book -> book.getNumberOfCopiesInStock() > 0, 
               mCheckBoxInStock.selectedProperty()));
 	  
+	  final ObjectBinding<Predicate<SolutionLibraryBook>> inStockBinding = Bindings.createObjectBinding(() -> 
+          	  predicateTitle    .get() .and(
+              predicateAuthor   .get()).and(
+              predicateYear     .get()).and(
+              predicateISBN     .get()).and(
+              predicateGenre    .get()).and(
+              predicateAudience .get()).and(
+              predicateInStock  .get()), 
+          predicateTitle, 
+          predicateAuthor, 
+          predicateYear, 
+          predicateISBN, 
+          predicateGenre, 
+          predicateAudience, 
+          predicateInStock);
+
+    final ObjectBinding<Predicate<SolutionLibraryBook>> defaultBinding = Bindings.createObjectBinding(() -> 
+              predicateTitle    .get() .and(
+              predicateAuthor   .get()).and(
+              predicateYear     .get()).and(
+              predicateISBN     .get()).and(
+              predicateGenre    .get()).and(
+              predicateAudience .get()), 
+          predicateTitle, 
+          predicateAuthor, 
+          predicateYear, 
+          predicateISBN, 
+          predicateGenre, 
+          predicateAudience);
+	  
 	  mCheckBoxInStock.selectedProperty().addListener((obs, ov, nv) -> {
 	    if(nv) {
 //	    Bind the above predicates to filter the list. 
-	      filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
-	                predicateTitle    .get() .and(
-	                predicateAuthor   .get()).and(
-	                predicateYear     .get()).and(
-	                predicateISBN     .get()).and(
-	                predicateGenre    .get()).and(
-	                predicateAudience .get()).and(
-	                predicateInStock  .get()), 
-	          predicateTitle, 
-	          predicateAuthor, 
-	          predicateYear, 
-	          predicateISBN, 
-	          predicateGenre, 
-	          predicateAudience, 
-	          predicateInStock));
+	      filteredBookList.predicateProperty().bind(inStockBinding);
 	    } else {
-	    filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
-	              predicateTitle    .get() .and(
-	              predicateAuthor   .get()).and(
-	              predicateYear     .get()).and(
-	              predicateISBN     .get()).and(
-	              predicateGenre    .get()).and(
-	              predicateAudience .get()), 
-	        predicateTitle, 
-	        predicateAuthor, 
-	        predicateYear, 
-	        predicateISBN, 
-	        predicateGenre, 
-	        predicateAudience));
+	      filteredBookList.predicateProperty().bind(defaultBinding);
 	    }
 	  });
 	  
 //	  Bind the above predicates to filter the list. 
-	  filteredBookList.predicateProperty().bind(Bindings.createObjectBinding(() -> 
-	  					predicateTitle		.get() .and(
-	  					predicateAuthor		.get()).and(
-	  					predicateYear			.get()).and(
-	  					predicateISBN			.get()).and(
-	  					predicateGenre		.get()).and(
-	  					predicateAudience .get()), 
-			  predicateTitle, 
-			  predicateAuthor, 
-			  predicateYear, 
-			  predicateISBN, 
-			  predicateGenre, 
-			  predicateAudience));
+	  filteredBookList.predicateProperty().bind(defaultBinding);
 	  
 	  return filteredBookList;
   }
