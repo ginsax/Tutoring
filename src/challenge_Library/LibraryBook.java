@@ -212,13 +212,13 @@ public class LibraryBook implements Comparable<LibraryBook> {
 		
 	@Override
 	public int compareTo(LibraryBook dummyBook) {
-		System.out.println(this.mSortingTitle);
 		int testah = this.mSortingTitle.compareTo(dummyBook.mSortingTitle);
-		if (testah == 0) {
+		/*if (testah == 0) {
 		return 0;
 		}
 		int actualTestah = testah/Math.abs(testah);
-		return actualTestah;
+		return actualTestah;*/
+		return testah;
 	}
 	
 	public String toString() {
