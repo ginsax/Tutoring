@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class LibraryApplication extends Application {
 	
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) throws EmptyFileNameException {
 		final double MIN_WIDTH = Screen.getPrimary().getVisualBounds().getWidth()  / 2;
 		final double MIN_HEIGHT= Screen.getPrimary().getVisualBounds().getHeight() / 2;
 		

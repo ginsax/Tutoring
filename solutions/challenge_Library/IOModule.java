@@ -64,7 +64,7 @@ public class IOModule {
 			}
 			
 		} catch (NullPointerException | IOException e) {
-			String errorMessage = e.getLocalizedMessage();
+			String errorMessage = e.getMessage();
 			
 			throw new EmptyFileNameException(errorMessage);
 		}

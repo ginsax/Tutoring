@@ -77,6 +77,8 @@ public class LibraryController extends BorderPane {
     final SortedList<SolutionLibraryBook> sortedBookList      = new SortedList<SolutionLibraryBook>(filteredBookList, 
     																																				        sortedBookComparator.get());
     setSortPrioritiesFor(sortedBookList);
+    
+    mTableView.sort();
   }
   
   /**
@@ -201,14 +203,16 @@ public class LibraryController extends BorderPane {
       bookList = bookIO.retrieveBooksFromFile(fileName);
     }
     catch (EmptyFileNameException e) {
+      final String message = String.format("Error loading books from file: %s", 
+                                            fileName);
+      
       mErrorAlert = new Alert(AlertType.ERROR, 
-                              e.getMessage(), 
+                              message, 
                               ButtonType.OK);
       mErrorAlert.show();
     }
 	  
 	  sortedBookComparator = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
-	  
 	  
 	  return bookList;
   }
@@ -225,6 +229,8 @@ public class LibraryController extends BorderPane {
     filter_Genre    .getSelectionModel().clearSelection();
     
     mCheckBoxInStock.setSelected(false);
+    
+    mTableView.getSortOrder().clear();
   }
   
   /**

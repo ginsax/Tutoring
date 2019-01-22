@@ -294,22 +294,24 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 			if (firstWord.equalsIgnoreCase("a") || 
 					firstWord.equalsIgnoreCase("an") || 
 					firstWord.equalsIgnoreCase("the")) { 
-				sortingTitle = sortingTitle.substring(indexFirstSpace);
+			  
+				sortingTitle = sortingTitle.substring(indexFirstSpace + 1);
 			}
 		}
+		
 		return sortingTitle;
 	}
 	
 	@Override
 	public int compareTo(final SolutionLibraryBook otherBook) {
-		final int comparisonTitle 	= mSortingTitle.compareTo(otherBook.sortingTitle());
-		final int comparisonAuthor 	= getAuthor().compareTo(otherBook.getAuthor());
+	  final int comparisonAuthor 	= getAuthor().compareTo(otherBook.getAuthor());
 		final int comparisonSeries 	= mSeries.get().seriesProperty().get().compareTo(otherBook.mSeries.get().seriesProperty().get());
+		final int comparisonTitle 	= mSortingTitle.compareTo(otherBook.mSortingTitle);
 		
 		final int[] comparators = new int[] { 
 				comparisonAuthor, 
-				comparisonTitle, 
 				comparisonSeries, 
+				comparisonTitle, 
 				};
 		
 		for(int comparator : comparators) {
