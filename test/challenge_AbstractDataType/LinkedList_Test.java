@@ -22,7 +22,7 @@ import challenge_Inheritance.SurgeonFish;
  * @version 1.0
  * @since 03/24/2019
  */
-public class LinkedListSingle_Test {
+public class LinkedList_Test {
   
   /**
    * Tests that a {@linkplain LinkedListSingle} created with the 
@@ -30,7 +30,7 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_DefaultConstructorCreatesAnEmptyList() {
-    final LinkedListSinglable<String> list = new LinkedListSingle<String>();
+    final LinkedListable<String> list = new LinkedListSingle<String>();
     
     assertTrue(list.isEmpty());
   }
@@ -40,7 +40,7 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_DefaultConstructor_LengthIsZero() {
-    final LinkedListSinglable<String> list = new LinkedListSingle<String>();
+    final LinkedListable<String> list = new LinkedListSingle<String>();
     
     final int expected = 0;
     final int actual = list.length();
@@ -52,7 +52,7 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_DefaultConstructor_HeadIsNull() {
-    final LinkedListSinglable<Nodeable<String>> list = new LinkedListSingle<Nodeable<String>>();
+    final LinkedListable<Nodeable_LinkedList<String>> list = new LinkedListSingle<Nodeable_LinkedList<String>>();
     
     assertNull(list.head());
   }
@@ -62,7 +62,7 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_DefaultConstructor_TailIsNull() {
-    final LinkedListSinglable<Object> list = new LinkedListSingle<Object>();
+    final LinkedListable<Object> list = new LinkedListSingle<Object>();
     
     assertNull(list.tail());
   }
@@ -74,8 +74,8 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_ParameterizedConstructorCreatesANonEmptyList() {
-    final Nodeable<Animal> node = new Node<Animal>();
-    final LinkedListSinglable<Animal> list = new LinkedListSingle<Animal>(node);
+    final Nodeable_LinkedList<Animal> node = new Node<Animal>();
+    final LinkedListable<Animal> list = new LinkedListSingle<Animal>(node);
     
     assertFalse(list.isEmpty());
   }
@@ -85,8 +85,8 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_ParameterizedConstructor_LengthIsOne() {
-    final Nodeable<Mammal> node = new Node<Mammal>();
-    final LinkedListSinglable<Mammal> list = new LinkedListSingle<Mammal>(node);
+    final Nodeable_LinkedList<Mammal> node = new Node<Mammal>();
+    final LinkedListable<Mammal> list = new LinkedListSingle<Mammal>(node);
     
     final int expected = 1;
     final int actual = list.length();
@@ -98,8 +98,8 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_ParameterizedConstructor_HeadIsNotNull() {
-    final Nodeable<Fish> node = new Node<Fish>();
-    final LinkedListSinglable<Fish> list = new LinkedListSingle<Fish>(node);
+    final Nodeable_LinkedList<Fish> node = new Node<Fish>();
+    final LinkedListable<Fish> list = new LinkedListSingle<Fish>(node);
     
     assertNotNull(list.head());
   }
@@ -110,8 +110,8 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_ParameterizedConstructor_NextIsNull() {
-    final Nodeable<Cat> node = new Node<Cat>();
-    final LinkedListSinglable<Cat> list = new LinkedListSingle<Cat>(node);
+    final Nodeable_LinkedList<Cat> node = new Node<Cat>();
+    final LinkedListable<Cat> list = new LinkedListSingle<Cat>(node);
     
     assertNull(list.head().getNextNode());
   }
@@ -121,11 +121,11 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_ParameterizedConstructor_TailIsHead() {
-    final Nodeable<SurgeonFish> node = new Node<SurgeonFish>();
-    final LinkedListSinglable<SurgeonFish> list = new LinkedListSingle<SurgeonFish>(node);
+    final Nodeable_LinkedList<SurgeonFish> node = new Node<SurgeonFish>();
+    final LinkedListable<SurgeonFish> list = new LinkedListSingle<SurgeonFish>(node);
     
-    final Nodeable<SurgeonFish> expected = node;
-    final Nodeable<SurgeonFish> actual = list.tail();
+    final Nodeable_LinkedList<SurgeonFish> expected = node;
+    final Nodeable_LinkedList<SurgeonFish> actual = list.tail();
     assertEquals(expected, actual);
   }
   
@@ -136,14 +136,14 @@ public class LinkedListSingle_Test {
    */
   @Test
   public void test_MultipleNodes_TailIsSet() {
-    final Nodeable<FizzBuzzAnalysisResult> nodeA = new Node<FizzBuzzAnalysisResult>();
-    final LinkedListSinglable<FizzBuzzAnalysisResult> list = new LinkedListSingle<FizzBuzzAnalysisResult>(nodeA);
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> nodeA = new Node<FizzBuzzAnalysisResult>();
+    final LinkedListable<FizzBuzzAnalysisResult> list = new LinkedListSingle<FizzBuzzAnalysisResult>(nodeA);
     
-    final Nodeable<FizzBuzzAnalysisResult> nodeB = new Node<FizzBuzzAnalysisResult>();
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> nodeB = new Node<FizzBuzzAnalysisResult>();
     nodeA.setNextNode(nodeB);
     
-    final Nodeable<FizzBuzzAnalysisResult> expected = nodeB;
-    final Nodeable<FizzBuzzAnalysisResult> actual = list.tail();
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> expected = nodeB;
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> actual = list.tail();
     assertEquals(expected, actual);
   }
 }

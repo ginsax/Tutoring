@@ -7,19 +7,19 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object this node holds.
  * @since 03/24/2019
  */
-public interface Nodeable<NodeDataType> {
+public interface Nodeable_LinkedList<NodeDataType> {
     
     
     /**
      * Gets the next node in a list.
      * @return Returns the next node in a list.
      */
-    Nodeable<NodeDataType> getNextNode();
+    Nodeable_LinkedList<NodeDataType> getNextNode();
     /**
      * Sets the next node in a list.
      * @param nextNode The node that is to be set as the next node in a list.
      */
-    void setNextNode(final Nodeable<NodeDataType> nextNode);
+    void setNextNode(final Nodeable_LinkedList<NodeDataType> nextNode);
     
     /**
      * Gets the data object of this node.

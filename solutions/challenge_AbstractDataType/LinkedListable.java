@@ -7,18 +7,18 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object nodes within this list hold. 
  * @since 03/24/2019
  */
-interface LinkedListSinglable<NodeDataType> {
+interface LinkedListable<NodeDataType> {
   
   /**
    * Gets the first node in the list.
    * @return Returns the first node in the list.
    */
-  Nodeable<NodeDataType> head();
+  Nodeable_LinkedList<NodeDataType> head();
   /**
    * Gets the last node in the list.
    * @return Returns the last node in the list.
    */
-  Nodeable<NodeDataType> tail();
+  Nodeable_LinkedList<NodeDataType> tail();
   
   /**
    * Gets the number of nodes within this list.
