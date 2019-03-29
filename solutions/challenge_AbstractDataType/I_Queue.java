@@ -7,7 +7,7 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data objects within this queue. 
  * @since 03/28/2019
  */
-interface Queueable<NodeDataType> {
+interface I_Queue<NodeDataType> {
   
   /**
    * Removes the first node in the queue.

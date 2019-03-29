@@ -7,19 +7,19 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object this node holds.
  * @since 03/28/2019
  */
-public interface Nodeable_Queue<NodeDataType> {
+public interface I_NodeQueue<NodeDataType> {
 	
 	
   /**
    * Gets the next node in a queue.
    * @return Returns the next node in a queue.
    */
-	Nodeable_Queue<NodeDataType> getNextNode();
+	I_NodeQueue<NodeDataType> getNextNode();
   /**
    * Sets the next node in a queue.
    * @param nextNode The node that is to be set as the next node in a queue.
    */
-  void setNextNode(final Nodeable_Queue<NodeDataType> nextNode);
+  void setNextNode(final I_NodeQueue<NodeDataType> nextNode);
   
   
 	/**

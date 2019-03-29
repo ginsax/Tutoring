@@ -7,15 +7,15 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object this node holds.
  * @since 03/24/2019
  */
-final class NodeLinkedList_Solution<NodeDataType> implements Nodeable_LinkedList<NodeDataType> {
+final class Solution_NodeLinkedList<NodeDataType> implements I_NodeLinkedList<NodeDataType> {
   /** The data object of this node. */
   private NodeDataType mDataObject;
   /** The next node in a list. */
-  private Nodeable_LinkedList<NodeDataType> mNextNode;
+  private I_NodeLinkedList<NodeDataType> mNextNode;
   
   
   /** Instantiates a new node. */
-  NodeLinkedList_Solution() {
+  Solution_NodeLinkedList() {
     mNextNode   = null;
     mDataObject = null;
   }
@@ -23,7 +23,7 @@ final class NodeLinkedList_Solution<NodeDataType> implements Nodeable_LinkedList
    * Instantiates a new node with the given <code>dataObject</code>.
    * @param dataObject The data object of this node.
    */
-  NodeLinkedList_Solution(final NodeDataType dataObject) {
+  Solution_NodeLinkedList(final NodeDataType dataObject) {
     this();
     mDataObject = dataObject;
   }
@@ -31,7 +31,7 @@ final class NodeLinkedList_Solution<NodeDataType> implements Nodeable_LinkedList
    * Instantiates a new node with the given <code>nextNode</code>.
    * @param nextNode The next node in a list.
    */
-  NodeLinkedList_Solution(final Nodeable_LinkedList<NodeDataType> nextNode) {
+  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode) {
     this();
     mNextNode   = nextNode;
   }
@@ -41,7 +41,7 @@ final class NodeLinkedList_Solution<NodeDataType> implements Nodeable_LinkedList
    * @param nextNode The next node in a list.
    * @param dataObject The data object of this node.
    */
-  NodeLinkedList_Solution(final Nodeable_LinkedList<NodeDataType> nextNode, 
+  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode, 
                 final NodeDataType dataObject) {
     this();
     mNextNode   = nextNode;
@@ -50,11 +50,11 @@ final class NodeLinkedList_Solution<NodeDataType> implements Nodeable_LinkedList
   
   
   @Override
-  public Nodeable_LinkedList<NodeDataType> getNextNode() {
+  public I_NodeLinkedList<NodeDataType> getNextNode() {
     return mNextNode;
   }
   @Override
-  public void setNextNode(final Nodeable_LinkedList<NodeDataType> nextNode) {
+  public void setNextNode(final I_NodeLinkedList<NodeDataType> nextNode) {
     mNextNode = nextNode;
   }
   

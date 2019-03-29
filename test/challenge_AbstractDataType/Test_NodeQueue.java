@@ -10,36 +10,36 @@ import org.junit.Test;
  * @version 1.0
  * @since 03/28/2019
  */
-public class NodeQueue_Test {
+public class Test_NodeQueue {
   
   
   /**
-   * Tests that a {@linkplain Nodeable_Queue} created with the default 
+   * Tests that a {@linkplain I_NodeQueue} created with the default 
    * constructor is not null. 
    */
   @Test
   public void test_NodableDefaultConstructor_IsNotNull() {
-    final Nodeable_Queue<Integer> node = new NodeQueue<Integer>();
+    final I_NodeQueue<Integer> node = new NodeQueue<Integer>();
     
     assertNotNull(node);
   }
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with 
    * the default constructor is null. 
    */
   @Test
   public void test_NodableDefaultConstructor_DataObject_IsNull() {
-    final Nodeable_Queue<Double> node = new NodeQueue<Double>();
+    final I_NodeQueue<Double> node = new NodeQueue<Double>();
     
     assertNull(node.getDataObject());
   }
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with 
    * the default constructor can be set. 
    */
   @Test
   public void test_NodableDefaultConstructor_DataObject_CanBeSet() {
-    final Nodeable_Queue<String> node = new NodeQueue<String>();
+    final I_NodeQueue<String> node = new NodeQueue<String>();
     String dataObject = "I am a data object";
     
     node.setDataObject(dataObject);
@@ -48,56 +48,56 @@ public class NodeQueue_Test {
   }
   
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with the 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with the 
    * data object constructor is not null. 
    */
   @Test
   public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
   	final Float dataObject = new Float(69.2f);
-    final Nodeable_Queue<Float> node = new NodeQueue<Float>(dataObject);
+    final I_NodeQueue<Float> node = new NodeQueue<Float>(dataObject);
     
     assertNotNull(node.getDataObject());
   }
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with the 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with the 
    * next node constructor is not null. 
    */
   @Test
   public void test_Nodable_NextNodeConstructor_NextNode_CanBeSet() {
-	  final Nodeable_Queue<Float> nodeB = new NodeQueue<Float>();
-	  final Nodeable_Queue<Float> nodeA = new NodeQueue<Float>(nodeB);
+	  final I_NodeQueue<Float> nodeB = new NodeQueue<Float>();
+	  final I_NodeQueue<Float> nodeA = new NodeQueue<Float>(nodeB);
 	  
-	  final Nodeable_Queue<Float> expected = nodeB;
-	  final Nodeable_Queue<Float> actual = nodeA.getNextNode();
+	  final I_NodeQueue<Float> expected = nodeB;
+	  final I_NodeQueue<Float> actual = nodeA.getNextNode();
 	  assertEquals(expected, actual);
   }
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with the 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with the 
    * next node constructor is not null. 
    */
   @Test
   public void test_Nodable_DefaultConstructor_DataObject_IsNotNull() {
-	  final Nodeable_Queue<Float> nodeB = new NodeQueue<Float>();
-	  final Nodeable_Queue<Float> nodeA = new NodeQueue<Float>();
+	  final I_NodeQueue<Float> nodeB = new NodeQueue<Float>();
+	  final I_NodeQueue<Float> nodeA = new NodeQueue<Float>();
 	  
 	  nodeA.setNextNode(nodeB);
 	  
-	  final Nodeable_Queue<Float> expected = nodeB;
-	  final Nodeable_Queue<Float> actual = nodeA.getNextNode();
+	  final I_NodeQueue<Float> expected = nodeB;
+	  final I_NodeQueue<Float> actual = nodeA.getNextNode();
 	  assertEquals(expected, actual);
   }
   /**
-   * Tests that the data object of a {@linkplain Nodeable_Queue} created with the 
+   * Tests that the data object of a {@linkplain I_NodeQueue} created with the 
    * parameterized constructor is not null. 
    */
   @Test
   public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
-	  final Nodeable_Queue<Float> nodeB = new NodeQueue<Float>();
+	  final I_NodeQueue<Float> nodeB = new NodeQueue<Float>();
 	  final Float dataObject = new Float(69.0f);
-	  final Nodeable_Queue<Float> nodeA = new NodeQueue<Float>(nodeB, dataObject);
+	  final I_NodeQueue<Float> nodeA = new NodeQueue<Float>(nodeB, dataObject);
 	  
-	  final Nodeable_Queue<Float> expected = nodeB;
-	  final Nodeable_Queue<Float> actual = nodeA.getNextNode();
+	  final I_NodeQueue<Float> expected = nodeB;
+	  final I_NodeQueue<Float> actual = nodeA.getNextNode();
 	  assertEquals(expected, actual);
 	  assertEquals(dataObject, nodeA.getDataObject());
   }

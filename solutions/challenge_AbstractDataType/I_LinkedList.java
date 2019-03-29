@@ -7,31 +7,31 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object nodes within this list hold. 
  * @since 03/24/2019
  */
-interface LinkedListable<NodeDataType> {
+interface I_LinkedList<NodeDataType> {
   
   /**
    * Gets the first node in the list.
    * @return Returns the first node in the list.
    */
-  Nodeable_LinkedList<NodeDataType> head();
+  I_NodeLinkedList<NodeDataType> head();
   /**
    * Gets the last node in the list.
    * @return Returns the last node in the list.
    */
-  Nodeable_LinkedList<NodeDataType> tail();
+  I_NodeLinkedList<NodeDataType> tail();
   
-	public Nodeable_LinkedList<NodeDataType> getNodeAtIndex(final int index)
+	public I_NodeLinkedList<NodeDataType> getNodeAtIndex(final int index)
 	    																												throws InvalidListIndexException;
 	
 	public void setNodeAtIndex(final int index, 
-														 final Nodeable_LinkedList<NodeDataType> node) 
+														 final I_NodeLinkedList<NodeDataType> node) 
 																 throws InvalidListIndexException;
 	
 	public void insertNodeAtIndex(final int index,
-	    													final Nodeable_LinkedList<NodeDataType> node) 
+	    													final I_NodeLinkedList<NodeDataType> node) 
 	    															throws InvalidListIndexException;
 	
-	public void appendNode(final Nodeable_LinkedList<NodeDataType> node);
+	public void appendNode(final I_NodeLinkedList<NodeDataType> node);
   
   /**
    * Gets the number of nodes within this list.
