@@ -20,6 +20,19 @@ interface LinkedListable<NodeDataType> {
    */
   Nodeable_LinkedList<NodeDataType> tail();
   
+	public Nodeable_LinkedList<NodeDataType> getNodeAtIndex(final int index)
+	    																												throws InvalidListIndexException;
+	
+	public void setNodeAtIndex(final int index, 
+														 final Nodeable_LinkedList<NodeDataType> node) 
+																 throws InvalidListIndexException;
+	
+	public void insertNodeAtIndex(final int index,
+	    													final Nodeable_LinkedList<NodeDataType> node) 
+	    															throws InvalidListIndexException;
+	
+	public void appendNode(final Nodeable_LinkedList<NodeDataType> node);
+  
   /**
    * Gets the number of nodes within this list.
    * @return Returns the number of nodes within this list.

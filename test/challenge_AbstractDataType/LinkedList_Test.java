@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.LinkedList;
+
 import org.junit.Test;
 
 import challenge_FizzBuzz.FizzBuzzAnalysisResult;
@@ -67,6 +69,273 @@ public class LinkedList_Test {
     assertNull(list.tail());
   }
   
+  /**
+   * Tests that getting a node at an index of zero if the head has not been 
+   * initialized results in a thrown {@linkplain InvalidListIndexException}. 
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_GetNode_WithNoNode_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    list.getNodeAtIndex(0);
+  }
+  /**
+   * Tests that getting a node at a negative index results in a thrown 
+   * {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_GetNode_AtNegativeIndex_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    list.getNodeAtIndex(-1);
+  }
+  /**
+   * Tests that getting a node at an index greater than the length of the list 
+   * results in a thrown {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_GetNode_AtIndexGreaterThanLength_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    list.getNodeAtIndex(24);
+  }
+  /**
+   * Tests that getting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_GetNode_AtValidIndex_DoesNotThrowException() {
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>(node);
+    
+    final Nodeable_LinkedList<Object> expected = node;
+    final Nodeable_LinkedList<Object> actual = list.getNodeAtIndex(0);
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that getting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_NodeConstructor_GetNode_AtInvalidIndex_ThrowsException() {
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>(node);
+    
+    list.getNodeAtIndex(1);
+  }
+  /**
+   * Tests that getting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_GetNode_AtValidIndex_BehavesAsExpected() {
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>(nodeB);
+    final LinkedListable<Object> list = new LinkedList<Object>(nodeA);
+    
+    final Nodeable_LinkedList<Object> expected = nodeB;
+    final Nodeable_LinkedList<Object> actual = list.getNodeAtIndex(1);
+    assertEquals(expected, actual);
+  }
+  
+  /**
+   * Tests that setting a node at an index of zero if the head has not been 
+   * initialized does not throw an {@linkplain InvalidListIndexException}. 
+   */
+  @Test
+  public void test_DefaultConstructor_SetNode_WithNoNode_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    list.setNodeAtIndex(0, node);
+    
+    final Nodeable_LinkedList<Object> expected = node;
+    final Nodeable_LinkedList<Object> actual = list.getNodeAtIndex(0);
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that setting a node at a negative index results in a thrown 
+   * {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_SetNode_AtNegativeIndex_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    list.setNodeAtIndex(-1, node);
+  }
+  /**
+   * Tests that setting a node at an index greater than the length of the list 
+   * results in a thrown {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_SetNode_AtIndexGreaterThanLength_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    list.setNodeAtIndex(24, node);
+  }
+  /**
+   * Tests that setting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_00() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>(nodeA);
+    
+    list.setNodeAtIndex(0, nodeB);
+    list.setNodeAtIndex(0, nodeC);
+    
+    final Nodeable_LinkedList<Object> expected = nodeC;
+    final Nodeable_LinkedList<Object> actual = list.getNodeAtIndex(0);
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that setting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_01() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>(nodeA);
+    
+    list.setNodeAtIndex(0, nodeB);
+    list.setNodeAtIndex(0, nodeC);
+    
+    final int expected = 1;
+    final int actual = list.length();
+    assertEquals(expected, actual);
+  }
+  /** Tests that setting a node at a valid index behaves as expected. */
+  @Test
+  public void test_NodeConstructor_SetNode_AtValidIndex_BehavesAsExpected() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    
+    list.setNodeAtIndex(0, nodeA);
+    list.setNodeAtIndex(1, nodeB);
+    list.setNodeAtIndex(2, nodeC);
+    
+    final int expected = 3;
+    final int actual = list.length();
+    assertEquals(expected, actual);
+  }
+  
+  /** Tests that inserting a node at a valid index behaves as expected. */
+  @Test
+  public void test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected() {
+  	final Nodeable_LinkedList<String> node = new NodeLinkedList<String>("I am the first node.");
+    final LinkedListable<String> list = new LinkedList<String>();
+    
+    list.insertNodeAtIndex(0, node);
+    
+    final int expected = 1;
+    final int actual = list.length();
+    assertEquals(expected, actual);
+  }
+  /** Tests that inserting a node at a valid index behaves as expected. */
+  @Test
+  public void test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_0() {
+  	final Nodeable_LinkedList<String> nodeA = new NodeLinkedList<String>("I am the first node.");
+  	final Nodeable_LinkedList<String> nodeB = new NodeLinkedList<String>("I am the second node.");
+    final LinkedListable<String> list = new LinkedList<String>(nodeA);
+    
+    list.insertNodeAtIndex(0, nodeB);
+    
+    final int expected = 1;
+    final int actual = list.length();
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that setting a node at an index of zero if the head has not been 
+   * initialized does not throw an {@linkplain InvalidListIndexException}. 
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_InsertNode_WithNoNode_ThrowsException() {
+  	final Nodeable_LinkedList<String> nodeA = new NodeLinkedList<String>("I am the first node.");
+  	final Nodeable_LinkedList<String> nodeB = new NodeLinkedList<String>("I am the second node.");
+    final LinkedListable<String> list = new LinkedList<String>(nodeA);
+    
+    list.insertNodeAtIndex(-1, nodeB);
+  }
+  /**
+   * Tests that setting a node at a negative index results in a thrown 
+   * {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_InsertNode_AtNegativeIndex_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    list.setNodeAtIndex(-1, node);
+  }
+  /**
+   * Tests that setting a node at an index greater than the length of the list 
+   * results in a thrown {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_DefaultConstructor_InsertNode_AtIndexGreaterThanLength_ThrowsException() {
+    final LinkedListable<Object> list = new LinkedList<Object>();
+
+  	final Nodeable_LinkedList<Object> node = new NodeLinkedList<Object>();
+    list.setNodeAtIndex(24, node);
+  }
+  /**
+   * Tests that setting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_00() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>(nodeA);
+    
+    list.setNodeAtIndex(0, nodeB);
+    list.setNodeAtIndex(0, nodeC);
+    
+    final Nodeable_LinkedList<Object> expected = nodeC;
+    final Nodeable_LinkedList<Object> actual = list.getNodeAtIndex(0);
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that setting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test
+  public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_01() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    
+    list.insertNodeAtIndex(0, nodeA);
+    list.insertNodeAtIndex(1, nodeB);
+    list.insertNodeAtIndex(2, nodeC);
+    
+    final int expected = 3;
+    final int actual = list.length();
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that setting a node at a valid index does not throw 
+   * an {@linkplain InvalidListIndexException}.
+   */
+  @Test (expected = InvalidListIndexException.class)
+  public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_02() {
+  	final Nodeable_LinkedList<Object> nodeA = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeB = new NodeLinkedList<Object>();
+  	final Nodeable_LinkedList<Object> nodeC = new NodeLinkedList<Object>();
+    final LinkedListable<Object> list = new LinkedList<Object>();
+    
+    list.insertNodeAtIndex(0, nodeA);
+    list.insertNodeAtIndex(1, nodeB);
+    list.insertNodeAtIndex(5, nodeC);
+  }
   
   /**
    * Tests that a {@linkplain LinkedList} created with the 
@@ -74,7 +343,7 @@ public class LinkedList_Test {
    */
   @Test
   public void test_ParameterizedConstructorCreatesANonEmptyList() {
-    final Nodeable_LinkedList<Animal> node = new Node<Animal>();
+    final Nodeable_LinkedList<Animal> node = new NodeLinkedList<Animal>();
     final LinkedListable<Animal> list = new LinkedList<Animal>(node);
     
     assertFalse(list.isEmpty());
@@ -136,6 +405,22 @@ public class LinkedList_Test {
    */
   @Test
   public void test_MultipleNodes_TailIsSet() {
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> nodeA = new NodeLinkedList<FizzBuzzAnalysisResult>();
+    final LinkedListable<FizzBuzzAnalysisResult> list = new LinkedList<FizzBuzzAnalysisResult>(nodeA);
+    
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> nodeB = new NodeLinkedList<FizzBuzzAnalysisResult>();
+    nodeA.setNextNode(nodeB);
+    
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> expected = nodeB;
+    final Nodeable_LinkedList<FizzBuzzAnalysisResult> actual = list.tail();
+    assertEquals(expected, actual);
+  }
+  /**
+   * Tests that adding a node after the head of a list makes that added node 
+   * the tail of said list. 
+   */
+  @Test
+  public void test_DefaultConstructor_TailIsSet() {
     final Nodeable_LinkedList<FizzBuzzAnalysisResult> nodeA = new NodeLinkedList<FizzBuzzAnalysisResult>();
     final LinkedListable<FizzBuzzAnalysisResult> list = new LinkedList<FizzBuzzAnalysisResult>(nodeA);
     
