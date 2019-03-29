@@ -19,10 +19,10 @@ import challenge_Inheritance.Manatee;
 import challenge_Inheritance.SurgeonFish;
 
 /**
- * Test class for testing {@linkplain Queue_Test QueueNodes}.
+ * Test class for testing {@linkplain Queue Queues}.
  * @author jacobwatson
  * @version 1.0
- * @since 03/24/2019
+ * @since 03/28/2019
  */
 public class Queue_Test {
 	private final String[] mTestDataObjects = new String[] {
@@ -317,5 +317,25 @@ public class Queue_Test {
     	assertEquals(nodesToAdd[i], queue.peek());
     	assertEquals(nodesToAdd[i], queue.dequeue());
     }
+  }
+  /** Tests that a {@linkplain Queueable} behaves as expected - Test 5. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_05() {
+  	final Animal[] nodesToAdd = null;
+  	
+    final Queueable<Animal> queue = new Queue<Animal>();
+    queue.enqueue(nodesToAdd);
+    
+    assertNull(queue.dequeue());
+  }
+  /** Tests that a {@linkplain Queueable} behaves as expected - Test 6. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_06() {
+  	final Animal[] nodesToAdd = null;
+  	
+    final Queueable<Animal> queue = new Queue<Animal>(nodesToAdd);
+    queue.enqueue(nodesToAdd);
+    
+    assertNull(queue.peek());
   }
 }
