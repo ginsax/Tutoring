@@ -1,6 +1,8 @@
 package challenge_AbstractDataType;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
@@ -12,76 +14,24 @@ import org.junit.Test;
  */
 public class Test_NodeLinkedList {
   
-  
   /**
-   * Tests that a {@linkplain I_NodeLinkedList} created with the default constructor is not null. 
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} can be set.
    */
   @Test
-  public void test_NodableDefaultConstructor_IsNotNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
+  public void test_Nodable_DataObject_CanBeSet() {
+    final Double expected = new Double(69.69);
     
-    assertNotNull(node);
-  }
-  /**
-   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with the 
-   * default constructor is null. 
-   */
-  @Test
-  public void test_NodableDefaultConstructor_NextNode_IsNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
+    final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>();
+    node.setDataObject(expected);
     
-    assertNull(node.getNextNode());
-  }
-  /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * default constructor is null. 
-   */
-  @Test
-  public void test_NodableDefaultConstructor_DataObject_IsNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
-    
-    assertNull(node.getDataObject());
+    final Double actual = node.getDataObject();
+    assertEquals(expected,
+                 actual);
   }
   
   /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * Node constructor is null. 
-   */
-  @Test
-  public void test_Nodable_NodeConstructor_DataObject_IsNull() {
-    final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>();
-    final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(nodeB);
-    
-    assertNull(nodeA.getDataObject());
-  }
-  /**
-   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with the 
-   * Node constructor is not null. 
-   */
-  @Test
-  public void test_Nodable_NodeConstructor_NextNode_IsNotNull() {
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>();
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB);
-    
-    final I_NodeLinkedList<Double> expected = nodeB;
-    final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
-    assertEquals(expected, actual);
-  }
-  
-  /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * Data Object constructor is not null. 
-   */
-  @Test
-  public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
-    final Double dataObject = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(dataObject);
-    
-    assertNotNull(nodeA.getDataObject());
-  }
-  /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * has the value that was passed in to the constructor. 
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the has the value that was passed in to the constructor.
    */
   @Test
   public void test_Nodable_DataObjectConstructor_DataObject_HasSetValue() {
@@ -91,11 +41,25 @@ public class Test_NodeLinkedList {
     final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>(dataObject);
     
     final Double actual = node.getDataObject();
-    assertEquals(expected, actual);
+    assertEquals(expected,
+                 actual);
   }
+  
   /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * Node constructor is null. 
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the Data Object constructor is not null.
+   */
+  @Test
+  public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
+    final Double dataObject = new Double(69.69);
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(dataObject);
+    
+    assertNotNull(nodeA.getDataObject());
+  }
+  
+  /**
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the Node constructor is null.
    */
   @Test
   public void test_Nodable_DataObjectConstructor_NextNode_IsNull() {
@@ -104,55 +68,10 @@ public class Test_NodeLinkedList {
     
     final I_NodeLinkedList<Double> expected = nodeB;
     final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
-    assertEquals(expected, actual);
+    assertEquals(expected,
+                 actual);
   }
   
-  /**
-   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with the 
-   * parameterized constructor is not null. 
-   */
-  @Test
-  public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
-    final Double dataObjectB = new Double(96.96);
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
-    
-    final Double dataObjectA = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB, dataObjectA);
-    
-    
-    final Double expected = dataObjectB;
-    final Double actual   = nodeA.getNextNode().getDataObject();
-    assertEquals(expected, actual);
-  }
-  /**
-   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with the 
-   * parameterized constructor is not null. 
-   */
-  @Test
-  public void test_Nodable_ParameterizedConstructor_NextNode_IsNotNull() {
-    final Double dataObjectB = new Double(96.96);
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
-    
-    final Double dataObjectA = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB, dataObjectA);
-    
-    
-    final I_NodeLinkedList<Double> expected = nodeB;
-    final I_NodeLinkedList<Double> actual   = nodeA.getNextNode();
-    assertEquals(expected, actual);
-  }
-  
-  /** Tests that the data object of a {@linkplain I_NodeLinkedList} can be set. */
-  @Test
-  public void test_Nodable_DataObject_CanBeSet() {
-    final Double expected = new Double(69.69);
-    
-    final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>();
-    node.setDataObject(expected);
-    
-    final Double actual = node.getDataObject();
-    assertEquals(expected, actual);
-  }
   /** Tests that the next node of a {@linkplain I_NodeLinkedList} can be set. */
   @Test
   public void test_Nodable_NextNode_CanBeSet() {
@@ -163,6 +82,105 @@ public class Test_NodeLinkedList {
     
     final I_NodeLinkedList<String> expected = nodeB;
     final I_NodeLinkedList<String> actual = nodeA.getNextNode();
-    assertEquals(expected, actual);
+    assertEquals(expected,
+                 actual);
+  }
+  
+  /**
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the Node constructor is null.
+   */
+  @Test
+  public void test_Nodable_NodeConstructor_DataObject_IsNull() {
+    final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>();
+    final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(nodeB);
+    
+    assertNull(nodeA.getDataObject());
+  }
+  
+  /**
+   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with
+   * the Node constructor is not null.
+   */
+  @Test
+  public void test_Nodable_NodeConstructor_NextNode_IsNotNull() {
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>();
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB);
+    
+    final I_NodeLinkedList<Double> expected = nodeB;
+    final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
+    assertEquals(expected,
+                 actual);
+  }
+  
+  /**
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the parameterized constructor is not null.
+   */
+  @Test
+  public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
+    final Double dataObjectB = new Double(96.96);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
+    
+    final Double dataObjectA = new Double(69.69);
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
+                                                                dataObjectA);
+    
+    final Double expected = dataObjectB;
+    final Double actual = nodeA.getNextNode().getDataObject();
+    assertEquals(expected,
+                 actual);
+  }
+  
+  /**
+   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with
+   * the parameterized constructor is not null.
+   */
+  @Test
+  public void test_Nodable_ParameterizedConstructor_NextNode_IsNotNull() {
+    final Double dataObjectB = new Double(96.96);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
+    
+    final Double dataObjectA = new Double(69.69);
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
+                                                                dataObjectA);
+    
+    final I_NodeLinkedList<Double> expected = nodeB;
+    final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
+    assertEquals(expected,
+                 actual);
+  }
+  
+  /**
+   * Tests that the data object of a {@linkplain I_NodeLinkedList} created with
+   * the default constructor is null.
+   */
+  @Test
+  public void test_NodableDefaultConstructor_DataObject_IsNull() {
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
+    
+    assertNull(node.getDataObject());
+  }
+  
+  /**
+   * Tests that a {@linkplain I_NodeLinkedList} created with the default
+   * constructor is not null.
+   */
+  @Test
+  public void test_NodableDefaultConstructor_IsNotNull() {
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
+    
+    assertNotNull(node);
+  }
+  
+  /**
+   * Tests that the next node of a {@linkplain I_NodeLinkedList} created with
+   * the default constructor is null.
+   */
+  @Test
+  public void test_NodableDefaultConstructor_NextNode_IsNull() {
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
+    
+    assertNull(node.getNextNode());
   }
 }

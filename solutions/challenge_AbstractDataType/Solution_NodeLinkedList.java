@@ -9,16 +9,39 @@ package challenge_AbstractDataType;
  */
 final class Solution_NodeLinkedList<NodeDataType> implements I_NodeLinkedList<NodeDataType> {
   /** The data object of this node. */
-  private NodeDataType mDataObject;
+  private NodeDataType                   mDataObject;
   /** The next node in a list. */
   private I_NodeLinkedList<NodeDataType> mNextNode;
   
   
   /** Instantiates a new node. */
   Solution_NodeLinkedList() {
-    mNextNode   = null;
+    mNextNode = null;
     mDataObject = null;
   }
+  
+  /**
+   * Instantiates a new node with the given <code>nextNode</code>.
+   * @param nextNode The next node in a list.
+   */
+  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode) {
+    this();
+    mNextNode = nextNode;
+  }
+  
+  /**
+   * Instantiates a new node with the given <code>nextNode</code> and
+   * <code>dataObject</code>.
+   * @param nextNode The next node in a list.
+   * @param dataObject The data object of this node.
+   */
+  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode,
+                          final NodeDataType dataObject) {
+    this();
+    mNextNode = nextNode;
+    mDataObject = dataObject;
+  }
+  
   /**
    * Instantiates a new node with the given <code>dataObject</code>.
    * @param dataObject The data object of this node.
@@ -27,43 +50,24 @@ final class Solution_NodeLinkedList<NodeDataType> implements I_NodeLinkedList<No
     this();
     mDataObject = dataObject;
   }
-  /**
-   * Instantiates a new node with the given <code>nextNode</code>.
-   * @param nextNode The next node in a list.
-   */
-  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode) {
-    this();
-    mNextNode   = nextNode;
-  }
-  /**
-   * Instantiates a new node with the given <code>nextNode</code> and 
-   * <code>dataObject</code>.
-   * @param nextNode The next node in a list.
-   * @param dataObject The data object of this node.
-   */
-  Solution_NodeLinkedList(final I_NodeLinkedList<NodeDataType> nextNode, 
-                final NodeDataType dataObject) {
-    this();
-    mNextNode   = nextNode;
-    mDataObject = dataObject;
-  }
-  
-  
-  @Override
-  public I_NodeLinkedList<NodeDataType> getNextNode() {
-    return mNextNode;
-  }
-  @Override
-  public void setNextNode(final I_NodeLinkedList<NodeDataType> nextNode) {
-    mNextNode = nextNode;
-  }
   
   @Override
   public NodeDataType getDataObject() {
     return mDataObject;
   }
+  
+  @Override
+  public I_NodeLinkedList<NodeDataType> getNextNode() {
+    return mNextNode;
+  }
+  
   @Override
   public void setDataObject(final NodeDataType dataObject) {
     mDataObject = dataObject;
+  }
+  
+  @Override
+  public void setNextNode(final I_NodeLinkedList<NodeDataType> nextNode) {
+    mNextNode = nextNode;
   }
 }

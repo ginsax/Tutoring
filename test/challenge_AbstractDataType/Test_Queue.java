@@ -25,53 +25,158 @@ import challenge_Inheritance.SurgeonFish;
  * @since 03/28/2019
  */
 public class Test_Queue {
-	private final String[] mTestDataObjects = new String[] {
-			"I am the first node in a queue", 
-			"I am the second node in a queue", 
-			"I am the third node in a queue", 
-			"I am the fourth node in a queue", 
-			};
+  private final String[] mTestDataObjects = new String[] {
+      "I am the first node in a queue",
+      "I am the second node in a queue",
+      "I am the third node in a queue",
+      "I am the fourth node in a queue",
+  };
   
   
-  /**
-   * Tests that a {@linkplain I_Queue} created with the default 
-   * constructor is not null. 
-   */
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 0. */
   @Test
-  public void test_QueueableDefaultConstructor_IsNotNull() {
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_00() {
+    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
+    
+    final String nodeValue = "I am the fifth node in a queue";
+    queue.enqueue(nodeValue);
+    
+    assertEquals(mTestDataObjects[0],
+                 queue.dequeue());
+    assertEquals(mTestDataObjects[1],
+                 queue.dequeue());
+    assertEquals(mTestDataObjects[2],
+                 queue.dequeue());
+    assertEquals(mTestDataObjects[3],
+                 queue.dequeue());
+    assertEquals(nodeValue,
+                 queue.peek());
+    assertEquals(nodeValue,
+                 queue.dequeue());
+  }
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 1. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_01() {
+    final Integer[] nodesToAdd = new Integer[] {
+        new Integer(5),
+        new Integer(6),
+        new Integer(9),
+        new Integer(129),
+        new Integer(72),
+        new Integer(-5),
+        new Integer(234),
+        new Integer(90),
+    };
+    
     final I_Queue<Integer> queue = new Queue<Integer>();
+    queue.enqueue(nodesToAdd);
     
-    assertNotNull(queue);
+    for (final Integer element : nodesToAdd) {
+      assertEquals(element,
+                   queue.peek());
+      assertEquals(element,
+                   queue.dequeue());
+    }
   }
-  /**
-   * Tests that enqueuing a {@linkplain I_Queue} created with the default 
-   * constructor - without adding any nodes - is not null. 
-   */
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 2. */
   @Test
-  public void test_QueueableDefaultConstructor_Enqueuing_IsNotNull() {
-  	final String nodeValue = "I am a node in a queue";
-    final I_Queue<String> queue = new Queue<String>();
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_02() {
+    final Integer[] nodesToAdd = new Integer[] {
+        new Integer(5),
+        new Integer(6),
+        new Integer(9),
+        new Integer(129),
+        new Integer(72),
+        new Integer(-5),
+        new Integer(234),
+        new Integer(90),
+    };
     
-    queue.enqueue(nodeValue);
+    final I_Queue<Integer> queue = new Queue<Integer>(nodesToAdd);
     
-    assertNotNull(queue.peek());
+    for (final Integer element : nodesToAdd) {
+      assertEquals(element,
+                   queue.peek());
+      assertEquals(element,
+                   queue.dequeue());
+    }
   }
-  /**
-   * Tests that enqueuing a {@linkplain I_Queue} created with the default 
-   * constructor - without adding any nodes - is not empty. 
-   */
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 3. */
   @Test
-  public void test_QueueableDefaultConstructor_Enqueuing_IsNotEmpty() {
-  	final String nodeValue = "I am a node in a queue";
-    final I_Queue<String> queue = new Queue<String>();
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_03() {
+    final Double[] nodesToAdd = new Double[] {
+        new Double(50.293),
+        new Double(61.4810),
+        new Double(9.019),
+        new Double(1.0000000001),
+        new Double(72.1234),
+        new Double(-33.0),
+        new Double(234.0),
+        new Double(90.),
+    };
     
-    queue.enqueue(nodeValue);
+    final I_Queue<Double> queue = new Queue<Double>(nodesToAdd);
     
-    assertFalse(queue.isEmpty());
+    for (final Double element : nodesToAdd) {
+      assertEquals(element,
+                   queue.peek());
+      assertEquals(element,
+                   queue.dequeue());
+    }
   }
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 4. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_04() {
+    final Animal[] nodesToAdd = new Animal[] {
+        new Mammal(),
+        new Bird(),
+        new Fish(),
+        new Kangaroo(),
+        new Eel(),
+        new Hummingbird(),
+        new Manatee(),
+        new SurgeonFish(),
+    };
+    
+    final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);
+    
+    for (final Animal element : nodesToAdd) {
+      assertEquals(element,
+                   queue.peek());
+      assertEquals(element,
+                   queue.dequeue());
+    }
+  }
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 5. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_05() {
+    final Animal[] nodesToAdd = null;
+    
+    final I_Queue<Animal> queue = new Queue<Animal>();
+    queue.enqueue(nodesToAdd);
+    
+    assertNull(queue.dequeue());
+  }
+  
+  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 6. */
+  @Test
+  public void test_QueueableConstructor_NodesAreOrderedAsExpected_06() {
+    final Animal[] nodesToAdd = null;
+    
+    final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);
+    queue.enqueue(nodesToAdd);
+    
+    assertNull(queue.peek());
+  }
+  
   /**
-   * Tests that dequeuing a {@linkplain I_Queue} created with the default 
-   * constructor - without adding any nodes - is null. 
+   * Tests that dequeuing a {@linkplain I_Queue} created with the default
+   * constructor - without adding any nodes - is null.
    */
   @Test
   public void test_QueueableDefaultConstructor_Dequeuing_IsNull() {
@@ -79,31 +184,38 @@ public class Test_Queue {
     
     assertNull(queue.dequeue());
   }
+  
   /**
-   * Tests that peeking a {@linkplain I_Queue} created with the default 
-   * constructor - without adding any nodes - is null. 
+   * Tests that enqueuing a {@linkplain I_Queue} created with the default
+   * constructor - without adding any nodes - is not empty.
    */
   @Test
-  public void test_QueueableDefaultConstructor_Peeking_IsNull() {
+  public void test_QueueableDefaultConstructor_Enqueuing_IsNotEmpty() {
+    final String nodeValue = "I am a node in a queue";
     final I_Queue<String> queue = new Queue<String>();
     
-    assertNull(queue.peek());
+    queue.enqueue(nodeValue);
+    
+    assertFalse(queue.isEmpty());
   }
+  
   /**
-   * Tests that the length of a {@linkplain I_Queue} created with the 
-   * default constructor - without adding any nodes - is zero. 
+   * Tests that enqueuing a {@linkplain I_Queue} created with the default
+   * constructor - without adding any nodes - is not null.
    */
   @Test
-  public void test_QueueableDefaultConstructor_Length_IsZero() {
-    final I_Queue<Object> queue = new Queue<Object>();
+  public void test_QueueableDefaultConstructor_Enqueuing_IsNotNull() {
+    final String nodeValue = "I am a node in a queue";
+    final I_Queue<String> queue = new Queue<String>();
     
-    final int expected = 0;
-    final int actual = queue.length();
-    assertEquals(expected, actual);
+    queue.enqueue(nodeValue);
+    
+    assertNotNull(queue.peek());
   }
+  
   /**
-   * Tests that a {@linkplain I_Queue} created with the default constructor 
-   * - without adding any nodes - is empty. 
+   * Tests that a {@linkplain I_Queue} created with the default constructor -
+   * without adding any nodes - is empty.
    */
   @Test
   public void test_QueueableDefaultConstructor_IsEmpty() {
@@ -112,21 +224,95 @@ public class Test_Queue {
     assertTrue(queue.isEmpty());
   }
   
-  
   /**
-   * Tests that a {@linkplain I_Queue} created with the parameterized  
-   * constructor is not null. 
+   * Tests that a {@linkplain I_Queue} created with the default constructor is
+   * not null.
    */
   @Test
-  public void test_QueueableParameterizedConstructor_IsNotNull() {
-  	final Integer dataObject = new Integer(0);
-    final I_Queue<Integer> queue = new Queue<Integer>(dataObject);
+  public void test_QueueableDefaultConstructor_IsNotNull() {
+    final I_Queue<Integer> queue = new Queue<Integer>();
     
     assertNotNull(queue);
   }
+  
   /**
-   * Tests that enqueuing a {@linkplain I_Queue} created with the 
-   * parameterized constructor is not null. 
+   * Tests that the length of a {@linkplain I_Queue} created with the default
+   * constructor - without adding any nodes - is zero.
+   */
+  @Test
+  public void test_QueueableDefaultConstructor_Length_IsZero() {
+    final I_Queue<Object> queue = new Queue<Object>();
+    
+    final int expected = 0;
+    final int actual = queue.length();
+    assertEquals(expected,
+                 actual);
+  }
+  
+  /**
+   * Tests that peeking a {@linkplain I_Queue} created with the default
+   * constructor - without adding any nodes - is null.
+   */
+  @Test
+  public void test_QueueableDefaultConstructor_Peeking_IsNull() {
+    final I_Queue<String> queue = new Queue<String>();
+    
+    assertNull(queue.peek());
+  }
+  
+  /**
+   * Tests that dequeuing a {@linkplain I_Queue} created with the parameterized
+   * constructor - with more than one node - is not null.
+   */
+  @Test
+  public void test_QueueableParameterizedConstructor_DequeuingMultiple_IsNotNull() {
+    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
+    
+    assertNotNull(queue.dequeue());
+  }
+  
+  /**
+   * Tests that dequeuing a {@linkplain I_Queue} created with the parameterized
+   * constructor - with only one node - is not null.
+   */
+  @Test
+  public void test_QueueableParameterizedConstructor_DequeuingSingle_IsNull() {
+    final Double nodeValue = new Double(0.1);
+    final I_Queue<Double> queue = new Queue<Double>(nodeValue);
+    
+    assertNotNull(queue.dequeue());
+  }
+  
+  /**
+   * Tests that dequeuing a {@linkplain I_Queue} created with the parameterized
+   * constructor - with only one node - twice is null.
+   */
+  @Test
+  public void test_QueueableParameterizedConstructor_DequeuingSingle_Twice_IsNull() {
+    final Double nodeValue = new Double(0.1);
+    final I_Queue<Double> queue = new Queue<Double>(nodeValue);
+    
+    queue.dequeue();
+    assertNull(queue.dequeue());
+  }
+  
+  /**
+   * Tests that enqueuing a {@linkplain I_Queue} created with the parameterized
+   * constructor is not empty.
+   */
+  @Test
+  public void test_QueueableParameterizedConstructor_Enqueuing_IsNotEmpty() {
+    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
+    
+    final String nodeValue = "I am the fifth node in a queue";
+    queue.enqueue(nodeValue);
+    
+    assertFalse(queue.isEmpty());
+  }
+  
+  /**
+   * Tests that enqueuing a {@linkplain I_Queue} created with the parameterized
+   * constructor is not null.
    */
   @Test
   public void test_QueueableParameterizedConstructor_Enqueuing_IsNotNull() {
@@ -137,78 +323,10 @@ public class Test_Queue {
     
     assertNotNull(queue.peek());
   }
+  
   /**
-   * Tests that enqueuing a {@linkplain I_Queue} created with the 
-   * parameterized constructor is not empty. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_Enqueuing_IsNotEmpty() {
-    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
-
-    final String nodeValue = "I am the fifth node in a queue";
-    queue.enqueue(nodeValue);
-    
-    assertFalse(queue.isEmpty());
-  }
-  /**
-   * Tests that dequeuing a {@linkplain I_Queue} created with the 
-   * parameterized constructor - with only one node - is not null. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_DequeuingSingle_IsNull() {
-    final Double nodeValue = new Double(0.1);
-    final I_Queue<Double> queue = new Queue<Double>(nodeValue);
-    
-    assertNotNull(queue.dequeue());
-  }
-  /**
-   * Tests that dequeuing a {@linkplain I_Queue} created with the 
-   * parameterized constructor - with only one node - twice is null. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_DequeuingSingle_Twice_IsNull() {
-    final Double nodeValue = new Double(0.1);
-    final I_Queue<Double> queue = new Queue<Double>(nodeValue);
-
-    queue.dequeue();
-    assertNull(queue.dequeue());
-  }
-  /**
-   * Tests that dequeuing a {@linkplain I_Queue} created with the 
-   * parameterized constructor - with more than one node - is not null. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_DequeuingMultiple_IsNotNull() {
-    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
-    
-    assertNotNull(queue.dequeue());
-  }
-  /**
-   * Tests that peeking a {@linkplain I_Queue} created with the 
-   * parameterized constructor is not null. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_Peeking_IsNotNull() {
-    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
-    
-    assertNotNull(queue.peek());
-  }
-  /**
-   * Tests that the length of a {@linkplain I_Queue} created with the 
-   * parameterized constructor is equal to the number of parameters passed to 
-   * the constructor. 
-   */
-  @Test
-  public void test_QueueableParameterizedConstructor_Length_IsNumberOfParameters() {
-    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
-    
-    final int expected = mTestDataObjects.length;
-    final int actual = queue.length();
-    assertEquals(expected, actual);
-  }
-  /**
-   * Tests that a {@linkplain I_Queue} created with the parameterized 
-   * constructor - without removing any nodes - is not empty. 
+   * Tests that a {@linkplain I_Queue} created with the parameterized
+   * constructor - without removing any nodes - is not empty.
    */
   @Test
   public void test_QueueableParameterizedConstructor_IsNotEmpty() {
@@ -217,125 +335,41 @@ public class Test_Queue {
     assertFalse(queue.isEmpty());
   }
   
+  /**
+   * Tests that a {@linkplain I_Queue} created with the parameterized
+   * constructor is not null.
+   */
+  @Test
+  public void test_QueueableParameterizedConstructor_IsNotNull() {
+    final Integer dataObject = new Integer(0);
+    final I_Queue<Integer> queue = new Queue<Integer>(dataObject);
+    
+    assertNotNull(queue);
+  }
   
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 0. */
+  /**
+   * Tests that the length of a {@linkplain I_Queue} created with the
+   * parameterized constructor is equal to the number of parameters passed to
+   * the constructor.
+   */
   @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_00() {
+  public void test_QueueableParameterizedConstructor_Length_IsNumberOfParameters() {
     final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
-
-    final String nodeValue = "I am the fifth node in a queue";
-    queue.enqueue(nodeValue);
     
-    assertEquals(mTestDataObjects[0], queue.dequeue());
-    assertEquals(mTestDataObjects[1], queue.dequeue());
-    assertEquals(mTestDataObjects[2], queue.dequeue());
-    assertEquals(mTestDataObjects[3], queue.dequeue());
-  	assertEquals(nodeValue, 					queue.peek());
-    assertEquals(nodeValue, 					queue.dequeue());
+    final int expected = mTestDataObjects.length;
+    final int actual = queue.length();
+    assertEquals(expected,
+                 actual);
   }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 1. */
+  
+  /**
+   * Tests that peeking a {@linkplain I_Queue} created with the parameterized
+   * constructor is not null.
+   */
   @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_01() {
-  	final Integer[] nodesToAdd = new Integer[] {
-  			new Integer(5), 
-  			new Integer(6), 
-  			new Integer(9), 
-  			new Integer(129), 
-  			new Integer(72), 
-  			new Integer(-5), 
-  			new Integer(234), 
-  			new Integer(90), 
-  	};
-  	
-    final I_Queue<Integer> queue = new Queue<Integer>();
-    queue.enqueue(nodesToAdd);
+  public void test_QueueableParameterizedConstructor_Peeking_IsNotNull() {
+    final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
     
-    for (int i = 0; i < nodesToAdd.length; i++) {
-    	assertEquals(nodesToAdd[i], queue.peek());
-    	assertEquals(nodesToAdd[i], queue.dequeue());
-    }
-  }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 2. */
-  @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_02() {
-  	final Integer[] nodesToAdd = new Integer[] {
-  			new Integer(5), 
-  			new Integer(6), 
-  			new Integer(9), 
-  			new Integer(129), 
-  			new Integer(72), 
-  			new Integer(-5), 
-  			new Integer(234), 
-  			new Integer(90), 
-  	};
-  	
-    final I_Queue<Integer> queue = new Queue<Integer>(nodesToAdd);
-
-    for (int i = 0; i < nodesToAdd.length; i++) {
-    	assertEquals(nodesToAdd[i], queue.peek());
-    	assertEquals(nodesToAdd[i], queue.dequeue());
-    }
-  }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 3. */
-  @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_03() {
-  	final Double[] nodesToAdd = new Double[] {
-  			new Double(50.293), 
-  			new Double(61.4810), 
-  			new Double(9.019), 
-  			new Double(1.0000000001), 
-  			new Double(72.1234), 
-  			new Double(-33.0), 
-  			new Double(234.0), 
-  			new Double(90.), 
-  	};
-  	
-    final I_Queue<Double> queue = new Queue<Double>(nodesToAdd);
-
-    for (int i = 0; i < nodesToAdd.length; i++) {
-    	assertEquals(nodesToAdd[i], queue.peek());
-    	assertEquals(nodesToAdd[i], queue.dequeue());
-    }
-  }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 4. */
-  @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_04() {
-  	final Animal[] nodesToAdd = new Animal[] {
-  			new Mammal(), 
-  			new Bird(), 
-  			new Fish(), 
-  			new Kangaroo(), 
-  			new Eel(), 
-  			new Hummingbird(), 
-  			new Manatee(), 
-  			new SurgeonFish(), 
-  	};
-  	
-    final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);
-
-    for (int i = 0; i < nodesToAdd.length; i++) {
-    	assertEquals(nodesToAdd[i], queue.peek());
-    	assertEquals(nodesToAdd[i], queue.dequeue());
-    }
-  }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 5. */
-  @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_05() {
-  	final Animal[] nodesToAdd = null;
-  	
-    final I_Queue<Animal> queue = new Queue<Animal>();
-    queue.enqueue(nodesToAdd);
-    
-    assertNull(queue.dequeue());
-  }
-  /** Tests that a {@linkplain I_Queue} behaves as expected - Test 6. */
-  @Test
-  public void test_QueueableConstructor_NodesAreOrderedAsExpected_06() {
-  	final Animal[] nodesToAdd = null;
-  	
-    final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);
-    queue.enqueue(nodesToAdd);
-    
-    assertNull(queue.peek());
+    assertNotNull(queue.peek());
   }
 }

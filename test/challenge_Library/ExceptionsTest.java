@@ -1,9 +1,9 @@
 package challenge_Library;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-
 
 /**
  * Test class that is intended to test all exceptions.
@@ -19,8 +19,10 @@ public class ExceptionsTest {
   @Test
   public void test_EmptyFileNameException_CanBeCreated() {
     final LibraryException exception = new EmptyFileNameException();
-    assertNotNull("Tests that a EmptyFileNameException can be created.", exception);
+    assertNotNull("Tests that a EmptyFileNameException can be created.",
+                  exception);
   }
+  
   /**
    * Tests that a {@link EmptyFileNameException} can have a message set.
    */
@@ -30,9 +32,9 @@ public class ExceptionsTest {
     final LibraryException exception = new EmptyFileNameException(expected);
     
     final String actual = exception.getMessage();
-    assertEquals("Tests that a EmptyFileNameException can have a message set.", 
-        expected, 
-                  actual);
+    assertEquals("Tests that a EmptyFileNameException can have a message set.",
+                 expected,
+                 actual);
   }
   
   /**
@@ -41,8 +43,10 @@ public class ExceptionsTest {
   @Test
   public void test_InvalidBookSeriesNameException_CanBeCreated() {
     final LibraryException exception = new InvalidBookSeriesNameException();
-    assertNotNull("Tests that a InvalidBookSeriesNameException can be created.", exception);
+    assertNotNull("Tests that a InvalidBookSeriesNameException can be created.",
+                  exception);
   }
+  
   /**
    * Tests that a {@link EmptyFileNameException} can have a message set.
    */
@@ -52,9 +56,9 @@ public class ExceptionsTest {
     final LibraryException exception = new InvalidBookSeriesNameException(expected);
     
     final String actual = exception.getMessage();
-    assertEquals("Tests that a InvalidBookSeriesNameException can have a message set.", 
-                  expected, 
-                  actual);
+    assertEquals("Tests that a InvalidBookSeriesNameException can have a message set.",
+                 expected,
+                 actual);
   }
   
 }

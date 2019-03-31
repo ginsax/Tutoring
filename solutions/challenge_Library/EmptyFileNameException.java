@@ -1,7 +1,7 @@
 package challenge_Library;
 
 /**
- * Exception that is intended to be thrown when an empty file name has been 
+ * Exception that is intended to be thrown when an empty file name has been
  * encountered.
  * @author jacobwatson
  * @version 1.0
@@ -10,6 +10,11 @@ package challenge_Library;
 @SuppressWarnings("serial")
 public class EmptyFileNameException extends LibraryException {
   
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  
   
   /**
    * Initializes a Library exception.
@@ -17,14 +22,14 @@ public class EmptyFileNameException extends LibraryException {
   public EmptyFileNameException() {
     super();
   }
+  
   /**
-   * Initializes an empty file name exception with the given 
+   * Initializes an empty file name exception with the given
    * {@code errorMessage}.
    * @param errorMessage The reason for the error message.
    */
-  public EmptyFileNameException(String errorMessage) {
+  public EmptyFileNameException(final String errorMessage) {
     super(errorMessage);
   }
-  
   
 }
