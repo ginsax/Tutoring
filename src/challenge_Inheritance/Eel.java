@@ -2,13 +2,14 @@ package challenge_Inheritance;
 
 /**
  * This is a class that represents a eel.
+ * 
  * @author jacobwatson
  * @since 12/28/2018
  */
 public class Eel extends Fish {
-
+	
 	/**
-	 * This is the default constructor. Since there are no parameters passed in, 
+	 * This is the default constructor. Since there are no parameters passed in,
 	 * the fields will be set to default values.
 	 */
 	public Eel() {
@@ -17,6 +18,7 @@ public class Eel extends Fish {
 	
 	/**
 	 * The eel makes a noise unique to being a eel.
+	 * 
 	 * @return Returns a noise similar to 'Zap!'.
 	 */
 	@Override

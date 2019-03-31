@@ -1,0 +1,4 @@
+Coding Standards:
+
+ - Everything must be fully documented.
+ - Make all variables, fields, and parameters final by default.
