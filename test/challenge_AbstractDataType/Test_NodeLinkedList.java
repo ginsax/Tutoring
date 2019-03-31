@@ -21,7 +21,7 @@ public class Test_NodeLinkedList {
   public void test_Nodable_DataObject_CanBeSet() {
     final Double expected = new Double(69.69);
     
-    final I_NodeLinkedList<Double> node = new NodeLinkedList<>();
+    final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>();
     node.setDataObject(expected);
     
     final Double actual = node.getDataObject();
@@ -38,7 +38,7 @@ public class Test_NodeLinkedList {
     final Double expected = 69.69;
     
     final Double dataObject = new Double(expected);
-    final I_NodeLinkedList<Double> node = new NodeLinkedList<>(dataObject);
+    final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>(dataObject);
     
     final Double actual = node.getDataObject();
     assertEquals(expected,
@@ -52,7 +52,7 @@ public class Test_NodeLinkedList {
   @Test
   public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
     final Double dataObject = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<>(dataObject);
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(dataObject);
     
     assertNotNull(nodeA.getDataObject());
   }
@@ -63,8 +63,8 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_Nodable_DataObjectConstructor_NextNode_IsNull() {
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<>();
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<>(nodeB);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>();
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB);
     
     final I_NodeLinkedList<Double> expected = nodeB;
     final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
@@ -75,8 +75,8 @@ public class Test_NodeLinkedList {
   /** Tests that the next node of a {@linkplain I_NodeLinkedList} can be set. */
   @Test
   public void test_Nodable_NextNode_CanBeSet() {
-    final I_NodeLinkedList<String> nodeA = new NodeLinkedList<>();
-    final I_NodeLinkedList<String> nodeB = new NodeLinkedList<>();
+    final I_NodeLinkedList<String> nodeA = new NodeLinkedList<String>();
+    final I_NodeLinkedList<String> nodeB = new NodeLinkedList<String>();
     
     nodeA.setNextNode(nodeB);
     
@@ -92,8 +92,8 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_Nodable_NodeConstructor_DataObject_IsNull() {
-    final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<>();
-    final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<>(nodeB);
+    final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>();
+    final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(nodeB);
     
     assertNull(nodeA.getDataObject());
   }
@@ -104,8 +104,8 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_Nodable_NodeConstructor_NextNode_IsNotNull() {
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<>();
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<>(nodeB);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>();
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB);
     
     final I_NodeLinkedList<Double> expected = nodeB;
     final I_NodeLinkedList<Double> actual = nodeA.getNextNode();
@@ -120,10 +120,10 @@ public class Test_NodeLinkedList {
   @Test
   public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
     final Double dataObjectB = new Double(96.96);
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<>(dataObjectB);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
     
     final Double dataObjectA = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<>(nodeB,
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
                                                                 dataObjectA);
     
     final Double expected = dataObjectB;
@@ -139,10 +139,10 @@ public class Test_NodeLinkedList {
   @Test
   public void test_Nodable_ParameterizedConstructor_NextNode_IsNotNull() {
     final Double dataObjectB = new Double(96.96);
-    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<>(dataObjectB);
+    final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
     
     final Double dataObjectA = new Double(69.69);
-    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<>(nodeB,
+    final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
                                                                 dataObjectA);
     
     final I_NodeLinkedList<Double> expected = nodeB;
@@ -157,7 +157,7 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_NodableDefaultConstructor_DataObject_IsNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<>();
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
     
     assertNull(node.getDataObject());
   }
@@ -168,7 +168,7 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_NodableDefaultConstructor_IsNotNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<>();
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
     
     assertNotNull(node);
   }
@@ -179,7 +179,7 @@ public class Test_NodeLinkedList {
    */
   @Test
   public void test_NodableDefaultConstructor_NextNode_IsNull() {
-    final I_NodeLinkedList<Integer> node = new NodeLinkedList<>();
+    final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>();
     
     assertNull(node.getNextNode());
   }
