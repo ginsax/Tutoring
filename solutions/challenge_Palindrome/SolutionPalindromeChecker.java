@@ -16,25 +16,25 @@ public class SolutionPalindromeChecker {
    */
   public boolean IsPalindrome(String potentialPalindrome) {
     potentialPalindrome = potentialPalindrome.toLowerCase(); // It is important
-                                                             // to make sure we
-                                                             // make all the
-                                                             // characters lower
-                                                             // case.
+    // to make sure we
+    // make all the
+    // characters lower
+    // case.
     if (potentialPalindrome.length() <= 1) { // If there is one or fewer
-                                             // character(s) left, then it is a
-                                             // palindrome.
+      // character(s) left, then it is a
+      // palindrome.
       return true;
     }
     else {
       final char first = potentialPalindrome.charAt(0); // Get the very first
-                                                        // character.
+      // character.
       final char last = potentialPalindrome
           .charAt(potentialPalindrome.length() -
                   1); // Get the very last
-                      // character.
+      // character.
       if (first == last) { // Compare the first and last characters. If they are
-                           // the same character, then restart the check using
-                           // the next character and the next last character.
+        // the same character, then restart the check using
+        // the next character and the next last character.
         final String newPotentialPalindrome = potentialPalindrome.substring(1,
                                                                             potentialPalindrome
                                                                                 .length() -
