@@ -9,37 +9,41 @@ package challenge_AbstractDataType;
  */
 interface I_Stack<NodeDataType> {
   
-  public void appendNode(final I_NodeLinkedList<NodeDataType> node);
-  
-  public I_NodeLinkedList<NodeDataType> getNodeAtIndex(final int index) throws InvalidListIndexException;
-  
   /**
-   * Gets the first node in the list.
-   * @return Returns the first node in the list.
+   * Adds the given <code>node</code> to the top of the stack.
+   * @param node The node that is to be added to the top of the stack.
    */
-  I_NodeLinkedList<NodeDataType> head();
-  
-  public void insertNodeAtIndex(final int index,
-                                final I_NodeLinkedList<NodeDataType> node) throws InvalidListIndexException;
+  void push(final I_NodeStack<NodeDataType> node);
   
   /**
-   * Gets whether this list is empty.
-   * @return Returns whether this list is empty.
+   * Gets the node that is at the top of the stack without affecting the nodes
+   * within the stack.
+   * @return Returns the node that is at the top of the stack.
+   */
+  I_NodeStack<NodeDataType> peek();
+  
+  /**
+   * Gets the node that is at the top of the stack, removing it from the stack
+   * in the process.
+   * @return Returns the node that is at the top of the stack.
+   */
+  I_NodeStack<NodeDataType> pop();
+  
+  /**
+   * Gets whether this stack is empty.
+   * @return Returns whether this stack is empty.
    */
   boolean isEmpty();
   
   /**
-   * Gets the number of nodes within this list.
-   * @return Returns the number of nodes within this list.
+   * Gets whether this stack contains the given <code>node</code>.
+   * @return Returns whether this stack contains the given node.
    */
-  int length();
-  
-  public void setNodeAtIndex(final int index,
-                             final I_NodeLinkedList<NodeDataType> node) throws InvalidListIndexException;
+  boolean contains(final I_NodeStack<NodeDataType> node);
   
   /**
-   * Gets the last node in the list.
-   * @return Returns the last node in the list.
+   * Gets the number of nodes within this stack.
+   * @return Returns the number of nodes within this stack.
    */
-  I_NodeLinkedList<NodeDataType> tail();
+  int length();
 }

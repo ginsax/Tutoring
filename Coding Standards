@@ -3,3 +3,5 @@ Coding Standards:
  - Everything must be fully documented.
  - Make all variables, fields, and parameters final by default.
  - Formatter must be run prior to committing.
+ - Do not use 'this' unless necessary.
+ - Variable names are to prepended with the letter 'm'.

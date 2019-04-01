@@ -10,11 +10,8 @@ package challenge_AbstractDataType;
 interface I_LinkedList<NodeDataType> {
   
   /**
-   * Adds a node at the given <code>index</code> within the list.
-   * @param index The index to retrieve a node from.
-   * @return Returns a node at the given index within the list.
-   * @throws InvalidListIndexException Thrown if the given index is greater than
-   *           the length of the list.
+   * Adds a node to the end of the list.
+   * @param node The node that is to be added to the end of this list.
    */
   void appendNode(final I_NodeLinkedList<NodeDataType> node);
   
@@ -33,6 +30,14 @@ interface I_LinkedList<NodeDataType> {
    */
   I_NodeLinkedList<NodeDataType> head();
   
+  /**
+   * Inserts a node at the given <code>index</code> of the list.
+   * @param index The index to insert a node at.
+   * @param node The node that is to be added at the specified index of this
+   *          list.
+   * @throws InvalidListIndexException Thrown if the given index is greater than
+   *           the length of the list.
+   */
   void insertNodeAtIndex(final int index,
                          final I_NodeLinkedList<NodeDataType> node) throws InvalidListIndexException;
   
@@ -48,6 +53,13 @@ interface I_LinkedList<NodeDataType> {
    */
   int length();
   
+  /**
+   * Sets the node at the given <code>index</code> of the list.
+   * @param index The index to insert a node at.
+   * @param node The node that is to be set at the specified index of this list.
+   * @throws InvalidListIndexException Thrown if the given index is greater than
+   *           the length of the list.
+   */
   void setNodeAtIndex(final int index,
                       final I_NodeLinkedList<NodeDataType> node) throws InvalidListIndexException;
   

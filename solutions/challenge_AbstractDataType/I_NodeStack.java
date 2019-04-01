@@ -16,16 +16,16 @@ public interface I_NodeStack<NodeDataType> {
   NodeDataType getDataObject();
   
   /**
-   * Gets the next node in a stack.
-   * @return Returns the next node in a stack.
-   */
-  I_NodeStack<NodeDataType> getNextNode();
-  
-  /**
    * Sets the data object of this node.
    * @param dataObject The new data object of this node.
    */
   void setDataObject(final NodeDataType dataObject);
+  
+  /**
+   * Gets the next node in a stack.
+   * @return Returns the next node in a stack.
+   */
+  I_NodeStack<NodeDataType> getNextNode();
   
   /**
    * Sets the next node in a stack.

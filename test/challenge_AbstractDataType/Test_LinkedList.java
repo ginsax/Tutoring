@@ -288,7 +288,7 @@ public class Test_LinkedList {
     list.insertNodeAtIndex(0,
                            nodeB);
     
-    final int expected = 1;
+    final int expected = 2;
     final int actual = list.length();
     assertEquals(expected,
                  actual);
