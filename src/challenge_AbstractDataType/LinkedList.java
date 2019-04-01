@@ -19,7 +19,7 @@ public class LinkedList<T> implements I_LinkedList<T> {
 	 */
 	@Override
 	public I_NodeLinkedList<T> getNodeAtIndex(final int index)
-	                                                           throws InvalidListIndexException {
+	                                                           throws Exception_InvalidListIndex {
 		
 		// Handle if index is below zero.
 		if (index < 0) {
@@ -57,7 +57,7 @@ public class LinkedList<T> implements I_LinkedList<T> {
 	
 	@Override
 	public void insertNodeAtIndex(final int index, final I_NodeLinkedList<T> node)
-	                                                                               throws InvalidListIndexException {
+	                                                                               throws Exception_InvalidListIndex {
 		// Handle if index is below zero.
 		if (index < 0) {
 			System.out.println("Index may not be negative");
@@ -102,7 +102,7 @@ public class LinkedList<T> implements I_LinkedList<T> {
 	
 	@Override
 	public void setNodeAtIndex(final int index, final I_NodeLinkedList<T> node)
-	                                                                            throws InvalidListIndexException {
+	                                                                            throws Exception_InvalidListIndex {
 		// Handle if index is below zero.
 		if (index < 0) {
 			System.out.println("Index may not be negative");

@@ -25,9 +25,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at an index greater than the length of the list
-	 * results in a thrown {@linkplain InvalidListIndexException}.
+	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_GetNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		list.getNodeAtIndex(24);
@@ -35,9 +35,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at a negative index results in a thrown
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_GetNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		list.getNodeAtIndex(-1);
@@ -45,9 +45,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at an index of zero if the head has not been
-	 * initialized results in a thrown {@linkplain InvalidListIndexException}.
+	 * initialized results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_GetNode_WithNoNode_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		list.getNodeAtIndex(0);
@@ -66,9 +66,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at an index greater than the length of the list
-	 * results in a thrown {@linkplain InvalidListIndexException}.
+	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_InsertNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
@@ -79,9 +79,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a negative index results in a thrown
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_InsertNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
@@ -92,9 +92,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at an index of zero if the head has not been
-	 * initialized does not throw an {@linkplain InvalidListIndexException}.
+	 * initialized does not throw an {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_InsertNode_WithNoNode_ThrowsException() {
 		final I_NodeLinkedList<String> nodeA = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB = new NodeLinkedList<String>("I am the second node.");
@@ -120,9 +120,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at an index greater than the length of the list
-	 * results in a thrown {@linkplain InvalidListIndexException}.
+	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_SetNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
@@ -133,9 +133,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a negative index results in a thrown
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_DefaultConstructor_SetNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
@@ -146,7 +146,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at an index of zero if the head has not been
-	 * initialized does not throw an {@linkplain InvalidListIndexException}.
+	 * initialized does not throw an {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_DefaultConstructor_SetNode_WithNoNode_ThrowsException() {
@@ -222,9 +222,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_NodeConstructor_GetNode_AtInvalidIndex_ThrowsException() {
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
 		final I_LinkedList<Object> list = new LinkedList<Object>(node);
@@ -234,7 +234,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_GetNode_AtValidIndex_BehavesAsExpected() {
@@ -250,7 +250,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that getting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_GetNode_AtValidIndex_DoesNotThrowException() {
@@ -296,7 +296,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_00() {
@@ -318,7 +318,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_01() {
@@ -342,9 +342,9 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
-	@Test(expected = InvalidListIndexException.class)
+	@Test(expected = Exception_InvalidListIndex.class)
 	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_02() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
@@ -382,7 +382,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_00() {
@@ -404,7 +404,7 @@ public class Test_LinkedList {
 	
 	/**
 	 * Tests that setting a node at a valid index does not throw an
-	 * {@linkplain InvalidListIndexException}.
+	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
 	public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_01() {

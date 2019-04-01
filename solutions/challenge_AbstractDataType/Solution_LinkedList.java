@@ -7,16 +7,16 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object this node holds.
  * @since 03/24/2019
  */
-final class LinkedList_Solution<NodeDataType>
+final class Solution_LinkedList<NodeDataType>
                                implements
-                               LinkedListable<NodeDataType> {
+                               I_LinkedList<NodeDataType> {
 	
 	/** The head of this list. */
-	private Nodeable_LinkedList<NodeDataType> mHead;
+	private I_NodeLinkedList<NodeDataType> mHead;
 	
 	
 	/** Instantiates a new LinkedListSingle_Solution. */
-	LinkedList_Solution() {
+	Solution_LinkedList() {
 		mHead = null;
 	}
 	
@@ -24,20 +24,20 @@ final class LinkedList_Solution<NodeDataType>
 	 * Instantiates a new LinkedListSingle_Solution.
 	 * @param head The new head of this list.
 	 */
-	LinkedList_Solution(final Nodeable_LinkedList<NodeDataType> head) {
+	Solution_LinkedList(final I_NodeLinkedList<NodeDataType> head) {
 		this();
 		mHead = head;
 	}
 	
 	@Override
-	public Nodeable_LinkedList<NodeDataType> head() {
+	public I_NodeLinkedList<NodeDataType> head() {
 		return mHead;
 	}
 	
 	@Override
-	public Nodeable_LinkedList<NodeDataType> tail() {
-		Nodeable_LinkedList<NodeDataType> node = mHead;
-		Nodeable_LinkedList<NodeDataType> lastNode = null;
+	public I_NodeLinkedList<NodeDataType> tail() {
+		I_NodeLinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> lastNode = null;
 		
 		while (node != null) {
 			lastNode = node;
@@ -49,7 +49,7 @@ final class LinkedList_Solution<NodeDataType>
 	
 	@Override
 	public int length() {
-		Nodeable_LinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> node = mHead;
 		
 		int count = 0;
 		
@@ -67,16 +67,15 @@ final class LinkedList_Solution<NodeDataType>
 	}
 	
 	@Override
-	public Nodeable_LinkedList<NodeDataType> getNodeAtIndex(final int index)
-	                                                                         throws InvalidListIndexException {
+	public I_NodeLinkedList<NodeDataType> getNodeAtIndex(final int index)
+	                                                                      throws Exception_InvalidListIndex {
 		if ((index < 0) || (index >= length()) || (mHead == null)) {
-			throw new InvalidListIndexException(index,
-			                                    length());
+			throw new Exception_InvalidListIndex();
 		}
 		
 		int i = 0;
-		Nodeable_LinkedList<NodeDataType> node = mHead;
-		Nodeable_LinkedList<NodeDataType> lastNode = null;
+		I_NodeLinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> lastNode = null;
 		
 		while (node != null) {
 			lastNode = node;
@@ -94,8 +93,8 @@ final class LinkedList_Solution<NodeDataType>
 	
 	@Override
 	public void setNodeAtIndex(final int index,
-	                           final Nodeable_LinkedList<NodeDataType> nextNode)
-	                                                                             throws InvalidListIndexException {
+	                           final I_NodeLinkedList<NodeDataType> nextNode)
+	                                                                          throws Exception_InvalidListIndex {
 		if ((mHead == null) || (index == 0)) {
 			
 			final int length = length() == 1
@@ -108,13 +107,12 @@ final class LinkedList_Solution<NodeDataType>
 		}
 		
 		if ((index < 0) || (index > length())) {
-			throw new InvalidListIndexException(index,
-			                                    length());
+			throw new Exception_InvalidListIndex();
 		}
 		
 		int i = 0;
-		Nodeable_LinkedList<NodeDataType> node = mHead;
-		Nodeable_LinkedList<NodeDataType> nodeAtIndex = null;
+		I_NodeLinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> nodeAtIndex = null;
 		
 		while (node != null) {
 			nodeAtIndex = node;
@@ -132,8 +130,8 @@ final class LinkedList_Solution<NodeDataType>
 	
 	@Override
 	public void insertNodeAtIndex(final int index,
-	                              final Nodeable_LinkedList<NodeDataType> nextNode)
-	                                                                                throws InvalidListIndexException {
+	                              final I_NodeLinkedList<NodeDataType> nextNode)
+	                                                                             throws Exception_InvalidListIndex {
 		if ((mHead == null) || (index == 0)) {
 			
 			final int length = length() == 1
@@ -146,12 +144,11 @@ final class LinkedList_Solution<NodeDataType>
 		}
 		
 		if ((index < 0) || (index > length())) {
-			throw new InvalidListIndexException(index,
-			                                    length());
+			throw new Exception_InvalidListIndex();
 		}
 		
 		int i = 0;
-		Nodeable_LinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> node = mHead;
 		
 		while (node != null) {
 			
@@ -168,7 +165,7 @@ final class LinkedList_Solution<NodeDataType>
 	}
 	
 	@Override
-	public void appendNode(final Nodeable_LinkedList<NodeDataType> node) {
+	public void appendNode(final I_NodeLinkedList<NodeDataType> node) {
 		tail().setNextNode(node);
 	}
 	

@@ -7,9 +7,9 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data object this node holds.
  * @since 03/28/2019
  */
-public class Queue_Solution<NodeDataType> implements Queueable<NodeDataType> {
+public class Solution_Queue<NodeDataType> implements I_Queue<NodeDataType> {
 	
-	private Nodeable_Queue<NodeDataType> mFirstNode;
+	private I_NodeQueue<NodeDataType> mFirstNode;
 	
 	
 	/**
@@ -18,7 +18,7 @@ public class Queue_Solution<NodeDataType> implements Queueable<NodeDataType> {
 	 * @param dataObjects The data objects to be added as nodes.
 	 */
 	@SafeVarargs
-	Queue_Solution(final NodeDataType... dataObjects) {
+	Solution_Queue(final NodeDataType... dataObjects) {
 		if ((dataObjects == null) || (dataObjects.length == 0)) {
 			mFirstNode = null;
 		}
@@ -52,11 +52,11 @@ public class Queue_Solution<NodeDataType> implements Queueable<NodeDataType> {
 		int startingIndex = 0;
 		
 		if (mFirstNode == null) {
-			mFirstNode = new NodeQueue_Solution<NodeDataType>(nodesToAdd[0]);
+			mFirstNode = new Solution_NodeQueue<NodeDataType>(nodesToAdd[0]);
 			startingIndex++;
 		}
 		
-		Nodeable_Queue<NodeDataType> currentNode = mFirstNode;
+		I_NodeQueue<NodeDataType> currentNode = mFirstNode;
 		
 		for (int i = startingIndex; i < numberOfNodes; i++) {
 			while (currentNode.getNextNode() != null) {
@@ -64,7 +64,7 @@ public class Queue_Solution<NodeDataType> implements Queueable<NodeDataType> {
 			}
 			
 			currentNode
-			    .setNextNode(new NodeQueue_Solution<NodeDataType>(nodesToAdd[i]));
+			    .setNextNode(new Solution_NodeQueue<NodeDataType>(nodesToAdd[i]));
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class Queue_Solution<NodeDataType> implements Queueable<NodeDataType> {
 		int size = 0;
 		
 		if (mFirstNode != null) {
-			Nodeable_Queue<NodeDataType> currentNode = mFirstNode;
+			I_NodeQueue<NodeDataType> currentNode = mFirstNode;
 			
 			while (currentNode != null) {
 				currentNode = currentNode.getNextNode();

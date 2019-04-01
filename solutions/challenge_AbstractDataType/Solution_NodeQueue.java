@@ -8,16 +8,16 @@ import java.util.Queue;
  * @version 1.0
  * @since 03/28/2019
  */
-public class NodeQueue_Solution<NodeDataObject>
+public class Solution_NodeQueue<NodeDataObject>
                                implements
-                               Nodeable_Queue<NodeDataObject> {
+                               I_NodeQueue<NodeDataObject> {
 	
-	private NodeDataObject									mDataObject;
-	private Nodeable_Queue<NodeDataObject>	mNextNode;
+	private NodeDataObject							mDataObject;
+	private I_NodeQueue<NodeDataObject>	mNextNode;
 	
 	
 	/** Instantiates a new Node_Queue. Sets all fields to null. */
-	NodeQueue_Solution() {
+	Solution_NodeQueue() {
 		mDataObject = null;
 		mNextNode = null;
 	}
@@ -26,7 +26,7 @@ public class NodeQueue_Solution<NodeDataObject>
 	 * Instantiates a new Node_Queue with the given <code>nodeDataObject</code>.
 	 * @param nodeDataObject The data object this node holds.
 	 */
-	NodeQueue_Solution(final NodeDataObject nodeDataObject) {
+	Solution_NodeQueue(final NodeDataObject nodeDataObject) {
 		this();
 		mDataObject = nodeDataObject;
 	}
@@ -35,7 +35,7 @@ public class NodeQueue_Solution<NodeDataObject>
 	 * Instantiates a new Node_Queue with the given <code>nextNode</code>.
 	 * @param nextNode The next node in a queue after this node.
 	 */
-	NodeQueue_Solution(final Nodeable_Queue<NodeDataObject> nextNode) {
+	Solution_NodeQueue(final I_NodeQueue<NodeDataObject> nextNode) {
 		this();
 		mNextNode = nextNode;
 	}
@@ -46,7 +46,7 @@ public class NodeQueue_Solution<NodeDataObject>
 	 * @param nextNode The next node in a queue after this node.
 	 * @param nodeDataObject The data object this node holds.
 	 */
-	NodeQueue_Solution(final Nodeable_Queue<NodeDataObject> nextNode,
+	Solution_NodeQueue(final I_NodeQueue<NodeDataObject> nextNode,
 	                   final NodeDataObject nodeDataObject) {
 		this();
 		mNextNode = nextNode;
@@ -54,12 +54,12 @@ public class NodeQueue_Solution<NodeDataObject>
 	}
 	
 	@Override
-	public Nodeable_Queue<NodeDataObject> getNextNode() {
+	public I_NodeQueue<NodeDataObject> getNextNode() {
 		return mNextNode;
 	}
 	
 	@Override
-	public void setNextNode(final Nodeable_Queue<NodeDataObject> nextNode) {
+	public void setNextNode(final I_NodeQueue<NodeDataObject> nextNode) {
 		mNextNode = nextNode;
 	}
 	

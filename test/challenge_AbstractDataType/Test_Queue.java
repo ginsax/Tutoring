@@ -29,8 +29,10 @@ import challenge_Inheritance.SurgeonFish;
 public class Test_Queue {
 	
 	private final String[] mTestDataObjects = new String[] {
-	    "I am the first node in a queue", "I am the second node in a queue",
-	    "I am the third node in a queue", "I am the fourth node in a queue",
+	    "I am the first node in a queue",
+	    "I am the second node in a queue",
+	    "I am the third node in a queue",
+	    "I am the fourth node in a queue",
 	};
 	
 	
@@ -60,8 +62,14 @@ public class Test_Queue {
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_01() {
 		final Integer[] nodesToAdd = new Integer[] {
-		    new Integer(5), new Integer(6), new Integer(9), new Integer(129),
-		    new Integer(72), new Integer(-5), new Integer(234), new Integer(90),
+		    new Integer(5),
+		    new Integer(6),
+		    new Integer(9),
+		    new Integer(129),
+		    new Integer(72),
+		    new Integer(-5),
+		    new Integer(234),
+		    new Integer(90),
 		};
 		
 		final I_Queue<Integer> queue = new Queue<Integer>();
@@ -79,8 +87,14 @@ public class Test_Queue {
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_02() {
 		final Integer[] nodesToAdd = new Integer[] {
-		    new Integer(5), new Integer(6), new Integer(9), new Integer(129),
-		    new Integer(72), new Integer(-5), new Integer(234), new Integer(90),
+		    new Integer(5),
+		    new Integer(6),
+		    new Integer(9),
+		    new Integer(129),
+		    new Integer(72),
+		    new Integer(-5),
+		    new Integer(234),
+		    new Integer(90),
 		};
 		
 		final I_Queue<Integer> queue = new Queue<Integer>(nodesToAdd);
@@ -97,9 +111,14 @@ public class Test_Queue {
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_03() {
 		final Double[] nodesToAdd = new Double[] {
-		    new Double(50.293), new Double(61.4810), new Double(9.019),
-		    new Double(1.0000000001), new Double(72.1234), new Double(-33.0),
-		    new Double(234.0), new Double(90.),
+		    new Double(50.293),
+		    new Double(61.4810),
+		    new Double(9.019),
+		    new Double(1.0000000001),
+		    new Double(72.1234),
+		    new Double(-33.0),
+		    new Double(234.0),
+		    new Double(90.),
 		};
 		
 		final I_Queue<Double> queue = new Queue<Double>(nodesToAdd);
@@ -116,8 +135,14 @@ public class Test_Queue {
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_04() {
 		final Animal[] nodesToAdd = new Animal[] {
-		    new Mammal(), new Bird(), new Fish(), new Kangaroo(), new Eel(),
-		    new Hummingbird(), new Manatee(), new SurgeonFish(),
+		    new Mammal(),
+		    new Bird(),
+		    new Fish(),
+		    new Kangaroo(),
+		    new Eel(),
+		    new Hummingbird(),
+		    new Manatee(),
+		    new SurgeonFish(),
 		};
 		
 		final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);

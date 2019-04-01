@@ -19,11 +19,11 @@ interface I_LinkedList<NodeDataType> {
 	 * Gets a node at the given <code>index</code> within the list.
 	 * @param index The index to retrieve a node from.
 	 * @return Returns a node at the given index within the list.
-	 * @throws InvalidListIndexException Thrown if the given index is greater than
-	 *           the length of the list.
+	 * @throws Exception_InvalidListIndex Thrown if the given index is greater
+	 *           than the length of the list.
 	 */
 	I_NodeLinkedList<NodeDataType> getNodeAtIndex(final int index)
-	                                                               throws InvalidListIndexException;
+	                                                               throws Exception_InvalidListIndex;
 	
 	/**
 	 * Gets the first node in the list.
@@ -36,12 +36,12 @@ interface I_LinkedList<NodeDataType> {
 	 * @param index The index to insert a node at.
 	 * @param node The node that is to be added at the specified index of this
 	 *          list.
-	 * @throws InvalidListIndexException Thrown if the given index is greater than
-	 *           the length of the list.
+	 * @throws Exception_InvalidListIndex Thrown if the given index is greater
+	 *           than the length of the list.
 	 */
 	void insertNodeAtIndex(final int index,
 	                       final I_NodeLinkedList<NodeDataType> node)
-	                                                                  throws InvalidListIndexException;
+	                                                                  throws Exception_InvalidListIndex;
 	
 	/**
 	 * Gets whether this list is empty.
@@ -59,12 +59,12 @@ interface I_LinkedList<NodeDataType> {
 	 * Sets the node at the given <code>index</code> of the list.
 	 * @param index The index to insert a node at.
 	 * @param node The node that is to be set at the specified index of this list.
-	 * @throws InvalidListIndexException Thrown if the given index is greater than
-	 *           the length of the list.
+	 * @throws Exception_InvalidListIndex Thrown if the given index is greater
+	 *           than the length of the list.
 	 */
 	void setNodeAtIndex(final int index,
 	                    final I_NodeLinkedList<NodeDataType> node)
-	                                                               throws InvalidListIndexException;
+	                                                               throws Exception_InvalidListIndex;
 	
 	/**
 	 * Gets the last node in the list.

@@ -136,7 +136,9 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		    .compareTo(otherBook.mSortingTitle);
 		
 		final int[] comparators = new int[] {
-		    comparisonAuthor, comparisonSeries, comparisonTitle,
+		    comparisonAuthor,
+		    comparisonSeries,
+		    comparisonTitle,
 		};
 		
 		for (final int comparator : comparators) {

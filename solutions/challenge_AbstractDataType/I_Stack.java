@@ -4,30 +4,31 @@ package challenge_AbstractDataType;
  * Defines a contract that all stacks will implement.
  * @author jacobwatson
  * @version 1.0
- * @param <NodeDataType> The type of data object nodes within this stack hold.
+ * @param <NodeDataType> The type of data objects within this stack.
  * @since 03/31/2019
  */
 interface I_Stack<NodeDataType> {
 	
 	/**
-	 * Adds the given <code>node</code> to the top of the stack.
-	 * @param node The node that is to be added to the top of the stack.
+	 * Adds the given <code>dataObject</code> to the top of the stack.
+	 * @param dataObject The data object that is to be added to the top of the
+	 *          stack.
 	 */
-	void push(final I_NodeStack<NodeDataType> node);
+	void push(final NodeDataType dataObject);
 	
 	/**
-	 * Gets the node that is at the top of the stack without affecting the nodes
-	 * within the stack.
-	 * @return Returns the node that is at the top of the stack.
+	 * Gets the data object that is at the top of the stack without affecting the
+	 * other data objects within the stack.
+	 * @return Returns the data object that is at the top of the stack.
 	 */
-	I_NodeStack<NodeDataType> peek();
+	NodeDataType peek();
 	
 	/**
-	 * Gets the node that is at the top of the stack, removing it from the stack
-	 * in the process.
-	 * @return Returns the node that is at the top of the stack.
+	 * Gets the data object that is at the top of the stack, removing it from the
+	 * stack in the process.
+	 * @return Returns the data object that is at the top of the stack.
 	 */
-	I_NodeStack<NodeDataType> pop();
+	NodeDataType pop();
 	
 	/**
 	 * Gets whether this stack is empty.
@@ -36,14 +37,15 @@ interface I_Stack<NodeDataType> {
 	boolean isEmpty();
 	
 	/**
-	 * Gets whether this stack contains the given <code>node</code>.
-	 * @return Returns whether this stack contains the given node.
+	 * Gets whether this stack contains the given <code>dataObject</code>.
+	 * @param dataObject The data object to switch within this stack for.
+	 * @return Returns whether this stack contains the given data object.
 	 */
-	boolean contains(final I_NodeStack<NodeDataType> node);
+	boolean contains(final NodeDataType dataObject);
 	
 	/**
-	 * Gets the number of nodes within this stack.
-	 * @return Returns the number of nodes within this stack.
+	 * Gets the number of data objects within this stack.
+	 * @return Returns the number of data objects within this stack.
 	 */
-	int length();
+	int size();
 }
