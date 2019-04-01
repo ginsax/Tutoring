@@ -9,27 +9,27 @@ package challenge_Library;
  */
 @SuppressWarnings("serial")
 public class EmptyFileNameException extends LibraryException {
-  
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-  
-  
-  /**
-   * Initializes a Library exception.
-   */
-  public EmptyFileNameException() {
-    super();
-  }
-  
-  /**
-   * Initializes an empty file name exception with the given
-   * {@code errorMessage}.
-   * @param errorMessage The reason for the error message.
-   */
-  public EmptyFileNameException(final String errorMessage) {
-    super(errorMessage);
-  }
-  
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	/**
+	 * Initializes a Library exception.
+	 */
+	public EmptyFileNameException() {
+		super();
+	}
+	
+	/**
+	 * Initializes an empty file name exception with the given
+	 * {@code errorMessage}.
+	 * @param errorMessage The reason for the error message.
+	 */
+	public EmptyFileNameException(final String errorMessage) {
+		super(errorMessage);
+	}
+	
 }

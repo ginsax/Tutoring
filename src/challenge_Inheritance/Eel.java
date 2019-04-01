@@ -6,23 +6,23 @@ package challenge_Inheritance;
  * @since 12/28/2018
  */
 public class Eel extends Fish {
-  
-  /**
-   * This is the default constructor. Since there are no parameters passed in,
-   * the fields will be set to default values.
-   */
-  public Eel() {
-    super(0,
-          DietType.Carnivore,
-          SkinType.Scale);
-  }
-  
-  /**
-   * The eel makes a noise unique to being a eel.
-   * @return Returns a noise similar to 'Zap!'.
-   */
-  @Override
-  public String makeNoise() {
-    return "Zap!";
-  }
+	
+	/**
+	 * This is the default constructor. Since there are no parameters passed in,
+	 * the fields will be set to default values.
+	 */
+	public Eel() {
+		super(0,
+		      DietType.Carnivore,
+		      SkinType.Scale);
+	}
+	
+	/**
+	 * The eel makes a noise unique to being a eel.
+	 * @return Returns a noise similar to 'Zap!'.
+	 */
+	@Override
+	public String makeNoise() {
+		return "Zap!";
+	}
 }

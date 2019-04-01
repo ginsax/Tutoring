@@ -8,28 +8,28 @@ package challenge_AbstractDataType;
  * @since 03/31/2019
  */
 public interface I_NodeStack<NodeDataType> {
-  
-  /**
-   * Gets the data object of this node.
-   * @return Returns the data object of this node.
-   */
-  NodeDataType getDataObject();
-  
-  /**
-   * Sets the data object of this node.
-   * @param dataObject The new data object of this node.
-   */
-  void setDataObject(final NodeDataType dataObject);
-  
-  /**
-   * Gets the next node in a stack.
-   * @return Returns the next node in a stack.
-   */
-  I_NodeStack<NodeDataType> getNextNode();
-  
-  /**
-   * Sets the next node in a stack.
-   * @param nextNode The node that is to be set as the next node in a stack.
-   */
-  void setNextNode(final I_NodeStack<NodeDataType> nextNode);
+	
+	/**
+	 * Gets the data object of this node.
+	 * @return Returns the data object of this node.
+	 */
+	NodeDataType getDataObject();
+	
+	/**
+	 * Sets the data object of this node.
+	 * @param dataObject The new data object of this node.
+	 */
+	void setDataObject(final NodeDataType dataObject);
+	
+	/**
+	 * Gets the next node in a stack.
+	 * @return Returns the next node in a stack.
+	 */
+	I_NodeStack<NodeDataType> getNextNode();
+	
+	/**
+	 * Sets the next node in a stack.
+	 * @param nextNode The node that is to be set as the next node in a stack.
+	 */
+	void setNextNode(final I_NodeStack<NodeDataType> nextNode);
 }

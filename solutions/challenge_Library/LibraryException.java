@@ -9,32 +9,33 @@ package challenge_Library;
  */
 @SuppressWarnings("serial")
 public abstract class LibraryException extends Exception {
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-  /** The reason for this exception being thrown. */
-  private final String      mErrorMessage;
-  
-  
-  /**
-   * Initializes a Library exception.
-   */
-  public LibraryException() {
-    super();
-    mErrorMessage = super.getMessage();
-  }
-  
-  /**
-   * Initializes an Library exception with the given {@code errorMessage}.
-   * @param errorMessage The reason for the error message.
-   */
-  public LibraryException(final String errorMessage) {
-    mErrorMessage = errorMessage;
-  }
-  
-  @Override
-  public String getMessage() {
-    return mErrorMessage;
-  }
+	
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
+	/** The reason for this exception being thrown. */
+	private final String			mErrorMessage;
+	
+	
+	/**
+	 * Initializes a Library exception.
+	 */
+	public LibraryException() {
+		super();
+		mErrorMessage = super.getMessage();
+	}
+	
+	/**
+	 * Initializes an Library exception with the given {@code errorMessage}.
+	 * @param errorMessage The reason for the error message.
+	 */
+	public LibraryException(final String errorMessage) {
+		mErrorMessage = errorMessage;
+	}
+	
+	@Override
+	public String getMessage() {
+		return mErrorMessage;
+	}
 }

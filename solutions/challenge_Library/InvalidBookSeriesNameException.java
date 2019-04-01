@@ -9,27 +9,27 @@ package challenge_Library;
  */
 @SuppressWarnings("serial")
 public class InvalidBookSeriesNameException extends LibraryException {
-  
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-  
-  
-  /**
-   * Initializes a InvalidBookSeriesNameException.
-   */
-  public InvalidBookSeriesNameException() {
-    super();
-  }
-  
-  /**
-   * Initializes an invalid book series name exception with the given
-   * {@code errorMessage}.
-   * @param errorMessage The reason for the error message.
-   */
-  public InvalidBookSeriesNameException(final String errorMessage) {
-    super(errorMessage);
-  }
-  
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	/**
+	 * Initializes a InvalidBookSeriesNameException.
+	 */
+	public InvalidBookSeriesNameException() {
+		super();
+	}
+	
+	/**
+	 * Initializes an invalid book series name exception with the given
+	 * {@code errorMessage}.
+	 * @param errorMessage The reason for the error message.
+	 */
+	public InvalidBookSeriesNameException(final String errorMessage) {
+		super(errorMessage);
+	}
+	
 }
