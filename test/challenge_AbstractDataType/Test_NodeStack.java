@@ -66,8 +66,9 @@ public class Test_NodeStack {
 	public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
 		final I_NodeStack<Float> nodeB = new NodeStack<Float>();
 		final Float dataObject = new Float(69.0f);
-		final I_NodeStack<Float> nodeA = new NodeStack<Float>(nodeB,
-		                                                      dataObject);
+		final I_NodeStack<Float> nodeA
+		    = new NodeStack<Float>(nodeB,
+		                           dataObject);
 		
 		final I_NodeStack<Float> expected = nodeB;
 		final I_NodeStack<Float> actual = nodeA.getNextNode();

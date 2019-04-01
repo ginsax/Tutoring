@@ -7,7 +7,7 @@ package challenge_Library;
  * @version 1.0
  * @since 01/19/2019
  */
-@SuppressWarnings("serial")
+@SuppressWarnings ("serial")
 public abstract class LibraryException extends Exception {
 	
 	/**

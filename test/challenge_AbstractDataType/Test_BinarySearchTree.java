@@ -21,7 +21,7 @@ import challenge_Inheritance.SurgeonFish;
  * @version 1.0
  * @since 03/24/2019
  */
-public class Test_LinkedList {
+public class Test_BinarySearchTree {
 	
 	/**
 	 * Tests that getting a node at an index greater than the length of the list

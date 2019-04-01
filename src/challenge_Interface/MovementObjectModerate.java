@@ -25,9 +25,10 @@ public class MovementObjectModerate implements Movement {
 	public MovementObjectModerate() {
 		// default coordinates to match test class. Set default Move() power
 		// function bases.
-		mModCoordinates = new Coordinates(3,
-		                                  4,
-		                                  5);
+		mModCoordinates
+		    = new Coordinates(3,
+		                      4,
+		                      5);
 		xMove = 3;
 		yMove = 4;
 		zMove = 5;
@@ -36,9 +37,10 @@ public class MovementObjectModerate implements Movement {
 	public MovementObjectModerate(final int x,
 	                              final int y,
 	                              final int z) {
-		mModCoordinates = new Coordinates(x,
-		                                  y,
-		                                  z);
+		mModCoordinates
+		    = new Coordinates(x,
+		                      y,
+		                      z);
 		xMove = x;
 		yMove = y;
 		zMove = z;
@@ -50,15 +52,16 @@ public class MovementObjectModerate implements Movement {
 	@Override
 	public String createDisplayString() {
 		// Create string intro.
-		final String displayString1 = "A moderately complex object to demonstrate movement [";
+		final String displayString1
+		    = "A moderately complex object to demonstrate movement [";
 		// Create modified movement coordinates (per test case specification).
 		final int xMod = xMove * yMove;
 		final int yMod = yMove * zMove;
 		final int zMod = zMove * xMove;
 		// Assemble final string.
-		final String displayString = displayString1 + xMove + ", " + yMove + ", " +
-		                             zMove + "][" + xMod + ", " + yMod + ", " +
-		                             zMod + "]";
+		final String displayString
+		    = displayString1 + xMove + ", " + yMove + ", " + zMove + "][" + xMod +
+		      ", " + yMod + ", " + zMod + "]";
 		return displayString;
 	}
 	

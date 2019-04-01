@@ -7,7 +7,7 @@ package challenge_Library;
  * @version 1.0
  * @since 01/18/2019
  */
-@SuppressWarnings("serial")
+@SuppressWarnings ("serial")
 public class InvalidBookSeriesNameException extends LibraryException {
 	
 	/**

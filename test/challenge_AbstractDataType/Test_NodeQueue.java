@@ -66,8 +66,9 @@ public class Test_NodeQueue {
 	public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
 		final I_NodeQueue<Float> nodeB = new NodeQueue<Float>();
 		final Float dataObject = new Float(69.0f);
-		final I_NodeQueue<Float> nodeA = new NodeQueue<Float>(nodeB,
-		                                                      dataObject);
+		final I_NodeQueue<Float> nodeA
+		    = new NodeQueue<Float>(nodeB,
+		                           dataObject);
 		
 		final I_NodeQueue<Float> expected = nodeB;
 		final I_NodeQueue<Float> actual = nodeA.getNextNode();

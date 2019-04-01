@@ -38,7 +38,7 @@ interface I_Stack<NodeDataType> {
 	
 	/**
 	 * Gets whether this stack contains the given <code>dataObject</code>.
-	 * @param dataObject The data object to switch within this stack for.
+	 * @param dataObject The data object to search within this stack for.
 	 * @return Returns whether this stack contains the given data object.
 	 */
 	boolean contains(final NodeDataType dataObject);

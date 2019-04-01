@@ -7,7 +7,7 @@ package challenge_Library;
  * @version 1.0
  * @since 01/10/2019
  */
-@SuppressWarnings("serial")
+@SuppressWarnings ("serial")
 public class EmptyFileNameException extends LibraryException {
 	
 	/**

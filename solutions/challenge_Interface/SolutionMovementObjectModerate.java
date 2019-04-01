@@ -15,7 +15,8 @@ public class SolutionMovementObjectModerate implements Movement {
 	private final int	defaultZ	= 5;
 	
 	/** The display string header. */
-	private final String mDisplayStringHeader = "A moderately complex object to demonstrate movement";
+	private final String mDisplayStringHeader
+	    = "A moderately complex object to demonstrate movement";
 	
 	/** The coordinates object. */
 	private final Coordinates mCoordinates;
@@ -26,9 +27,10 @@ public class SolutionMovementObjectModerate implements Movement {
 	 * the coordinates object with the default x, y, & z values.
 	 */
 	public SolutionMovementObjectModerate() {
-		mCoordinates = new Coordinates(defaultX,
-		                               defaultY,
-		                               defaultZ);
+		mCoordinates
+		    = new Coordinates(defaultX,
+		                      defaultY,
+		                      defaultZ);
 	}
 	
 	/**
@@ -42,9 +44,10 @@ public class SolutionMovementObjectModerate implements Movement {
 	public SolutionMovementObjectModerate(final int x,
 	                                      final int y,
 	                                      final int z) {
-		mCoordinates = new Coordinates(x,
-		                               y,
-		                               z);
+		mCoordinates
+		    = new Coordinates(x,
+		                      y,
+		                      z);
 	}
 	
 	@Override

@@ -10,7 +10,8 @@ import org.junit.Test;
 public class FizzBuzzTest_Simple {
 	
 	/** The m fizz buzz analyzer. */
-	private final FizzBuzzAnalyzer_Simple mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Simple();
+	private final FizzBuzzAnalyzer_Simple mFizzBuzzAnalyzer
+	    = new FizzBuzzAnalyzer_Simple();
 	
 	
 	/**
@@ -32,8 +33,8 @@ public class FizzBuzzTest_Simple {
 		final int numberToAnalyze = 15;
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.FizzBuzz;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 15 (fifteen) results in 'FizzBuzz'.",
 		             expected,
@@ -48,8 +49,8 @@ public class FizzBuzzTest_Simple {
 		final int numberToAnalyze = 5;
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.Buzz;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 5 (five) results in 'Buzz'.",
 		             expected,
@@ -64,8 +65,8 @@ public class FizzBuzzTest_Simple {
 		final int numberToAnalyze = 1;
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.NoResponse;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 1 (one) results in no response.",
 		             expected,
@@ -78,10 +79,11 @@ public class FizzBuzzTest_Simple {
 	@Test
 	public void test_OneHundredOne_Returns_ErrorUpperBounds() {
 		final int numberToAnalyze = 101;
-		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.ErrorUpperBounds;
+		final FizzBuzzAnalysisResult expected
+		    = FizzBuzzAnalysisResult.ErrorUpperBounds;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 101 (one hundred one) is above the upper bounds.",
 		             expected,
@@ -96,8 +98,8 @@ public class FizzBuzzTest_Simple {
 		final int numberToAnalyze = 3;
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.Fizz;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 3 (three) results in 'Fizz'.",
 		             expected,
@@ -112,8 +114,8 @@ public class FizzBuzzTest_Simple {
 		final int numberToAnalyze = 2;
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.NoResponse;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 2 (two) results in no response.",
 		             expected,
@@ -126,10 +128,11 @@ public class FizzBuzzTest_Simple {
 	@Test
 	public void test_Zero_Returns_ErrorLowerBounds() {
 		final int numberToAnalyze = 0;
-		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.ErrorLowerBounds;
+		final FizzBuzzAnalysisResult expected
+		    = FizzBuzzAnalysisResult.ErrorLowerBounds;
 		
-		final FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer
-		    .analyze(numberToAnalyze);
+		final FizzBuzzAnalysisResult actual
+		    = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
 		
 		assertEquals("Tests that the number 0 (zero) is below the lower bounds.",
 		             expected,

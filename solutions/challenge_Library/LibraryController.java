@@ -85,11 +85,13 @@ public class LibraryController extends BorderPane {
 			throw new EmptyFileNameException();
 		}
 		
-		final ObservableList<SolutionLibraryBook> bookList = loadBooksFromFile(fileName);
-		final FilteredList<SolutionLibraryBook> filteredBookList = createFilteredListFrom(bookList);
-		final SortedList<SolutionLibraryBook> sortedBookList = new SortedList<>(filteredBookList,
-		                                                                        sortedBookComparator
-		                                                                            .get());
+		final ObservableList<SolutionLibraryBook> bookList
+		    = loadBooksFromFile(fileName);
+		final FilteredList<SolutionLibraryBook> filteredBookList
+		    = createFilteredListFrom(bookList);
+		final SortedList<SolutionLibraryBook> sortedBookList
+		    = new SortedList<>(filteredBookList,
+		                       sortedBookComparator.get());
 		setSortPrioritiesFor(sortedBookList);
 		
 		mTableView.sort();
@@ -116,11 +118,14 @@ public class LibraryController extends BorderPane {
 	 * @param bookList A collection of LibraryBooks that are to be filtered.
 	 * @return Returns a filtered list of library books.
 	 */
-	private FilteredList<SolutionLibraryBook> createFilteredListFrom(final ObservableList<SolutionLibraryBook> bookList) {
-		final FilteredList<SolutionLibraryBook> filteredBookList = new FilteredList<>(bookList,
-		                                                                              p -> true);
+	private FilteredList<SolutionLibraryBook>
+	        createFilteredListFrom(final ObservableList<SolutionLibraryBook> bookList) {
+		final FilteredList<SolutionLibraryBook> filteredBookList
+		    = new FilteredList<>(bookList,
+		                         p -> true);
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateTitle = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateTitle
+		    = new SimpleObjectProperty<>();
 		predicateTitle
 		    .bind(Bindings.createObjectBinding(
 		                                       () -> book -> book.getTitle()
@@ -129,7 +134,8 @@ public class LibraryController extends BorderPane {
 		                                               .getText().toLowerCase()),
 		                                       filterText_Title.textProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAuthor = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAuthor
+		    = new SimpleObjectProperty<>();
 		predicateAuthor
 		    .bind(Bindings.createObjectBinding(
 		                                       () -> book -> book.getAuthor()
@@ -138,13 +144,15 @@ public class LibraryController extends BorderPane {
 		                                               .getText().toLowerCase()),
 		                                       filterText_Author.textProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateYear = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateYear
+		    = new SimpleObjectProperty<>();
 		predicateYear.bind(Bindings
 		    .createObjectBinding(() -> book -> ("" + book.getPublishingYear())
 		        .contains(filterText_Year.getText()),
 		                         filterText_Year.textProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateISBN = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateISBN
+		    = new SimpleObjectProperty<>();
 		predicateISBN
 		    .bind(Bindings.createObjectBinding(
 		                                       () -> book -> book.getISBN()
@@ -153,7 +161,8 @@ public class LibraryController extends BorderPane {
 		                                               .getText().toLowerCase()),
 		                                       filterText_ISBN.textProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateGenre = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateGenre
+		    = new SimpleObjectProperty<>();
 		predicateGenre.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getGenre()
 		        .equals(filter_Genre.getSelectionModel().getSelectedItem()) ||
@@ -162,7 +171,8 @@ public class LibraryController extends BorderPane {
 		                         filter_Genre.getSelectionModel()
 		                             .selectedItemProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAudience = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAudience
+		    = new SimpleObjectProperty<>();
 		predicateAudience.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getAudience()
 		        .equals(filter_Audience.getSelectionModel().getSelectedItem()) ||
@@ -171,35 +181,36 @@ public class LibraryController extends BorderPane {
 		                         filter_Audience.getSelectionModel()
 		                             .selectedItemProperty()));
 		
-		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateInStock = new SimpleObjectProperty<>();
+		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateInStock
+		    = new SimpleObjectProperty<>();
 		predicateInStock.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getNumberOfCopiesInStock() > 0,
 		                         mCheckBoxInStock.selectedProperty()));
 		
-		final ObjectBinding<Predicate<SolutionLibraryBook>> inStockBinding = Bindings
-		    .createObjectBinding(() -> predicateTitle.get()
+		final ObjectBinding<Predicate<SolutionLibraryBook>> inStockBinding
+		    = Bindings.createObjectBinding(() -> predicateTitle.get()
 		        .and(predicateAuthor.get()).and(predicateYear.get())
 		        .and(predicateISBN.get()).and(predicateGenre.get())
 		        .and(predicateAudience.get()).and(predicateInStock.get()),
-		                         predicateTitle,
-		                         predicateAuthor,
-		                         predicateYear,
-		                         predicateISBN,
-		                         predicateGenre,
-		                         predicateAudience,
-		                         predicateInStock);
+		                                   predicateTitle,
+		                                   predicateAuthor,
+		                                   predicateYear,
+		                                   predicateISBN,
+		                                   predicateGenre,
+		                                   predicateAudience,
+		                                   predicateInStock);
 		
-		final ObjectBinding<Predicate<SolutionLibraryBook>> defaultBinding = Bindings
-		    .createObjectBinding(() -> predicateTitle.get()
+		final ObjectBinding<Predicate<SolutionLibraryBook>> defaultBinding
+		    = Bindings.createObjectBinding(() -> predicateTitle.get()
 		        .and(predicateAuthor.get()).and(predicateYear.get())
 		        .and(predicateISBN.get()).and(predicateGenre.get())
 		        .and(predicateAudience.get()),
-		                         predicateTitle,
-		                         predicateAuthor,
-		                         predicateYear,
-		                         predicateISBN,
-		                         predicateGenre,
-		                         predicateAudience);
+		                                   predicateTitle,
+		                                   predicateAuthor,
+		                                   predicateYear,
+		                                   predicateISBN,
+		                                   predicateGenre,
+		                                   predicateAudience);
 		
 		mCheckBoxInStock.selectedProperty().addListener((obs, ov, nv) -> {
 			if (nv) {
@@ -233,26 +244,29 @@ public class LibraryController extends BorderPane {
 	 * @return Returns a sorted list of LibraryBooks that have been retrieved from
 	 *         a file.
 	 */
-	private ObservableList<SolutionLibraryBook> loadBooksFromFile(final String fileName) {
+	private ObservableList<SolutionLibraryBook>
+	        loadBooksFromFile(final String fileName) {
 		final IOModule bookIO = new IOModule();
-		ObservableList<SolutionLibraryBook> bookList = FXCollections
-		    .observableArrayList();
+		ObservableList<SolutionLibraryBook> bookList
+		    = FXCollections.observableArrayList();
 		
 		try {
 			bookList = bookIO.retrieveBooksFromFile(fileName);
 		}
 		catch (final EmptyFileNameException e) {
-			final String message = String.format("Error loading books from file: %s",
-			                                     fileName);
+			final String message
+			    = String.format("Error loading books from file: %s",
+			                    fileName);
 			
-			mErrorAlert = new Alert(AlertType.ERROR,
-			                        message,
-			                        ButtonType.OK);
+			mErrorAlert
+			    = new Alert(AlertType.ERROR,
+			                message,
+			                ButtonType.OK);
 			mErrorAlert.show();
 		}
 		
-		sortedBookComparator = new SimpleObjectProperty<>((book1, book2) -> book1
-		    .compareTo(book2));
+		sortedBookComparator
+		    = new SimpleObjectProperty<>((book1, book2) -> book1.compareTo(book2));
 		
 		return bookList;
 	}
@@ -261,7 +275,8 @@ public class LibraryController extends BorderPane {
 	 * Sets the sort priorities for the table when it is otherwise unsorted.
 	 * @param sortedBookList A sorted list of LibraryBooks to add to the table.
 	 */
-	private void setSortPrioritiesFor(final SortedList<SolutionLibraryBook> sortedBookList) {
+	private void
+	        setSortPrioritiesFor(final SortedList<SolutionLibraryBook> sortedBookList) {
 		mTableView.setItems(sortedBookList);
 		sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
 		

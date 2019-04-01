@@ -43,7 +43,8 @@ public class Solution_Queue<NodeDataType> implements I_Queue<NodeDataType> {
 	}
 	
 	@Override
-	public void enqueue(@SuppressWarnings("unchecked") final NodeDataType... nodesToAdd) {
+	public void
+	       enqueue(@SuppressWarnings ("unchecked") final NodeDataType... nodesToAdd) {
 		if (nodesToAdd == null) {
 			return;
 		}

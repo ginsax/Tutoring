@@ -25,29 +25,40 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	private final String mSortingTitle;
 	
 	/** The number of in stock copies of this book. */
-	private final IntegerProperty	mNumberOfCopiesInStock	= new SimpleIntegerProperty();
+	private final IntegerProperty	mNumberOfCopiesInStock
+																										    = new SimpleIntegerProperty();
 	/** The total number of copies of this book. */
-	private final IntegerProperty	mNumberOfCopiesTotal		= new SimpleIntegerProperty();
+	private final IntegerProperty	mNumberOfCopiesTotal
+																										    = new SimpleIntegerProperty();
 	/** The year this book was published. */
-	private final IntegerProperty	mPublishingYear					= new SimpleIntegerProperty();
+	private final IntegerProperty	mPublishingYear
+																										    = new SimpleIntegerProperty();
 	
 	/** The author of this book. */
-	private final StringProperty							mAuthor	= new SimpleStringProperty();
+	private final StringProperty							mAuthor
+																								    = new SimpleStringProperty();
 	/** The ISBN identifier of this book. */
-	private final StringProperty							mISBN		= new SimpleStringProperty();
+	private final StringProperty							mISBN
+																								    = new SimpleStringProperty();
 	/** The name of this book's series - if any. */
-	private final ObjectProperty<BookSeries>	mSeries	= new SimpleObjectProperty<>();
+	private final ObjectProperty<BookSeries>	mSeries
+																								    = new SimpleObjectProperty<>();
 	/** The title of this book. */
-	private final StringProperty							mTitle	= new SimpleStringProperty();
+	private final StringProperty							mTitle
+																								    = new SimpleStringProperty();
 	
 	/** The intended audience of this book. */
-	private final ObjectProperty<Audience>			mAudience			= new SimpleObjectProperty<>();
+	private final ObjectProperty<Audience>			mAudience
+																												    = new SimpleObjectProperty<>();
 	/** The genre of this book. */
-	private final ObjectProperty<Genre>					mGenre				= new SimpleObjectProperty<>();
+	private final ObjectProperty<Genre>					mGenre
+																												    = new SimpleObjectProperty<>();
 	/** The fictionality of this book. */
-	private final ObjectProperty<Fictionality>	mFictionality	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Fictionality>	mFictionality
+																												    = new SimpleObjectProperty<>();
 	/** The unique identifier assigned to this book. */
-	private final ObjectProperty<UUID>					mID						= new SimpleObjectProperty<>();
+	private final ObjectProperty<UUID>					mID
+																												    = new SimpleObjectProperty<>();
 	
 	
 	/**
@@ -212,14 +223,12 @@ public class LibraryBook implements Comparable<LibraryBook> {
 	public String toString() {
 		// The Emperor's Soul [978-1616960926] (2012) by Brandon Sanderson. Adult
 		// Fantasy - Fiction. [2/3] copies in stock.
-		final String returnString = getTitle() + " [" + getISBN() + "] (" +
-		                            getPublishingYear() + ")" +
-		                            seriesProperty().get()
-		                                .getSeriesInformationString() +
-		                            " by " + getAuthor() + ". " + getAudience() +
-		                            " " + getGenre() + " - " + getFictionality() +
-		                            ". [" + getNumberOfCopiesInStock() + "/" +
-		                            getNumberOfCopiesTotal() + "] copies in stock.";
+		final String returnString
+		    = getTitle() + " [" + getISBN() + "] (" + getPublishingYear() + ")" +
+		      seriesProperty().get().getSeriesInformationString() + " by " +
+		      getAuthor() + ". " + getAudience() + " " + getGenre() + " - " +
+		      getFictionality() + ". [" + getNumberOfCopiesInStock() + "/" +
+		      getNumberOfCopiesTotal() + "] copies in stock.";
 		return returnString;
 	}
 	

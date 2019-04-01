@@ -26,29 +26,40 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	private String mSortingTitle;
 	
 	/** The number of in stock copies of this book. */
-	private final IntegerProperty	mNumberOfCopiesInStock	= new SimpleIntegerProperty();
+	private final IntegerProperty	mNumberOfCopiesInStock
+																										    = new SimpleIntegerProperty();
 	/** The total number of copies of this book. */
-	private final IntegerProperty	mNumberOfCopiesTotal		= new SimpleIntegerProperty();
+	private final IntegerProperty	mNumberOfCopiesTotal
+																										    = new SimpleIntegerProperty();
 	/** The year this book was published. */
-	private final IntegerProperty	mPublishingYear					= new SimpleIntegerProperty();
+	private final IntegerProperty	mPublishingYear
+																										    = new SimpleIntegerProperty();
 	
 	/** The author of this book. */
-	private final StringProperty							mAuthor	= new SimpleStringProperty();
+	private final StringProperty							mAuthor
+																								    = new SimpleStringProperty();
 	/** The ISBN identifier of this book. */
-	private final StringProperty							mISBN		= new SimpleStringProperty();
+	private final StringProperty							mISBN
+																								    = new SimpleStringProperty();
 	/** The name of this book's series - if any. */
-	private final ObjectProperty<BookSeries>	mSeries	= new SimpleObjectProperty<>();
+	private final ObjectProperty<BookSeries>	mSeries
+																								    = new SimpleObjectProperty<>();
 	/** The title of this book. */
-	private final StringProperty							mTitle	= new SimpleStringProperty();
+	private final StringProperty							mTitle
+																								    = new SimpleStringProperty();
 	
 	/** The intended audience of this book. */
-	private final ObjectProperty<Audience>			mAudience			= new SimpleObjectProperty<>();
+	private final ObjectProperty<Audience>			mAudience
+																												    = new SimpleObjectProperty<>();
 	/** The genre of this book. */
-	private final ObjectProperty<Genre>					mGenre				= new SimpleObjectProperty<>();
+	private final ObjectProperty<Genre>					mGenre
+																												    = new SimpleObjectProperty<>();
 	/** The fictionality of this book. */
-	private final ObjectProperty<Fictionality>	mFictionality	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Fictionality>	mFictionality
+																												    = new SimpleObjectProperty<>();
 	/** The unique identifier assigned to this book. */
-	private final ObjectProperty<UUID>					mID						= new SimpleObjectProperty<>();
+	private final ObjectProperty<UUID>					mID
+																												    = new SimpleObjectProperty<>();
 	
 	
 	/**
@@ -130,17 +141,19 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	@Override
 	public int compareTo(final SolutionLibraryBook otherBook) {
 		final int comparisonAuthor = getAuthor().compareTo(otherBook.getAuthor());
-		final int comparisonSeries = mSeries.get().seriesProperty().get()
-		    .compareTo(otherBook.mSeries.get().seriesProperty().get());
-		final int comparisonTitle = mSortingTitle
-		    .compareTo(otherBook.mSortingTitle);
+		final int comparisonSeries
+		    = mSeries.get().seriesProperty().get()
+		        .compareTo(otherBook.mSeries.get().seriesProperty().get());
+		final int comparisonTitle
+		    = mSortingTitle.compareTo(otherBook.mSortingTitle);
 		
-		final int[] comparators = new int[] {
-		    comparisonAuthor,
-		    comparisonSeries,
-		    comparisonTitle,
-		};
-		
+		final int[] comparators
+		    = new int[] {
+		        comparisonAuthor,
+		        comparisonSeries,
+		        comparisonTitle,
+				};
+				
 		for (final int comparator : comparators) {
 			if (comparator != 0) {
 				return comparator;
@@ -319,8 +332,9 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		final int indexFirstSpace = sortingTitle.indexOf(" ");
 		
 		if (indexFirstSpace > 0) {
-			final String firstWord = sortingTitle.substring(0,
-			                                                indexFirstSpace);
+			final String firstWord
+			    = sortingTitle.substring(0,
+			                             indexFirstSpace);
 			if (firstWord.equalsIgnoreCase("a") || firstWord.equalsIgnoreCase("an") ||
 			    firstWord.equalsIgnoreCase("the")) {
 				
@@ -344,9 +358,10 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		String seriesInformation = mSeries.get().getSeriesInformationString();
 		
 		// check if the series information is going to be used.
-		seriesInformation = mSeries.get().isPartOfASeries()
-		                                                    ? seriesInformation
-		                                                    : "";
+		seriesInformation
+		    = mSeries.get().isPartOfASeries()
+		                                      ? seriesInformation
+		                                      : "";
 		
 		return String
 		    .format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.",

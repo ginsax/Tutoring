@@ -53,7 +53,8 @@ public class ExceptionsTest {
 	@Test
 	public void test_InvalidBookSeriesNameException_CanHaveCustomMessage() {
 		final String expected = "Test exception method.";
-		final LibraryException exception = new InvalidBookSeriesNameException(expected);
+		final LibraryException exception
+		    = new InvalidBookSeriesNameException(expected);
 		
 		final String actual = exception.getMessage();
 		assertEquals("Tests that a InvalidBookSeriesNameException can have a message set.",

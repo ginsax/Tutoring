@@ -24,10 +24,10 @@ public class LibraryApplication extends Application {
 	@Override
 	public void start(final Stage stage)
 	                                     throws EmptyFileNameException {
-		final double MIN_WIDTH = Screen.getPrimary().getVisualBounds().getWidth() /
-		                         2;
-		final double MIN_HEIGHT = Screen.getPrimary().getVisualBounds()
-		    .getHeight() / 2;
+		final double MIN_WIDTH
+		    = Screen.getPrimary().getVisualBounds().getWidth() / 2;
+		final double MIN_HEIGHT
+		    = Screen.getPrimary().getVisualBounds().getHeight() / 2;
 		
 		stage.setMinWidth(MIN_WIDTH);
 		stage.setMinHeight(MIN_HEIGHT);

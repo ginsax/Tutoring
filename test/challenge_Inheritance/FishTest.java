@@ -82,8 +82,9 @@ public class FishTest {
 		final SkinType skinType = SkinType.Other;
 		
 		DietType expected = DietType.Carnivore;
-		Animal animal = new Animal(expected,
-		                           skinType);
+		Animal animal
+		    = new Animal(expected,
+		                 skinType);
 		DietType actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Carnivore'.",
@@ -91,8 +92,9 @@ public class FishTest {
 		             actual);
 		
 		expected = DietType.Herbivore;
-		animal = new Animal(expected,
-		                    skinType);
+		animal
+		    = new Animal(expected,
+		                 skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Herbivore'.",
@@ -100,8 +102,9 @@ public class FishTest {
 		             actual);
 		
 		expected = DietType.Omnivore;
-		animal = new Animal(expected,
-		                    skinType);
+		animal
+		    = new Animal(expected,
+		                 skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Omnivore'.",
@@ -109,8 +112,9 @@ public class FishTest {
 		             actual);
 		
 		expected = DietType.Other;
-		animal = new Animal(expected,
-		                    skinType);
+		animal
+		    = new Animal(expected,
+		                 skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Other'.",
@@ -127,9 +131,10 @@ public class FishTest {
 		final SkinType skinType = SkinType.Other;
 		
 		int expected = 0;
-		Fish fish = new Fish(expected,
-		                     dietType,
-		                     skinType);
+		Fish fish
+		    = new Fish(expected,
+		               dietType,
+		               skinType);
 		int actual = fish.getNumberOfFins();
 		
 		assertEquals("Testing that the number of fins can be set to 0.",
@@ -137,9 +142,10 @@ public class FishTest {
 		             actual);
 		
 		expected = 2;
-		fish = new Fish(expected,
-		                dietType,
-		                skinType);
+		fish
+		    = new Fish(expected,
+		               dietType,
+		               skinType);
 		actual = fish.getNumberOfFins();
 		
 		assertEquals("Testing that the number of fins can be set to 2.",
@@ -156,9 +162,10 @@ public class FishTest {
 		final SkinType skinType = SkinType.Other;
 		
 		int expected = -1;
-		Fish fish = new Fish(expected,
-		                     dietType,
-		                     skinType);
+		Fish fish
+		    = new Fish(expected,
+		               dietType,
+		               skinType);
 		int actual = fish.getNumberOfFins();
 		
 		assertNotEquals("Testing that the number of fins cannot be set to -1.",
@@ -166,9 +173,10 @@ public class FishTest {
 		                actual);
 		
 		expected = 1;
-		fish = new Fish(expected,
-		                dietType,
-		                skinType);
+		fish
+		    = new Fish(expected,
+		               dietType,
+		               skinType);
 		actual = fish.getNumberOfFins();
 		
 		assertNotEquals("Testing that the number of fins cannot be set to 1.",
@@ -178,9 +186,10 @@ public class FishTest {
 		// Tests that all numbers above 4 are invalid
 		for (int i = 3; i <= 100; i++) {
 			expected = i;
-			fish = new Fish(expected,
-			                dietType,
-			                skinType);
+			fish
+			    = new Fish(expected,
+			               dietType,
+			               skinType);
 			actual = fish.getNumberOfFins();
 			
 			assertNotEquals(String
@@ -199,8 +208,9 @@ public class FishTest {
 		final DietType diet = DietType.Other;
 		
 		SkinType expected = SkinType.Scale;
-		Fish fish = new Fish(diet,
-		                     expected);
+		Fish fish
+		    = new Fish(diet,
+		               expected);
 		SkinType actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Scale'.",
@@ -208,8 +218,9 @@ public class FishTest {
 		             actual);
 		
 		expected = SkinType.Other;
-		fish = new Fish(diet,
-		                expected);
+		fish
+		    = new Fish(diet,
+		               expected);
 		actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Other'.",
@@ -225,32 +236,36 @@ public class FishTest {
 		final DietType diet = DietType.Other;
 		final SkinType expected = SkinType.Other;
 		
-		Fish fish = new Fish(diet,
-		                     SkinType.Feather);
+		Fish fish
+		    = new Fish(diet,
+		               SkinType.Feather);
 		SkinType actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Feather'.",
 		             expected,
 		             actual);
 		
-		fish = new Fish(diet,
-		                SkinType.Fur);
+		fish
+		    = new Fish(diet,
+		               SkinType.Fur);
 		actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Fur'.",
 		             expected,
 		             actual);
 		
-		fish = new Fish(diet,
-		                SkinType.Skin);
+		fish
+		    = new Fish(diet,
+		               SkinType.Skin);
 		actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Skin'.",
 		             expected,
 		             actual);
 		
-		fish = new Fish(diet,
-		                SkinType.Other);
+		fish
+		    = new Fish(diet,
+		               SkinType.Other);
 		actual = fish.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Other'.",

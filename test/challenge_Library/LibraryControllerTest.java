@@ -39,7 +39,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalArgumentException
 	 * @throws InvocationTargetException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_CanClearFilters()
 	                                                     throws EmptyFileNameException,
@@ -66,8 +66,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(TextField.class) &&
@@ -104,7 +104,7 @@ public class LibraryControllerTest {
 	 * Tests that a library controller can handle a file name that is empty.
 	 * @throws EmptyFileNameException
 	 */
-	@Test(expected = EmptyFileNameException.class)
+	@Test (expected = EmptyFileNameException.class)
 	public void test_LibraryController_CanHandleEmptyFileName()
 	                                                            throws EmptyFileNameException {
 		new LibraryController("");
@@ -145,7 +145,7 @@ public class LibraryControllerTest {
 	 * Tests that a library controller can handle a file name that is empty.
 	 * @throws EmptyFileNameException
 	 */
-	@Test(expected = EmptyFileNameException.class)
+	@Test (expected = EmptyFileNameException.class)
 	public void test_LibraryController_CanHandleNullFileName()
 	                                                           throws EmptyFileNameException {
 		new LibraryController(null);
@@ -170,7 +170,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_CanRemoveSortOrder()
 	                                                        throws EmptyFileNameException,
@@ -185,8 +185,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 				
 				tableView.getSortOrder().add(tableView.getColumns().get(0));
 				tableView.getSortOrder().add(tableView.getColumns().get(1));
@@ -203,7 +203,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_CanSort()
 	                                             throws EmptyFileNameException,
@@ -218,8 +218,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 				
 				tableView.sort();
 			}
@@ -233,7 +233,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_ComboBox_Audience_FiltersCorrectly()
 	                                                                        throws EmptyFileNameException,
@@ -249,15 +249,15 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(ComboBox.class) &&
 			    field.getName().toLowerCase().contains(nameOfField)) {
 				
-				final ComboBox<Audience> comboBox = (ComboBox<Audience>) field
-				    .get(mLibraryController);
+				final ComboBox<Audience> comboBox
+				    = (ComboBox<Audience>) field.get(mLibraryController);
 				
 				int expected = 8;
 				int actual = tableView.getItems().size();
@@ -290,7 +290,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_ComboBox_Genre_FiltersCorrectly()
 	                                                                     throws EmptyFileNameException,
@@ -306,15 +306,15 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(ComboBox.class) &&
 			    field.getName().toLowerCase().contains(nameOfField)) {
 				
-				final ComboBox<Genre> comboBox = (ComboBox<Genre>) field
-				    .get(mLibraryController);
+				final ComboBox<Genre> comboBox
+				    = (ComboBox<Genre>) field.get(mLibraryController);
 				
 				int expected = 8;
 				int actual = tableView.getItems().size();
@@ -347,7 +347,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_FilterComboBox_Audience_IsNotNull()
 	                                                                       throws EmptyFileNameException,
@@ -364,8 +364,8 @@ public class LibraryControllerTest {
 			if (field.getType().equals(ComboBox.class) &&
 			    field.getName().toLowerCase().contains(nameOfField)) {
 				
-				final ComboBox<Audience> comboBox = (ComboBox<Audience>) field
-				    .get(mLibraryController);
+				final ComboBox<Audience> comboBox
+				    = (ComboBox<Audience>) field.get(mLibraryController);
 				
 				assertNotNull("Tests that the audience combo box of a library controller is not null.",
 				              comboBox);
@@ -379,7 +379,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_FilterComboBox_Genre_IsNotNull()
 	                                                                    throws EmptyFileNameException,
@@ -396,8 +396,8 @@ public class LibraryControllerTest {
 			if (field.getType().equals(ComboBox.class) &&
 			    field.getName().toLowerCase().contains(nameOfField)) {
 				
-				final ComboBox<Genre> comboBox = (ComboBox<Genre>) field
-				    .get(mLibraryController);
+				final ComboBox<Genre> comboBox
+				    = (ComboBox<Genre>) field.get(mLibraryController);
 				
 				assertNotNull("Tests that the genre combo box of a library controller is not null.",
 				              comboBox);
@@ -412,7 +412,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_FilterTextBox_Author_FiltersCorrectly()
 	                                                                           throws EmptyFileNameException,
@@ -428,8 +428,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(TextField.class) &&
@@ -500,7 +500,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_FilterTextBox_ISBN_FiltersCorrectly()
 	                                                                         throws EmptyFileNameException,
@@ -516,8 +516,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(TextField.class) &&
@@ -588,12 +588,13 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
-	public void test_LibraryController_FilterTextBox_PublishingYear_FiltersCorrectly()
-	                                                                                   throws EmptyFileNameException,
-	                                                                                   IllegalArgumentException,
-	                                                                                   IllegalAccessException {
+	public void
+	       test_LibraryController_FilterTextBox_PublishingYear_FiltersCorrectly()
+	                                                                              throws EmptyFileNameException,
+	                                                                              IllegalArgumentException,
+	                                                                              IllegalAccessException {
 		mLibraryController = new LibraryController("SimpleTest.csv");
 		
 		final String nameOfField = "year";
@@ -604,8 +605,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(TextField.class) &&
@@ -645,7 +646,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_FilterTextBox_Title_FiltersCorrectly()
 	                                                                          throws EmptyFileNameException,
@@ -661,8 +662,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(TextField.class) &&
@@ -789,7 +790,7 @@ public class LibraryControllerTest {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings ("unchecked")
 	@Test
 	public void test_LibraryController_InStockCheckBoxFiltersCorrectly()
 	                                                                     throws EmptyFileNameException,
@@ -804,8 +805,8 @@ public class LibraryControllerTest {
 			field.setAccessible(true);
 			
 			if (field.getType().equals(TableView.class)) {
-				tableView = (TableView<SolutionLibraryBook>) field
-				    .get(mLibraryController);
+				tableView
+				    = (TableView<SolutionLibraryBook>) field.get(mLibraryController);
 			}
 			
 			if (field.getType().equals(CheckBox.class)) {

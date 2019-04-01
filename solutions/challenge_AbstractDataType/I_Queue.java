@@ -20,7 +20,7 @@ interface I_Queue<NodeDataType> {
 	 * the end of the queue.
 	 * @param nodeToAdd The node that is added to the end of the queue.
 	 */
-	void enqueue(@SuppressWarnings("unchecked") final NodeDataType... nodesToAdd);
+	void enqueue(@SuppressWarnings ("unchecked") final NodeDataType... nodesToAdd);
 	
 	/**
 	 * Gets whether this queue is empty.

@@ -38,7 +38,8 @@ public class Test_NodeLinkedList {
 		final Double expected = 69.69;
 		
 		final Double dataObject = new Double(expected);
-		final I_NodeLinkedList<Double> node = new NodeLinkedList<Double>(dataObject);
+		final I_NodeLinkedList<Double> node
+		    = new NodeLinkedList<Double>(dataObject);
 		
 		final Double actual = node.getDataObject();
 		assertEquals(expected,
@@ -52,7 +53,8 @@ public class Test_NodeLinkedList {
 	@Test
 	public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
 		final Double dataObject = new Double(69.69);
-		final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(dataObject);
+		final I_NodeLinkedList<Double> nodeA
+		    = new NodeLinkedList<Double>(dataObject);
 		
 		assertNotNull(nodeA.getDataObject());
 	}
@@ -120,11 +122,13 @@ public class Test_NodeLinkedList {
 	@Test
 	public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
 		final Double dataObjectB = new Double(96.96);
-		final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
+		final I_NodeLinkedList<Double> nodeB
+		    = new NodeLinkedList<Double>(dataObjectB);
 		
 		final Double dataObjectA = new Double(69.69);
-		final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
-		                                                                  dataObjectA);
+		final I_NodeLinkedList<Double> nodeA
+		    = new NodeLinkedList<Double>(nodeB,
+		                                 dataObjectA);
 		
 		final Double expected = dataObjectB;
 		final Double actual = nodeA.getNextNode().getDataObject();
@@ -139,11 +143,13 @@ public class Test_NodeLinkedList {
 	@Test
 	public void test_Nodable_ParameterizedConstructor_NextNode_IsNotNull() {
 		final Double dataObjectB = new Double(96.96);
-		final I_NodeLinkedList<Double> nodeB = new NodeLinkedList<Double>(dataObjectB);
+		final I_NodeLinkedList<Double> nodeB
+		    = new NodeLinkedList<Double>(dataObjectB);
 		
 		final Double dataObjectA = new Double(69.69);
-		final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
-		                                                                  dataObjectA);
+		final I_NodeLinkedList<Double> nodeA
+		    = new NodeLinkedList<Double>(nodeB,
+		                                 dataObjectA);
 		
 		final I_NodeLinkedList<Double> expected = nodeB;
 		final I_NodeLinkedList<Double> actual = nodeA.getNextNode();

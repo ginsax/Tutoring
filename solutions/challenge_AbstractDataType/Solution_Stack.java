@@ -44,8 +44,9 @@ public class Solution_Stack<NodeDataType> implements I_Stack<NodeDataType> {
 			mTop = new Solution_NodeStack<NodeDataType>(dataObject);
 		}
 		else {
-			mTop = new Solution_NodeStack<NodeDataType>(mTop,
-			                                            dataObject);
+			mTop
+			    = new Solution_NodeStack<NodeDataType>(mTop,
+			                                           dataObject);
 		}
 	}
 	

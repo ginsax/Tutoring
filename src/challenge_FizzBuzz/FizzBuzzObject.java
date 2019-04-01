@@ -72,8 +72,8 @@ public class FizzBuzzObject implements Comparable<FizzBuzzObject> {
 	public String toString() {
 		final String header = "FizzBuzzObject[";
 		final String post = "]";
-		final String returnString = header + Integer.toString(multiple) + ", " +
-		                            callSign + post;
+		final String returnString
+		    = header + Integer.toString(multiple) + ", " + callSign + post;
 		return returnString;
 	}
 	

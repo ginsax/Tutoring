@@ -244,13 +244,15 @@ public class IOModule {
 	 * @return Returns an observable list of LibraryBooks.
 	 * @throws EmptyFileNameException
 	 */
-	public ObservableList<SolutionLibraryBook> retrieveBooksFromFile(final String filePath)
-	                                                                                        throws EmptyFileNameException {
-		final ObservableList<SolutionLibraryBook> retrievedBooks = FXCollections
-		    .observableArrayList();
+	public ObservableList<SolutionLibraryBook>
+	       retrieveBooksFromFile(final String filePath)
+	                                                    throws EmptyFileNameException {
+		final ObservableList<SolutionLibraryBook> retrievedBooks
+		    = FXCollections.observableArrayList();
 		
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass()
-		    .getResourceAsStream(filePath)))) {
+		try (BufferedReader reader
+		    = new BufferedReader(new InputStreamReader(getClass()
+		        .getResourceAsStream(filePath)))) {
 			if (filePath.isEmpty()) {
 				throw new IOException();
 			}
@@ -268,23 +270,28 @@ public class IOModule {
 				final BookSeries series = parseSeriesFrom(parsedResults[index++]);
 				final Genre genre = parseGenreFrom(parsedResults[index++]);
 				final Audience audience = parseAudienceFrom(parsedResults[index++]);
-				final int publishingYear = parsePublishingYearFrom(parsedResults[index++]);
-				final Fictionality fictionality = parseFictionalityFrom(parsedResults[index++]);
-				final int numberOfCopiesInStock = parseNumberOfCopiesInStockFrom(parsedResults,
-				                                                                 index++);
-				final int numberOfCopiesTotal = parseNumberOfCopiesTotalFrom(parsedResults,
-				                                                             index++);
+				final int publishingYear
+				    = parsePublishingYearFrom(parsedResults[index++]);
+				final Fictionality fictionality
+				    = parseFictionalityFrom(parsedResults[index++]);
+				final int numberOfCopiesInStock
+				    = parseNumberOfCopiesInStockFrom(parsedResults,
+				                                     index++);
+				final int numberOfCopiesTotal
+				    = parseNumberOfCopiesTotalFrom(parsedResults,
+				                                   index++);
 				
-				final SolutionLibraryBook libraryBook = new SolutionLibraryBook(isbn,
-				                                                                title,
-				                                                                author,
-				                                                                series,
-				                                                                genre,
-				                                                                audience,
-				                                                                publishingYear,
-				                                                                fictionality,
-				                                                                numberOfCopiesInStock,
-				                                                                numberOfCopiesTotal);
+				final SolutionLibraryBook libraryBook
+				    = new SolutionLibraryBook(isbn,
+				                              title,
+				                              author,
+				                              series,
+				                              genre,
+				                              audience,
+				                              publishingYear,
+				                              fictionality,
+				                              numberOfCopiesInStock,
+				                              numberOfCopiesTotal);
 				
 				retrievedBooks.add(libraryBook);
 			}

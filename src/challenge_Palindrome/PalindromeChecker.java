@@ -25,8 +25,8 @@ public class PalindromeChecker {
 		// Task_2: compare inverted string with original to see if they match
 		// (therefore palindrome)
 		// Do not differentiate between lower and upper case.
-		final boolean doPalindromesMatch = potentialPalindrome
-		    .equalsIgnoreCase(bizzaroString);
+		final boolean doPalindromesMatch
+		    = potentialPalindrome.equalsIgnoreCase(bizzaroString);
 		return doPalindromesMatch;
 	}
 }

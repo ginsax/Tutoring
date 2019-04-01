@@ -23,10 +23,11 @@ public class FXMLFileLoader {
 		
 		final int index = pathToFile.lastIndexOf(".");
 		
-		final String pathName = String.format("/%s/fxml/%s.fxml",
-		                                      pathToFile.substring(0,
-		                                                           index),
-		                                      pathToFile.substring(index + 1));
+		final String pathName
+		    = String.format("/%s/fxml/%s.fxml",
+		                    pathToFile.substring(0,
+		                                         index),
+		                    pathToFile.substring(index + 1));
 		return pathName;
 	}
 	
@@ -40,8 +41,8 @@ public class FXMLFileLoader {
 	public static void initFXMLfor(final Object object) {
 		final String className = getClassNameForLoading(object);
 		
-		final FXMLLoader fxmlLoader = new FXMLLoader(object.getClass()
-		    .getResource(className));
+		final FXMLLoader fxmlLoader
+		    = new FXMLLoader(object.getClass().getResource(className));
 		fxmlLoader.setRoot(object);
 		fxmlLoader.setController(object);
 		

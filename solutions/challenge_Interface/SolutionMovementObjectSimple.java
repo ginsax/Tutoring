@@ -8,7 +8,8 @@ package challenge_Interface;
 public class SolutionMovementObjectSimple implements Movement {
 	
 	/** The display string header. */
-	private final String mDisplayStringHeader = "A simple object to demonstrate movement";
+	private final String mDisplayStringHeader
+	    = "A simple object to demonstrate movement";
 	
 	/** The coordinates object. */
 	private final Coordinates mCoordinates;
@@ -19,8 +20,9 @@ public class SolutionMovementObjectSimple implements Movement {
 	 * coordinates object with the default values of [x = 2] & [y = 4].
 	 */
 	public SolutionMovementObjectSimple() {
-		mCoordinates = new Coordinates(2,
-		                               4);
+		mCoordinates
+		    = new Coordinates(2,
+		                      4);
 	}
 	
 	@Override

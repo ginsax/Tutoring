@@ -15,8 +15,9 @@ public class MovementObjectSimple implements Movement {
 	
 	public MovementObjectSimple() {
 		// Populate Coordinates object per test case expectation.
-		coordinates = new Coordinates(2,
-		                              4);
+		coordinates
+		    = new Coordinates(2,
+		                      4);
 	}
 	
 	/**
@@ -28,8 +29,9 @@ public class MovementObjectSimple implements Movement {
 		// Create string "intro" bit.
 		final String intro = "A simple object to demonstrate movement [";
 		// Tie data into string intro to create main string.
-		final String Alpha = intro + coordinates.getPositionX() + ", " +
-		                     coordinates.getPositionY() + "]";
+		final String Alpha
+		    = intro + coordinates.getPositionX() + ", " +
+		      coordinates.getPositionY() + "]";
 		return Alpha;
 	}
 	

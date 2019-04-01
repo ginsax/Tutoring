@@ -53,7 +53,8 @@ public final class CommonConstants {
 	 * The default value used for the fictionality of a book. Value =
 	 * {@value #DEFAULT_FICTIONALITY}.
 	 */
-	static final Fictionality DEFAULT_FICTIONALITY = Fictionality.DefaultFictionality;
+	static final Fictionality DEFAULT_FICTIONALITY
+	    = Fictionality.DefaultFictionality;
 	
 	/**
 	 * The default value used for the genre of a book. Value =
