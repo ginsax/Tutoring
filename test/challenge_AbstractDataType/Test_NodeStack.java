@@ -21,7 +21,7 @@ public class Test_NodeStack {
   @Test
   public void test_Nodable_DataObjectConstructor_DataObject_IsNotNull() {
     final Float dataObject = new Float(69.2f);
-    final I_NodeStack<Float> node = new Solution_NodeStack<Float>(dataObject);
+    final I_NodeStack<Float> node = new NodeStack<Float>(dataObject);
     
     assertNotNull(node.getDataObject());
   }
@@ -32,8 +32,8 @@ public class Test_NodeStack {
    */
   @Test
   public void test_Nodable_DefaultConstructor_DataObject_IsNotNull() {
-    final I_NodeStack<Float> nodeB = new Solution_NodeStack<Float>();
-    final I_NodeStack<Float> nodeA = new Solution_NodeStack<Float>();
+    final I_NodeStack<Float> nodeB = new NodeStack<Float>();
+    final I_NodeStack<Float> nodeA = new NodeStack<Float>();
     
     nodeA.setNextNode(nodeB);
     
@@ -49,8 +49,8 @@ public class Test_NodeStack {
    */
   @Test
   public void test_Nodable_NextNodeConstructor_NextNode_CanBeSet() {
-    final I_NodeStack<Float> nodeB = new Solution_NodeStack<Float>();
-    final I_NodeStack<Float> nodeA = new Solution_NodeStack<Float>(nodeB);
+    final I_NodeStack<Float> nodeB = new NodeStack<Float>();
+    final I_NodeStack<Float> nodeA = new NodeStack<Float>(nodeB);
     
     final I_NodeStack<Float> expected = nodeB;
     final I_NodeStack<Float> actual = nodeA.getNextNode();
@@ -64,9 +64,9 @@ public class Test_NodeStack {
    */
   @Test
   public void test_Nodable_ParameterizedConstructor_DataObject_IsNotNull() {
-    final I_NodeStack<Float> nodeB = new Solution_NodeStack<Float>();
+    final I_NodeStack<Float> nodeB = new NodeStack<Float>();
     final Float dataObject = new Float(69.0f);
-    final I_NodeStack<Float> nodeA = new Solution_NodeStack<Float>(nodeB,
+    final I_NodeStack<Float> nodeA = new NodeStack<Float>(nodeB,
                                                                    dataObject);
     
     final I_NodeStack<Float> expected = nodeB;
@@ -83,7 +83,7 @@ public class Test_NodeStack {
    */
   @Test
   public void test_NodableDefaultConstructor_DataObject_CanBeSet() {
-    final I_NodeStack<String> node = new Solution_NodeStack<String>();
+    final I_NodeStack<String> node = new NodeStack<String>();
     final String dataObject = "I am a data object";
     
     node.setDataObject(dataObject);
@@ -97,7 +97,7 @@ public class Test_NodeStack {
    */
   @Test
   public void test_NodableDefaultConstructor_DataObject_IsNull() {
-    final I_NodeStack<Double> node = new Solution_NodeStack<Double>();
+    final I_NodeStack<Double> node = new NodeStack<Double>();
     
     assertNull(node.getDataObject());
   }
@@ -108,7 +108,7 @@ public class Test_NodeStack {
    */
   @Test
   public void test_NodableDefaultConstructor_IsNotNull() {
-    final I_NodeStack<Integer> node = new Solution_NodeStack<Integer>();
+    final I_NodeStack<Integer> node = new NodeStack<Integer>();
     
     assertNotNull(node);
   }

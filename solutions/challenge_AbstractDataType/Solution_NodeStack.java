@@ -1,5 +1,12 @@
 package challenge_AbstractDataType;
 
+/**
+ * A node within a stack.
+ * @author jacobwatson
+ * @version 1.0
+ * @param <NodeDataType> The type of data object this node holds.
+ * @since 03/31/2019
+ */
 public class Solution_NodeStack<NodeDataType> implements I_NodeStack<NodeDataType> {
   /** The data object of this node. */
   private NodeDataType              mDataObject;
