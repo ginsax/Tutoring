@@ -2,16 +2,14 @@ package challenge_Palindrome;
 
 /**
  * Use this class to test the Palindrome challenge.
- * 
  * @author jacob.watson
  * @since 12/18/2018
  */
 public class PalindromeChecker {
-
+	
 	/**
-	 * Analyzes the given {@code potentialPalindrome} String and returns whether it
-	 * is a palindrome or not.
-	 * 
+	 * Analyzes the given {@code potentialPalindrome} String and returns whether
+	 * it is a palindrome or not.
 	 * @param potentialPalindrome String that may or may not be a palindrome.
 	 * @return Returns true if the {code potentialPalindrome} is a palindrome.
 	 *         Otherwise, false is returned.
@@ -27,7 +25,8 @@ public class PalindromeChecker {
 		// Task_2: compare inverted string with original to see if they match
 		// (therefore palindrome)
 		// Do not differentiate between lower and upper case.
-		final boolean doPalindromesMatch = potentialPalindrome.equalsIgnoreCase(bizzaroString);
+		final boolean doPalindromesMatch
+		    = potentialPalindrome.equalsIgnoreCase(bizzaroString);
 		return doPalindromesMatch;
 	}
 }
