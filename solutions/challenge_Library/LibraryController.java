@@ -81,7 +81,7 @@ public class LibraryController extends BorderPane {
 		super();
 		FXMLFileLoader.initFXMLfor(this);
 		
-		if ((fileName == null) || fileName.isEmpty()) {
+		if (fileName == null || fileName.isEmpty()) {
 			throw new EmptyFileNameException();
 		}
 		
@@ -166,8 +166,8 @@ public class LibraryController extends BorderPane {
 		predicateGenre.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getGenre()
 		        .equals(filter_Genre.getSelectionModel().getSelectedItem()) ||
-		                                       (filter_Genre.getSelectionModel()
-		                                           .getSelectedItem() == null),
+		                                       filter_Genre.getSelectionModel()
+		                                           .getSelectedItem() == null,
 		                         filter_Genre.getSelectionModel()
 		                             .selectedItemProperty()));
 		
@@ -176,8 +176,8 @@ public class LibraryController extends BorderPane {
 		predicateAudience.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getAudience()
 		        .equals(filter_Audience.getSelectionModel().getSelectedItem()) ||
-		                                       (filter_Audience.getSelectionModel()
-		                                           .getSelectedItem() == null),
+		                                       filter_Audience.getSelectionModel()
+		                                           .getSelectedItem() == null,
 		                         filter_Audience.getSelectionModel()
 		                             .selectedItemProperty()));
 		

@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import challenge_FizzBuzz.FizzBuzzAnalysisResult;
@@ -298,7 +300,7 @@ public class Test_LinkedList {
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
 	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_0() {
+	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_00() {
 		final I_NodeLinkedList<String> nodeA
 		    = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB
@@ -310,6 +312,212 @@ public class Test_LinkedList {
 		
 		final int expected = 2;
 		final int actual = list.length();
+		assertEquals(expected,
+		             actual);
+	}
+	/** Tests that inserting a node at a valid index behaves as expected. */
+	@Test
+	public void
+	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_00() {
+		final I_NodeLinkedList<String> nodeA
+		    = new NodeLinkedList<String>("I am the first node.");
+		final I_NodeLinkedList<String> nodeB
+		    = new NodeLinkedList<String>("I am the second node.");
+		final I_LinkedList<String> list = new LinkedList<String>(nodeA);
+		
+		final ArrayList<I_NodeLinkedList<String>> nodes
+		    = new ArrayList<I_NodeLinkedList<String>>();
+		nodes.add(nodeA);
+		nodes.add(nodeB);
+		
+		list.insertNodeAtIndex(1,
+		                       nodeB);
+		
+		for (int i = 0; i < nodes.size(); i++) {
+			final I_NodeLinkedList<String> expected = nodes.get(i);
+			final I_NodeLinkedList<String> actual = list.getNodeAtIndex(i);
+			
+			assertEquals(expected,
+			             actual);
+		}
+	}
+	/** Tests that inserting a node at a valid index behaves as expected. */
+	@Test
+	public void
+	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_01() {
+		final I_NodeLinkedList<String> nodeA
+		    = new NodeLinkedList<String>("I am the first node.");
+		final I_NodeLinkedList<String> nodeB
+		    = new NodeLinkedList<String>("I am the second node.");
+		final I_NodeLinkedList<String> nodeC
+		    = new NodeLinkedList<String>("I am the third node.");
+		final I_LinkedList<String> list = new LinkedList<String>(nodeA);
+		
+		list.insertNodeAtIndex(0,
+		                       nodeB);
+		list.insertNodeAtIndex(1,
+		                       nodeC);
+		
+		final int expected = 3;
+		final int actual = list.length();
+		assertEquals(expected,
+		             actual);
+	}
+	/** Tests that inserting a node at a valid index behaves as expected. */
+	@Test
+	public void
+	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_01() {
+		final I_NodeLinkedList<String> nodeA
+		    = new NodeLinkedList<String>("I am the first node.");
+		final I_NodeLinkedList<String> nodeB
+		    = new NodeLinkedList<String>("I am the second node.");
+		final I_NodeLinkedList<String> nodeC
+		    = new NodeLinkedList<String>("I am the third node.");
+		final I_LinkedList<String> list = new LinkedList<String>(nodeA);
+		
+		final ArrayList<I_NodeLinkedList<String>> nodes
+		    = new ArrayList<I_NodeLinkedList<String>>();
+		nodes.add(nodeB);
+		nodes.add(nodeC);
+		nodes.add(nodeA);
+		
+		list.insertNodeAtIndex(0,
+		                       nodeB);
+		list.insertNodeAtIndex(1,
+		                       nodeC);
+		
+		for (int i = 0; i < nodes.size(); i++) {
+			final I_NodeLinkedList<String> expected = nodes.get(i);
+			final I_NodeLinkedList<String> actual = list.getNodeAtIndex(i);
+			
+			assertEquals(expected,
+			             actual);
+		}
+	}
+	/** Tests that inserting a node at a valid index behaves as expected. */
+	@Test
+	public void
+	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_02() {
+		final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(0);
+		final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>(1);
+		final I_NodeLinkedList<Integer> nodeC = new NodeLinkedList<Integer>(2);
+		final I_LinkedList<Integer> list = new LinkedList<Integer>(nodeA);
+		
+		list.insertNodeAtIndex(0,
+		                       nodeB);
+		list.insertNodeAtIndex(1,
+		                       nodeC);
+		
+		final int expected = 3;
+		final int actual = list.length();
+		assertEquals(expected,
+		             actual);
+	}
+	/** Tests that inserting a node at a valid index behaves as expected. */
+	@Test
+	public void
+	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_02() {
+		final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(0);
+		final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>(1);
+		final I_NodeLinkedList<Integer> nodeC = new NodeLinkedList<Integer>(2);
+		final I_NodeLinkedList<Integer> nodeD = new NodeLinkedList<Integer>(3);
+		final I_NodeLinkedList<Integer> nodeE = new NodeLinkedList<Integer>(4);
+		final I_NodeLinkedList<Integer> nodeF = new NodeLinkedList<Integer>(5);
+		final I_NodeLinkedList<Integer> nodeG = new NodeLinkedList<Integer>(6);
+		final I_NodeLinkedList<Integer> nodeH = new NodeLinkedList<Integer>(7);
+		final I_NodeLinkedList<Integer> nodeI = new NodeLinkedList<Integer>(8);
+		
+		final I_LinkedList<Integer> list = new LinkedList<Integer>(nodeA);
+		
+		final ArrayList<I_NodeLinkedList<Integer>> nodes
+		    = new ArrayList<I_NodeLinkedList<Integer>>();
+		nodes.add(nodeB);
+		nodes.add(nodeC);
+		nodes.add(nodeA);
+		nodes.add(nodeD);
+		nodes.add(nodeE);
+		nodes.add(nodeG);
+		nodes.add(nodeI);
+		nodes.add(nodeF);
+		nodes.add(nodeH);
+		
+		list.insertNodeAtIndex(0,
+		                       nodeB);
+		list.insertNodeAtIndex(1,
+		                       nodeC);
+		list.insertNodeAtIndex(3,
+		                       nodeH);
+		list.insertNodeAtIndex(3,
+		                       nodeE);
+		list.insertNodeAtIndex(3,
+		                       nodeD);
+		list.insertNodeAtIndex(5,
+		                       nodeF);
+		list.insertNodeAtIndex(5,
+		                       nodeI);
+		list.insertNodeAtIndex(5,
+		                       nodeG);
+		
+		for (int i = 0; i < nodes.size(); i++) {
+			final I_NodeLinkedList<Integer> expected = nodes.get(i);
+			final I_NodeLinkedList<Integer> actual = list.getNodeAtIndex(i);
+			
+			assertEquals(expected,
+			             actual);
+		}
+	}
+	
+	/**
+	 * Tests that appending a node to an empty list sets the head of that list to
+	 * the given node.
+	 */
+	@Test
+	public void test_NodeConstructor_AppendNode_EmptyList_MakesNewNodeHead() {
+		final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>(0);
+		
+		final I_LinkedList<Integer> list = new LinkedList<Integer>();
+		list.appendNode(node);
+		
+		assertNotNull(list.head());
+	}
+	/**
+	 * Tests that appending a node to an empty list sets the tail of that list to
+	 * the given node.
+	 */
+	@Test
+	public void test_NodeConstructor_AppendNode_EmptyList_MakesNewNodeTail() {
+		final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>(0);
+		
+		final I_LinkedList<Integer> list = new LinkedList<Integer>();
+		list.appendNode(node);
+		
+		assertNotNull(list.tail());
+	}
+	/** Tests that appending a node to an empty list makes that list not empty. */
+	@Test
+	public void test_NodeConstructor_AppendNode_EmptyList_MakesListNotEmpty() {
+		final I_NodeLinkedList<Integer> node = new NodeLinkedList<Integer>(0);
+		
+		final I_LinkedList<Integer> list = new LinkedList<Integer>();
+		list.appendNode(node);
+		
+		assertFalse(list.isEmpty());
+	}
+	/** Tests that appending a node to a list behaves as expected. */
+	@Test
+	public void test_NodeConstructor_AppendNode_BehavesAsExpected_00() {
+		final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(0);
+		final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>(1);
+		
+		final I_LinkedList<Integer> list = new LinkedList<Integer>(nodeA);
+		list.appendNode(nodeB);
+		
+		final I_NodeLinkedList<Integer> expected = nodeB;
+		I_NodeLinkedList<Integer> actual = list.tail();
+		assertEquals(expected,
+		             actual);
+		
+		actual = list.getNodeAtIndex(1);
 		assertEquals(expected,
 		             actual);
 	}
@@ -496,7 +704,8 @@ public class Test_LinkedList {
 	public void test_ParameterizedConstructor_TailIsHead() {
 		final I_NodeLinkedList<SurgeonFish> node
 		    = new NodeLinkedList<SurgeonFish>();
-		final I_LinkedList<SurgeonFish> list = new LinkedList<SurgeonFish>(node);
+		final I_LinkedList<SurgeonFish> list
+		    = new LinkedList<SurgeonFish>(node);
 		
 		final I_NodeLinkedList<SurgeonFish> expected = node;
 		final I_NodeLinkedList<SurgeonFish> actual = list.tail();

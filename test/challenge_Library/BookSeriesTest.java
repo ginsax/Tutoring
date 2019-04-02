@@ -285,8 +285,8 @@ public class BookSeriesTest {
 		final Field[] declaredFields = BookSeries.class.getDeclaredFields();
 		
 		for (final Field field : declaredFields) {
-			if (!field.isSynthetic() && (Modifier.isPublic(field.getModifiers()) &&
-			                             !Modifier.isFinal(field.getModifiers()))) {
+			if (!field.isSynthetic() && Modifier.isPublic(field.getModifiers()) &&
+			    !Modifier.isFinal(field.getModifiers())) {
 				
 				final String message
 				    = String.format("Field %s can only be public if it is also final.",

@@ -19,7 +19,7 @@ public class Solution_Queue<NodeDataType> implements I_Queue<NodeDataType> {
 	 */
 	@SafeVarargs
 	Solution_Queue(final NodeDataType... dataObjects) {
-		if ((dataObjects == null) || (dataObjects.length == 0)) {
+		if (dataObjects == null || dataObjects.length == 0) {
 			mFirstNode = null;
 		}
 		else {
@@ -73,7 +73,7 @@ public class Solution_Queue<NodeDataType> implements I_Queue<NodeDataType> {
 	public NodeDataType peek() {
 		final NodeDataType firstNodeDataObject;
 		
-		if ((mFirstNode != null) && (mFirstNode.getDataObject() != null)) {
+		if (mFirstNode != null && mFirstNode.getDataObject() != null) {
 			firstNodeDataObject = mFirstNode.getDataObject();
 		}
 		else {

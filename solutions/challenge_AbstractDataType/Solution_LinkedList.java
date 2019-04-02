@@ -69,7 +69,7 @@ final class Solution_LinkedList<NodeDataType>
 	@Override
 	public I_NodeLinkedList<NodeDataType> getNodeAtIndex(final int index)
 	                                                                      throws Exception_InvalidListIndex {
-		if ((index < 0) || (index >= length()) || (mHead == null)) {
+		if (index < 0 || index >= length() || mHead == null) {
 			throw new Exception_InvalidListIndex();
 		}
 		
@@ -96,19 +96,19 @@ final class Solution_LinkedList<NodeDataType>
 	       setNodeAtIndex(final int index,
 	                      final I_NodeLinkedList<NodeDataType> nextNode)
 	                                                                     throws Exception_InvalidListIndex {
-		if ((mHead == null) || (index == 0)) {
+		if (mHead == null || index == 0) {
 			
 			final int length
 			    = length() == 1
 			                    ? 0
 			                    : length();
-			if ((index >= 0) && (index <= length)) {
+			if (index >= 0 && index <= length) {
 				mHead = nextNode;
 				return;
 			}
 		}
 		
-		if ((index < 0) || (index > length())) {
+		if (index < 0 || index > length()) {
 			throw new Exception_InvalidListIndex();
 		}
 		
@@ -135,42 +135,43 @@ final class Solution_LinkedList<NodeDataType>
 	       insertNodeAtIndex(final int index,
 	                         final I_NodeLinkedList<NodeDataType> nextNode)
 	                                                                        throws Exception_InvalidListIndex {
-		if ((mHead == null) || (index == 0)) {
-			
-			final int length
-			    = length() == 1
-			                    ? 0
-			                    : length();
-			if ((index >= 0) && (index <= length)) {
-				mHead = nextNode;
-				return;
-			}
-		}
 		
-		if ((index < 0) || (index > length())) {
+		if (index < 0 || index > length()) {
 			throw new Exception_InvalidListIndex();
 		}
 		
-		int i = 0;
 		I_NodeLinkedList<NodeDataType> node = mHead;
+		I_NodeLinkedList<NodeDataType> lastNode = null;
 		
-		while (node != null) {
-			
-			if (i == index) {
-				break;
-			}
-			node = node.getNextNode();
-			
-			i++;
+		if (index == 0) {
+			mHead = nextNode;
+			nextNode.setNextNode(node);
+			return;
 		}
 		
-		getNodeAtIndex(i - 1).setNextNode(nextNode);
+		int i = 0;
+		while (node != null) {
+			
+			if (i++ == index) {
+				break;
+			}
+			
+			lastNode = node;
+			node = node.getNextNode();
+		}
+		
+		lastNode.setNextNode(nextNode);
 		appendNode(node);
 	}
 	
 	@Override
 	public void appendNode(final I_NodeLinkedList<NodeDataType> node) {
-		tail().setNextNode(node);
+		if (isEmpty()) {
+			mHead = node;
+		}
+		else {
+			tail().setNextNode(node);
+		}
 	}
 	
 }

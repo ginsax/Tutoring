@@ -40,8 +40,8 @@ public class FizzBuzzAnalyzer_Moderate {
 		// boolean set
 		final boolean aboveLowerBounds = numberToAnalyze > 0;
 		final boolean belowUpperBounds = numberToAnalyze <= 100;
-		final boolean isDivisibleByFizz = (numberToAnalyze % fizzMultiple) == 0;
-		final boolean isDivisibleByBuzz = (numberToAnalyze % buzzMultiple) == 0;
+		final boolean isDivisibleByFizz = numberToAnalyze % fizzMultiple == 0;
+		final boolean isDivisibleByBuzz = numberToAnalyze % buzzMultiple == 0;
 		
 		if (!aboveLowerBounds) {
 			result = FizzBuzzAnalysisResult.ErrorLowerBounds;

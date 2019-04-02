@@ -45,7 +45,7 @@ public class BookSeries implements Comparable<BookSeries> {
 			mSeriesName.set(CommonConstants.DEFAULT_SERIES);
 		}
 		
-		if ((seriesInformationToParse != null) &&
+		if (seriesInformationToParse != null &&
 		    seriesInformationToParse.contains("|")) {
 			try {
 				final int indexDelimiter = seriesInformationToParse.indexOf("|");
@@ -119,7 +119,7 @@ public class BookSeries implements Comparable<BookSeries> {
 		}
 		
 		String position;
-		if ((mPositionInSeries % 1) == 0) {
+		if (mPositionInSeries % 1 == 0) {
 			position = "%.0f";
 		}
 		else {

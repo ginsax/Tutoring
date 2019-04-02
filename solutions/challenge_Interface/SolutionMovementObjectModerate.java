@@ -56,9 +56,9 @@ public class SolutionMovementObjectModerate implements Movement {
 		final int y = mCoordinates.getPositionY();
 		final int z = mCoordinates.getPositionZ();
 		
-		final int modifiedX = (x * y);
-		final int modifiedY = (y * z);
-		final int modifiedZ = (z * x);
+		final int modifiedX = x * y;
+		final int modifiedY = y * z;
+		final int modifiedZ = z * x;
 		
 		return String.format("%s [%d, %d, %d][%d, %d, %d]",
 		                     mDisplayStringHeader,

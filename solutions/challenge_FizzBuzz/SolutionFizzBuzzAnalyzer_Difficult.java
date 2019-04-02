@@ -61,7 +61,7 @@ public class SolutionFizzBuzzAnalyzer_Difficult {
 		
 		for (int i = mBoundsLower; i <= mBoundsUpper; i++) {
 			for (final SolutionFizzBuzzObject fizzBuzzObject : fizzBuzzObjects) {
-				if ((i % fizzBuzzObject.getValue()) == 0) {
+				if (i % fizzBuzzObject.getValue() == 0) {
 					if (message == messageDefault) {
 						message = "";
 					}

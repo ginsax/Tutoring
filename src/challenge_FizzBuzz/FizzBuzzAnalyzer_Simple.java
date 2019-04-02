@@ -13,8 +13,8 @@ public class FizzBuzzAnalyzer_Simple {
 		// boolean set
 		final boolean aboveLowerBounds = numberToAnalyze > 0;
 		final boolean belowUpperBounds = numberToAnalyze <= 100;
-		final boolean isDivisibleBy3 = (numberToAnalyze % 3) == 0;
-		final boolean isDivisibleBy5 = (numberToAnalyze % 5) == 0;
+		final boolean isDivisibleBy3 = numberToAnalyze % 3 == 0;
+		final boolean isDivisibleBy5 = numberToAnalyze % 5 == 0;
 		
 		if (!aboveLowerBounds) {
 			result = FizzBuzzAnalysisResult.ErrorLowerBounds;

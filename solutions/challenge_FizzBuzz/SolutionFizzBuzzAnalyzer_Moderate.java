@@ -60,8 +60,8 @@ public class SolutionFizzBuzzAnalyzer_Moderate {
 			return FizzBuzzAnalysisResult.ErrorUpperBounds;
 		}
 		
-		final boolean fizz = (numberToAnalyze % mFizz) == 0;
-		final boolean buzz = (numberToAnalyze % mBuzz) == 0;
+		final boolean fizz = numberToAnalyze % mFizz == 0;
+		final boolean buzz = numberToAnalyze % mBuzz == 0;
 		final boolean fizzBuzz = fizz && buzz;
 		
 		if (fizzBuzz) {

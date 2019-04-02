@@ -62,7 +62,7 @@ public class FizzBuzzAnalyzer_Difficult {
 		FizzBuzzObject.sortMe(fiBu);
 		for (int i = lowerBounds; i <= upperBounds; i++) {
 			for (final FizzBuzzObject iteratorFiBu : fiBu) {
-				if ((i % iteratorFiBu.multiple) == 0) {
+				if (i % iteratorFiBu.multiple == 0) {
 					result = result + iteratorFiBu.callSign;
 				}
 			}
