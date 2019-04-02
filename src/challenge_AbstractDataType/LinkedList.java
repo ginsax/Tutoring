@@ -138,11 +138,11 @@ public class LinkedList<T> implements I_LinkedList<T> {
 			// iterate through nodes to index.
 			for (int i = 0; i < (index - 1); i++) {
 				nodey = nodey.getNextNode();
-				nextNode = nodey.getNextNode();
-				// Catch if index has gone out of bounds.
 				if (nodey == null) {
 					throw new Exception_InvalidListIndex();
 				}
+				nextNode = nodey.getNextNode();
+				// Catch if index has gone out of bounds.
 			}
 			nodey.setNextNode(node);
 			if (nextNode == null) {
