@@ -3,19 +3,19 @@ package challenge_AbstractDataType;
 public class LinkedList<T> implements I_LinkedList<T> {
 
 	private I_NodeLinkedList<T> headNode;
-	
-	//Constructor (empty list object)
-	LinkedList(){
+
+	// Constructor (empty list object)
+	LinkedList() {
 	}
-	
-	//Constructor (single head object)
-	LinkedList(I_NodeLinkedList<T> firstNode){
+
+	// Constructor (single head object)
+	LinkedList(final I_NodeLinkedList<T> firstNode) {
 		headNode = firstNode;
 	}
 
 	@Override
 	public int length() {
-		
+
 		// Initialize dummy node and iteration index
 		I_NodeLinkedList<T> nodey = headNode;
 		int iterationIndex = 0;
@@ -28,30 +28,32 @@ public class LinkedList<T> implements I_LinkedList<T> {
 
 		return iterationIndex;
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
-		if(this.headNode == null) {return true;}
+		if (this.headNode == null) {
+			return true;
+		}
 		return false;
 	}
-	
+
 	@Override
 	public I_NodeLinkedList<T> head() {
 		return headNode;
 	}
-	
+
 	@Override
 	public I_NodeLinkedList<T> tail() {
 		I_NodeLinkedList<T> nodey = headNode;
-		
-		if (nodey == null){
+
+		if (nodey == null) {
 			return nodey;
 		}
-		
+
 		if (nodey.getNextNode() == null) {
 			return nodey;
 		}
-		
+
 		I_NodeLinkedList<T> nextNode = nodey.getNextNode();
 
 		do {
@@ -61,7 +63,7 @@ public class LinkedList<T> implements I_LinkedList<T> {
 
 		return nodey;
 	}
-	
+
 	/**
 	 * This method indexes from 0.
 	 * 
@@ -79,44 +81,44 @@ public class LinkedList<T> implements I_LinkedList<T> {
 
 		// Initialize dummy node
 		I_NodeLinkedList<T> nodey = headNode;
-		
-		for(int i=0; i < index; i++) {
+
+		for (int i = 0; i < index; i++) {
 			nodey = nodey.getNextNode();
 		}
 
 		return nodey;
 	}
-	
+
 	@Override
 	public void setNodeAtIndex(final int index, final I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
 		// Handle if index is below zero.
-		if (index < 0 | index>(this.length()) ) {
+		if ((index < 0) | (index > (this.length()))) {
 			throw new Exception_InvalidListIndex();
 		}
-		
-		I_NodeLinkedList<T> nodey = this.headNode;
-		
-		if(index==0) {
-			if(nodey==null) {
+
+		final I_NodeLinkedList<T> nodey = this.headNode;
+
+		if (index == 0) {
+			if (nodey == null) {
 				this.headNode = node;
 				return;
 			}
-			if(nodey.getNextNode() != null) {
+			if (nodey.getNextNode() != null) {
 				node.setNextNode(nodey.getNextNode());
 			}
 			this.headNode = node;
 			return;
 		}
 
-		if ( (index==(this.length()-1)) | (index==this.length()) ) {
-			this.getNodeAtIndex(index-1).setNextNode(node);
+		if ((index == (this.length() - 1)) | (index == this.length())) {
+			this.getNodeAtIndex(index - 1).setNextNode(node);
 		} else {
-			node.setNextNode(this.getNodeAtIndex(index+1));
-			this.getNodeAtIndex(index-1).setNextNode(node);
+			node.setNextNode(this.getNodeAtIndex(index + 1));
+			this.getNodeAtIndex(index - 1).setNextNode(node);
 		}
-		
+
 	}
-	
+
 	@Override
 	public void insertNodeAtIndex(final int index, final I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
 		// Handle if index is below zero.
@@ -133,21 +135,21 @@ public class LinkedList<T> implements I_LinkedList<T> {
 			node.setNextNode(nodey);
 			return;
 		} else {
-		// iterate through nodes to index.
-		for (int i = 0; i < (index - 1); i++) {
-			nodey = nodey.getNextNode();
-			nextNode = nodey.getNextNode();
-			// Catch if index has gone out of bounds.
-			if (nodey == null) {
-				throw new Exception_InvalidListIndex();
+			// iterate through nodes to index.
+			for (int i = 0; i < (index - 1); i++) {
+				nodey = nodey.getNextNode();
+				nextNode = nodey.getNextNode();
+				// Catch if index has gone out of bounds.
+				if (nodey == null) {
+					throw new Exception_InvalidListIndex();
+				}
 			}
-		}
-		nodey.setNextNode(node);
-		if(nextNode==null) {
-			return;
-		} else {
-			node.setNextNode(nextNode);
-		}
+			nodey.setNextNode(node);
+			if (nextNode == null) {
+				return;
+			} else {
+				node.setNextNode(nextNode);
+			}
 		}
 
 	}
@@ -155,5 +157,5 @@ public class LinkedList<T> implements I_LinkedList<T> {
 	@Override
 	public void appendNode(final I_NodeLinkedList<T> node) {
 		this.tail().setNextNode(node);
-		}
+	}
 }
