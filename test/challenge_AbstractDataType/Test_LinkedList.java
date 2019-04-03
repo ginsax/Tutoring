@@ -704,8 +704,7 @@ public class Test_LinkedList {
 	public void test_ParameterizedConstructor_TailIsHead() {
 		final I_NodeLinkedList<SurgeonFish> node
 		    = new NodeLinkedList<SurgeonFish>();
-		final I_LinkedList<SurgeonFish> list
-		    = new LinkedList<SurgeonFish>(node);
+		final I_LinkedList<SurgeonFish> list = new LinkedList<SurgeonFish>(node);
 		
 		final I_NodeLinkedList<SurgeonFish> expected = node;
 		final I_NodeLinkedList<SurgeonFish> actual = list.tail();

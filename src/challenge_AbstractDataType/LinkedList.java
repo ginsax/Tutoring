@@ -148,7 +148,7 @@ public class LinkedList<T> implements I_LinkedList<T> {
 				}
 			}
 			nextNode = nodey.getNextNode();
-
+			
 			nodey.setNextNode(node);
 			if (nextNode == null) {
 				return;
@@ -162,8 +162,8 @@ public class LinkedList<T> implements I_LinkedList<T> {
 	
 	@Override
 	public void appendNode(final I_NodeLinkedList<T> node) {
-		if(this.tail() == null) {
-			this.headNode=node;
+		if (this.tail() == null) {
+			this.headNode = node;
 			return;
 		}
 		this.tail().setNextNode(node);

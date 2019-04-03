@@ -8,14 +8,15 @@ package challenge_AbstractDataType;
  * @param <NodeDataType> The type of data objects within this BST.
  * @since 03/31/2019
  */
-interface I_BinarySearchTree<NodeDataType> {
+interface I_BinarySearchTree<NodeDataType extends Comparable<NodeDataType>> {
 	
 	/**
 	 * Inserts the given <code>dataObject</code> into this BST, if the BST does
 	 * not already contain it.
 	 * @param dataObject The data object to be inserted into this BST.
+	 * @return Returns whether insertion was successful.
 	 */
-	void insert(final NodeDataType dataObject);
+	boolean insert(final NodeDataType dataObject);
 	
 	/**
 	 * Gets a string representation of this BST.
@@ -27,9 +28,9 @@ interface I_BinarySearchTree<NodeDataType> {
 	 * Removes the given <code>dataObject</code> from this BST if it exists within
 	 * it.
 	 * @param dataObject The data object to be removed from this BST.
-	 * @return Returns the data object that was removed.
+	 * @return Returns whether removal was successful.
 	 */
-	NodeDataType remove(final NodeDataType dataObject);
+	boolean remove(final NodeDataType dataObject);
 	
 	/**
 	 * Gets whether this BST is empty.
