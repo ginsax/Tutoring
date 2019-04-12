@@ -9,16 +9,16 @@ public class NodeQueue<NodeDataType> implements I_NodeQueue<NodeDataType> {
 	public NodeQueue() {
 	}
 	
-	public NodeQueue(NodeDataType object) {
+	public NodeQueue(final NodeDataType object) {
 		mObject = object;
 	}
 	
-	public NodeQueue(I_NodeQueue<NodeDataType> nextNode) {
+	public NodeQueue(final I_NodeQueue<NodeDataType> nextNode) {
 		mNextNode = nextNode;
 	}
 	
-	public NodeQueue(I_NodeQueue<NodeDataType> nextNode,
-	                 NodeDataType object) {
+	public NodeQueue(final I_NodeQueue<NodeDataType> nextNode,
+	                 final NodeDataType object) {
 		mObject = object;
 		mNextNode = nextNode;
 	}
@@ -29,7 +29,7 @@ public class NodeQueue<NodeDataType> implements I_NodeQueue<NodeDataType> {
 	}
 	
 	@Override
-	public void setDataObject(NodeDataType dataObject) {
+	public void setDataObject(final NodeDataType dataObject) {
 		mObject = dataObject;
 	}
 	
@@ -39,7 +39,7 @@ public class NodeQueue<NodeDataType> implements I_NodeQueue<NodeDataType> {
 	}
 	
 	@Override
-	public void setNextNode(I_NodeQueue<NodeDataType> nextNode) {
+	public void setNextNode(final I_NodeQueue<NodeDataType> nextNode) {
 		mNextNode = nextNode;
 	}
 	

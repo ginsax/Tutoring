@@ -18,16 +18,14 @@ public class Test_BinarySearchTree {
 	/** Tests that a BST created with the default constructor is not null. */
 	@Test
 	public void test_BSTDefaultConstructor_IsNotNull() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		assertNotNull(tree);
 	}
 	/** Tests that a BST created with the default constructor is not null. */
 	@Test
 	public void test_BSTDefaultConstructor_IsEmpty() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		assertTrue(tree.isEmpty());
 	}
@@ -36,8 +34,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_HeightIsZero() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final int expected = 0;
 		final int actual = tree.height();
@@ -50,8 +47,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_DoesNotContainNode() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		
@@ -63,8 +59,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_CannotRemoveNode() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		
@@ -76,8 +71,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_PrintsAsEmptyTree() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final String expected = "[Tree is empty]";
 		final String actual = tree.printTree();
@@ -91,8 +85,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_InsertingOneNode_MakesTreeNotEmpty() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -105,8 +98,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_InsertingOneNode_MakesHeightOfTreeOne() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -122,8 +114,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_InsertingOneNode_TreeContainsThatNode() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -136,8 +127,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_InsertingOneNode_TreeCanRemoveThatNode() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -150,8 +140,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_BSTDefaultConstructor_InsertingOneNode_TreeCanPrintThatNode() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -168,8 +157,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_RemovingOneNode_DecrementsHeightOfTree() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		final Integer dataObject = new Integer(69);
 		tree.insert(dataObject);
@@ -186,8 +174,7 @@ public class Test_BinarySearchTree {
 	 */
 	@Test
 	public void test_() {
-		final I_BinarySearchTree<Integer> tree
-		    = new Solution_BinarySearchTree<Integer>();
+		final I_BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
 		
 		assertNotNull(tree);
 	}

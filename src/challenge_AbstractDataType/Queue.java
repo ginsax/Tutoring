@@ -9,14 +9,14 @@ public class Queue<ContentType> implements I_Queue<ContentType> {
 		
 	}
 	
-	public Queue(ContentType... nodes) {
+	public Queue(final ContentType... nodes) {
 		enqueue(nodes);
 	}
 	
 	@Override
 	public boolean isEmpty() {
 		if (mFirstNode == null) {
-			return (true);
+			return true;
 		}
 		return false;
 	}
@@ -27,8 +27,9 @@ public class Queue<ContentType> implements I_Queue<ContentType> {
 		I_NodeQueue<ContentType> currentNode = mFirstNode;
 		
 		while (true) {
-			if (currentNode == null)
+			if (currentNode == null) {
 				return counter;
+			}
 			currentNode = currentNode.getNextNode();
 			counter++;
 		}
@@ -47,24 +48,25 @@ public class Queue<ContentType> implements I_Queue<ContentType> {
 		if (mFirstNode == null) {
 			return null;
 		}
-		I_NodeQueue<ContentType> node = mFirstNode;
+		final I_NodeQueue<ContentType> node = mFirstNode;
 		mFirstNode = node.getNextNode();
 		return node.getDataObject();
 	}
 	
 	@Override
-	public void enqueue(ContentType... nodesToAdd) {
+	public void enqueue(final ContentType... nodesToAdd) {
 		if (nodesToAdd == null) {
 			return;
 		}
 		for (int i = 0; i < nodesToAdd.length; i++) {
-			if ((i == 0) & (mFirstNode == null)) {
-				NodeQueue<ContentType> firstNode
+			if (i == 0 & mFirstNode == null) {
+				final NodeQueue<ContentType> firstNode
 				    = new NodeQueue<ContentType>(nodesToAdd[0]);
 				mFirstNode = firstNode;
 				continue;
 			}
-			NodeQueue<ContentType> node = new NodeQueue<ContentType>(nodesToAdd[i]);
+			final NodeQueue<ContentType> node
+			    = new NodeQueue<ContentType>(nodesToAdd[i]);
 			getLastNode().setNextNode(node);
 		}
 	}
@@ -76,7 +78,7 @@ public class Queue<ContentType> implements I_Queue<ContentType> {
 			return returnNode;
 		}
 		else {
-			for (int i = 0; i < (length() - 1); i++) {
+			for (int i = 0; i < length() - 1; i++) {
 				returnNode = returnNode.getNextNode();
 			}
 		}
