@@ -6,8 +6,7 @@ package challenge_FizzBuzz;
  * @version 1.0
  * @since 01/06/2019
  */
-public class SolutionFizzBuzzObject
-                                    implements
+public class SolutionFizzBuzzObject implements
                                     Comparable<SolutionFizzBuzzObject> {
 	
 	/** The value of this FizzBuzzObject. */

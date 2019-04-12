@@ -50,12 +50,10 @@ public class BookSeries implements Comparable<BookSeries> {
 			try {
 				final int indexDelimiter = seriesInformationToParse.indexOf("|");
 				final int indexSpace = seriesInformationToParse.lastIndexOf(" ");
-				final String order
-				    = seriesInformationToParse.substring(indexSpace + 1,
-				                                         indexDelimiter);
-				mTotalNumberOfBooksInSeries
-				    = Integer.parseInt(seriesInformationToParse
-				        .substring(indexDelimiter + 1));
+				final String order = seriesInformationToParse.substring(indexSpace + 1,
+				                                                        indexDelimiter);
+				mTotalNumberOfBooksInSeries = Integer
+				    .parseInt(seriesInformationToParse.substring(indexDelimiter + 1));
 				mPositionInSeries = Double.parseDouble(order);
 			}
 			catch (final Exception e) {
@@ -70,28 +68,24 @@ public class BookSeries implements Comparable<BookSeries> {
 		    = mSeriesName.get().compareTo(otherBookSeries.seriesProperty().get());
 		double comparisonPosition
 		    = mPositionInSeries - otherBookSeries.mPositionInSeries;
-		int comparisonTotal
-		    = mTotalNumberOfBooksInSeries -
-		      otherBookSeries.mTotalNumberOfBooksInSeries;
+		int comparisonTotal = mTotalNumberOfBooksInSeries -
+		                      otherBookSeries.mTotalNumberOfBooksInSeries;
 		
-		comparisonSeriesName
-		    = comparisonSeriesName < 0
-		                               ? -1
-		                               : comparisonSeriesName > 0
-		                                                          ? 1
-		                                                          : 0;
-		comparisonPosition
-		    = comparisonPosition < 0
-		                             ? -1
-		                             : comparisonPosition > 0
-		                                                      ? 1
-		                                                      : 0;
-		comparisonTotal
-		    = comparisonTotal < 0
-		                          ? -1
-		                          : comparisonTotal > 0
-		                                                ? 1
-		                                                : 0;
+		comparisonSeriesName = comparisonSeriesName < 0
+		                                                ? -1
+		                                                : comparisonSeriesName > 0
+		                                                                           ? 1
+		                                                                           : 0;
+		comparisonPosition = comparisonPosition < 0
+		                                            ? -1
+		                                            : comparisonPosition > 0
+		                                                                     ? 1
+		                                                                     : 0;
+		comparisonTotal = comparisonTotal < 0
+		                                      ? -1
+		                                      : comparisonTotal > 0
+		                                                            ? 1
+		                                                            : 0;
 		
 		if (comparisonSeriesName != 0) {
 			return comparisonSeriesName;

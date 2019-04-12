@@ -287,9 +287,8 @@ public class IOModuleTest {
 	 * @throws EmptyFileNameException
 	 */
 	@Test (expected = EmptyFileNameException.class)
-	public void
-	       test_IOModule_ThrowsEmptyFileNameException_WhenFileNameIsIncorrect()
-	                                                                            throws EmptyFileNameException {
+	public void test_IOModule_ThrowsEmptyFileNameException_WhenFileNameIsIncorrect()
+	                                                                                 throws EmptyFileNameException {
 		mIOModule.retrieveBooksFromFile("Incorrect file name");
 	}
 	

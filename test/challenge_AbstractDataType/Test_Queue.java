@@ -26,15 +26,14 @@ import challenge_Inheritance.SurgeonFish;
  */
 public class Test_Queue {
 	
-	private final String[] mTestDataObjects
-	    = new String[] {
-	        "I am the first node in a queue",
-	        "I am the second node in a queue",
-	        "I am the third node in a queue",
-	        "I am the fourth node in a queue",
-			};
-			
-			
+	private final String[] mTestDataObjects = new String[] {
+	    "I am the first node in a queue",
+	    "I am the second node in a queue",
+	    "I am the third node in a queue",
+	    "I am the fourth node in a queue",
+	};
+	
+	
 	/** Tests that a {@linkplain I_Queue} behaves as expected - Test 0. */
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_00() {
@@ -60,18 +59,17 @@ public class Test_Queue {
 	/** Tests that a {@linkplain I_Queue} behaves as expected - Test 1. */
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_01() {
-		final Integer[] nodesToAdd
-		    = new Integer[] {
-		        new Integer(5),
-		        new Integer(6),
-		        new Integer(9),
-		        new Integer(129),
-		        new Integer(72),
-		        new Integer(-5),
-		        new Integer(234),
-		        new Integer(90),
-				};
-				
+		final Integer[] nodesToAdd = new Integer[] {
+		    new Integer(5),
+		    new Integer(6),
+		    new Integer(9),
+		    new Integer(129),
+		    new Integer(72),
+		    new Integer(-5),
+		    new Integer(234),
+		    new Integer(90),
+		};
+		
 		final I_Queue<Integer> queue = new Queue<Integer>();
 		queue.enqueue(nodesToAdd);
 		
@@ -86,18 +84,17 @@ public class Test_Queue {
 	/** Tests that a {@linkplain I_Queue} behaves as expected - Test 2. */
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_02() {
-		final Integer[] nodesToAdd
-		    = new Integer[] {
-		        new Integer(5),
-		        new Integer(6),
-		        new Integer(9),
-		        new Integer(129),
-		        new Integer(72),
-		        new Integer(-5),
-		        new Integer(234),
-		        new Integer(90),
-				};
-				
+		final Integer[] nodesToAdd = new Integer[] {
+		    new Integer(5),
+		    new Integer(6),
+		    new Integer(9),
+		    new Integer(129),
+		    new Integer(72),
+		    new Integer(-5),
+		    new Integer(234),
+		    new Integer(90),
+		};
+		
 		final I_Queue<Integer> queue = new Queue<Integer>(nodesToAdd);
 		
 		for (final Integer element : nodesToAdd) {
@@ -111,18 +108,17 @@ public class Test_Queue {
 	/** Tests that a {@linkplain I_Queue} behaves as expected - Test 3. */
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_03() {
-		final Double[] nodesToAdd
-		    = new Double[] {
-		        new Double(50.293),
-		        new Double(61.4810),
-		        new Double(9.019),
-		        new Double(1.0000000001),
-		        new Double(72.1234),
-		        new Double(-33.0),
-		        new Double(234.0),
-		        new Double(90.),
-				};
-				
+		final Double[] nodesToAdd = new Double[] {
+		    new Double(50.293),
+		    new Double(61.4810),
+		    new Double(9.019),
+		    new Double(1.0000000001),
+		    new Double(72.1234),
+		    new Double(-33.0),
+		    new Double(234.0),
+		    new Double(90.),
+		};
+		
 		final I_Queue<Double> queue = new Queue<Double>(nodesToAdd);
 		
 		for (final Double element : nodesToAdd) {
@@ -136,18 +132,17 @@ public class Test_Queue {
 	/** Tests that a {@linkplain I_Queue} behaves as expected - Test 4. */
 	@Test
 	public void test_QueueableConstructor_NodesAreOrderedAsExpected_04() {
-		final Animal[] nodesToAdd
-		    = new Animal[] {
-		        new Mammal(),
-		        new Bird(),
-		        new Fish(),
-		        new Kangaroo(),
-		        new Eel(),
-		        new Hummingbird(),
-		        new Manatee(),
-		        new SurgeonFish(),
-				};
-				
+		final Animal[] nodesToAdd = new Animal[] {
+		    new Mammal(),
+		    new Bird(),
+		    new Fish(),
+		    new Kangaroo(),
+		    new Eel(),
+		    new Hummingbird(),
+		    new Manatee(),
+		    new SurgeonFish(),
+		};
+		
 		final I_Queue<Animal> queue = new Queue<Animal>(nodesToAdd);
 		
 		for (final Animal element : nodesToAdd) {
@@ -272,8 +267,7 @@ public class Test_Queue {
 	 * constructor - with more than one node - is not null.
 	 */
 	@Test
-	public void
-	       test_QueueableParameterizedConstructor_DequeuingMultiple_IsNotNull() {
+	public void test_QueueableParameterizedConstructor_DequeuingMultiple_IsNotNull() {
 		final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
 		
 		assertNotNull(queue.dequeue());
@@ -296,8 +290,7 @@ public class Test_Queue {
 	 * constructor - with only one node - twice is null.
 	 */
 	@Test
-	public void
-	       test_QueueableParameterizedConstructor_DequeuingSingle_Twice_IsNull() {
+	public void test_QueueableParameterizedConstructor_DequeuingSingle_Twice_IsNull() {
 		final Double nodeValue = new Double(0.1);
 		final I_Queue<Double> queue = new Queue<Double>(nodeValue);
 		
@@ -362,8 +355,7 @@ public class Test_Queue {
 	 * the constructor.
 	 */
 	@Test
-	public void
-	       test_QueueableParameterizedConstructor_Length_IsNumberOfParameters() {
+	public void test_QueueableParameterizedConstructor_Length_IsNumberOfParameters() {
 		final I_Queue<String> queue = new Queue<String>(mTestDataObjects);
 		
 		final int expected = mTestDataObjects.length;

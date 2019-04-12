@@ -37,9 +37,10 @@ public class SolutionPalindromeChecker {
 			if (first == last) { // Compare the first and last characters. If they are
 				// the same character, then restart the check using
 				// the next character and the next last character.
-				final String newPotentialPalindrome
-				    = potentialPalindrome.substring(1,
-				                                    potentialPalindrome.length() - 1);
+				final String newPotentialPalindrome = potentialPalindrome.substring(1,
+				                                                                    potentialPalindrome
+				                                                                        .length() -
+				                                                                       1);
 				return IsPalindrome(newPotentialPalindrome);
 			}
 			else {

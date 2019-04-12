@@ -141,19 +141,17 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 	@Override
 	public int compareTo(final SolutionLibraryBook otherBook) {
 		final int comparisonAuthor = getAuthor().compareTo(otherBook.getAuthor());
-		final int comparisonSeries
-		    = mSeries.get().seriesProperty().get()
-		        .compareTo(otherBook.mSeries.get().seriesProperty().get());
+		final int comparisonSeries = mSeries.get().seriesProperty().get()
+		    .compareTo(otherBook.mSeries.get().seriesProperty().get());
 		final int comparisonTitle
 		    = mSortingTitle.compareTo(otherBook.mSortingTitle);
 		
-		final int[] comparators
-		    = new int[] {
-		        comparisonAuthor,
-		        comparisonSeries,
-		        comparisonTitle,
-				};
-				
+		final int[] comparators = new int[] {
+		    comparisonAuthor,
+		    comparisonSeries,
+		    comparisonTitle,
+		};
+		
 		for (final int comparator : comparators) {
 			if (comparator != 0) {
 				return comparator;
@@ -332,9 +330,8 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		final int indexFirstSpace = sortingTitle.indexOf(" ");
 		
 		if (indexFirstSpace > 0) {
-			final String firstWord
-			    = sortingTitle.substring(0,
-			                             indexFirstSpace);
+			final String firstWord = sortingTitle.substring(0,
+			                                                indexFirstSpace);
 			if (firstWord.equalsIgnoreCase("a") || firstWord.equalsIgnoreCase("an") ||
 			    firstWord.equalsIgnoreCase("the")) {
 				
@@ -358,10 +355,9 @@ public class SolutionLibraryBook implements Comparable<SolutionLibraryBook> {
 		String seriesInformation = mSeries.get().getSeriesInformationString();
 		
 		// check if the series information is going to be used.
-		seriesInformation
-		    = mSeries.get().isPartOfASeries()
-		                                      ? seriesInformation
-		                                      : "";
+		seriesInformation = mSeries.get().isPartOfASeries()
+		                                                    ? seriesInformation
+		                                                    : "";
 		
 		return String
 		    .format("%s [%s] (%d)%s by %s. %s %s - %s. [%d/%d] copies in stock.",

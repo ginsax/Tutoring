@@ -27,12 +27,11 @@ public class PalindromeTest {
 	private String createErrorMessage(final String potentialPalindrome,
 	                                  final boolean expected,
 	                                  final boolean actual) {
-		final String errorMessage
-		    = String
-		        .format("The string '%s' was tested for being a potential palindrome. The test failed because a value of '%s' was expected, but '%s' was returned.",
-		                potentialPalindrome,
-		                expected,
-		                actual);
+		final String errorMessage = String
+		    .format("The string '%s' was tested for being a potential palindrome. The test failed because a value of '%s' was expected, but '%s' was returned.",
+		            potentialPalindrome,
+		            expected,
+		            actual);
 		return errorMessage;
 	}
 	
@@ -49,10 +48,9 @@ public class PalindromeTest {
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -65,10 +63,9 @@ public class PalindromeTest {
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -81,10 +78,9 @@ public class PalindromeTest {
 		final boolean expected = false;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertFalse(errorMessage,
 		            actual);
@@ -95,17 +91,15 @@ public class PalindromeTest {
 	 * palindrome.
 	 */
 	@Test
-	public void
-	       test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
+	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
 		final String potentialPalindrome
 		    = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba";
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -117,17 +111,15 @@ public class PalindromeTest {
 	 * is a palindrome.
 	 */
 	@Test
-	public void
-	       test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz() {
+	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz() {
 		final String potentialPalindrome
 		    = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyz";
 		final boolean expected = false;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertFalse(errorMessage,
 		            actual);
@@ -139,17 +131,15 @@ public class PalindromeTest {
 	 * is a palindrome.
 	 */
 	@Test
-	public void
-	       test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
+	public void test_IsPalindrome_abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba() {
 		final String potentialPalindrome
 		    = "abcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcbaabcdefghijklmnopqrstuvwxyzyxwvutsrqponmlkjihgfedcba";
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -162,10 +152,9 @@ public class PalindromeTest {
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -178,10 +167,9 @@ public class PalindromeTest {
 		final boolean expected = false;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertFalse(errorMessage,
 		            actual);
@@ -194,10 +182,9 @@ public class PalindromeTest {
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);
@@ -210,10 +197,9 @@ public class PalindromeTest {
 		final boolean expected = true;
 		final boolean actual = palindromeChecker.IsPalindrome(potentialPalindrome);
 		
-		final String errorMessage
-		    = createErrorMessage(potentialPalindrome,
-		                         expected,
-		                         actual);
+		final String errorMessage = createErrorMessage(potentialPalindrome,
+		                                               expected,
+		                                               actual);
 		
 		assertTrue(errorMessage,
 		           actual);

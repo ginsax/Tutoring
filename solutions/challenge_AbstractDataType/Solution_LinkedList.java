@@ -8,8 +8,7 @@ package challenge_AbstractDataType;
  * @since 03/24/2019
  */
 final class Solution_LinkedList<NodeDataType>
-                               implements
-                               I_LinkedList<NodeDataType> {
+                               implements I_LinkedList<NodeDataType> {
 	
 	/** The head of this list. */
 	private I_NodeLinkedList<NodeDataType> mHead;
@@ -92,16 +91,14 @@ final class Solution_LinkedList<NodeDataType>
 	}
 	
 	@Override
-	public void
-	       setNodeAtIndex(final int index,
-	                      final I_NodeLinkedList<NodeDataType> nextNode)
-	                                                                     throws Exception_InvalidListIndex {
+	public void setNodeAtIndex(final int index,
+	                           final I_NodeLinkedList<NodeDataType> nextNode)
+	                                                                          throws Exception_InvalidListIndex {
 		if (mHead == null || index == 0) {
 			
-			final int length
-			    = length() == 1
-			                    ? 0
-			                    : length();
+			final int length = length() == 1
+			                                 ? 0
+			                                 : length();
 			if (index >= 0 && index <= length) {
 				mHead = nextNode;
 				return;
@@ -131,10 +128,9 @@ final class Solution_LinkedList<NodeDataType>
 	}
 	
 	@Override
-	public void
-	       insertNodeAtIndex(final int index,
-	                         final I_NodeLinkedList<NodeDataType> nextNode)
-	                                                                        throws Exception_InvalidListIndex {
+	public void insertNodeAtIndex(final int index,
+	                              final I_NodeLinkedList<NodeDataType> nextNode)
+	                                                                             throws Exception_InvalidListIndex {
 		
 		if (index < 0 || index > length()) {
 			throw new Exception_InvalidListIndex();

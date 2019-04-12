@@ -65,9 +65,8 @@ public class BirdTest {
 		final SkinType skinType = SkinType.Other;
 		
 		DietType expected = DietType.Carnivore;
-		Animal animal
-		    = new Animal(expected,
-		                 skinType);
+		Animal animal = new Animal(expected,
+		                           skinType);
 		DietType actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Carnivore'.",
@@ -75,9 +74,8 @@ public class BirdTest {
 		             actual);
 		
 		expected = DietType.Herbivore;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Herbivore'.",
@@ -85,9 +83,8 @@ public class BirdTest {
 		             actual);
 		
 		expected = DietType.Omnivore;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Omnivore'.",
@@ -95,9 +92,8 @@ public class BirdTest {
 		             actual);
 		
 		expected = DietType.Other;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Other'.",
@@ -113,9 +109,8 @@ public class BirdTest {
 		final DietType diet = DietType.Other;
 		
 		SkinType expected = SkinType.Feather;
-		Bird bird
-		    = new Bird(diet,
-		               expected);
+		Bird bird = new Bird(diet,
+		                     expected);
 		SkinType actual = bird.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Feather'.",
@@ -123,9 +118,8 @@ public class BirdTest {
 		             actual);
 		
 		expected = SkinType.Other;
-		bird
-		    = new Bird(diet,
-		               expected);
+		bird = new Bird(diet,
+		                expected);
 		actual = bird.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Other'.",
@@ -141,27 +135,24 @@ public class BirdTest {
 		final DietType diet = DietType.Other;
 		final SkinType expected = SkinType.Other;
 		
-		Bird bird
-		    = new Bird(diet,
-		               SkinType.Fur);
+		Bird bird = new Bird(diet,
+		                     SkinType.Fur);
 		SkinType actual = bird.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Fur'.",
 		             expected,
 		             actual);
 		
-		bird
-		    = new Bird(diet,
-		               SkinType.Scale);
+		bird = new Bird(diet,
+		                SkinType.Scale);
 		actual = bird.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Scale'.",
 		             expected,
 		             actual);
 		
-		bird
-		    = new Bird(diet,
-		               SkinType.Skin);
+		bird = new Bird(diet,
+		                SkinType.Skin);
 		actual = bird.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Skin'.",

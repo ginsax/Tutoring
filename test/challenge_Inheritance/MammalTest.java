@@ -82,9 +82,8 @@ public class MammalTest {
 		final SkinType skinType = SkinType.Other;
 		
 		DietType expected = DietType.Carnivore;
-		Animal animal
-		    = new Animal(expected,
-		                 skinType);
+		Animal animal = new Animal(expected,
+		                           skinType);
 		DietType actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Carnivore'.",
@@ -92,9 +91,8 @@ public class MammalTest {
 		             actual);
 		
 		expected = DietType.Herbivore;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Herbivore'.",
@@ -102,9 +100,8 @@ public class MammalTest {
 		             actual);
 		
 		expected = DietType.Omnivore;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Omnivore'.",
@@ -112,9 +109,8 @@ public class MammalTest {
 		             actual);
 		
 		expected = DietType.Other;
-		animal
-		    = new Animal(expected,
-		                 skinType);
+		animal = new Animal(expected,
+		                    skinType);
 		actual = animal.getDietType();
 		
 		assertEquals("Testing that the diet type can be set to 'Other'.",
@@ -131,10 +127,9 @@ public class MammalTest {
 		final SkinType skinType = SkinType.Other;
 		
 		int expected = 0;
-		Mammal mammal
-		    = new Mammal(expected,
-		                 dietType,
-		                 skinType);
+		Mammal mammal = new Mammal(expected,
+		                           dietType,
+		                           skinType);
 		int actual = mammal.getNumberOfLegs();
 		
 		assertEquals("Testing that the number of legs can be set to 0.",
@@ -142,10 +137,9 @@ public class MammalTest {
 		             actual);
 		
 		expected = 2;
-		mammal
-		    = new Mammal(expected,
-		                 dietType,
-		                 skinType);
+		mammal = new Mammal(expected,
+		                    dietType,
+		                    skinType);
 		actual = mammal.getNumberOfLegs();
 		
 		assertEquals("Testing that the number of legs can be set to 2.",
@@ -163,10 +157,9 @@ public class MammalTest {
 		final SkinType skinType = SkinType.Other;
 		
 		int expected = -1;
-		Mammal mammal
-		    = new Mammal(expected,
-		                 dietType,
-		                 skinType);
+		Mammal mammal = new Mammal(expected,
+		                           dietType,
+		                           skinType);
 		int actual = mammal.getNumberOfLegs();
 		
 		assertNotEquals("Testing that the number of legs cannot be set to -1.",
@@ -174,10 +167,9 @@ public class MammalTest {
 		                actual);
 		
 		expected = 1;
-		mammal
-		    = new Mammal(expected,
-		                 dietType,
-		                 skinType);
+		mammal = new Mammal(expected,
+		                    dietType,
+		                    skinType);
 		actual = mammal.getNumberOfLegs();
 		
 		assertNotEquals("Testing that the number of legs cannot be set to 1.",
@@ -185,10 +177,9 @@ public class MammalTest {
 		                actual);
 		
 		expected = 3;
-		mammal
-		    = new Mammal(expected,
-		                 dietType,
-		                 skinType);
+		mammal = new Mammal(expected,
+		                    dietType,
+		                    skinType);
 		actual = mammal.getNumberOfLegs();
 		
 		assertNotEquals("Testing that the number of legs cannot be set to 3.",
@@ -198,10 +189,9 @@ public class MammalTest {
 		// Tests that all numbers above 4 are invalid
 		for (int i = 5; i <= 100; i++) {
 			expected = i;
-			mammal
-			    = new Mammal(expected,
-			                 dietType,
-			                 skinType);
+			mammal = new Mammal(expected,
+			                    dietType,
+			                    skinType);
 			actual = mammal.getNumberOfLegs();
 			
 			assertNotEquals(String
@@ -220,9 +210,8 @@ public class MammalTest {
 		final DietType diet = DietType.Other;
 		
 		SkinType expected = SkinType.Fur;
-		Mammal mammal
-		    = new Mammal(diet,
-		                 expected);
+		Mammal mammal = new Mammal(diet,
+		                           expected);
 		SkinType actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Fur'.",
@@ -230,9 +219,8 @@ public class MammalTest {
 		             actual);
 		
 		expected = SkinType.Skin;
-		mammal
-		    = new Mammal(diet,
-		                 expected);
+		mammal = new Mammal(diet,
+		                    expected);
 		actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Skin'.",
@@ -240,9 +228,8 @@ public class MammalTest {
 		             actual);
 		
 		expected = SkinType.Other;
-		mammal
-		    = new Mammal(diet,
-		                 expected);
+		mammal = new Mammal(diet,
+		                    expected);
 		actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Other'.",
@@ -258,27 +245,24 @@ public class MammalTest {
 		final DietType diet = DietType.Other;
 		final SkinType expected = SkinType.Other;
 		
-		Mammal mammal
-		    = new Mammal(diet,
-		                 SkinType.Feather);
+		Mammal mammal = new Mammal(diet,
+		                           SkinType.Feather);
 		SkinType actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Feather'.",
 		             expected,
 		             actual);
 		
-		mammal
-		    = new Mammal(diet,
-		                 SkinType.Scale);
+		mammal = new Mammal(diet,
+		                    SkinType.Scale);
 		actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type cannot be set to 'Scale'.",
 		             expected,
 		             actual);
 		
-		mammal
-		    = new Mammal(diet,
-		                 SkinType.Other);
+		mammal = new Mammal(diet,
+		                    SkinType.Other);
 		actual = mammal.getSkinType();
 		
 		assertEquals("Testing that the skin type can be set to 'Other'.",

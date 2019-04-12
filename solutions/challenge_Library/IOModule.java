@@ -244,9 +244,8 @@ public class IOModule {
 	 * @return Returns an observable list of LibraryBooks.
 	 * @throws EmptyFileNameException
 	 */
-	public ObservableList<SolutionLibraryBook>
-	       retrieveBooksFromFile(final String filePath)
-	                                                    throws EmptyFileNameException {
+	public ObservableList<SolutionLibraryBook> retrieveBooksFromFile(final String filePath)
+	                                                                                        throws EmptyFileNameException {
 		final ObservableList<SolutionLibraryBook> retrievedBooks
 		    = FXCollections.observableArrayList();
 		
@@ -281,17 +280,16 @@ public class IOModule {
 				    = parseNumberOfCopiesTotalFrom(parsedResults,
 				                                   index++);
 				
-				final SolutionLibraryBook libraryBook
-				    = new SolutionLibraryBook(isbn,
-				                              title,
-				                              author,
-				                              series,
-				                              genre,
-				                              audience,
-				                              publishingYear,
-				                              fictionality,
-				                              numberOfCopiesInStock,
-				                              numberOfCopiesTotal);
+				final SolutionLibraryBook libraryBook = new SolutionLibraryBook(isbn,
+				                                                                title,
+				                                                                author,
+				                                                                series,
+				                                                                genre,
+				                                                                audience,
+				                                                                publishingYear,
+				                                                                fictionality,
+				                                                                numberOfCopiesInStock,
+				                                                                numberOfCopiesTotal);
 				
 				retrievedBooks.add(libraryBook);
 			}

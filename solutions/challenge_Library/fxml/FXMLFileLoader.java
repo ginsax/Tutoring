@@ -23,11 +23,10 @@ public class FXMLFileLoader {
 		
 		final int index = pathToFile.lastIndexOf(".");
 		
-		final String pathName
-		    = String.format("/%s/fxml/%s.fxml",
-		                    pathToFile.substring(0,
-		                                         index),
-		                    pathToFile.substring(index + 1));
+		final String pathName = String.format("/%s/fxml/%s.fxml",
+		                                      pathToFile.substring(0,
+		                                                           index),
+		                                      pathToFile.substring(index + 1));
 		return pathName;
 	}
 	

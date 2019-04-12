@@ -8,8 +8,7 @@ package challenge_AbstractDataType;
  * @since 03/24/2019
  */
 final class Solution_NodeLinkedList<NodeDataType>
-                                   implements
-                                   I_NodeLinkedList<NodeDataType> {
+                                   implements I_NodeLinkedList<NodeDataType> {
 	
 	/** The data object of this node. */
 	private NodeDataType										mDataObject;

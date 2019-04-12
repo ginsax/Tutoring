@@ -9,8 +9,7 @@ import java.util.Queue;
  * @since 03/28/2019
  */
 public class Solution_NodeQueue<NodeDataObject>
-                               implements
-                               I_NodeQueue<NodeDataObject> {
+                               implements I_NodeQueue<NodeDataObject> {
 	
 	private NodeDataObject							mDataObject;
 	private I_NodeQueue<NodeDataObject>	mNextNode;

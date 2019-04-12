@@ -104,8 +104,7 @@ public class Test_BinarySearchTree {
 	 * constructor makes the height of the tree one.
 	 */
 	@Test
-	public void
-	       test_BSTDefaultConstructor_InsertingOneNode_MakesHeightOfTreeOne() {
+	public void test_BSTDefaultConstructor_InsertingOneNode_MakesHeightOfTreeOne() {
 		final I_BinarySearchTree<Integer> tree
 		    = new Solution_BinarySearchTree<Integer>();
 		
@@ -122,8 +121,7 @@ public class Test_BinarySearchTree {
 	 * constructor makes the tree contain that node.
 	 */
 	@Test
-	public void
-	       test_BSTDefaultConstructor_InsertingOneNode_TreeContainsThatNode() {
+	public void test_BSTDefaultConstructor_InsertingOneNode_TreeContainsThatNode() {
 		final I_BinarySearchTree<Integer> tree
 		    = new Solution_BinarySearchTree<Integer>();
 		
@@ -137,8 +135,7 @@ public class Test_BinarySearchTree {
 	 * constructor allows the tree to remove that node.
 	 */
 	@Test
-	public void
-	       test_BSTDefaultConstructor_InsertingOneNode_TreeCanRemoveThatNode() {
+	public void test_BSTDefaultConstructor_InsertingOneNode_TreeCanRemoveThatNode() {
 		final I_BinarySearchTree<Integer> tree
 		    = new Solution_BinarySearchTree<Integer>();
 		
@@ -152,8 +149,7 @@ public class Test_BinarySearchTree {
 	 * constructor allows the tree to print that node as the root.
 	 */
 	@Test
-	public void
-	       test_BSTDefaultConstructor_InsertingOneNode_TreeCanPrintThatNode() {
+	public void test_BSTDefaultConstructor_InsertingOneNode_TreeCanPrintThatNode() {
 		final I_BinarySearchTree<Integer> tree
 		    = new Solution_BinarySearchTree<Integer>();
 		

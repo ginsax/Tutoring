@@ -27,10 +27,9 @@ public class SolutionMovementObjectModerate implements Movement {
 	 * the coordinates object with the default x, y, & z values.
 	 */
 	public SolutionMovementObjectModerate() {
-		mCoordinates
-		    = new Coordinates(defaultX,
-		                      defaultY,
-		                      defaultZ);
+		mCoordinates = new Coordinates(defaultX,
+		                               defaultY,
+		                               defaultZ);
 	}
 	
 	/**
@@ -44,10 +43,9 @@ public class SolutionMovementObjectModerate implements Movement {
 	public SolutionMovementObjectModerate(final int x,
 	                                      final int y,
 	                                      final int z) {
-		mCoordinates
-		    = new Coordinates(x,
-		                      y,
-		                      z);
+		mCoordinates = new Coordinates(x,
+		                               y,
+		                               z);
 	}
 	
 	@Override

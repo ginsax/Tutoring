@@ -25,10 +25,9 @@ public class MovementObjectModerate implements Movement {
 	public MovementObjectModerate() {
 		// default coordinates to match test class. Set default Move() power
 		// function bases.
-		mModCoordinates
-		    = new Coordinates(3,
-		                      4,
-		                      5);
+		mModCoordinates = new Coordinates(3,
+		                                  4,
+		                                  5);
 		xMove = 3;
 		yMove = 4;
 		zMove = 5;
@@ -37,10 +36,9 @@ public class MovementObjectModerate implements Movement {
 	public MovementObjectModerate(final int x,
 	                              final int y,
 	                              final int z) {
-		mModCoordinates
-		    = new Coordinates(x,
-		                      y,
-		                      z);
+		mModCoordinates = new Coordinates(x,
+		                                  y,
+		                                  z);
 		xMove = x;
 		yMove = y;
 		zMove = z;

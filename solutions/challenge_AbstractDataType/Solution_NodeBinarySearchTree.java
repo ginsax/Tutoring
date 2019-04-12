@@ -65,8 +65,7 @@ public class Solution_NodeBinarySearchTree<NodeDataType extends Comparable<NodeD
 		return mChildNodeLeft;
 	}
 	@Override
-	public void
-	       setChildNodeLeft(final I_NodeBinarySearchTree<NodeDataType> childNodeLeft) {
+	public void setChildNodeLeft(final I_NodeBinarySearchTree<NodeDataType> childNodeLeft) {
 		mChildNodeLeft = childNodeLeft;
 	}
 	
@@ -75,8 +74,7 @@ public class Solution_NodeBinarySearchTree<NodeDataType extends Comparable<NodeD
 		return mChildNodeRight;
 	}
 	@Override
-	public void
-	       setChildNodeRight(final I_NodeBinarySearchTree<NodeDataType> childNodeRight) {
+	public void setChildNodeRight(final I_NodeBinarySearchTree<NodeDataType> childNodeRight) {
 		mChildNodeRight = childNodeRight;
 	}
 	@Override

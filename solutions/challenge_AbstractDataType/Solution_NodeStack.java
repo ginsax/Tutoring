@@ -8,8 +8,7 @@ package challenge_AbstractDataType;
  * @since 03/31/2019
  */
 public class Solution_NodeStack<NodeDataType>
-                               implements
-                               I_NodeStack<NodeDataType> {
+                               implements I_NodeStack<NodeDataType> {
 	
 	/** The data object of this node. */
 	private NodeDataType							mDataObject;

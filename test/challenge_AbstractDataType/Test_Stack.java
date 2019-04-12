@@ -231,8 +231,7 @@ public class Test_Stack {
 	 * object constructor increases the size of that stack by one.
 	 */
 	@Test
-	public void
-	       test_StackDataObjectConstructor_PushStack_IncreasesStackSizeByOne() {
+	public void test_StackDataObjectConstructor_PushStack_IncreasesStackSizeByOne() {
 		final Eel dataObject = new Eel();
 		final I_Stack<Eel> stack = new Stack<Eel>(dataObject);
 		
@@ -247,21 +246,20 @@ public class Test_Stack {
 	/** Tests that the behavior of a {@linkplain I_Stack} is as expected - 00. */
 	@Test
 	public void test_Stack_OrderingBehavesAsExpected_00() {
-		final Animal[] dataObjects
-		    = new Animal[] {
-		        new Mammal(),
-		        new Bird(),
-		        new Fish(),
-		        new Cat(),
-		        new Dog(),
-		        new Eagle(),
-		        new Eel(),
-		        new Hummingbird(),
-		        new Kangaroo(),
-		        new Manatee(),
-		        new SurgeonFish(),
-				};
-				
+		final Animal[] dataObjects = new Animal[] {
+		    new Mammal(),
+		    new Bird(),
+		    new Fish(),
+		    new Cat(),
+		    new Dog(),
+		    new Eagle(),
+		    new Eel(),
+		    new Hummingbird(),
+		    new Kangaroo(),
+		    new Manatee(),
+		    new SurgeonFish(),
+		};
+		
 		final I_Stack<Animal> stack = new Stack<Animal>(dataObjects);
 		
 		for (int i = dataObjects.length - 1; i >= 0; i--) {

@@ -9,8 +9,7 @@ package challenge_AbstractDataType;
  * @since 04/01/2019
  */
 public interface I_NodeBinarySearchTree<NodeDataType extends Comparable<NodeDataType>>
-                                       extends
-                                       Comparable<NodeDataType> {
+                                       extends Comparable<NodeDataType> {
 	
 	/**
 	 * Gets the data object of this node.

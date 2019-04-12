@@ -25,9 +25,8 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	@Override
 	public boolean insert(final NodeDataType dataObject) {
 		final int heightOriginal = height();
-		mRoot
-		    = (Solution_NodeBinarySearchTree<NodeDataType>) insert(mRoot,
-		                                                           dataObject);
+		mRoot = (Solution_NodeBinarySearchTree<NodeDataType>) insert(mRoot,
+		                                                             dataObject);
 		
 		return heightOriginal != height();
 	}
@@ -37,9 +36,8 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @param dataObject The value to search through the children for.
 	 * @return Returns whether insertion was successful.
 	 */
-	private I_NodeBinarySearchTree<NodeDataType>
-	        insert(final I_NodeBinarySearchTree<NodeDataType> currentNode,
-	               final NodeDataType dataObject) {
+	private I_NodeBinarySearchTree<NodeDataType> insert(final I_NodeBinarySearchTree<NodeDataType> currentNode,
+	                                                    final NodeDataType dataObject) {
 		if (currentNode == null) {
 			return new Solution_NodeBinarySearchTree<NodeDataType>(dataObject);
 		}
@@ -74,8 +72,7 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @param currentNode The current node of this tree.
 	 * @return Returns the string representation of this tree.
 	 */
-	private String
-	        printTree(final I_NodeBinarySearchTree<NodeDataType> currentNode) {
+	private String printTree(final I_NodeBinarySearchTree<NodeDataType> currentNode) {
 		if (currentNode == null) {
 			return "";
 		}
@@ -93,9 +90,8 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	@Override
 	public boolean remove(final NodeDataType dataObject) {
 		final int heightOriginal = height();
-		mRoot
-		    = (Solution_NodeBinarySearchTree<NodeDataType>) remove(mRoot,
-		                                                           dataObject);
+		mRoot = (Solution_NodeBinarySearchTree<NodeDataType>) remove(mRoot,
+		                                                             dataObject);
 		
 		return heightOriginal != height();
 	}
@@ -106,9 +102,8 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @return Returns the removed node if it was contained within this tree,
 	 *         otherwise false is returned.
 	 */
-	private I_NodeBinarySearchTree<NodeDataType>
-	        remove(final I_NodeBinarySearchTree<NodeDataType> currentNode,
-	               final NodeDataType dataObject) {
+	private I_NodeBinarySearchTree<NodeDataType> remove(final I_NodeBinarySearchTree<NodeDataType> currentNode,
+	                                                    final NodeDataType dataObject) {
 		if (currentNode == null) {
 			return null;
 		}
@@ -147,8 +142,7 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @param node The node to search along.
 	 * @return Returns the minimum value along a given node.
 	 */
-	private NodeDataType
-	        calculateMinimumValue(final I_NodeBinarySearchTree<NodeDataType> node) {
+	private NodeDataType calculateMinimumValue(final I_NodeBinarySearchTree<NodeDataType> node) {
 		I_NodeBinarySearchTree<NodeDataType> currentNode = node;
 		NodeDataType minimumValue = currentNode.getDataObject();
 		
@@ -177,9 +171,8 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @param dataObject The value to search through the children for.
 	 * @return Returns whether the given node contains the given data object.
 	 */
-	private boolean
-	        contains(final I_NodeBinarySearchTree<NodeDataType> currentNode,
-	                 final NodeDataType dataObject) {
+	private boolean contains(final I_NodeBinarySearchTree<NodeDataType> currentNode,
+	                         final NodeDataType dataObject) {
 		if (currentNode == null) {
 			return false;
 		}
@@ -188,12 +181,10 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 				return true;
 			}
 			else {
-				final boolean leftContains
-				    = contains(currentNode.getChildNodeLeft(),
-				               dataObject);
-				final boolean rightContains
-				    = contains(currentNode.getChildNodeRight(),
-				               dataObject);
+				final boolean leftContains = contains(currentNode.getChildNodeLeft(),
+				                                      dataObject);
+				final boolean rightContains = contains(currentNode.getChildNodeRight(),
+				                                       dataObject);
 				
 				return leftContains || rightContains;
 			}
@@ -209,8 +200,7 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 	 * @param currentNode The current node to calculate the height of this tree.
 	 * @return Returns the height of this tree.
 	 */
-	private int
-	        calculateHeight(final I_NodeBinarySearchTree<NodeDataType> currentNode) {
+	private int calculateHeight(final I_NodeBinarySearchTree<NodeDataType> currentNode) {
 		if (currentNode == null) {
 			return 0;
 		}
@@ -220,10 +210,11 @@ public class Solution_BinarySearchTree<NodeDataType extends Comparable<NodeDataT
 			final int heightTreeLeft
 			    = calculateHeight(currentNode.getChildNodeLeft());
 			
-			final int tallerHeight
-			    = heightTreeRight > heightTreeLeft
-			                                       ? heightTreeRight + 1
-			                                       : heightTreeLeft + 1;
+			final int tallerHeight = heightTreeRight > heightTreeLeft
+			                                                          ? heightTreeRight +
+			                                                            1
+			                                                          : heightTreeLeft +
+			                                                            1;
 			
 			return tallerHeight;
 		}

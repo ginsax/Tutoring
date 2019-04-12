@@ -38,9 +38,8 @@ public class FizzBuzzTest_Moderate {
 	@Test
 	public void test_Five_CanReturn_Fizz() {
 		final int numberToAnalyze = 5;
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Moderate(5,
-		                                    3);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Moderate(5,
+		                                                  3);
 		
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.Fizz;
 		
@@ -114,9 +113,8 @@ public class FizzBuzzTest_Moderate {
 	@Test
 	public void test_Three_CanReturn_Buzz() {
 		final int numberToAnalyze = 3;
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Moderate(5,
-		                                    3);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Moderate(5,
+		                                                  3);
 		
 		final FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.Buzz;
 		
@@ -177,9 +175,8 @@ public class FizzBuzzTest_Moderate {
 		int numberToAnalyze = 8;
 		int numberFizz = 4;
 		int numberBuzz = 2;
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Moderate(numberFizz,
-		                                    numberBuzz);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Moderate(numberFizz,
+		                                                  numberBuzz);
 		
 		FizzBuzzAnalysisResult expected = FizzBuzzAnalysisResult.FizzBuzz;
 		FizzBuzzAnalysisResult actual = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
@@ -193,9 +190,8 @@ public class FizzBuzzTest_Moderate {
 		numberToAnalyze = 22;
 		numberFizz = 2;
 		numberBuzz = 11;
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Moderate(numberFizz,
-		                                    numberBuzz);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Moderate(numberFizz,
+		                                                  numberBuzz);
 		
 		expected = FizzBuzzAnalysisResult.FizzBuzz;
 		actual = mFizzBuzzAnalyzer.analyze(numberToAnalyze);
@@ -209,9 +205,8 @@ public class FizzBuzzTest_Moderate {
 		numberToAnalyze = 54;
 		numberFizz = 18;
 		numberBuzz = 6;
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Moderate(numberFizz,
-		                                    numberBuzz);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Moderate(numberFizz,
+		                                                  numberBuzz);
 		
 		expected = FizzBuzzAnalysisResult.FizzBuzz;
 		actual = mFizzBuzzAnalyzer.analyze(numberToAnalyze);

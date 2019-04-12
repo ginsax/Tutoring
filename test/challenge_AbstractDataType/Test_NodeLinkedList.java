@@ -126,9 +126,8 @@ public class Test_NodeLinkedList {
 		    = new NodeLinkedList<Double>(dataObjectB);
 		
 		final Double dataObjectA = new Double(69.69);
-		final I_NodeLinkedList<Double> nodeA
-		    = new NodeLinkedList<Double>(nodeB,
-		                                 dataObjectA);
+		final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
+		                                                                  dataObjectA);
 		
 		final Double expected = dataObjectB;
 		final Double actual = nodeA.getNextNode().getDataObject();
@@ -147,9 +146,8 @@ public class Test_NodeLinkedList {
 		    = new NodeLinkedList<Double>(dataObjectB);
 		
 		final Double dataObjectA = new Double(69.69);
-		final I_NodeLinkedList<Double> nodeA
-		    = new NodeLinkedList<Double>(nodeB,
-		                                 dataObjectA);
+		final I_NodeLinkedList<Double> nodeA = new NodeLinkedList<Double>(nodeB,
+		                                                                  dataObjectA);
 		
 		final I_NodeLinkedList<Double> expected = nodeB;
 		final I_NodeLinkedList<Double> actual = nodeA.getNextNode();

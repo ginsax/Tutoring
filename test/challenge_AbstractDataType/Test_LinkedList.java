@@ -30,8 +30,7 @@ public class Test_LinkedList {
 	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_GetNode_AtIndexGreaterThanLength_ThrowsException() {
+	public void test_DefaultConstructor_GetNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		list.getNodeAtIndex(24);
 	}
@@ -41,8 +40,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_GetNode_AtNegativeIndex_ThrowsException() {
+	public void test_DefaultConstructor_GetNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		list.getNodeAtIndex(-1);
 	}
@@ -74,8 +72,7 @@ public class Test_LinkedList {
 	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_InsertNode_AtIndexGreaterThanLength_ThrowsException() {
+	public void test_DefaultConstructor_InsertNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
@@ -88,8 +85,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_InsertNode_AtNegativeIndex_ThrowsException() {
+	public void test_DefaultConstructor_InsertNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
@@ -132,8 +128,7 @@ public class Test_LinkedList {
 	 * results in a thrown {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_SetNode_AtIndexGreaterThanLength_ThrowsException() {
+	public void test_DefaultConstructor_SetNode_AtIndexGreaterThanLength_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
@@ -146,8 +141,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_DefaultConstructor_SetNode_AtNegativeIndex_ThrowsException() {
+	public void test_DefaultConstructor_SetNode_AtNegativeIndex_ThrowsException() {
 		final I_LinkedList<Object> list = new LinkedList<Object>();
 		
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
@@ -270,8 +264,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
-	public void
-	       test_NodeConstructor_GetNode_AtValidIndex_DoesNotThrowException() {
+	public void test_NodeConstructor_GetNode_AtValidIndex_DoesNotThrowException() {
 		final I_NodeLinkedList<Object> node = new NodeLinkedList<Object>();
 		final I_LinkedList<Object> list = new LinkedList<Object>(node);
 		
@@ -299,8 +292,7 @@ public class Test_LinkedList {
 	
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_00() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_00() {
 		final I_NodeLinkedList<String> nodeA
 		    = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB
@@ -317,8 +309,7 @@ public class Test_LinkedList {
 	}
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_00() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_00() {
 		final I_NodeLinkedList<String> nodeA
 		    = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB
@@ -343,8 +334,7 @@ public class Test_LinkedList {
 	}
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_01() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_01() {
 		final I_NodeLinkedList<String> nodeA
 		    = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB
@@ -365,8 +355,7 @@ public class Test_LinkedList {
 	}
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_01() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_01() {
 		final I_NodeLinkedList<String> nodeA
 		    = new NodeLinkedList<String>("I am the first node.");
 		final I_NodeLinkedList<String> nodeB
@@ -396,8 +385,7 @@ public class Test_LinkedList {
 	}
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_02() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_BehavesAsExpected_02() {
 		final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(0);
 		final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>(1);
 		final I_NodeLinkedList<Integer> nodeC = new NodeLinkedList<Integer>(2);
@@ -415,8 +403,7 @@ public class Test_LinkedList {
 	}
 	/** Tests that inserting a node at a valid index behaves as expected. */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_02() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_IsOrderedCorrectly_02() {
 		final I_NodeLinkedList<Integer> nodeA = new NodeLinkedList<Integer>(0);
 		final I_NodeLinkedList<Integer> nodeB = new NodeLinkedList<Integer>(1);
 		final I_NodeLinkedList<Integer> nodeC = new NodeLinkedList<Integer>(2);
@@ -527,8 +514,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_00() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_00() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeC = new NodeLinkedList<Object>();
@@ -550,8 +536,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_01() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_01() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeC = new NodeLinkedList<Object>();
@@ -575,8 +560,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test (expected = Exception_InvalidListIndex.class)
-	public void
-	       test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_02() {
+	public void test_NodeConstructor_InsertNode_AtValidIndex_DoesNotThrowException_02() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeC = new NodeLinkedList<Object>();
@@ -616,8 +600,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
-	public void
-	       test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_00() {
+	public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_00() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeC = new NodeLinkedList<Object>();
@@ -639,8 +622,7 @@ public class Test_LinkedList {
 	 * {@linkplain Exception_InvalidListIndex}.
 	 */
 	@Test
-	public void
-	       test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_01() {
+	public void test_NodeConstructor_SetNode_AtValidIndex_DoesNotThrowException_01() {
 		final I_NodeLinkedList<Object> nodeA = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeB = new NodeLinkedList<Object>();
 		final I_NodeLinkedList<Object> nodeC = new NodeLinkedList<Object>();

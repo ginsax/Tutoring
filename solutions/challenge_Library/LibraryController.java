@@ -118,8 +118,7 @@ public class LibraryController extends BorderPane {
 	 * @param bookList A collection of LibraryBooks that are to be filtered.
 	 * @return Returns a filtered list of library books.
 	 */
-	private FilteredList<SolutionLibraryBook>
-	        createFilteredListFrom(final ObservableList<SolutionLibraryBook> bookList) {
+	private FilteredList<SolutionLibraryBook> createFilteredListFrom(final ObservableList<SolutionLibraryBook> bookList) {
 		final FilteredList<SolutionLibraryBook> filteredBookList
 		    = new FilteredList<>(bookList,
 		                         p -> true);
@@ -127,21 +126,15 @@ public class LibraryController extends BorderPane {
 		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateTitle
 		    = new SimpleObjectProperty<>();
 		predicateTitle
-		    .bind(Bindings.createObjectBinding(
-		                                       () -> book -> book.getTitle()
-		                                           .toLowerCase()
-		                                           .contains(filterText_Title
-		                                               .getText().toLowerCase()),
+		    .bind(Bindings.createObjectBinding(() -> book -> book.getTitle()
+		        .toLowerCase().contains(filterText_Title.getText().toLowerCase()),
 		                                       filterText_Title.textProperty()));
 		
 		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateAuthor
 		    = new SimpleObjectProperty<>();
 		predicateAuthor
-		    .bind(Bindings.createObjectBinding(
-		                                       () -> book -> book.getAuthor()
-		                                           .toLowerCase()
-		                                           .contains(filterText_Author
-		                                               .getText().toLowerCase()),
+		    .bind(Bindings.createObjectBinding(() -> book -> book.getAuthor()
+		        .toLowerCase().contains(filterText_Author.getText().toLowerCase()),
 		                                       filterText_Author.textProperty()));
 		
 		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateYear
@@ -153,21 +146,18 @@ public class LibraryController extends BorderPane {
 		
 		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateISBN
 		    = new SimpleObjectProperty<>();
-		predicateISBN
-		    .bind(Bindings.createObjectBinding(
-		                                       () -> book -> book.getISBN()
-		                                           .toLowerCase()
-		                                           .contains(filterText_ISBN
-		                                               .getText().toLowerCase()),
-		                                       filterText_ISBN.textProperty()));
+		predicateISBN.bind(Bindings.createObjectBinding(() -> book -> book.getISBN()
+		    .toLowerCase().contains(filterText_ISBN.getText().toLowerCase()),
+		                                                filterText_ISBN
+		                                                    .textProperty()));
 		
 		final ObjectProperty<Predicate<SolutionLibraryBook>> predicateGenre
 		    = new SimpleObjectProperty<>();
 		predicateGenre.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getGenre()
-		        .equals(filter_Genre.getSelectionModel().getSelectedItem()) ||
-		                                       filter_Genre.getSelectionModel()
-		                                           .getSelectedItem() == null,
+		        .equals(filter_Genre.getSelectionModel()
+		            .getSelectedItem()) || filter_Genre.getSelectionModel()
+		                .getSelectedItem() == null,
 		                         filter_Genre.getSelectionModel()
 		                             .selectedItemProperty()));
 		
@@ -175,9 +165,9 @@ public class LibraryController extends BorderPane {
 		    = new SimpleObjectProperty<>();
 		predicateAudience.bind(Bindings
 		    .createObjectBinding(() -> book -> book.getAudience()
-		        .equals(filter_Audience.getSelectionModel().getSelectedItem()) ||
-		                                       filter_Audience.getSelectionModel()
-		                                           .getSelectedItem() == null,
+		        .equals(filter_Audience.getSelectionModel()
+		            .getSelectedItem()) || filter_Audience.getSelectionModel()
+		                .getSelectedItem() == null,
 		                         filter_Audience.getSelectionModel()
 		                             .selectedItemProperty()));
 		
@@ -244,8 +234,7 @@ public class LibraryController extends BorderPane {
 	 * @return Returns a sorted list of LibraryBooks that have been retrieved from
 	 *         a file.
 	 */
-	private ObservableList<SolutionLibraryBook>
-	        loadBooksFromFile(final String fileName) {
+	private ObservableList<SolutionLibraryBook> loadBooksFromFile(final String fileName) {
 		final IOModule bookIO = new IOModule();
 		ObservableList<SolutionLibraryBook> bookList
 		    = FXCollections.observableArrayList();
@@ -254,14 +243,12 @@ public class LibraryController extends BorderPane {
 			bookList = bookIO.retrieveBooksFromFile(fileName);
 		}
 		catch (final EmptyFileNameException e) {
-			final String message
-			    = String.format("Error loading books from file: %s",
-			                    fileName);
+			final String message = String.format("Error loading books from file: %s",
+			                                     fileName);
 			
-			mErrorAlert
-			    = new Alert(AlertType.ERROR,
-			                message,
-			                ButtonType.OK);
+			mErrorAlert = new Alert(AlertType.ERROR,
+			                        message,
+			                        ButtonType.OK);
 			mErrorAlert.show();
 		}
 		
@@ -275,8 +262,7 @@ public class LibraryController extends BorderPane {
 	 * Sets the sort priorities for the table when it is otherwise unsorted.
 	 * @param sortedBookList A sorted list of LibraryBooks to add to the table.
 	 */
-	private void
-	        setSortPrioritiesFor(final SortedList<SolutionLibraryBook> sortedBookList) {
+	private void setSortPrioritiesFor(final SortedList<SolutionLibraryBook> sortedBookList) {
 		mTableView.setItems(sortedBookList);
 		sortedBookList.comparatorProperty().bind(mTableView.comparatorProperty());
 		

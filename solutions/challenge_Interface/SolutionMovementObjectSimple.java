@@ -20,9 +20,8 @@ public class SolutionMovementObjectSimple implements Movement {
 	 * coordinates object with the default values of [x = 2] & [y = 4].
 	 */
 	public SolutionMovementObjectSimple() {
-		mCoordinates
-		    = new Coordinates(2,
-		                      4);
+		mCoordinates = new Coordinates(2,
+		                               4);
 	}
 	
 	@Override

@@ -33,10 +33,9 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultXCoordinateCanBeSet() {
-		final Movement movement
-		    = new MovementObjectModerate(5,
-		                                 7,
-		                                 10);
+		final Movement movement = new MovementObjectModerate(5,
+		                                                     7,
+		                                                     10);
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = 5;
@@ -68,10 +67,9 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultYCoordinateCanBeSet() {
-		final Movement movement
-		    = new MovementObjectModerate(1,
-		                                 2,
-		                                 3);
+		final Movement movement = new MovementObjectModerate(1,
+		                                                     2,
+		                                                     3);
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = 2;
@@ -103,10 +101,9 @@ public class MovementObjectModerateTest {
 	 */
 	@Test
 	public void test_MovementObject_Moderate_DefaultZCoordinateCanBeSet() {
-		final Movement movement
-		    = new MovementObjectModerate(10,
-		                                 12,
-		                                 13);
+		final Movement movement = new MovementObjectModerate(10,
+		                                                     12,
+		                                                     13);
 		final Coordinates coordinates = movement.getCoordinates();
 		
 		final int expected = 13;
@@ -204,15 +201,12 @@ public class MovementObjectModerateTest {
 		final Movement movement = new MovementObjectModerate();
 		final Coordinates movementCoordinates = movement.getCoordinates();
 		
-		final int expectedX
-		    = (int) Math.pow(movementCoordinates.getPositionX(),
-		                     multiplier + 1);
-		final int expectedY
-		    = (int) Math.pow(movementCoordinates.getPositionY(),
-		                     multiplier + 1);
-		final int expectedZ
-		    = (int) Math.pow(movementCoordinates.getPositionZ(),
-		                     multiplier + 1);
+		final int expectedX = (int) Math.pow(movementCoordinates.getPositionX(),
+		                                     multiplier + 1);
+		final int expectedY = (int) Math.pow(movementCoordinates.getPositionY(),
+		                                     multiplier + 1);
+		final int expectedZ = (int) Math.pow(movementCoordinates.getPositionZ(),
+		                                     multiplier + 1);
 		
 		int actualX = movementCoordinates.getPositionX();
 		int actualY = movementCoordinates.getPositionY();

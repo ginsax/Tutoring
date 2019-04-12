@@ -21,20 +21,16 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_2SimilarObjects() {
-		final FizzBuzzObject fizzBuzzObject_a
-		    = new FizzBuzzObject(1,
-		                         "Dude");
-		final FizzBuzzObject fizzBuzzObject_b
-		    = new FizzBuzzObject(1,
-		                         "Dude");
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     5);
+		final FizzBuzzObject fizzBuzzObject_a = new FizzBuzzObject(1,
+		                                                           "Dude");
+		final FizzBuzzObject fizzBuzzObject_b = new FizzBuzzObject(1,
+		                                                           "Dude");
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   5);
 		
 		final String expected = "DudeDudeDudeDudeDudeDudeDudeDudeDudeDude";
-		final String actual
-		    = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
-		                                fizzBuzzObject_b);
+		final String actual = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
+		                                                fizzBuzzObject_b);
 		assertEquals("Tests that 2 similar objects sort together & return correctly.",
 		             expected,
 		             actual);
@@ -45,36 +41,28 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_6Objects() {
-		final FizzBuzzObject fizzBuzzObject_a
-		    = new FizzBuzzObject(550,
-		                         "I");
-		final FizzBuzzObject fizzBuzzObject_b
-		    = new FizzBuzzObject(220,
-		                         "Why");
-		final FizzBuzzObject fizzBuzzObject_c
-		    = new FizzBuzzObject(130,
-		                         "Bro");
-		final FizzBuzzObject fizzBuzzObject_d
-		    = new FizzBuzzObject(770,
-		                         "Doing");
-		final FizzBuzzObject fizzBuzzObject_e
-		    = new FizzBuzzObject(690,
-		                         "This");
-		final FizzBuzzObject fizzBuzzObject_f
-		    = new FizzBuzzObject(350,
-		                         "Am");
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     Integer.MAX_VALUE);
+		final FizzBuzzObject fizzBuzzObject_a = new FizzBuzzObject(550,
+		                                                           "I");
+		final FizzBuzzObject fizzBuzzObject_b = new FizzBuzzObject(220,
+		                                                           "Why");
+		final FizzBuzzObject fizzBuzzObject_c = new FizzBuzzObject(130,
+		                                                           "Bro");
+		final FizzBuzzObject fizzBuzzObject_d = new FizzBuzzObject(770,
+		                                                           "Doing");
+		final FizzBuzzObject fizzBuzzObject_e = new FizzBuzzObject(690,
+		                                                           "This");
+		final FizzBuzzObject fizzBuzzObject_f = new FizzBuzzObject(350,
+		                                                           "Am");
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   Integer.MAX_VALUE);
 		
 		final String expected = "BroWhyBroAmBroWhyBroIBroWhyThisAmDoingBroWhyBro";
-		final String actual
-		    = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
-		                                fizzBuzzObject_b,
-		                                fizzBuzzObject_c,
-		                                fizzBuzzObject_d,
-		                                fizzBuzzObject_e,
-		                                fizzBuzzObject_f);
+		final String actual = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
+		                                                fizzBuzzObject_b,
+		                                                fizzBuzzObject_c,
+		                                                fizzBuzzObject_d,
+		                                                fizzBuzzObject_e,
+		                                                fizzBuzzObject_f);
 		assertEquals("Tests that 6 FizzBuzzObjects sort & return correctly.",
 		             expected,
 		             actual);
@@ -85,9 +73,8 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_One_IsLowestLowerBounds() {
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     Integer.MAX_VALUE);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   Integer.MAX_VALUE);
 		
 		final int expected = 1;
 		final int actual = mFizzBuzzAnalyzer.getBoundsLower();
@@ -101,9 +88,8 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_One_IsLowestUpperBounds() {
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     Integer.MIN_VALUE);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   Integer.MIN_VALUE);
 		
 		final int expected = 1;
 		final int actual = mFizzBuzzAnalyzer.getBoundsUpper();
@@ -118,9 +104,8 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_OneThousand_IsHighestLowerBounds() {
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MAX_VALUE,
-		                                     Integer.MAX_VALUE);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MAX_VALUE,
+		                                                   Integer.MAX_VALUE);
 		
 		final int expected = 1000;
 		final int actual = mFizzBuzzAnalyzer.getBoundsLower();
@@ -135,9 +120,8 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_OneThousand_IsHighestUpperBounds() {
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     Integer.MAX_VALUE);
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   Integer.MAX_VALUE);
 		
 		final int expected = 1000;
 		final int actual = mFizzBuzzAnalyzer.getBoundsUpper();
@@ -152,12 +136,10 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_OneThousandIterations() {
-		final FizzBuzzObject fizzBuzzObject
-		    = new FizzBuzzObject(1,
-		                         "Fizz");
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     Integer.MAX_VALUE);
+		final FizzBuzzObject fizzBuzzObject = new FizzBuzzObject(1,
+		                                                         "Fizz");
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   Integer.MAX_VALUE);
 		
 		String expected = fizzBuzzObject.getMessage();
 		
@@ -176,9 +158,8 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_OverridesToString() {
-		final FizzBuzzObject fizzBuzzObject
-		    = new FizzBuzzObject(1,
-		                         "Test");
+		final FizzBuzzObject fizzBuzzObject = new FizzBuzzObject(1,
+		                                                         "Test");
 		
 		final String expected = "FizzBuzzObject[1, Test]";
 		final String actual = fizzBuzzObject.toString();
@@ -193,22 +174,18 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_TwoObjects_1Fizz_2Buzz() {
-		final FizzBuzzObject fizzBuzzObject_a
-		    = new FizzBuzzObject(1,
-		                         "Fizz");
-		final FizzBuzzObject fizzBuzzObject_b
-		    = new FizzBuzzObject(2,
-		                         "Buzz");
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     10);
+		final FizzBuzzObject fizzBuzzObject_a = new FizzBuzzObject(1,
+		                                                           "Fizz");
+		final FizzBuzzObject fizzBuzzObject_b = new FizzBuzzObject(2,
+		                                                           "Buzz");
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   10);
 		
 		final String expected
 		    = "FizzFizzBuzzFizzFizzBuzzFizzFizzBuzzFizzFizzBuzzFizzFizzBuzz";
 		
-		final String actual
-		    = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
-		                                fizzBuzzObject_b);
+		final String actual = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_a,
+		                                                fizzBuzzObject_b);
 		assertEquals("Tests that FizzBuzzObject[1, 'Fizz'] & FizzBuzzObject[2, 'Buzz']  return correctly.",
 		             expected,
 		             actual);
@@ -220,22 +197,18 @@ public class FizzBuzzTest_Difficult {
 	 */
 	@Test
 	public void test_TwoObjects_2Buzz_1Fizz() {
-		final FizzBuzzObject fizzBuzzObject_a
-		    = new FizzBuzzObject(1,
-		                         "Fizz");
-		final FizzBuzzObject fizzBuzzObject_b
-		    = new FizzBuzzObject(2,
-		                         "Buzz");
-		mFizzBuzzAnalyzer
-		    = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
-		                                     10);
+		final FizzBuzzObject fizzBuzzObject_a = new FizzBuzzObject(1,
+		                                                           "Fizz");
+		final FizzBuzzObject fizzBuzzObject_b = new FizzBuzzObject(2,
+		                                                           "Buzz");
+		mFizzBuzzAnalyzer = new FizzBuzzAnalyzer_Difficult(Integer.MIN_VALUE,
+		                                                   10);
 		
 		final String expected
 		    = "FizzFizzBuzzFizzFizzBuzzFizzFizzBuzzFizzFizzBuzzFizzFizzBuzz";
 		
-		final String actual
-		    = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_b,
-		                                fizzBuzzObject_a);
+		final String actual = mFizzBuzzAnalyzer.analyze(fizzBuzzObject_b,
+		                                                fizzBuzzObject_a);
 		assertEquals("Tests that FizzBuzzObject[1, 'Fizz'] & FizzBuzzObject[2, 'Buzz']  return correctly.",
 		             expected,
 		             actual);

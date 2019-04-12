@@ -590,11 +590,10 @@ public class LibraryControllerTest {
 	 */
 	@SuppressWarnings ("unchecked")
 	@Test
-	public void
-	       test_LibraryController_FilterTextBox_PublishingYear_FiltersCorrectly()
-	                                                                              throws EmptyFileNameException,
-	                                                                              IllegalArgumentException,
-	                                                                              IllegalAccessException {
+	public void test_LibraryController_FilterTextBox_PublishingYear_FiltersCorrectly()
+	                                                                                   throws EmptyFileNameException,
+	                                                                                   IllegalArgumentException,
+	                                                                                   IllegalAccessException {
 		mLibraryController = new LibraryController("SimpleTest.csv");
 		
 		final String nameOfField = "year";

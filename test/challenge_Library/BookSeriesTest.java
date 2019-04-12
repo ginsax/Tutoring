@@ -304,9 +304,8 @@ public class BookSeriesTest {
 		
 		for (final Field field : declaredFields) {
 			if (!field.isSynthetic()) {
-				final String message
-				    = String.format("Field %s can't be static.",
-				                    field.getName());
+				final String message = String.format("Field %s can't be static.",
+				                                     field.getName());
 				
 				assertFalse(message,
 				            Modifier.isStatic(field.getModifiers()));
@@ -321,9 +320,8 @@ public class BookSeriesTest {
 		
 		for (final Method method : declaredMethods) {
 			if (!method.isSynthetic()) {
-				final String message
-				    = String.format("Method %s can't be static.",
-				                    method.getName());
+				final String message = String.format("Method %s can't be static.",
+				                                     method.getName());
 				
 				assertFalse(message,
 				            Modifier.isStatic(method.getModifiers()));
@@ -336,8 +334,7 @@ public class BookSeriesTest {
 	 * another default book series as equal, as long as the title is the same.
 	 */
 	@Test
-	public void
-	       test_DefaultBookSeries_ComparesTo_AnotherDefaultBookSeries_Equally() {
+	public void test_DefaultBookSeries_ComparesTo_AnotherDefaultBookSeries_Equally() {
 		final BookSeries otherBookSeries = new BookSeries();
 		
 		final int expected = 0;
