@@ -5,8 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Stack;
-
 import org.junit.Test;
 
 import challenge_Inheritance.Animal;
