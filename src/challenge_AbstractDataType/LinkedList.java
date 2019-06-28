@@ -1,171 +1,71 @@
 package challenge_AbstractDataType;
+import challenge_AbstractDataType.I_LinkedList;
 
 public class LinkedList<T> implements I_LinkedList<T> {
+
+	I_NodeLinkedList<T> mRootNode;
 	
-	private I_NodeLinkedList<T> headNode;
-	
-	
-	// Constructor (empty list object)
-	LinkedList() {
-	}
-	
-	// Constructor (single head object)
-	LinkedList(final I_NodeLinkedList<T> firstNode) {
-		headNode = firstNode;
+	public LinkedList(I_NodeLinkedList<T>...i_NodeLinkedLists) {
+		if(i_NodeLinkedLists.length == 0) return;
+		else if(i_NodeLinkedLists.length == 1) mRootNode = i_NodeLinkedLists[0];
+		else {
+			for(int i=0; i < i_NodeLinkedLists.length; i++) {
+				if 
+			}
+		}
 	}
 	
 	@Override
-	public int length() {
+	public void appendNode(I_NodeLinkedList<T> node) {
+		// TODO Auto-generated method stub
 		
-		// Initialize dummy node and iteration index
-		I_NodeLinkedList<T> nodey = headNode;
-		int iterationIndex = 0;
-		
-		// iterate through nodes to index.
-		while (nodey != null) {
-			nodey = nodey.getNextNode();
-			iterationIndex++;
-		}
-		
-		return iterationIndex;
 	}
-	
+
 	@Override
-	public boolean isEmpty() {
-		if (this.headNode == null) {
-			return true;
-		}
-		return false;
+	public I_NodeLinkedList<T> getNodeAtIndex(int index) throws Exception_InvalidListIndex {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	@Override
 	public I_NodeLinkedList<T> head() {
-		return headNode;
+		return mRootNode;
 	}
-	
+
+	@Override
+	public void insertNodeAtIndex(int index, I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isEmpty() {
+		if(mRootNode==null) return true;
+		return false;
+	}
+
+	@Override
+	public int length() {
+		int lengthCounter = 0;
+		I_NodeLinkedList<T> counterNode = mRootNode;
+		
+		while(counterNode != null) {
+			lengthCounter++;
+			counterNode = counterNode.getNextNode();
+		}
+		return 0;
+	}
+
+	@Override
+	public void setNodeAtIndex(int index, I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	public I_NodeLinkedList<T> tail() {
-		I_NodeLinkedList<T> nodey = headNode;
-		
-		if (nodey == null) {
-			return nodey;
-		}
-		
-		if (nodey.getNextNode() == null) {
-			return nodey;
-		}
-		
-		I_NodeLinkedList<T> nextNode = nodey.getNextNode();
-		
-		do {
-			nodey = nextNode;
-			nextNode = nextNode.getNextNode();
-		} while (nextNode != null);
-		
-		return nodey;
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	/**
-	 * This method indexes from 0.
-	 * @return returns the node at the given index. If the index is out of bounds,
-	 *         the method returns null and displays a message indicating the out
-	 *         of bounds error.
-	 */
-	@Override
-	public I_NodeLinkedList<T> getNodeAtIndex(final int index)
-	                                                           throws Exception_InvalidListIndex {
-		
-		// Handle if index is below zero.
-		if (index < 0 | index >= this.length()) {
-			throw new Exception_InvalidListIndex();
-		}
-		
-		// Initialize dummy node
-		I_NodeLinkedList<T> nodey = headNode;
-		
-		for (int i = 0; i < index; i++) {
-			nodey = nodey.getNextNode();
-		}
-		
-		return nodey;
-	}
-	
-	@Override
-	public void setNodeAtIndex(final int index, final I_NodeLinkedList<T> node)
-	                                                                            throws Exception_InvalidListIndex {
-		// Handle if index is below zero.
-		if (index < 0 | index > this.length()) {
-			throw new Exception_InvalidListIndex();
-		}
-		
-		final I_NodeLinkedList<T> nodey = this.headNode;
-		
-		if (index == 0) {
-			if (nodey == null) {
-				this.headNode = node;
-				return;
-			}
-			if (nodey.getNextNode() != null) {
-				node.setNextNode(nodey.getNextNode());
-			}
-			this.headNode = node;
-			return;
-		}
-		
-		if (index == this.length() - 1 | index == this.length()) {
-			this.getNodeAtIndex(index - 1).setNextNode(node);
-		}
-		else {
-			node.setNextNode(this.getNodeAtIndex(index + 1));
-			this.getNodeAtIndex(index - 1).setNextNode(node);
-		}
-		
-	}
-	
-	@Override
-	public void insertNodeAtIndex(final int index, final I_NodeLinkedList<T> node)
-	                                                                               throws Exception_InvalidListIndex {
-		// Handle if index is below zero.
-		if (index < 0) {
-			throw new Exception_InvalidListIndex();
-		}
-		
-		// Initialize dummy nodes
-		I_NodeLinkedList<T> nodey = headNode;
-		I_NodeLinkedList<T> nextNode = null;
-		
-		if (index == 0) {
-			this.headNode = node;
-			node.setNextNode(nodey);
-			return;
-		}
-		else {
-			// iterate through nodes to index.
-			for (int i = 0; i < index - 1; i++) {
-				nodey = nodey.getNextNode();
-				if (nodey == null) {
-					throw new Exception_InvalidListIndex();
-				}
-			}
-			nextNode = nodey.getNextNode();
-			
-			nodey.setNextNode(node);
-			if (nextNode == null) {
-				return;
-			}
-			else {
-				node.setNextNode(nextNode);
-			}
-		}
-		
-	}
-	
-	@Override
-	public void appendNode(final I_NodeLinkedList<T> node) {
-		if (this.tail() == null) {
-			this.headNode = node;
-			return;
-		}
-		this.tail().setNextNode(node);
-	}
+
 }
