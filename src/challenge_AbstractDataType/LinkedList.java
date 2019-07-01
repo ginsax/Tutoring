@@ -5,26 +5,42 @@ public class LinkedList<T> implements I_LinkedList<T> {
 
 	I_NodeLinkedList<T> mRootNode;
 	
-	public LinkedList(I_NodeLinkedList<T>...i_NodeLinkedLists) {
+	public LinkedList(@SuppressWarnings("unchecked") I_NodeLinkedList<T>... i_NodeLinkedLists) {
 		if(i_NodeLinkedLists.length == 0) return;
-		else if(i_NodeLinkedLists.length == 1) mRootNode = i_NodeLinkedLists[0];
 		else {
-			for(int i=0; i < i_NodeLinkedLists.length; i++) {
-				if 
+			for (I_NodeLinkedList<T> newNode: i_NodeLinkedLists) {
+				appendNode(newNode);
 			}
 		}
 	}
 	
 	@Override
 	public void appendNode(I_NodeLinkedList<T> node) {
-		// TODO Auto-generated method stub
-		
+		if (mRootNode == null) {
+			mRootNode = node;
+			return;
+		}
+		tail().setNextNode(node);
 	}
 
+	/**
+	 * Returns the node at a given index in the linked list.
+	 * List indexes from zero.
+	 * 
+	 * @param index : The requested index.
+	 */
 	@Override
 	public I_NodeLinkedList<T> getNodeAtIndex(int index) throws Exception_InvalidListIndex {
-		// TODO Auto-generated method stub
-		return null;
+		
+		I_NodeLinkedList<T> mNodeToBeReturned = mRootNode;
+			if (mNodeToBeReturned == null) throw new Exception_InvalidListIndex();
+		
+		for(int i=0;i<index;i++) {
+			mNodeToBeReturned = mNodeToBeReturned.getNextNode();
+			if (mNodeToBeReturned == null) throw new Exception_InvalidListIndex();
+		}
+		
+		return mNodeToBeReturned;
 	}
 
 	@Override
@@ -34,7 +50,19 @@ public class LinkedList<T> implements I_LinkedList<T> {
 
 	@Override
 	public void insertNodeAtIndex(int index, I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
-		// TODO Auto-generated method stub
+		if ((index<0) | (index>length())) throw new Exception_InvalidListIndex();
+		
+		I_NodeLinkedList<T> mNodeBeforeIndex = null;
+		
+		// set Before Nodes
+		if (index>0) {
+			mNodeBeforeIndex = getNodeAtIndex(index-1);
+			if (mNodeBeforeIndex.getNextNode() != null) node.setNextNode(mNodeBeforeIndex.getNextNode());
+			mNodeBeforeIndex.setNextNode(node);
+		} else if (index == 0) { 
+			node.setNextNode(mRootNode);
+			mRootNode = node;
+		}
 		
 	}
 
@@ -53,19 +81,42 @@ public class LinkedList<T> implements I_LinkedList<T> {
 			lengthCounter++;
 			counterNode = counterNode.getNextNode();
 		}
-		return 0;
+		return lengthCounter;
 	}
 
 	@Override
 	public void setNodeAtIndex(int index, I_NodeLinkedList<T> node) throws Exception_InvalidListIndex {
-		// TODO Auto-generated method stub
+		if ((index<0) | (index>length())) throw new Exception_InvalidListIndex();
+		
+		I_NodeLinkedList<T> mNodeAfterIndex = null;
+		I_NodeLinkedList<T> mNodeBeforeIndex = null;
+		
+		// set Before&After Nodes
+		if (index<(length()-1)) {
+			mNodeAfterIndex = getNodeAtIndex(index+1);
+		}
+		if (index>0) {
+			mNodeBeforeIndex = getNodeAtIndex(index-1);
+		}
+		
+		if (mNodeAfterIndex != null) node.setNextNode(mNodeAfterIndex);
+		if (mNodeBeforeIndex != null) mNodeBeforeIndex.setNextNode(node);
+		if (index == 0) mRootNode = node;
 		
 	}
 
 	@Override
 	public I_NodeLinkedList<T> tail() {
-		// TODO Auto-generated method stub
-		return null;
+		I_NodeLinkedList<T> tailNode = mRootNode;
+			if (tailNode == null) return(null);
+		I_NodeLinkedList<T> mNextNode = tailNode.getNextNode();
+		
+		while (mNextNode != null) {
+			tailNode = mNextNode;
+			mNextNode = mNextNode.getNextNode();
+		}
+		
+		return tailNode;
 	}
 
 }
