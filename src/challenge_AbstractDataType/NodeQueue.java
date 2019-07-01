@@ -1,46 +1,48 @@
 package challenge_AbstractDataType;
 
-public class NodeQueue<NodeDataType> implements I_NodeQueue<NodeDataType> {
+public class NodeQueue<T> implements I_NodeQueue<T> {
+
+	T mDataObject;
+	I_NodeQueue<T> mNextNode;
 	
-	private NodeDataType							mObject;
-	private I_NodeQueue<NodeDataType>	mNextNode;
-	
-	
-	public NodeQueue() {
+	NodeQueue(){}
+
+	NodeQueue(T newDataObject){
+		mDataObject = newDataObject;
 	}
-	
-	public NodeQueue(final NodeDataType object) {
-		mObject = object;
+
+	NodeQueue(I_NodeQueue<T> newNextNodeQueue){
+		mNextNode = newNextNodeQueue;
 	}
-	
-	public NodeQueue(final I_NodeQueue<NodeDataType> nextNode) {
-		mNextNode = nextNode;
+
+	NodeQueue(T newDataObject, I_NodeQueue<T> newNextNodeQueue){
+		mDataObject = newDataObject;
+		mNextNode = newNextNodeQueue;
 	}
-	
-	public NodeQueue(final I_NodeQueue<NodeDataType> nextNode,
-	                 final NodeDataType object) {
-		mObject = object;
-		mNextNode = nextNode;
-	}
-	
-	@Override
-	public NodeDataType getDataObject() {
-		return mObject;
+
+	NodeQueue(I_NodeQueue<T> newNextNodeQueue, T newDataObject){
+		mNextNode = newNextNodeQueue;
+		mDataObject = newDataObject;
 	}
 	
 	@Override
-	public void setDataObject(final NodeDataType dataObject) {
-		mObject = dataObject;
+	public T getDataObject() {
+		return mDataObject;
 	}
-	
+
 	@Override
-	public I_NodeQueue<NodeDataType> getNextNode() {
+	public void setDataObject(T dataObject) {
+		mDataObject = dataObject;
+	}
+
+	@Override
+	public I_NodeQueue<T> getNextNode() {
 		return mNextNode;
 	}
-	
+
 	@Override
-	public void setNextNode(final I_NodeQueue<NodeDataType> nextNode) {
+	public void setNextNode(I_NodeQueue<T> nextNode) {
 		mNextNode = nextNode;
 	}
-	
+
 }

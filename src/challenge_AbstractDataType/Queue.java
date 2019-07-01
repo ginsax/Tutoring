@@ -1,88 +1,74 @@
 package challenge_AbstractDataType;
 
-public class Queue<ContentType> implements I_Queue<ContentType> {
+public class Queue<T> implements I_Queue<T> {
+
+	I_NodeQueue<T> mFrontNode;
 	
-	I_NodeQueue<ContentType> mFirstNode;
-	
-	
-	public Queue() {
-		
-	}
-	
-	public Queue(final ContentType... nodes) {
-		enqueue(nodes);
+	@SuppressWarnings("unchecked")
+	Queue(T...mQueueDataItems){
+		enqueue(mQueueDataItems);
 	}
 	
 	@Override
-	public boolean isEmpty() {
-		if (mFirstNode == null) {
-			return true;
+	public T dequeue() {
+		
+		if (mFrontNode == null) return null;
+		
+		T dataObjectStore = mFrontNode.getDataObject();
+		mFrontNode = mFrontNode.getNextNode();
+		return dataObjectStore;
+	}
+
+	@Override
+	public void enqueue(@SuppressWarnings("unchecked") T... nodesToAdd) {
+		if (nodesToAdd==null) return;
+		for (T node: nodesToAdd) {
+			if (length()==0) {
+				mFrontNode = new NodeQueue<T>(node);
+				continue;
+			}
+			tail().setNextNode(new NodeQueue<T>(node));
 		}
+	}
+
+	@Override
+	public boolean isEmpty() {
+		if(mFrontNode==null) return(true);
 		return false;
 	}
-	
+
 	@Override
 	public int length() {
 		int counter = 0;
-		I_NodeQueue<ContentType> currentNode = mFirstNode;
-		
-		while (true) {
-			if (currentNode == null) {
-				return counter;
-			}
-			currentNode = currentNode.getNextNode();
+		I_NodeQueue<T> refNode = mFrontNode;
+		while (refNode != null) {
 			counter++;
+			refNode = refNode.getNextNode();
 		}
+		return counter;
 	}
-	
+
 	@Override
-	public ContentType peek() {
-		if (mFirstNode == null) {
-			return null;
-		}
-		return mFirstNode.getDataObject();
-	}
-	
-	@Override
-	public ContentType dequeue() {
-		if (mFirstNode == null) {
-			return null;
-		}
-		final I_NodeQueue<ContentType> node = mFirstNode;
-		mFirstNode = node.getNextNode();
-		return node.getDataObject();
-	}
-	
-	@Override
-	public void enqueue(final ContentType... nodesToAdd) {
-		if (nodesToAdd == null) {
-			return;
-		}
-		for (int i = 0; i < nodesToAdd.length; i++) {
-			if (i == 0 & mFirstNode == null) {
-				final NodeQueue<ContentType> firstNode
-				    = new NodeQueue<ContentType>(nodesToAdd[0]);
-				mFirstNode = firstNode;
-				continue;
-			}
-			final NodeQueue<ContentType> node
-			    = new NodeQueue<ContentType>(nodesToAdd[i]);
-			getLastNode().setNextNode(node);
-		}
-	}
-	
-	private I_NodeQueue<ContentType> getLastNode() {
-		I_NodeQueue<ContentType> returnNode = mFirstNode;
+	public T peek() {
 		
-		if (length() == 0) {
-			return returnNode;
+		if (mFrontNode == null) return null;
+		
+		return mFrontNode.getDataObject();
+	}
+
+	private I_NodeQueue<T> tail(){
+		
+		if (mFrontNode==null) return null;
+		
+		I_NodeQueue<T> tailNode = mFrontNode;
+		I_NodeQueue<T> tailNodeNext = tailNode.getNextNode();
+		
+		while (tailNodeNext!=null) {
+			tailNode = tailNodeNext;
+			tailNodeNext = tailNodeNext.getNextNode();
 		}
-		else {
-			for (int i = 0; i < length() - 1; i++) {
-				returnNode = returnNode.getNextNode();
-			}
-		}
-		return returnNode;
+		
+		return tailNode;
 	}
 	
 }
