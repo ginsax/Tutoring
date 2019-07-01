@@ -2,83 +2,68 @@ package challenge_AbstractDataType;
 
 import challenge_AbstractDataType.Exception_EmptyStack;
 
-public class Stack<NodeDataType> implements I_Stack<NodeDataType>{
+public class Stack<T> implements I_Stack<T>{
 
-	I_NodeStack<NodeDataType> mHeadNode;
+	I_NodeStack<T> top;
 	
-	public Stack(){
-		
-	}
-	
-	Stack(NodeDataType... dataObjects){
-		for(NodeDataType DO : dataObjects) {
-			push(DO);
-		}
+	@SuppressWarnings("unchecked")
+	public Stack(T... inputs) {
+		for(T input: inputs) push(input);
 	}
 	
 	@Override
-	public void push(NodeDataType dataObject) {
-		NodeStack<NodeDataType> mNode = new NodeStack<NodeDataType>(dataObject);
-		if(mHeadNode == null) {
-			mHeadNode = mNode;
+	public void push(T dataObject) {
+		I_NodeStack<T> topHold = top;
+		top = new NodeStack<T>(dataObject);
+		if(topHold!=null) top.setNextNode(topHold);
+	}
+
+	@Override
+	public T peek() {
+		if (top==null) throw new Exception_EmptyStack();
+		else return top.getDataObject();
+	}
+
+	@Override
+	public T pop() throws Exception_EmptyStack {
+		if (top==null) throw new Exception_EmptyStack();
+		T dataObject = top.getDataObject();
+		if(top.getNextNode()!=null) {
+			top=top.getNextNode();
+			return dataObject;
 		} else {
-		mNode.setNextNode(mHeadNode);
-		mHeadNode = mNode;
+			top = null;
+			return dataObject;
 		}
-	}
-
-	@Override
-	public NodeDataType peek() {
-		if(mHeadNode == null) {
-			throw new Exception_EmptyStack();
-		}
-		return mHeadNode.getDataObject();
-	}
-
-	@Override
-	public NodeDataType pop() {
-		if(mHeadNode == null) {
-			throw new Exception_EmptyStack();
-		}
-		I_NodeStack<NodeDataType> poppedNode = mHeadNode;
-		if(mHeadNode.getNextNode() != null) {
-			mHeadNode = mHeadNode.getNextNode();
-		} else {
-			mHeadNode = null;
-		}
-		return poppedNode.getDataObject();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		if(mHeadNode == null) {
-			return true;
-		}
+		if (top==null) return true;
 		return false;
 	}
 
 	@Override
-	public boolean contains(NodeDataType dataObject) {
-		I_NodeStack<NodeDataType> node = mHeadNode;
-		while(node != null) {
-			if(dataObject == node.getDataObject()) {
-				return true;
-			}
-			node = node.getNextNode();
+	public boolean contains(T dataObject) {
+		I_NodeStack nodeStack = top; //correct me if issue
+		while(nodeStack!=null) {
+			if(nodeStack.getDataObject()==dataObject) return true;
+			nodeStack = nodeStack.getNextNode();
 		}
 		return false;
 	}
 
 	@Override
 	public int size() {
-		int count = 0;
-		I_NodeStack<NodeDataType> node = mHeadNode;
+		int counter = 0;
+		I_NodeStack<T> node = top;
 		
-		while(node != null) {
-			count++;
+		while (node!=null) {
+			counter++;
 			node = node.getNextNode();
 		}
-		return count;
+		
+		return counter;
 	}
 
 }

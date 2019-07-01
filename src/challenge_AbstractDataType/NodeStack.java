@@ -1,53 +1,47 @@
 package challenge_AbstractDataType;
 
-public class NodeStack<NodeDataType> implements I_NodeStack<NodeDataType>{
+public class NodeStack<T> implements I_NodeStack<T>{
 
-	private I_NodeStack<NodeDataType> mNextNode;
-	private NodeDataType mDataObject;
+	T mDataObject;
+	I_NodeStack<T> mNextNode; 
 	
-	/**
-	 * Initializes a new NodeStack.
-	 * Sets all fields to their default values.
-	 */
-	NodeStack() {
-
+	public NodeStack() {}
+	
+	public NodeStack(T newDataObject) {
+		mDataObject = newDataObject;
 	}
 	
-	NodeStack(NodeDataType dataObject){
-		mDataObject = dataObject;
+	public NodeStack(I_NodeStack<T> newNodeStack) {
+		mNextNode = newNodeStack;
 	}
 	
-	NodeStack(I_NodeStack<NodeDataType> NextNode){
-		mNextNode = NextNode;
+	public NodeStack(T newDataObject, I_NodeStack<T> newNodeStack) {
+		mDataObject = newDataObject;
+		mNextNode = newNodeStack;
 	}
 	
-	NodeStack(NodeDataType dataObject, I_NodeStack<NodeDataType> NextNode){
-		mDataObject = dataObject;
-		mNextNode = NextNode;
+	public NodeStack(I_NodeStack<T> newNodeStack, T newDataObject) {
+		mDataObject = newDataObject;
+		mNextNode = newNodeStack;
 	}
 	
-	NodeStack(I_NodeStack<NodeDataType> NextNode, NodeDataType dataObject){
-		mDataObject = dataObject;
-		mNextNode = NextNode;
-	}
-
 	@Override
-	public NodeDataType getDataObject() {
+	public T getDataObject() {
 		return mDataObject;
 	}
 
 	@Override
-	public void setDataObject(NodeDataType dataObject) {
+	public void setDataObject(T dataObject) {
 		mDataObject = dataObject;
 	}
 
 	@Override
-	public I_NodeStack<NodeDataType> getNextNode() {
+	public I_NodeStack<T> getNextNode() {
 		return mNextNode;
 	}
 
 	@Override
-	public void setNextNode(I_NodeStack<NodeDataType> nextNode) {
+	public void setNextNode(I_NodeStack<T> nextNode) {
 		mNextNode = nextNode;
 	}
 
